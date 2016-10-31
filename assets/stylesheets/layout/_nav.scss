@@ -18,15 +18,12 @@
 
 .nav__link {
   display: block;
-
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 .nav__btn {
   display: none;
 }
-
 
 @include media($screen-md-max) {
   .nav {
@@ -43,7 +40,7 @@
     @include transition(.2s ease);
 
     .link--current {
-
+      color: rgba($black, .4);
     }
   }
 
@@ -68,7 +65,7 @@
 
   .nav__link {
     color: $primary;
-    font-size: .85em;
+    font-size: 1em;
 
     padding: 1.4em 4em;
   }
@@ -111,9 +108,9 @@
     z-index: 300;
 
     display: block;
-    width: 3em;
-    height: 3em;
-    line-height: 3em;
+    width: 4rem;
+    height: 4rem;
+    line-height: 4rem;
 
     color: $primary;
     font-size: 1.5em;
@@ -134,7 +131,7 @@
   }
 
   .nav__list {
-
+    padding: .5rem 0;
   }
 
   .nav__item {
@@ -143,18 +140,34 @@
   }
 
   .nav__link {
-    line-height: 4rem;
+    line-height: 2rem;
     padding: 0 1em;
 
     color: $primary;
-    font-size: .85em;
+    font-size: 1em;
     font-weight: 400;
 
     @include transition(border .1s ease);
 
+    &:after {
+      content: "";
+      position: relative;
+
+      display: block;
+      width: 0;
+      height: 1px;
+      background: $primary;
+
+      @include transition(width .2s ease);
+    }
+
     &:hover,
     &:focus {
-      opacity: .7;
+      text-decoration: none;
+
+      &:after {
+        width: 100%;
+      }
     }
   }
 }

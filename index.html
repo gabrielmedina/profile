@@ -7,10 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Skeleton</title>
+  <title>UI Designer / Front-end Developer - Gabriel Medina</title>
 
   <meta name="description" content="">
 
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="public/css/application.css">
 
@@ -22,16 +23,24 @@
     <div class="container">
       <div class="logo header__logo">
         <a class="logo__link" href="/">
-          <img class="logo__image" src="public/img/logo.png" alt="Boilerplate">
+          <img class="logo__image" src="public/img/logo.svg" alt="Gabriel Medina">
         </a>
       </div>
 
-      <a class="nav__btn ion-navicon" href="#"></a>
+      <a class="nav__btn ion-navicon" title="Abrir/Fechar menu de navegação" href="#nav"></a>
 
-      <nav class="nav header__nav">
+      <nav id="nav" class="nav header__nav">
         <ul class="nav__list">
           <li class="nav__item">
-            <a class="nav__link" href="https://github.com/gabrielmedina/skeleton">Fork</a>
+            <a class="nav__link" href="#about">Sobre</a>
+          </li>
+
+          <li class="nav__item">
+            <a class="nav__link" href="#projects">Projetos</a>
+          </li>
+
+          <li class="nav__item">
+            <a class="nav__link" href="#contact">Contato</a>
           </li>
         </ul>
       </nav>
@@ -40,27 +49,36 @@
 
   <div class="main">
     <div class="container">
-      <section class="section">
-        <header class="section__header">
-          <h1 class="section__title">Skeleton for new projects</h1>
-        </header>
+      <article id="about" class="section">
+        <div class="content">
+          <header class="section__header">
+            <figure class="section__figure-header">
+              <img class="section__image-header" src="https://lh3.googleusercontent.com/7yO95xtlEYmf7T7h755qBvUjGvaIrarUWanMuxUQHk9VMbNPoGsm8ZhdvtMmbYEc3qgT8y7Idw=w6720-h4200-rw-no" alt="Gabriel Medina">
+            </figure>
 
-        <div class="section__text">
-          <p>Inspired in <a href="https://github.com/luizpicolo/skeleton-project-rails">Skeleton Project Rails</a></p>
+            <h1 class="section__title">Gabriel Medina</h1>
+            <h2 class="section__caption">UI Designer / Front-end Developer</h2>
+          </header>
+
+          <div class="section__text">
+            <p>
+              Sou desenvolvedor Web, focado no lado do cliente. Utilizo tecnologias
+              como HTML5, CSS3 com auxílio de pré-processadores, JavaScript, e
+              controle de versão via Git durante o desenvolvimento de aplicações Web.
+              Familiarizado com a estrutura de projetos desenvolvidos em Ruby on Rails,
+              contudo, sempre disposto a novas estruturas e padrões.
+            </p>
+          </div>
         </div>
-      </section>
+      </article>
     </div>
   </div>
 
   <footer class="footer">
     <div class="container">
       <small class="footer__small">
-        &copy 2016 - Todos os direitos reservados.
+        Feito com <span class="icon--center ion-ios-heart"></span> por <a class="footer__link" href="https://github.com/gabrielmedina">Gabriel Medina</a>
       </small>
-
-      <div class="footer__author">
-        Desenvolvido por: <a class="footer__link" href="https://github.com/gabrielmedina">Gabriel Medina</a>
-      </div>
     </div>
   </footer>
 

@@ -7,11 +7,15 @@
 
 .logo__link {
   display: block;
+  padding: 1rem;
+
+  text-align: center;
   text-decoration: none;
 }
 
 .logo__image {
   display: block;
+  height: 2rem;
 }
 
 @include media($screen-md) {
@@ -19,7 +23,11 @@
 
   }
 
+  .logo__link {
+    padding: 0;
+  }
+
   .logo__image {
-    height: 4rem;
+    height: 3rem;
   }
 }

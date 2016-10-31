@@ -12,7 +12,15 @@
 .section__title {
   margin: 0;
   color: rgba($black, .9);
-  font-size: 1em;
+  font-size: 1.6em;
+  font-weight: 700;
+}
+
+.section__caption {
+  margin: 0;
+  color: rgba($black, .6);
+  font-size: .9em;
+  font-weight: 400;
 }
 
 .section__text {
@@ -22,20 +30,46 @@
   font-size: 1em;
 }
 
+.section__figure-header {
+  margin: 0 0 1em 0;
+
+  display: inline-block;
+  width: 6rem;
+  height: 6rem;
+  padding: 0;
+  border-radius: 100%;
+  box-shadow: 0 0 0 4px $white, 0 0 0 5px rgba($black, .2);
+  overflow: hidden;
+}
+
+.section__image-header {
+  display: block;
+  width: 100%;
+}
+
 @include media($screen-md) {
   .section {
 
   }
 
   .section__header {
-    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  .section__figure-header {
+    width: 8rem;
+    height: 8rem;
   }
 
   .section__title {
+    font-size: 2.6em;
+  }
 
+  .section__caption {
+    font-size: 1.1em;
   }
 
   .section__text {
-
+    font-size: 1.2em;
   }
 }
