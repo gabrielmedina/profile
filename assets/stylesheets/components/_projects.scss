@@ -1,0 +1,73 @@
+// projects
+
+.projects {
+  @include row;
+}
+
+.projects__item {
+  margin-bottom: 2rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.projects__figure {
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.projects__image {
+  display: block;
+  width: 100%;
+}
+
+.projects__content {
+  text-align: center;
+  padding: 1rem;
+}
+
+.projects__title {
+  margin: 0;
+  color: $primary;
+}
+
+.projects__caption {
+  margin: .25em 0 0;
+  color: rgba($black, .6);
+}
+
+@include media($screen-md) {
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .projects__item {
+    position: relative;
+    float: left;
+    margin: 0 0 2rem;
+
+    width: 50%;
+
+    .projects__content {
+      font-size: 1.2em;
+    }
+
+    &:nth-child(1n+3) {
+      width: 33.33%;
+
+      .projects__content {
+        font-size: .9em;
+      }
+    }
+  }
+
+  .projects__figure {
+    margin-bottom: 0;
+  }
+
+  .projects__title {
+    font-size: 1.4em;
+  }
+}
