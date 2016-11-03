@@ -108,16 +108,20 @@
     z-index: 300;
 
     display: block;
-    width: 4rem;
-    height: 4rem;
-    line-height: 4rem;
+    padding: 1rem;
 
     color: $primary;
-    font-size: 1.5em;
+    font-size: 1.4em;
     text-align: center;
     text-decoration: none;
 
     @include transition(.15s ease);
+  }
+
+  .nav__icon {
+    display: block;
+    width: 1em;
+    height: 1em;
   }
 }
 

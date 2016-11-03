@@ -1,7 +1,10 @@
 // icon
 
 .icon {
-  display: inline-block;
   color: $primary;
   font-size: 1em;
+
+  display: inline-block;
+  width: 1em;
+  height: 1em;
 }

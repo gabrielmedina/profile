@@ -9,13 +9,15 @@
   display: block;
   padding: 1rem;
 
+  font-size: 1.4em;
   text-align: center;
   text-decoration: none;
 }
 
 .logo__image {
   display: block;
-  height: 2rem;
+  width: 1em;
+  height: 1em;
 }
 
 @include media($screen-md) {
@@ -24,10 +26,11 @@
   }
 
   .logo__link {
-    padding: 0;
+    font-size: 2em;
+    padding: .5rem;
   }
 
   .logo__image {
-    height: 3rem;
+
   }
 }
