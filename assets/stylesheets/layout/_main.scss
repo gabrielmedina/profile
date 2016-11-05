@@ -1,5 +1,11 @@
 // main
 
 .main {
-  
+  padding-top: 3.4rem;
+}
+
+@include media($screen-md) {
+  .main {
+    padding-top: 4rem;
+  }
 }

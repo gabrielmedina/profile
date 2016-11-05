@@ -1,8 +1,13 @@
 // header
 
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+
   width: 100%;
   padding: 0;
+  background: $white;
 
   .container {
     padding: 0;
@@ -19,7 +24,7 @@
 
 @include media($screen-md) {
   .header {
-    padding: 1rem 0;
+    padding: .5rem 0;
 
     .container {
       position: relative;

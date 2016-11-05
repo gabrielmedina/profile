@@ -1,0 +1,29 @@
+// about
+
+.about {
+
+}
+
+.about__figure {
+  margin: 0 0 1em 0;
+
+  display: inline-block;
+  width: 6rem;
+  height: 6rem;
+  padding: 0;
+  border-radius: 100%;
+  box-shadow: 0 0 0 4px $white, 0 0 0 6px rgba($primary, .2);
+  overflow: hidden;
+}
+
+.about__image {
+  display: block;
+  width: 100%;
+}
+
+@include media($screen-md) {
+  .about__figure {
+    width: 8rem;
+    height: 8rem;
+  }
+}
