@@ -2,19 +2,14 @@
 
 .logo {
   margin: 0;
-  text-align: center;
-}
-
-.logo__link {
-  display: block;
-  padding: 1rem;
 
   font-size: 1.4em;
   text-align: center;
-  text-decoration: none;
 }
 
 .logo__image {
+  margin: 1rem;
+
   display: block;
   width: 1em;
   height: 1em;
@@ -22,15 +17,14 @@
 
 @include media($screen-md) {
   .logo {
-
+    font-size: 2em;
   }
 
   .logo__link {
-    font-size: 2em;
-    padding: .5rem;
+    text-decoration: none;
   }
 
   .logo__image {
-
+    margin: .5rem;
   }
 }
