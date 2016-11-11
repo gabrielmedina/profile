@@ -1,7 +1,7 @@
 // section
 
 .section {
-  padding: 2rem 0;
+  padding: 3rem 0 0;
 }
 
 .section__header {
@@ -30,9 +30,9 @@
   font-size: 1em;
 }
 
-@include media($screen-md) {
+@include media($screen-sm) {
   .section {
-    padding: 5rem 0 2rem;
+    padding: 6rem 0 0;
   }
 
   .section__header {

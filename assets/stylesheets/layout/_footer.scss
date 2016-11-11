@@ -3,7 +3,7 @@
 .footer {
   cursor: default;
 
-  padding: 1rem 0;
+  padding: 2rem 0 5rem;
 
   color: lighten($black, 40%);
   font-size: .7em;
@@ -22,7 +22,7 @@
 
 @include media($screen-md) {
   .footer {
-
+    padding: 6rem 0 2rem;
   }
 
   .footer__small {

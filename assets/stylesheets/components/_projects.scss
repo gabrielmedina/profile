@@ -37,7 +37,7 @@
   color: rgba($black, .6);
 }
 
-@include media($screen-md) {
+@include media($screen-sm) {
   .projects {
     display: flex;
     flex-wrap: wrap;

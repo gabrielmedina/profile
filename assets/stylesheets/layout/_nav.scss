@@ -25,19 +25,19 @@
   display: none;
 }
 
-@include media($screen-md-max) {
+@include media($screen-sm-max) {
   .nav {
     position: fixed;
-    top: 0;
+    bottom: 0;
     right: 0;
-    z-index: 200;
+    z-index: 400;
 
     box-sizing: border-box;
     width: 100%;
     height: 100vh;
 
-    @include transform(translateX(100%));
-    @include transition(.2s ease);
+    @include transform(translateY(100%));
+    @include transition(transform .2s ease);
 
     .link--current {
       color: rgba($black, .4);
@@ -45,18 +45,18 @@
   }
 
   .nav__list {
-    float: right;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 
-    display: inline-block;
     box-sizing: border-box;
-    max-width: 90%;
-    height: 100vh;
+    width: 100%;
+    padding: 1rem 0 3.5rem;
     background: $white;
-    border-top: solid 4px $primary;
+    overflow-y: scroll;
 
     text-align: center;
 
-    overflow-y: scroll;
   }
 
   .nav__item {
@@ -67,7 +67,7 @@
     color: $primary;
     font-size: 1em;
 
-    padding: 1.4em 4em;
+    padding: 1.4rem 4rem;
   }
 
   .nav--opened {
@@ -75,7 +75,7 @@
     height: 100%;
 
     .nav {
-      @include transform(translateX(0));
+      @include transform(translateY(0));
     }
 
     .nav__btn {
@@ -91,12 +91,11 @@
         position: fixed;
         top: 0;
         left: 0;
-        z-index: 100;
 
         display: block;
         width: 100%;
         height: 100%;
-        background: rgba($black, .4);
+        background: rgba($white, .9);
       }
     }
   }
@@ -105,7 +104,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 300;
+    z-index: 500;
 
     display: block;
     padding: 1rem;
@@ -125,7 +124,7 @@
   }
 }
 
-@include media($screen-md) {
+@include media($screen-sm) {
   .nav {
     text-align: right;
 
@@ -147,7 +146,7 @@
     line-height: 2rem;
     padding: 0 1em;
 
-    color: $primary;
+    color: rgba($black, .5);
     font-size: 1em;
     font-weight: 400;
 
@@ -167,6 +166,7 @@
 
     &:hover,
     &:focus {
+      color: $primary;
       text-decoration: none;
 
       &:after {

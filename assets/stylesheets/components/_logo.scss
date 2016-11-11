@@ -15,7 +15,7 @@
   height: 1em;
 }
 
-@include media($screen-md) {
+@include media($screen-sm) {
   .logo {
     font-size: 2em;
   }
