@@ -12,6 +12,19 @@
   }
 }
 
+.projects__link {
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    
+    .projects__title {
+      text-decoration: underline;
+    }
+  }
+}
+
 .projects__figure {
   margin: 0 0 1rem;
   padding: 0;
