@@ -18,7 +18,7 @@
   &:hover,
   &:focus {
     text-decoration: none;
-    
+
     .projects__title {
       text-decoration: underline;
     }
@@ -26,7 +26,7 @@
 }
 
 .projects__figure {
-  margin: 0 0 1rem;
+  margin: 0;
   padding: 0;
 }
 
@@ -74,10 +74,6 @@
         font-size: .9em;
       }
     }
-  }
-
-  .projects__figure {
-    margin-bottom: 0;
   }
 
   .projects__title {
