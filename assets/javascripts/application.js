@@ -31,4 +31,6 @@ $(function(){
     $('.nav__btn'),
     'nav--opened'
   );
+
+  console.info('E aí developer, beleza? Pelo que você pode ver, não tem erros por aqui :)');
 });
