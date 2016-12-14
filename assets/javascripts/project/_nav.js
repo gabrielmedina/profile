@@ -13,5 +13,9 @@ var _nav = {
       if(e.target != this) return;
       container.removeClass(modifier);
     });
+
+    links.on('click', function(e) {
+      container.removeClass(modifier);
+    });
   }
 }

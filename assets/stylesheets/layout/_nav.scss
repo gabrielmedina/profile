@@ -129,7 +129,12 @@
     text-align: right;
 
     .link--current {
-      opacity: .7;
+      color: $primary;
+      text-decoration: none;
+
+      &:after {
+        width: 100%;
+      }
     }
   }
 

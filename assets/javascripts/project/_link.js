@@ -27,5 +27,20 @@ var _link = {
         e.preventDefault();
       });
     }
+  },
+
+  scrollTo: function(links) {
+    if(links.length) {
+      links.on('click', function(e) {
+        e.preventDefault();
+
+        links.removeClass('link--current');
+        $(this).addClass('link--current');
+
+        $('html, body').stop().animate({
+          scrollTop: $($(this).attr('href')).offset().top
+        }, 300, 'easeOutQuad');
+      })
+    }
   }
 }

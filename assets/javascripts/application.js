@@ -14,6 +14,10 @@ $(function(){
     $('.link--prevent')
   );
 
+  _link.scrollTo(
+    $('.nav__link')
+  );
+
   // owl
   _owl.slide(
     $('.slide')

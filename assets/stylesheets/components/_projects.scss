@@ -42,12 +42,14 @@
 
 .projects__title {
   margin: 0;
+  font-size: 1em;
   color: $primary;
 }
 
 .projects__caption {
   margin: .25em 0 0;
   color: rgba($black, .6);
+  font-size: .8em;
 }
 
 @include media($screen-sm) {
@@ -77,6 +79,10 @@
   }
 
   .projects__title {
-    font-size: 1.4em;
+    font-size: 1.3em;
+  }
+
+  .projects__caption {
+    font-size: .9em;
   }
 }

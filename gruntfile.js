@@ -16,6 +16,7 @@ module.exports = function(grunt) {
           [
             'assets/bower/jquery/dist/jquery.js',
             'assets/bower/owlcar/owl-carousel/owl.carousel.min.js',
+            'assets/bower/jquery.easing/js/jquery.easing.min.js',
             'assets/javascripts/project/**.js',
             'assets/javascripts/**.js'
           ]
