@@ -1,7 +1,11 @@
 // section
 
 .section {
-  padding: 3rem 0 0;
+  padding: 3rem 0;
+}
+
+.section--projects {
+  background: rgba($black, .05);
 }
 
 .section__header {
@@ -33,6 +37,17 @@
 @include media($screen-sm) {
   .section {
     padding: 6rem 0 0;
+  }
+
+  .section--full {
+    min-height: 100vh;
+  }
+
+  .section--center {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 0;
   }
 
   .section__header {
