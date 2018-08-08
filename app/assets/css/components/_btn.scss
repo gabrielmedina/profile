@@ -1,0 +1,99 @@
+// btn
+
+.btn {
+  display: inline-block;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  padding: 0 1.4rem;
+  border: 0;
+  border-radius: 4px;
+  background: rgba(#111, .08);
+
+  color: rgba(#111, .5);
+  font-family: 'Raleway', sans-serif;;
+  font-size: .8em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  outline: none;
+  transition: .1s ease;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background: #566573;
+  }
+
+  + .btn,
+  + .icon__btn {
+    margin-left: .5rem;
+  }
+
+  + .link {
+    margin-left: 1rem;
+  }
+}
+
+.btn--tiny {
+  height: 1.5rem;
+  line-height: 1.5rem;
+
+  font-size: .6em;
+}
+
+.btn--small {
+  height: 2rem;
+  line-height: 2rem;
+
+  font-size: .7em;
+}
+
+.btn--large {
+  height: 3rem;
+  line-height: 3rem;
+
+  font-size: 1em;
+}
+
+.btn--primary {
+  color: #fff;
+  background: #566573;
+
+  &:focus,
+  &:hover {
+    background: darken(#566573, 10%);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .btn {
+    height: 3rem;
+    line-height: 3rem;
+
+    font-size: 1em;
+  }
+
+  .btn--tiny {
+    height: 2rem;
+    line-height: 2rem;
+
+    font-size: .8em;
+  }
+
+  .btn--small {
+    height: 2.5rem;
+    line-height: 2.5rem;
+
+    font-size: .9em;
+  }
+
+  .btn--large {
+    height: 4rem;
+    line-height: 4rem;
+    padding: 0 2rem;
+
+    font-size: 1.25em;
+  }
+}

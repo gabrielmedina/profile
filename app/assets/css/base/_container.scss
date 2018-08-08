@@ -1,0 +1,22 @@
+// container
+
+.container {
+  margin: 0 auto;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    max-width: 990px;
+    padding: 0 2rem;
+  }
+}

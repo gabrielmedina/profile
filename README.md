@@ -1,2 +1,3 @@
-# gabrielmedina.github.io
-Personal website
+# Gabriel Medina
+
+> A Simple personal page

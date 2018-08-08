@@ -1,0 +1,21 @@
+// content
+
+.content {
+  padding: 0 1rem;
+}
+
+.content__lang {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    padding: 0 10%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .content {
+    padding: 0 15%;
+  }
+}

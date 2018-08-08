@@ -1,4 +1,10 @@
-node_modules/*
-.sass-cache/*
-assets/bower/*
-.DS_Store*
+/node_modules
+/bower_components
+
+/.publish
+
+/dist/img/*
+/dist/css/*
+/dist/js/*
+
+/dist/**/*.html

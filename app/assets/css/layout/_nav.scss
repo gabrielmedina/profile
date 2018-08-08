@@ -1,0 +1,178 @@
+// nav
+
+.nav {
+
+}
+
+.nav__list {
+  cursor: default;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__item {
+
+}
+
+.nav__link {
+  display: block;
+  text-decoration: none;
+}
+
+.nav__btn {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 400;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+
+    transform: translateY(100%);
+    transition: transform .2s ease;
+  }
+
+  .nav__list {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1rem 0 3.5rem;
+    background: #fff;
+    overflow-y: scroll;
+
+    text-align: center;
+
+  }
+
+  .nav__item {
+
+  }
+
+  .nav__link {
+    color: #566573;
+    font-size: 1em;
+
+    padding: 1.4rem 4rem;
+  }
+
+  .nav--opened {
+    overflow: hidden;
+    height: 100%;
+
+    .nav {
+      transform: translateY(0);
+    }
+
+    .nav__btn {
+      color: #566573;
+    }
+
+    body {
+      overflow: hidden;
+
+      &:after {
+        content: "";
+
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: rgba(#fff, .9);
+      }
+    }
+  }
+
+  .nav__btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 500;
+
+    display: block;
+    padding: 1rem;
+
+    color: #566573;
+    font-size: 1.4em;
+    text-align: center;
+    text-decoration: none;
+
+    transition: .15s ease;
+  }
+
+  .nav__icon {
+    display: block;
+    width: 1em;
+    height: 1em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    text-align: right;
+
+    .link--current {
+      color: #566573;
+      text-decoration: none;
+
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+
+  .nav__list {
+    padding: .5rem 0;
+  }
+
+  .nav__item {
+    display: inline-block;
+    margin-left: .2em;
+  }
+
+  .nav__link {
+    line-height: 2rem;
+    padding: 0 1em;
+
+    color: rgba(#111, .5);
+    font-size: 1em;
+    font-weight: 400;
+
+    transition: border .1s ease;
+
+    &:after {
+      content: "";
+      position: relative;
+
+      display: block;
+      width: 0;
+      height: 1px;
+      background: #566573;
+
+      transition: width .2s ease;
+    }
+
+    &:hover,
+    &:focus {
+      color: #566573;
+      text-decoration: none;
+
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+}
