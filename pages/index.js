@@ -4,17 +4,15 @@ import Nav from '../components/Layout/Nav'
 import Profile from '../components/Profile'
 
 export default function Home() {
- 
-
   return (
     <>
       <Head>
         <title>Gabriel Medina: Front-end Developer / UX Designer</title>
         
-        <meta name="description" content="Atuo colhendo, refinando, prototipando e testando soluções e construíndo toda a parte front-end das aplicações." />
+        <meta name="description" content="Como UX, atuo colhendo, refinando, prototipando e testando soluções; Como dev, construo toda a parte front-end das aplicações." />
         <meta name="keywords" content="Medina, Developer, Designer, UX, Front-end" />
         <meta property="og:title" content="Gabriel Medina: Front-end Developer / UX Designer" />
-        <meta property="og:description" content="Atuo colhendo, refinando, prototipando e testando soluções e construíndo toda a parte front-end das aplicações." />
+        <meta property="og:description" content="Como UX, atuo colhendo, refinando, prototipando e testando soluções; Como dev, construo toda a parte front-end das aplicações." />
         <meta property="og:image" content="/og.png" />
         
         <link rel="icon" href="/favicon.svg" />
