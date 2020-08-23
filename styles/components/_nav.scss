@@ -1,0 +1,116 @@
+.nav {
+  margin-top: 1rem;
+
+  animation: nav-in ease .7s;
+}
+
+@keyframes nav-in {
+  from {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.nav__list {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__list-item {
+  padding: 0 1rem;
+}
+
+.nav__list-link {
+  position: relative;
+  display: block;
+  padding: .5rem 0;
+  color: var(--color-primary);
+  font-size: .9em;
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-decoration: none;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: 2px;
+    width: 0;
+    background: var(--color-primary);
+    will-change: width;
+    transition: .2s ease;
+  }
+
+  &:hover,
+  &:focus {
+    &:after {
+      width: 100%;
+    }
+  }
+}
+
+.nav__list-btn-tokens {
+  font-size: .9em;
+  border: 0;
+  background: none;
+  padding: .55rem .5rem;
+  opacity: .8;
+  cursor: pointer;
+  will-change: opacity;
+  transition: .2s ease;
+
+  svg {
+    margin: 0;
+    display: block;
+    width: 1em;
+    height: 1em;
+
+    path {
+      fill: var(--color-text);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    margin: 0;
+  }
+
+  .nav__list-item {
+    padding: 0 2rem;
+  }
+
+  .nav__list-link {
+    font-size: 1em;
+    padding: 1rem 0;
+  }
+
+  .nav__list-btn-tokens {
+    font-size: 1em;
+    padding: 1rem 1rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .nav {
+    top: 3rem;
+    right: 1rem;
+  }
+}

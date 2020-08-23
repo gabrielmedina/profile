@@ -1,0 +1,53 @@
+@mixin tokens-light {
+  --color-primary: #067F5E;
+
+  --color-text: var(--color-neutral-40);
+  --color-title: var(--color-neutral-40);
+  --color-link: var(--color-neutral-40);
+
+  --color-border: var(--color-neutral-80);
+  --color-background: var(--color-neutral-90);
+}
+
+@mixin tokens-dark {
+  --color-primary: #28F5BE;
+  
+  --color-text: var(--color-neutral-90);
+  --color-title: var(--color-neutral-100);
+  --color-link: var(--color-primary);
+
+  --color-background: var(--color-neutral-10);
+  --color-border: var(--color-neutral-20);
+}
+
+:root {
+  --color-neutral-10: #16161B;
+  --color-neutral-20: #1A1A1E;
+  --color-neutral-40: #323232;
+  --color-neutral-80: #EBEBEB;
+  --color-neutral-90: #f5f5f5;
+  --color-neutral-100: #ffffff;
+
+  @include tokens-dark;
+}
+
+.tokens-light {
+  @include tokens-light;
+}
+
+.tokens-dark {
+  @include tokens-dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    @include tokens-light;
+  }
+}
+
+// Default
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     @include tokens-dark;
+//   }
+// }
