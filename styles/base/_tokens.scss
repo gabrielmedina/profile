@@ -38,16 +38,3 @@
 .tokens-dark {
   @include tokens-dark;
 }
-
-@media (prefers-color-scheme: light) {
-  :root {
-    @include tokens-light;
-  }
-}
-
-// Default
-// @media (prefers-color-scheme: dark) {
-//   :root {
-//     @include tokens-dark;
-//   }
-// }

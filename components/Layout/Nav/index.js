@@ -6,10 +6,16 @@ export default function Nav() {
   const [tokens, setTokens] = useState()
 
   useEffect(() => {
-    const tokens = localStorage.getItem('tokens')
-
-    if(tokens !== null) {
-      tokens === TOKENS_DARK
+    const tokensStorage = localStorage.getItem('tokens')
+    
+    if(tokensStorage === null) {
+      if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTokens(true)
+      } else {
+        setTokens(false)
+      }
+    } else {
+      tokensStorage === TOKENS_DARK
         ? setTokens(true)
         : setTokens(false)
     }
@@ -17,9 +23,9 @@ export default function Nav() {
 
   const handleChangeTokens = () => {
     const body = document.querySelector('body')
-    
-    body.classList.remove(TOKENS_DARK, TOKENS_LIGHT)
+
     localStorage.removeItem('tokens')
+    body.classList.remove(TOKENS_DARK, TOKENS_LIGHT)
 
     if(tokens) {
       body.classList.add(TOKENS_LIGHT)
@@ -55,14 +61,8 @@ export default function Nav() {
         </li>
         <li className="nav__list-item">
           <button
-            className={`nav__list-btn-tokens ${
-              tokens
-                ? 'nav__list-btn-tokens_dark'
-                : 'nav__list-btn-tokens_light'
-            }`}
-            title={
-              tokens ? 'Trocar para modo claro' : 'Trocar para modo escuro'
-            }
+            className="nav__list-btn-tokens"
+            title={ tokens ? 'Trocar para modo claro' : 'Trocar para modo escuro' }
             onClick={() => {
               setTokens(!tokens)
               handleChangeTokens()
