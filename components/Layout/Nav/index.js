@@ -8,33 +8,29 @@ export default function Nav() {
   useEffect(() => {
     const tokensStorage = localStorage.getItem('tokens')
     
-    if(tokensStorage === null) {
-      if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTokens(true)
-      } else {
-        setTokens(false)
-      }
-    } else {
-      tokensStorage === TOKENS_DARK
-        ? setTokens(true)
-        : setTokens(false)
-    }
+    tokensStorage === TOKENS_DARK
+      ? setTokens(TOKENS_DARK)
+      : setTokens(TOKENS_LIGHT)
   })
 
-  const handleChangeTokens = () => {
-    const body = document.querySelector('body')
-
+  const removeTokens = () => {
     localStorage.removeItem('tokens')
-    body.classList.remove(TOKENS_DARK, TOKENS_LIGHT)
+    document.body.classList.remove(TOKENS_DARK, TOKENS_LIGHT)
+  }
 
-    if(tokens) {
-      body.classList.add(TOKENS_LIGHT)
-      localStorage.setItem('tokens', TOKENS_LIGHT)
-    } else {
-      body.classList.add(TOKENS_DARK)
-      localStorage.setItem('tokens', TOKENS_DARK)
-    }
-  };
+  const addTokens = (token) => {
+    setTokens(token)
+    document.body.classList.add(token)
+    localStorage.setItem('tokens', token)
+  }
+
+  const handleChangeTokens = () => {
+    removeTokens()
+
+    tokens === TOKENS_DARK 
+      ? addTokens(TOKENS_LIGHT)
+      : addTokens(TOKENS_DARK)
+  }
 
   return (
     <nav className="nav">
@@ -62,11 +58,8 @@ export default function Nav() {
         <li className="nav__list-item">
           <button
             className="nav__list-btn-tokens"
-            title={ tokens ? 'Trocar para modo claro' : 'Trocar para modo escuro' }
-            onClick={() => {
-              setTokens(!tokens)
-              handleChangeTokens()
-            }}
+            title={ tokens === TOKENS_DARK ? 'Trocar para modo claro' : 'Trocar para modo escuro' }
+            onClick={() => handleChangeTokens()}
           >
             <svg
               focusable="false"
