@@ -1,35 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useContext } from 'react'
 
 import { TOKENS_DARK, TOKENS_LIGHT } from '../../../constants/Tokens'
 
+import { ThemeContext } from '../../../contexts/Theme'
+
 export default function Nav() {
-  const [tokens, setTokens] = useState()
+  const { theme, setTheme } = useContext(ThemeContext)
 
-  useEffect(() => {
-    const tokensStorage = localStorage.getItem('tokens')
-    
-    tokensStorage === TOKENS_DARK
-      ? setTokens(TOKENS_DARK)
-      : setTokens(TOKENS_LIGHT)
-  })
-
-  const removeTokens = () => {
-    localStorage.removeItem('tokens')
-    document.body.classList.remove(TOKENS_DARK, TOKENS_LIGHT)
-  }
-
-  const addTokens = (token) => {
-    setTokens(token)
-    document.body.classList.add(token)
-    localStorage.setItem('tokens', token)
-  }
-
-  const handleChangeTokens = () => {
-    removeTokens()
-
-    tokens === TOKENS_DARK 
-      ? addTokens(TOKENS_LIGHT)
-      : addTokens(TOKENS_DARK)
+  function handleChangeTokens() {
+    setTheme(theme === TOKENS_DARK ? TOKENS_LIGHT : TOKENS_DARK)
   }
 
   return (
@@ -58,7 +37,7 @@ export default function Nav() {
         <li className="nav__list-item">
           <button
             className="nav__list-btn-tokens"
-            title={ tokens === TOKENS_DARK ? 'Trocar para modo claro' : 'Trocar para modo escuro' }
+            title={ theme === TOKENS_DARK ? 'Trocar para modo claro' : 'Trocar para modo escuro' }
             onClick={() => handleChangeTokens()}
           >
             <svg
