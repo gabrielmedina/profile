@@ -1,5 +1,5 @@
 .nav {
-  margin-top: 1rem;
+  padding-top: 1rem;
 
   animation: nav-in ease .7s;
 }
@@ -90,7 +90,7 @@
     position: absolute;
     top: 2rem;
     right: 0;
-    margin: 0;
+    padding-top: 0;
   }
 
   .nav__list-item {
