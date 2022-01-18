@@ -7,7 +7,7 @@
 }
 
 .profile__wrapper {
-  max-width: 752px;
+  max-width: 760px;
   animation: profile-in ease .7s;
 }
 
@@ -79,6 +79,7 @@
 }
 
 .profile__blockquote {
+  position: relative;
   margin: 0 0 1.25rem;
   color: var(--color-text-light);
   font-size: .8em;
@@ -86,8 +87,19 @@
   letter-spacing: .02em;
   line-height: 1.6;
   text-align: left;
-  border-left: solid 2px var(--color-border);
   padding-left: 1em;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 4px;
+    height: 100%;
+    border-radius: 4px;
+    background-color: var(--color-border);
+  }
 }
 
 .profile__footer {
