@@ -15,9 +15,12 @@ export default function Profile({ profile, skills }) {
         </header>
 
         <p className="profile__text">
-          Atuo provendo HTML semântico e acessível, CSS escalável e JavaScript 
-          seguindo boas práticas de desenvolvimento.
+          Software engineer focused in front-end application with ux designer skills. I love work in/build systems with good architecture and organization to make developers days happie :)
         </p>
+
+        <blockquote className="profile__blockquote" cite="http://cleancoder.com/">
+          “The goal of software architecture is to minimize the human resources required to build and maintain the required system.” ― Robert C. Martin
+        </blockquote>
 
         <footer className="profile__footer">
           <h1 className="utils--hidden-screen-only">Competências</h1>

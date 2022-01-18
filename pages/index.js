@@ -20,7 +20,7 @@ export default function Home({ profile }) {
         <meta property="og:image" content="/og.png" />
         
         <link rel="icon" href="/favicon.svg" />
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700&display=swap" rel="stylesheet" />
       </Head>
 
       <Nav />
