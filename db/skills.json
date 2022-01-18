@@ -1,50 +1,54 @@
 [
-  { 
+  {
     "id": 1,
-    "title": "HTML" 
+    "title": "HTML"
   },
-  { 
+  {
     "id": 2,
-    "title": "Acessibilidade" 
+    "title": "Accessibility"
   },
-  { 
+  {
     "id": 3,
-    "title": "CSS" 
+    "title": "CSS"
   },
-  { 
+  {
     "id": 4,
-    "title": "Sass" 
+    "title": "Sass"
   },
-  { 
+  {
     "id": 5,
-    "title": "Responsive design" 
+    "title": "Responsive design"
   },
-  { 
+  {
     "id": 6,
-    "title": "Design systems" 
+    "title": "Design systems"
   },
-  { 
+  {
     "id": 7,
-    "title": "JavaScript" 
+    "title": "JavaScript"
   },
-  { 
+  {
     "id": 8,
-    "title": "Vue" 
+    "title": "Vue"
   },
-  { 
+  {
     "id": 9,
-    "title": "Nuxt" 
+    "title": "Nuxt"
   },
-  { 
+  {
     "id": 10,
-    "title": "React" 
+    "title": "React"
   },
-  { 
+  {
     "id": 11,
-    "title": "Next" 
+    "title": "Next"
   },
-  { 
+  {
     "id": 12,
     "title": "Jest"
-   }
+  },
+  {
+    "id": 13,
+    "title": "Testing Library"
+  }
 ]
