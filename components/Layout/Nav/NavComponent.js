@@ -4,7 +4,7 @@ import { TOKENS_DARK, TOKENS_LIGHT } from '../../../constants/Tokens'
 
 import { ThemeContext } from '../../../contexts/Theme'
 
-export default function Nav() {
+export function Nav() {
   const { theme, setTheme } = useContext(ThemeContext)
 
   function handleChangeTokens() {

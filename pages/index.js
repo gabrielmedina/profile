@@ -4,8 +4,7 @@ import api from '../services/api'
 
 import skills from '../db/skills.json'
 
-import Nav from '../components/Layout/Nav'
-import Profile from '../components/Profile'
+import { Nav, Profile } from '../components'
 
 export default function Home({ profile }) {
   return (
