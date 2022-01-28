@@ -1,5 +1,6 @@
-import { Nav } from './Layout'
-import { Profile } from './Profile'
+import { Nav } from './Layout/Nav/nav'
+
+import { Profile } from './Profile/profile'
 
 export {
   Nav,
