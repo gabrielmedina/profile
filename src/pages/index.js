@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 import api from '../services/api'
 
-import skills from '../db/skills.json'
+import skills from '../db/Skills.json'
 
 import { Nav, Profile } from '../components'
 

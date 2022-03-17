@@ -15,7 +15,7 @@ export function Profile({ profile, skills }) {
         </header>
 
         <p className="profile__text">
-          Software engineer focused in front-end application with ux designer skills. I love work in/build systems with good architecture and organization to make developers days happie :)
+          I'm a brazilian software engineer focused in front-end application with ux designer skills. I love work in/build systems with good architecture and organization to make developers days happie :)
         </p>
 
         <blockquote className="profile__blockquote" cite="http://cleancoder.com/">
@@ -23,7 +23,7 @@ export function Profile({ profile, skills }) {
         </blockquote>
 
         <footer className="profile__footer">
-          <h1 className="utils--hidden-screen-only">Competências</h1>
+          <h1 className="profile__skills-title">I like study about:</h1>
 
           <ul className="profile__skills">
             {skills.map(skill => (
