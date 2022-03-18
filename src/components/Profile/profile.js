@@ -1,4 +1,6 @@
-export function Profile({ profile, skills }) {
+import ReactMarkdown from 'react-markdown'
+
+export function Profile({ user, content }) {
   return (
     <section className="profile">
       <div className="profile__wrapper">
@@ -7,35 +9,14 @@ export function Profile({ profile, skills }) {
             <img
               className="profile__img"
               alt="Foto de perfil"
-              src={profile.avatar_url}
+              src={user.avatar_url}
             />
           </figure>
-          <h1 className="profile__title">{profile.name}</h1>
-          <h2 className="profile__subtitle">{profile.bio}</h2>
+          <h1 className="profile__title">{user.name}</h1>
+          <h2 className="profile__subtitle">{user.bio}</h2>
         </header>
 
-        <p className="profile__text">
-          I'm a brazilian software engineer focused in front-end application with ux designer skills. I love work in/build systems with good architecture and organization to make developers days happie :)
-        </p>
-
-        <blockquote className="profile__blockquote" cite="http://cleancoder.com/">
-          “The goal of software architecture is to minimize the human resources required to build and maintain the required system.” ― Robert C. Martin
-        </blockquote>
-
-        <footer className="profile__footer">
-          <h1 className="profile__skills-title">I like study about:</h1>
-
-          <ul className="profile__skills">
-            {skills.map(skill => (
-              <li
-                className="profile__skills-item"
-                key={skill.id}
-              >
-                {skill.title}
-              </li>
-            ))}
-          </ul>
-        </footer>
+        <ReactMarkdown className="profile__content">{content}</ReactMarkdown>
       </div>
     </section>
   )

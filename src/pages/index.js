@@ -1,12 +1,8 @@
 import Head from 'next/head'
-
-import api from '../services/api'
-
-import skills from '../db/Skills.json'
-
+import axios from 'axios'
 import { Nav, Profile } from '../components'
 
-export default function Home({ profile }) {
+export default function Home({ user, content }) {
   return (
     <>
       <Head>
@@ -25,25 +21,34 @@ export default function Home({ profile }) {
       <Nav />
 
       <Profile
-        profile={profile}
-        skills={skills}
+        user={user}
+        content={content}
       />
     </>
   )
 }
 
 export async function getStaticProps() {
-  const responseProfile = await api.get('/users/gabrielmedina')
+  const user = await axios.get('https://api.github.com/users/gabrielmedina')
     .then(({ data }) => {
-      return { profile: data }
+      return { user: data }
     })
     .catch(error => {
       return { error }
     })
   
+  const content = await axios.get('https://raw.githubusercontent.com/gabrielmedina/gabrielmedina/main/README.md')
+    .then(({ data }) => {
+      return {content: data}
+    })
+   .catch(error => {
+      return { error }
+    })
+  
   return {
     props: {
-      ...responseProfile,
+      ...user,
+      ...content,
     },
     revalidate: 10080, // one week
   }    
