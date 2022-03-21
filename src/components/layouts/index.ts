@@ -1,1 +1,1 @@
-export * from './Default/Default'
+export * from './Theme/Theme'

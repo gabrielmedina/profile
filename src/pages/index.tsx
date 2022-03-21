@@ -2,7 +2,7 @@ import {FC} from 'react'
 import {GetStaticProps} from 'next'
 import Head from 'next/head'
 import axios from 'axios'
-import {LayoutDefault} from 'src/components/layouts'
+import {LayoutTheme} from 'src/components/layouts'
 import {Nav} from 'src/components/shared'
 import {Profile} from 'src/components/features'
 import {TUser} from 'src/components/features/Profile/Profile.types'
@@ -36,10 +36,10 @@ export const Home: FC<THomeProps> = ({user, content}) => {
         <meta property="og:image" content="/og.png" />
       </Head>
 
-      <LayoutDefault>
+      <LayoutTheme>
         <Nav />
         <Profile user={user} content={content} />
-      </LayoutDefault>
+      </LayoutTheme>
     </>
   )
 }
