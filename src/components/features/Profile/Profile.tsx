@@ -1,13 +1,8 @@
 import {FC} from 'react'
 import ReactMarkdown from 'react-markdown'
-import {TUser} from './Profile.types'
+import {TProfile} from '..'
 
-type TProfileProps = {
-  user: TUser
-  content: string
-}
-
-export const Profile: FC<TProfileProps> = ({user, content}) => {
+export const Profile: FC<TProfile> = ({user, content}) => {
   return (
     <section className="profile">
       <div className="profile__wrapper">
