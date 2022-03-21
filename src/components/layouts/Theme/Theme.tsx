@@ -1,7 +1,7 @@
 import {FC, useEffect, useState} from 'react'
-import {ThemeContext, TOKENS_DARK, TOKENS_LIGHT} from 'src/components/features'
+import {ThemeContext, TOKENS_DARK, TOKENS_LIGHT} from './Theme.context'
 
-export const LayoutTheme: FC = ({children}) => {
+export const Theme: FC = ({children}) => {
   const [theme, setTheme] = useState<string>(TOKENS_DARK)
 
   useEffect(() => {
