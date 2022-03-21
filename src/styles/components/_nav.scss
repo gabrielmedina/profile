@@ -1,7 +1,7 @@
 .nav {
   padding-top: 1rem;
 
-  animation: nav-in ease .7s;
+  animation: nav-in ease 0.7s;
 }
 
 @keyframes nav-in {
@@ -19,27 +19,25 @@
 .nav__list {
   margin: 0;
   display: flex;
+  gap: 2rem;
+  align-items: center;
   justify-content: center;
   padding: 0;
   list-style: none;
 }
 
-.nav__list-item {
-  padding: 0 1rem;
-}
-
 .nav__list-link {
   position: relative;
   display: block;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   color: var(--color-primary);
-  font-size: .9em;
+  font-size: 0.9em;
   font-weight: 700;
-  letter-spacing: .02em;
+  letter-spacing: 0.02em;
   text-decoration: none;
 
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     display: block;
@@ -47,7 +45,7 @@
     width: 0;
     background: var(--color-primary);
     will-change: width;
-    transition: .2s ease;
+    transition: 0.2s ease;
   }
 
   &:hover,
@@ -58,15 +56,20 @@
   }
 }
 
-.nav__list-btn-tokens {
-  font-size: .9em;
-  border: 0;
+.nav__list-tokens {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4em;
+  width: 2.5rem;
+  height: 2.5rem;
   background: none;
-  padding: .55rem .5rem;
-  opacity: .8;
+  border: 0;
+  border-radius: 100%;
+  opacity: 0.8;
   cursor: pointer;
   will-change: opacity;
-  transition: .2s ease;
+  transition: 0.2s ease;
 
   svg {
     margin: 0;
@@ -75,8 +78,12 @@
     height: 1em;
 
     path {
-      fill: var(--color-text);
+      fill: var(--color-primary);
     }
+  }
+
+  &:hover {
+    background: var(--color-background-interactive);
   }
 
   &:hover,
@@ -89,28 +96,22 @@
   .nav {
     position: absolute;
     top: 2rem;
-    right: 0;
+    right: 2rem;
     padding-top: 0;
   }
 
-  .nav__list-item {
-    padding: 0 2rem;
+  .nav__list {
+    gap: 3rem;
   }
 
   .nav__list-link {
     font-size: 1em;
-    padding: 1rem 0;
-  }
-
-  .nav__list-btn-tokens {
-    font-size: 1em;
-    padding: 1rem 1rem;
   }
 }
 
 @media screen and (min-width: 992px) {
   .nav {
     top: 3rem;
-    right: 1rem;
+    right: 3rem;
   }
 }

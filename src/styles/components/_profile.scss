@@ -40,6 +40,12 @@
   border: solid 4px var(--color-border);
   will-change: border;
   transition: 0.2s ease;
+
+  &:hover {
+    .profile__img {
+      filter: saturate(100%);
+    }
+  }
 }
 
 .profile__img {
@@ -47,7 +53,7 @@
   border-radius: 100%;
   filter: saturate(0);
   border: solid 4px var(--color-background);
-  will-change: border;
+  will-change: border, filter;
   transition: 0.2s ease;
 }
 
@@ -102,7 +108,7 @@
     }
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
@@ -131,7 +137,7 @@
 
 @media screen and (min-width: 768px) {
   .profile {
-    padding: 4rem 0;
+    padding: 6rem 3rem;
   }
 
   .profile__header {
@@ -164,5 +170,11 @@
     blockquote {
       margin: 2rem 0;
     }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .profile {
+    padding: 0;
   }
 }

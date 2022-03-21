@@ -1,5 +1,5 @@
 @mixin tokens-light {
-  --color-primary: #067F5E;
+  --color-primary: #067f5e;
 
   --color-text: var(--color-neutral-40);
   --color-text-light: var(--color-neutral-60);
@@ -8,11 +8,12 @@
 
   --color-border: var(--color-neutral-80);
   --color-background: var(--color-neutral-90);
+  --color-background-interactive: var(--color-neutral-80);
 }
 
 @mixin tokens-dark {
-  --color-primary: #28F5BE;
-  
+  --color-primary: #28f5be;
+
   --color-text: var(--color-neutral-90);
   --color-text-light: var(--color-neutral-70);
   --color-title: var(--color-neutral-100);
@@ -20,15 +21,16 @@
 
   --color-background: var(--color-neutral-10);
   --color-border: var(--color-neutral-20);
+  --color-background-interactive: var(--color-neutral-20);
 }
 
 :root {
-  --color-neutral-10: #16161B;
-  --color-neutral-20: #1A1A1E;
+  --color-neutral-10: #16161b;
+  --color-neutral-20: #1a1a1e;
   --color-neutral-40: #323232;
   --color-neutral-60: #5a5a5a;
   --color-neutral-70: #c4c4c4;
-  --color-neutral-80: #EBEBEB;
+  --color-neutral-80: #ebebeb;
   --color-neutral-90: #f5f5f5;
   --color-neutral-100: #ffffff;
 
