@@ -14,8 +14,8 @@ export const ThemeSwitcher: FC<HTMLAttributes<HTMLButtonElement>> = ({
         onClick={() => setTheme(TOKENS_DARK)}
       >
         <svg
-          width="100"
-          height="100"
+          width="100px"
+          height="100px"
           viewBox="0 0 100 100"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -35,8 +35,8 @@ export const ThemeSwitcher: FC<HTMLAttributes<HTMLButtonElement>> = ({
       onClick={() => setTheme(TOKENS_LIGHT)}
     >
       <svg
-        width="100"
-        height="100"
+        width="100px"
+        height="100px"
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
