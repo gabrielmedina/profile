@@ -1,6 +1,11 @@
 .theme {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
+  padding-bottom: 3rem;
   background: var(--color-background);
   will-change: background;
-  transition: .2s ease;
+  transition: 0.2s ease;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: unset;
+  }
 }
