@@ -76,7 +76,10 @@
     display: block;
     width: 1em;
     height: 1em;
-    color: var(--color-primary);
+
+    path {
+      fill: var(--color-primary);
+    }
   }
 
   &:hover {
