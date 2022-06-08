@@ -14,7 +14,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="pt-BR">
+      <Html lang="en">
         <Head>
           <link rel="icon" href="/favicon.svg" />
           <link
