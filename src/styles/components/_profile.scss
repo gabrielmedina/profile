@@ -41,20 +41,19 @@
   will-change: border;
   transition: 0.2s ease;
 
+  img {
+    border-radius: 100%;
+    filter: saturate(0);
+    border: solid 4px var(--color-background) !important;
+    will-change: border, filter;
+    transition: 0.2s ease;
+  }
+
   &:hover {
-    .profile__img {
+    img {
       filter: saturate(100%);
     }
   }
-}
-
-.profile__img {
-  display: block;
-  border-radius: 100%;
-  filter: saturate(0);
-  border: solid 4px var(--color-background);
-  will-change: border, filter;
-  transition: 0.2s ease;
 }
 
 .profile__title {

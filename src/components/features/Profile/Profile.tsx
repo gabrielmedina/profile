@@ -1,4 +1,5 @@
 import {FC} from 'react'
+import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import {TProfile} from '..'
 
@@ -8,10 +9,12 @@ export const Profile: FC<TProfile> = ({user, content}) => {
       <div className="profile__wrapper">
         <header className="profile__header">
           <figure className="profile__figure">
-            <img
-              className="profile__img"
-              alt="Foto de perfil"
+            <Image
+              layout="responsive"
               src={user.avatar_url}
+              alt="Foto de perfil: Gabriel Medina"
+              width={133}
+              height={133}
             />
           </figure>
           <h1 className="profile__title">{user.name}</h1>
