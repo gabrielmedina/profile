@@ -3,6 +3,7 @@ module.exports = {
     formats: ['image/webp'],
     domains: ['avatars.githubusercontent.com', 'localhost']
   },
+  pageExtensions: ['page.tsx', 'api.ts'],
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,

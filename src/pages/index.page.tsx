@@ -6,7 +6,7 @@ import {Theme} from 'src/components/layouts'
 import {Nav} from 'src/components/shared'
 import {Profile, TProfile} from 'src/components/features'
 
-export const Home: FC<TProfile> = ({user, content}) => {
+export const Home: FC<TProfile> = ({ user, content }) => {
   return (
     <>
       <Head>
