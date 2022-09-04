@@ -5,7 +5,6 @@ import axios from 'axios'
 import {Theme} from 'src/components/layouts'
 import {Nav} from 'src/components/shared'
 import {Profile, TProfile} from 'src/components/features'
-import {convertMarkdownToHtml} from 'libs'
 
 export const HomePage: FC<TProfile> = ({user, content}) => {
   return (
