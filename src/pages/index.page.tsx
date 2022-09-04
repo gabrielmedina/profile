@@ -5,8 +5,9 @@ import axios from 'axios'
 import {Theme} from 'src/components/layouts'
 import {Nav} from 'src/components/shared'
 import {Profile, TProfile} from 'src/components/features'
+import {convertMarkdownToHtml} from 'libs'
 
-export const Home: FC<TProfile> = ({ user, content }) => {
+export const HomePage: FC<TProfile> = ({user, content}) => {
   return (
     <>
       <Head>
@@ -38,7 +39,7 @@ export const Home: FC<TProfile> = ({ user, content }) => {
   )
 }
 
-export default Home
+export default HomePage
 
 export const getStaticProps: GetStaticProps = async () => {
   const user = await axios

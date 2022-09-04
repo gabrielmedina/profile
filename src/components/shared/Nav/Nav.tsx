@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import {FC} from 'react'
 import {ThemeSwitcher} from 'src/components/layouts'
 
@@ -6,24 +7,14 @@ export const Nav: FC = () => {
     <nav className="nav">
       <ul className="nav__list">
         <li className="nav__list-item">
-          <a
-            className="nav__list-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.linkedin.com/in/gmedinasantos/"
-          >
-            LinkedIn
-          </a>
+          <Link href="/">
+            <a className="nav__list-link">Home</a>
+          </Link>
         </li>
         <li className="nav__list-item">
-          <a
-            className="nav__list-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/gabrielmedina"
-          >
-            GitHub
-          </a>
+          <Link href="/posts">
+            <a className="nav__list-link">Posts</a>
+          </Link>
         </li>
         <li className="nav__list-item">
           <ThemeSwitcher className="nav__list-tokens" />

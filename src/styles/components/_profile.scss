@@ -2,11 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.6rem;
-  min-height: 100vh;
+  padding: 0 1.6rem 2rem;
 }
 
 .profile__wrapper {
+  width: 100%;
   max-width: 740px;
   animation: profile-in ease 0.7s;
 }
@@ -24,7 +24,7 @@
 }
 
 .profile__header {
-  margin: 2rem 0 3rem;
+  margin: 1rem 0 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,7 +136,7 @@
 
 @media screen and (min-width: 768px) {
   .profile {
-    padding: 6rem 3rem;
+    padding: 0 3rem;
   }
 
   .profile__header {

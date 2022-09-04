@@ -1,5 +1,5 @@
 .nav {
-  padding-top: 1rem;
+  padding: 3rem 1.6rem;
 
   animation: nav-in ease 0.7s;
 }
@@ -7,7 +7,7 @@
 @keyframes nav-in {
   from {
     opacity: 0;
-    transform: translateX(-2rem);
+    transform: translateY(-2rem);
   }
 
   to {
@@ -24,6 +24,12 @@
   justify-content: center;
   padding: 0;
   list-style: none;
+}
+
+.nav__list-item {
+  &:last-of-type {
+    margin-left: auto;
+  }
 }
 
 .nav__list-link {
@@ -85,16 +91,20 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) { 
   .nav {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    padding-top: 0;
+    padding: 3rem;
   }
 
   .nav__list {
     gap: 3rem;
+    justify-content: flex-end;
+  }
+  
+  .nav__list-item {
+    &:last-of-type {
+      margin-left: unset;
+    }
   }
 
   .nav__list-link {
