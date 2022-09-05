@@ -2,13 +2,15 @@
 title: 'Hello World'
 description: 'Blog em 2022? Tá maluco?'
 keys: 'Hello World, Blog, Programação'
-image: /img/usestate.jpg
+image: /imgs/posts/hello-world.webp
 slug: hello-world
 lang: pt-BR
 date: '2022-09-03'
 ---
 
-Hey! Feliz em apresentar esse projeto fofinho criado pra *finalmente* compartilhar um pouco de conhecimento.
+Hey! Feliz em te apresentar esse projeto fofinho criado pra *finalmente* compartilhar um pouco de conhecimento.
+
+![Foto de perfil do Medina](/imgs/posts/hello-world.webp)
 
 ## Blog? Isso funciona em 2022?
 
