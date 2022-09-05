@@ -1,6 +1,6 @@
 import {FC} from 'react'
 import ReactMarkdown from 'react-markdown'
-import {formatDate} from 'libs'
+import {formatDate} from 'src/libs'
 import {TPost} from '../Post.types'
 
 type TPostItemProps = {

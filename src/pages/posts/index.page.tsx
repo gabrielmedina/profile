@@ -3,7 +3,7 @@ import Head from 'next/head'
 import {Theme} from 'src/components/layouts'
 import {TPost, PostList} from 'src/components/features'
 import {Nav} from 'src/components/shared'
-import { getAllPosts } from 'libs'
+import { getAllPosts } from 'src/libs'
 
 type TPostsPageProps = {
   posts: TPost[]

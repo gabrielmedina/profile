@@ -4,7 +4,7 @@ import Head from 'next/head'
 import {Theme} from 'src/components/layouts'
 import {TPost, PostItem} from 'src/components/features'
 import {Nav} from 'src/components/shared'
-import { getAllPosts, getPostBySlug } from 'libs'
+import { getAllPosts, getPostBySlug } from 'src/libs'
 
 type TPostPageProps = {
   post: TPost
@@ -14,7 +14,7 @@ export const PostPage: FC<TPostPageProps> = ({post}) => {
   return (
     <>
       <Head>
-        <title>{post.data.title} | Gabriel Medina</title>
+        <title>{post.data.title} - Gabriel Medina</title>
         <meta name="description" content={post.data.description} />
         <meta name="keywords" content={post.data.keys} />
         <meta
