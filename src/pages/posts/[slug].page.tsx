@@ -22,7 +22,7 @@ export const PostPage: FC<TPostPageProps> = ({post}) => {
           content={`${post.data.title} | Gabriel Medina`}
         />
         <meta property="og:description" content={post.data.description} />
-        <meta property="og:image" content="/og.png" />
+        <meta property="og:image" content={post.data.image} />
       </Head>
 
       <Theme>
