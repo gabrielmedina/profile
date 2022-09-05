@@ -19,7 +19,7 @@ export const PostPage: FC<TPostPageProps> = ({post}) => {
         <meta name="keywords" content={post.data.keys} />
         <meta
           property="og:title"
-          content={`${post.data.title} | Gabriel Medina`}
+          content={`${post.data.title} - Gabriel Medina`}
         />
         <meta property="og:description" content={post.data.description} />
         <meta property="og:image" content={post.data.image} />

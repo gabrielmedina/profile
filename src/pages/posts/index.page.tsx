@@ -13,19 +13,19 @@ export const PostsPage: FC<TPostsPageProps> = ({posts}) => {
   return (
     <>
       <Head>
-        <title>Blog | Gabriel Medina</title>
+        <title>Posts - Gabriel Medina</title>
         <meta
           name="description"
-          content="Atuo provendo HTML semântico e acessível, CSS escalável e JavaScript seguindo boas práticas de desenvolvimento."
+          content="Aprendendo; Compartilhando; Aprimorando. Conteúdos sobre o universo front-end, design e raramente back-end."
         />
         <meta
           name="keywords"
-          content="Medina, Developer, Designer, UX, Front-end, Engineer"
+          content="Front-end, Back-end, Design, Blog"
         />
-        <meta property="og:title" content="Posts | Gabriel Medina" />
+        <meta property="og:title" content="Posts - Gabriel Medina" />
         <meta
           property="og:description"
-          content="Atuo provendo HTML semântico e acessível, CSS escalável e JavaScript seguindo boas práticas de desenvolvimento."
+          content="Aprendendo; Compartilhando; Aprimorando. Conteúdos sobre o universo front-end, design e raramente back-end."
         />
         <meta property="og:image" content="/og.png" />
       </Head>
