@@ -1,12 +1,17 @@
-import {FC} from 'react'
+import {FC, useEffect} from 'react'
 import {GetStaticProps} from 'next'
 import Head from 'next/head'
 import axios from 'axios'
+import {logger} from 'src/logs'
 import {Theme} from 'src/components/layouts'
 import {Nav} from 'src/components/shared'
 import {Profile, TProfile} from 'src/components/features'
 
 export const HomePage: FC<TProfile> = ({user, content}) => {
+  useEffect(() => {
+    logger.track('opened-home-page')
+  }, [])
+
   return (
     <>
       <Head>

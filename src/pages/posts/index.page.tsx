@@ -1,15 +1,20 @@
-import {FC} from 'react'
+import {FC, useEffect} from 'react'
 import Head from 'next/head'
+import { logger } from 'src/logs'
+import { getAllPosts } from 'src/libs'
 import {Theme} from 'src/components/layouts'
 import {TPost, PostList} from 'src/components/features'
 import {Nav} from 'src/components/shared'
-import { getAllPosts } from 'src/libs'
 
 type TPostsPageProps = {
   posts: TPost[]
 }
 
-export const PostsPage: FC<TPostsPageProps> = ({posts}) => {
+export const PostsPage: FC<TPostsPageProps> = ({ posts }) => {
+  useEffect(() => {
+    logger.track('opened-posts-page')
+  }, [])
+
   return (
     <>
       <Head>
