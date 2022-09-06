@@ -1,31 +1,17 @@
 import {FC} from 'react'
-import ReactMarkdown from 'react-markdown'
-import {formatDate} from 'src/libs'
+import Link from 'next/link'
 import {TPost} from '../Post.types'
+import styles from './PostItem.module.scss'
 
-type TPostItemProps = {
-  post: TPost
-}
+type TPostItemProps = Pick<TPost, 'data'>
 
-export const PostItem: FC<TPostItemProps> = ({post}) => {
+export const PostItem: FC<TPostItemProps> = ({data}) => {
   return (
-    <article className="post">
-      <div className="post__wrapper">
-        <header className="post__header">
-          <h2 className="post__title">{post.data.title}</h2>
-          <p className="post__description">{post.data.description}</p>
-          <time dateTime={post.data.date} className="post__date">
-            {formatDate(post.data.date)}
-          </time>
-        </header>
-
-        <ReactMarkdown className="post__content">{post.content}</ReactMarkdown>
-
-        <footer className="post__footer">
-          <p className="post__footer-copy">Just keep going, Gabriel Medina.</p>
-          <p className="post__footer-keywords">Keywords: {post.data.keys}.</p>
-        </footer>
-      </div>
-    </article>
+    <Link href={`/posts/${data.slug}`}>
+      <a className={styles.link}>
+        <h2 className={styles.title}>{data.title}</h2>
+        <p className={styles.description}>{data.description}</p>
+      </a>
+    </Link>
   )
 }

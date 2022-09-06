@@ -1,0 +1,55 @@
+@keyframes posts-in {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 1.6rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  animation: posts-in ease 0.7s;
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  color: var(--color-title);
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.list {
+  margin: 1rem -1.6rem;
+  padding: 0;
+  width: calc(100% + 3.2rem);
+  list-style: none;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 2em;
+  }
+
+  .list {
+    margin: 4rem 0;
+    width: unset;
+  }
+}

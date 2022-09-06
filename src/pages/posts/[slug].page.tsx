@@ -2,7 +2,7 @@ import {FC} from 'react'
 import {GetStaticProps} from 'next'
 import Head from 'next/head'
 import {Theme} from 'src/components/layouts'
-import {TPost, PostItem} from 'src/components/features'
+import {TPost, PostShow} from 'src/components/features'
 import {Nav} from 'src/components/shared'
 import { getAllPosts, getPostBySlug } from 'src/libs'
 
@@ -27,7 +27,7 @@ export const PostPage: FC<TPostPageProps> = ({post}) => {
 
       <Theme>
         <Nav />
-        <PostItem post={post} />
+        <PostShow post={post} />
       </Theme>
     </>
   )

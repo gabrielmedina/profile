@@ -10,14 +10,14 @@
   }
 }
 
-.post {
+.wrapper {
   display: flex;
   justify-content: center;
   min-height: 100vh;
   padding: 0 1.6rem;
 }
 
-.post__wrapper {
+.container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -25,14 +25,14 @@
   animation: post-in ease 0.7s;
 }
 
-.post__title {
+.title {
   margin: 0 0 0.5rem;
   color: var(--color-title);
   font-size: 2rem;
   letter-spacing: 0.02em;
 }
 
-.post__description {
+.description {
   margin: 0;
   color: var(--color-primary);
   font-size: 1rem;
@@ -41,15 +41,15 @@
   letter-spacing: 0.02em;
 }
 
-.post__date {
+.date {
   display: block;
   margin-top: 1rem;
-  color: var(--color-text);
+  color: var(--color-text-light);
   font-size: 0.8em;
   text-transform: capitalize;
 }
 
-.post__content {
+.content {
   margin: 3rem auto;
   color: var(--color-text);
   font-size: 1rem;
@@ -67,7 +67,7 @@
 
   a {
     color: var(--color-primary);
-    text-underline-offset: 8px;
+    text-underline-offset: 6px;
   }
 
   > p {
@@ -97,39 +97,39 @@
   }
 }
 
-.post__footer {
+.footer {
   font-size: 1rem;
 }
 
-.post__footer-copy {
+.copy {
   margin: 0;
   color: var(--color-text);
 }
 
-.post__footer-keywords {
+.keywords {
   margin: 0.5rem 0 0;
   color: var(--color-primary);
   font-size: 0.8em;
 }
 
 @media screen and (min-width: 768px) {
-  .post {
+  .wrapper {
     padding: 2rem 2rem 6rem;
   }
 
-  .post__title {
+  .title {
     font-size: 3em;
   }
 
-  .post__description {
+  .description {
     font-size: 1.2em;
   }
 
-  .post__date {
+  .date {
     text-align: right;
   }
 
-  .post__content {
+  .content {
     margin: 8rem auto;
     font-size: 1.3rem;
 
@@ -147,13 +147,13 @@
     }
   }
 
-  .post__footer {
+  .footer {
     font-size: 1.2rem;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .post__content {
+  .content {
     img {
       width: calc(100% + 460px);
       margin: 3.6rem -230px;

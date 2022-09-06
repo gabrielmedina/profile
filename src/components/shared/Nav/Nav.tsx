@@ -1,23 +1,24 @@
 import Link from 'next/link'
 import {FC} from 'react'
 import {ThemeSwitcher} from 'src/components/layouts'
+import styles from './Nav.module.scss'
 
 export const Nav: FC = () => {
   return (
-    <nav className="nav">
-      <ul className="nav__list">
-        <li className="nav__list-item">
+    <nav className={styles.nav}>
+      <ul className={styles.list}>
+        <li className={styles.item}>
           <Link href="/">
-            <a className="nav__list-link">Home</a>
+            <a className={styles.link}>Home</a>
           </Link>
         </li>
-        <li className="nav__list-item">
+        <li className={styles.item}>
           <Link href="/posts">
-            <a className="nav__list-link">Posts</a>
+            <a className={styles.link}>Posts</a>
           </Link>
         </li>
-        <li className="nav__list-item">
-          <ThemeSwitcher className="nav__list-tokens" />
+        <li className={styles.item}>
+          <ThemeSwitcher className={styles.linkTokens} />
         </li>
       </ul>
     </nav>
