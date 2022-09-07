@@ -46,25 +46,19 @@ export const HomePage: FC<TProfile> = ({user, content}) => {
 export default HomePage
 
 export const getStaticProps: GetStaticProps = async () => {
+  const userUrl = 'https://api.github.com/users/gabrielmedina'
+  const contentUrl =
+    'https://raw.githubusercontent.com/gabrielmedina/gabrielmedina/main/README.md'
+
   const user = await axios
-    .get('https://api.github.com/users/gabrielmedina')
-    .then(({data}) => {
-      return {user: data}
-    })
-    .catch((error) => {
-      return {error}
-    })
+    .get(userUrl)
+    .then(({data}) => ({user: data}))
+    .catch((error) => ({error}))
 
   const content = await axios
-    .get(
-      'https://raw.githubusercontent.com/gabrielmedina/gabrielmedina/main/README.md'
-    )
-    .then(({data}) => {
-      return {content: data}
-    })
-    .catch((error) => {
-      return {error}
-    })
+    .get(contentUrl)
+    .then(({data}) => ({content: data}))
+    .catch((error) => ({error}))
 
   return {
     props: {
