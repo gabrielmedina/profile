@@ -34,8 +34,7 @@ export const getAllPosts = () => {
 
 export const getTimeToReadPost = (content: string) => {
   const wordsPerMinute = 200
-  
-  let wordsQuantity = content.split(' ').length
+  const wordsQuantity = content.split(' ').length
 
   if (wordsQuantity > 0) {
     const value = Math.ceil(wordsQuantity / wordsPerMinute)
