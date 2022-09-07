@@ -41,12 +41,23 @@
   letter-spacing: 0.02em;
 }
 
+.infos {
+  display: flex;
+  justify-content: space-between;
+}
+
 .date {
   display: block;
   margin-top: 1rem;
   color: var(--color-text-light);
   font-size: 0.8em;
   text-transform: capitalize;
+}
+
+.timeToRead {
+  margin-top: 1rem;
+  color: var(--color-text-light);
+  font-size: 0.8em;
 }
 
 .content {
@@ -125,8 +136,9 @@
     font-size: 1.2em;
   }
 
-  .date {
-    text-align: right;
+  .infos {
+    gap: 2rem;
+    justify-content: flex-end;
   }
 
   .content {

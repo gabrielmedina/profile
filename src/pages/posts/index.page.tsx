@@ -1,9 +1,8 @@
 import {FC, useEffect} from 'react'
 import Head from 'next/head'
 import { logger } from 'src/logs'
-import { getAllPosts } from 'src/libs'
 import {Theme} from 'src/components/layouts'
-import {TPost, PostList} from 'src/components/features'
+import {TPost, PostList, getAllPosts} from 'src/components/features'
 import {Nav} from 'src/components/shared'
 
 type TPostsPageProps = {

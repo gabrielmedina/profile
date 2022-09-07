@@ -13,6 +13,8 @@ export const getPostBySlug = (slug: string) => {
   const fullPath = join(postsDirectory, `${realSlug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
+
+  data.timeToRead = getTimeToReadPost(content)
   
   return {
     data,
@@ -30,3 +32,16 @@ export const getAllPosts = () => {
   return posts
 }
 
+export const getTimeToReadPost = (content: string) => {
+  const wordsPerMinute = 200
+  
+  let wordsQuantity = content.split(' ').length
+
+  if (wordsQuantity > 0) {
+    const value = Math.ceil(wordsQuantity / wordsPerMinute)
+    
+    return `~${value} min de leitura`
+  }
+
+  return '~1 min de leitura'
+}

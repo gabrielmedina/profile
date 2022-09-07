@@ -15,10 +15,14 @@ export const PostShow: FC<TPostShowProps> = ({post}) => {
         <header className={styles.header}>
           <h2 className={styles.title}>{post.data.title}</h2>
           <p className={styles.description}>{post.data.description}</p>
+        </header>
+
+        <div className={styles.infos}>
+          <p className={styles.timeToRead}>{post.data.timeToRead}</p>
           <time dateTime={post.data.date} className={styles.date}>
             {formatDate(post.data.date)}
           </time>
-        </header>
+        </div>
 
         <ReactMarkdown className={styles.content}>{post.content}</ReactMarkdown>
 

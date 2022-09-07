@@ -7,6 +7,7 @@ export type TPost = {
     slug: string
     lang: string
     date: string
+    timeToRead: string
   }
   content: string
 }
