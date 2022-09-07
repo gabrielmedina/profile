@@ -1,10 +1,10 @@
-import {FC} from 'react'
+import { FC } from 'react'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
-import {TProfile} from '..'
+import { TProfile } from './Profile.types'
 import styles from './Profile.module.scss'
 
-export const Profile: FC<TProfile> = ({user, content}) => {
+export const Profile: FC<TProfile> = ({ user, content }) => {
   return (
     <section className={styles.wrapper}>
       <div className={styles.container}>

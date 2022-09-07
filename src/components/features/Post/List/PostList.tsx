@@ -1,13 +1,13 @@
-import {FC} from 'react'
-import {PostItem} from '../Item/PostItem'
-import {TPost} from '../Post.types'
+import { FC } from 'react'
+import { PostItem } from '../Item/PostItem'
+import { TPost } from '../Post.types'
 import styles from './PostList.module.scss'
 
 type TPostListProps = {
   posts: TPost[]
 }
 
-export const PostList: FC<TPostListProps> = ({posts}) => {
+export const PostList: FC<TPostListProps> = ({ posts }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>

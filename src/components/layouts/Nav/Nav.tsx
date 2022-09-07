@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import {FC} from 'react'
-import {ThemeSwitcher} from 'src/components/layouts'
+import { FC } from 'react'
+import { ThemeSwitcher } from '../Theme'
 import styles from './Nav.module.scss'
 
 export const Nav: FC = () => {

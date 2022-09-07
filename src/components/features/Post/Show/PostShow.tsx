@@ -1,14 +1,14 @@
-import {FC} from 'react'
+import { FC } from 'react'
 import ReactMarkdown from 'react-markdown'
-import {formatDate} from 'src/libs'
-import {TPost} from '../Post.types'
+import { formatDate } from 'src/libs'
+import { TPost } from '../Post.types'
 import styles from './PostShow.module.scss'
 
 type TPostShowProps = {
   post: TPost
 }
 
-export const PostShow: FC<TPostShowProps> = ({post}) => {
+export const PostShow: FC<TPostShowProps> = ({ post }) => {
   return (
     <article className={styles.wrapper}>
       <div className={styles.container}>

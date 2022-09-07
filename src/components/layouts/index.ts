@@ -1,2 +1,2 @@
-export * from './Theme/Theme'
-export * from './Theme/ThemeSwitcher'
+export * from './Theme'
+export * from './Nav'

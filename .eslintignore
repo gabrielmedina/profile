@@ -1,0 +1,10 @@
+.next
+.github
+next-env.d.ts
+node_modules
+yarn.lock
+package-lock.json
+public
+coverage
+posts
+next.config.js

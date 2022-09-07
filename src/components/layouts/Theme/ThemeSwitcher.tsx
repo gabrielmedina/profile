@@ -1,15 +1,16 @@
-import {FC, HTMLAttributes, useContext} from 'react'
-import {ThemeContext, TOKENS_DARK, TOKENS_LIGHT} from './Theme.context'
+import { FC, HTMLAttributes, useContext } from 'react'
+import { ThemeContext, TOKENS_DARK, TOKENS_LIGHT } from './Theme.context'
 
 export const ThemeSwitcher: FC<HTMLAttributes<HTMLButtonElement>> = ({
   ...props
 }) => {
-  const {theme, setTheme} = useContext(ThemeContext)
+  const { theme, setTheme } = useContext(ThemeContext)
 
   if (theme === TOKENS_LIGHT)
     return (
       <button
         {...props}
+        type="button"
         title="Change to dark mode"
         onClick={() => setTheme(TOKENS_DARK)}
       >
@@ -31,6 +32,7 @@ export const ThemeSwitcher: FC<HTMLAttributes<HTMLButtonElement>> = ({
   return (
     <button
       {...props}
+      type="button"
       title="Change to light mode"
       onClick={() => setTheme(TOKENS_LIGHT)}
     >

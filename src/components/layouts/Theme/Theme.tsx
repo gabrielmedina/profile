@@ -1,23 +1,24 @@
-import {FC, ReactNode, useEffect, useState} from 'react'
-import {ThemeContext, TOKENS_DARK, TOKENS_LIGHT} from './Theme.context'
+import { FC, ReactNode, useEffect, useState } from 'react'
+import { ThemeContext, TOKENS_DARK, TOKENS_LIGHT } from './Theme.context'
 
 type TThemeProps = {
   children: ReactNode
 }
 
-export const Theme: FC<TThemeProps> = ({children}) => {
+export const Theme: FC<TThemeProps> = ({ children }) => {
   const [theme, setTheme] = useState<string>(TOKENS_DARK)
 
   useEffect(() => {
     setTheme(
       window.matchMedia('(prefers-color-scheme: dark)').matches
         ? TOKENS_DARK
-        : TOKENS_LIGHT
+        : TOKENS_LIGHT,
     )
   }, [])
 
   return (
-    <ThemeContext.Provider value={{theme, setTheme}}>
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       <ThemeContext.Consumer>
         {(value) => <div className={`theme ${value.theme}`}>{children}</div>}
       </ThemeContext.Consumer>

@@ -1,7 +1,7 @@
 module.exports = {
   images: {
     formats: ['image/webp'],
-    domains: ['avatars.githubusercontent.com', 'localhost']
+    domains: ['avatars.githubusercontent.com', 'localhost'],
   },
   pageExtensions: ['page.tsx', 'api.ts'],
   webpack(config) {

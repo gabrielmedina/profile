@@ -1,13 +1,12 @@
-import {FC, useEffect} from 'react'
-import {GetStaticProps} from 'next'
+import { FC, useEffect } from 'react'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import axios from 'axios'
-import {logger} from 'src/logs'
-import {Theme} from 'src/components/layouts'
-import {Nav} from 'src/components/shared'
-import {Profile, TProfile} from 'src/components/features'
+import { logger } from 'src/logs'
+import { Theme, Nav } from 'src/components/layouts'
+import { Profile, TProfile } from 'src/components/features'
 
-export const HomePage: FC<TProfile> = ({user, content}) => {
+export const HomePage: FC<TProfile> = ({ user, content }) => {
   useEffect(() => {
     logger.track('opened-home-page')
   }, [])
@@ -52,19 +51,19 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const user = await axios
     .get(userUrl)
-    .then(({data}) => ({user: data}))
-    .catch((error) => ({error}))
+    .then(({ data }) => ({ user: data as unknown }))
+    .catch((error) => ({ error: error as unknown }))
 
   const content = await axios
     .get(contentUrl)
-    .then(({data}) => ({content: data}))
-    .catch((error) => ({error}))
+    .then(({ data }) => ({ content: data as unknown }))
+    .catch((error) => ({ error: error as unknown }))
 
   return {
     props: {
       ...user,
-      ...content
+      ...content,
     },
-    revalidate: 10080 // one week
+    revalidate: 10080, // one week
   }
 }
