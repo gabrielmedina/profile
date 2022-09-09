@@ -1,9 +1,14 @@
-import {FC, useEffect} from 'react'
-import {GetStaticProps} from 'next'
+import { FC, useEffect } from 'react'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { logger } from 'src/logs'
-import {Theme, Nav} from 'src/components/layouts'
-import {TPost, PostShow, getPostBySlug, getAllPosts} from 'src/components/features'
+import { Nav } from 'src/components/layouts'
+import {
+  TPost,
+  PostShow,
+  getPostBySlug,
+  getAllPosts,
+} from 'src/components/features'
 
 type TPostPageProps = {
   post: TPost
@@ -31,10 +36,8 @@ export const PostPage: FC<TPostPageProps> = ({ post }) => {
         <meta property="og:image" content={post.data.image} />
       </Head>
 
-      <Theme>
-        <Nav />
-        <PostShow post={post} />
-      </Theme>
+      <Nav />
+      <PostShow post={post} />
     </>
   )
 }
@@ -42,16 +45,16 @@ export const PostPage: FC<TPostPageProps> = ({ post }) => {
 export default PostPage
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const {content, data} = getPostBySlug(params?.slug as string)
+  const { content, data } = getPostBySlug(params?.slug as string)
 
   return {
     props: {
       post: {
         data,
-        content
-      }
+        content,
+      },
     },
-    revalidate: 10080 // one week
+    revalidate: 10080, // one week
   }
 }
 
@@ -62,10 +65,10 @@ export async function getStaticPaths() {
     paths: posts.map((post) => {
       return {
         params: {
-          slug: post.data.slug
-        }
+          slug: post.data.slug,
+        },
       }
     }),
-    fallback: 'blocking'
+    fallback: 'blocking',
   }
 }

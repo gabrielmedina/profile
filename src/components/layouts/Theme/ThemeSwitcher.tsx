@@ -1,4 +1,5 @@
 import { FC, HTMLAttributes, useContext } from 'react'
+import { logger } from 'src/logs'
 import { ThemeContext, TOKENS_DARK, TOKENS_LIGHT } from './Theme.context'
 
 export const ThemeSwitcher: FC<HTMLAttributes<HTMLButtonElement>> = ({
@@ -6,13 +7,20 @@ export const ThemeSwitcher: FC<HTMLAttributes<HTMLButtonElement>> = ({
 }) => {
   const { theme, setTheme } = useContext(ThemeContext)
 
+  const handleChangeTheme = (color: string) => {
+    setTheme(color)
+    logger.track('changed-theme', {
+      theme: color,
+    })
+  }
+
   if (theme === TOKENS_LIGHT)
     return (
       <button
         {...props}
         type="button"
         title="Change to dark mode"
-        onClick={() => setTheme(TOKENS_DARK)}
+        onClick={() => handleChangeTheme(TOKENS_DARK)}
       >
         <svg
           width="100"
@@ -34,7 +42,7 @@ export const ThemeSwitcher: FC<HTMLAttributes<HTMLButtonElement>> = ({
       {...props}
       type="button"
       title="Change to light mode"
-      onClick={() => setTheme(TOKENS_LIGHT)}
+      onClick={() => handleChangeTheme(TOKENS_LIGHT)}
     >
       <svg
         width="100"

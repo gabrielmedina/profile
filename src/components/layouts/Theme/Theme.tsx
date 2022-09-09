@@ -1,4 +1,5 @@
-import { FC, ReactNode, useEffect, useState } from 'react'
+import { FC, ReactNode, useEffect, useMemo, useState } from 'react'
+import { logger } from 'src/logs'
 import { ThemeContext, TOKENS_DARK, TOKENS_LIGHT } from './Theme.context'
 
 type TThemeProps = {
@@ -7,18 +8,22 @@ type TThemeProps = {
 
 export const Theme: FC<TThemeProps> = ({ children }) => {
   const [theme, setTheme] = useState<string>(TOKENS_DARK)
+  const contextThemeValue = useMemo(() => ({ theme, setTheme }), [theme])
 
   useEffect(() => {
-    setTheme(
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? TOKENS_DARK
-        : TOKENS_LIGHT,
-    )
+    const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)')
+      .matches
+      ? TOKENS_DARK
+      : TOKENS_LIGHT
+
+    setTheme(prefersColorScheme)
+    logger.track('prefers-color-theme', {
+      theme: prefersColorScheme,
+    })
   }, [])
 
   return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={contextThemeValue}>
       <ThemeContext.Consumer>
         {(value) => <div className={`theme ${value.theme}`}>{children}</div>}
       </ThemeContext.Consumer>
