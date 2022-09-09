@@ -9,8 +9,8 @@
     "export": "next export",
     "lint": "eslint --ext .ts,.tsx,.js \"./\" --quiet --cache --color",
     "lint:fix": "npm run lint --fix",
-    "format": "prettier --check '**/*.{ts,tsx,js,json,scss,mdx,yml,yaml}'",
-    "format:fix": "prettier --write '**/*.{ts,tsx,js,json,scss,mdx,yml,yaml}'"
+    "prettier": "prettier --check '**/*.{ts,tsx,js,json,scss,mdx,yml,yaml}'",
+    "prettier:fix": "prettier --write '**/*.{ts,tsx,js,json,scss,mdx,yml,yaml}'"
   },
   "dependencies": {
     "@amplitude/analytics-browser": "^1.2.3",
