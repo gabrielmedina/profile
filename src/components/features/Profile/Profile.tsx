@@ -11,6 +11,7 @@ export const Profile: FC<TProfile> = ({ user, content }) => {
         <header className={styles.header}>
           <figure className={styles.figure}>
             <Image
+              priority
               layout="responsive"
               src={user.avatar_url}
               alt="Foto de perfil: Gabriel Medina"
