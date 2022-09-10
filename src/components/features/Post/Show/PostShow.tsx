@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 import { formatDate } from 'src/libs'
 import { TPost } from '../Post.types'
 import styles from './PostShow.module.scss'
@@ -24,7 +25,9 @@ export const PostShow: FC<TPostShowProps> = ({ post }) => {
           </time>
         </div>
 
-        <ReactMarkdown className={styles.content}>{post.content}</ReactMarkdown>
+        <ReactMarkdown className={styles.content} rehypePlugins={[rehypeRaw]}>
+          {post.content}
+        </ReactMarkdown>
 
         <footer className={styles.footer}>
           <p className={styles.copy}>Just keep going, Gabriel Medina.</p>

@@ -8,9 +8,9 @@ lang: pt-BR
 date: '2022-09-03'
 ---
 
-Hey! Feliz em te apresentar esse projeto fofinho criado pra *finalmente* compartilhar um pouco de conhecimento.
+Hey! Feliz em te apresentar esse projeto fofinho criado pra _finalmente_ compartilhar um pouco de conhecimento.
 
-![Foto de perfil do Medina](/imgs/posts/hello-world.webp)
+![Imagem contendo o texto: init()](/imgs/posts/hello-world.webp)
 
 ## Blog? Isso funciona em 2022?
 

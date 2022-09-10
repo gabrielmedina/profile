@@ -64,6 +64,7 @@
   margin: 3rem auto;
   color: var(--color-text);
   font-size: 1rem;
+  line-height: 1.6;
   width: 100%;
   max-width: 740px;
 
@@ -86,25 +87,56 @@
     font-weight: 500;
     font-size: 1em;
     letter-spacing: 0.02em;
-    line-height: 1.6;
+  }
+
+  sub,
+  sup {
+    vertical-align: unset;
+  }
+
+  > ol,
+  > ul {
+    margin: 0 0 2rem;
+    font-weight: 500;
+    font-size: 1em;
+    letter-spacing: 0.02em;
+
+    li + li {
+      margin-top: .25rem;
+    }
+  }
+
+  code {
+    padding: .2em .3em;
+    font-size: .8em;
+    border-radius: 4px;
+    background-color: var(--color-code-background);
   }
 
   > pre {
     margin-bottom: 2rem;
     color: var(--color-code);
-    font-size: 1em;
+    font-size: 0.7em;
     padding: 1.6rem;
     line-height: 1.4;
     border-radius: 4px;
     background-color: var(--color-code-background);
     overflow-x: auto;
+
+    > code {
+      font-size: 1em;
+      padding: unset;
+      border-radius: unset;
+      background-color: unset;
+    }
   }
 
-  img {
+  img,
+  iframe {
     display: block;
     width: calc(100% + 3.2rem);
     max-width: unset;
-    margin: 0 -1.6rem;
+    margin: 0 -1.6rem 2rem;
   }
 }
 
@@ -149,12 +181,19 @@
       margin-bottom: 2.6rem;
     }
 
+    > ol,
+    > ul {
+      margin: 0 0 2rem;
+    }
+
     > pre {
       margin-bottom: 2.6rem;
       font-size: 0.7em;
     }
 
-    img {
+    img,
+    iframe {
+      margin-bottom: 2.6rem;
       border-radius: 4px;
     }
   }
@@ -166,7 +205,8 @@
 
 @media screen and (min-width: 1200px) {
   .content {
-    img {
+    img,
+    iframe {
       width: calc(100% + 460px);
       margin: 3.6rem -230px;
       border-radius: 4px;
