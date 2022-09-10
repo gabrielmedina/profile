@@ -2,7 +2,7 @@
 title: 'Hello World'
 description: 'Blog em 2022? Tá maluco?'
 keys: 'Hello World, Blog, Programação'
-image: /imgs/posts/hello-world.webp
+image: /imgs/posts/hello-world.png
 slug: hello-world
 lang: pt-BR
 date: '2022-09-03'

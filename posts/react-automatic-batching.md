@@ -2,7 +2,7 @@
 title: 'React Automatic Batching'
 description: 'Agrupando atualizações de estado para evitar novas renderizações desnecessárias.'
 keys: 'React 18, Batching, Estado'
-image: /imgs/posts/post-react-18-automatic-batching.webp
+image: /imgs/posts/post-react-18-automatic-batching.png
 slug: react-automatic-batching
 lang: pt-BR
 date: '2022-09-09'
