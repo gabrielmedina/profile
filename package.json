@@ -21,17 +21,18 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-markdown": "^8.0.1",
+    "rehype-raw": "^6.1.1",
     "sass": "^1.26.10"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
-    "typescript": "^4.6.2",
     "eslint": "8.10.0",
     "eslint-config-airbnb-typescript": "^16.1.0",
     "eslint-config-airbnb-typescript-prettier": "^5.0.0",
     "eslint-config-next": "12.1.0",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jsx-a11y": "^6.5.1"
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "typescript": "^4.6.2"
   }
 }
