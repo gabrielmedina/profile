@@ -8,18 +8,17 @@ type TPostItemProps = Pick<TPost, 'data'>
 
 export const PostItem: FC<TPostItemProps> = ({ data }) => {
   return (
-    <Link href={`/posts/${data.slug}`}>
-      <a
-        className={styles.link}
-        onClick={() =>
-          logger.track('clicked-post-item', {
-            title: data.title,
-          })
-        }
-      >
-        <h2 className={styles.title}>{data.title}</h2>
-        <p className={styles.description}>{data.description}</p>
-      </a>
+    <Link
+      href={`/posts/${data.slug}`}
+      className={styles.link}
+      onClick={() =>
+        logger.track('clicked-post-item', {
+          title: data.title,
+        })
+      }
+    >
+      <h2 className={styles.title}>{data.title}</h2>
+      <p className={styles.description}>{data.description}</p>
     </Link>
   )
 }

@@ -21,17 +21,16 @@ export const Nav: FC = () => {
       <ul className={styles.list}>
         {items.map((item) => (
           <li key={item.title} className={styles.item}>
-            <Link href={item.href}>
-              <a
-                className={styles.link}
-                onClick={() =>
-                  logger.track('clicked-nav-link', {
-                    title: item.title,
-                  })
-                }
-              >
-                {item.title}
-              </a>
+            <Link
+              href={item.href}
+              className={styles.link}
+              onClick={() =>
+                logger.track('clicked-nav-link', {
+                  title: item.title,
+                })
+              }
+            >
+              {item.title}
             </Link>
           </li>
         ))}
