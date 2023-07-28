@@ -4,15 +4,20 @@ import { logger } from 'src/logs'
 import { ThemeSwitcher } from '../Theme'
 import styles from './Nav.module.scss'
 
-const items = [
-  {
-    title: 'Home',
-    href: '/',
-  },
-  {
-    title: 'Posts',
-    href: '/posts',
-  },
+type TItem = {
+  title: string
+  href: string
+}
+
+const items: TItem[] = [
+  // {
+  //   title: 'Home',
+  //   href: '/',
+  // },
+  // {
+  //   title: 'Posts',
+  //   href: '/posts',
+  // },
 ]
 
 export const Nav: FC = () => {
