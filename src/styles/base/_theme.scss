@@ -5,8 +5,10 @@
   will-change: background;
   transition: 0.2s ease;
   min-height: 100vh;
+}
 
-  @media screen and (min-width: 768px) {
-    padding-bottom: unset;
+@media screen and (min-width: 768px) {
+  .theme {
+    padding-bottom: 6rem;
   }
 }
