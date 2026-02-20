@@ -14,18 +14,18 @@ export const HomePage: FC<TProfile> = ({ user, content }) => {
   return (
     <>
       <Head>
-        <title>Gabriel Medina: Front-end Engineer</title>
+        <title>Gabriel Medina: Software Engineering Specialist</title>
         <meta
           name="description"
           content="Atuo provendo HTML semântico e acessível, CSS escalável e JavaScript seguindo boas práticas de desenvolvimento."
         />
         <meta
           name="keywords"
-          content="Medina, Developer, Designer, UX, Front-end, Engineer"
+          content="Medina, Developer, Designer, UX, Front-end, Engineer, Specialist"
         />
         <meta
           property="og:title"
-          content="Gabriel Medina: Front-end Engineer"
+          content="Gabriel Medina: Software Engineering Specialist"
         />
         <meta
           property="og:description"
