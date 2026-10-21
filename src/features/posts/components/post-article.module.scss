@@ -25,6 +25,13 @@
   animation: post-in ease 0.7s;
 }
 
+.cover {
+  width: calc(100% + 3.2rem);
+  max-width: unset;
+  height: auto;
+  margin: 0 -1.6rem 2.4rem;
+}
+
 .title {
   margin: 0 0 0.5rem;
   color: var(--color-title);
@@ -159,6 +166,12 @@
 @media screen and (min-width: 768px) {
   .wrapper {
     padding: 2rem 2rem 6rem;
+  }
+
+  .cover {
+    width: 100%;
+    margin: 0 0 3rem;
+    border-radius: 4px;
   }
 
   .title {
