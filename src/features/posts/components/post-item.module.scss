@@ -15,12 +15,24 @@
 .title {
   margin: 0;
   color: var(--color-primary);
+  font-size: 1.35rem;
+  line-height: 1.3;
 }
 
 .description {
   margin: 0.5rem 0 0;
   color: var(--color-text);
   font-size: 0.8em;
+}
+
+.meta {
+  margin: 0.75rem 0 0;
+  color: var(--color-text-light);
+  font-size: 0.75em;
+
+  time {
+    text-transform: capitalize;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -30,7 +42,7 @@
   }
 
   .title {
-    font-size: 3em;
+    font-size: 1.75rem;
   }
 
   .description {

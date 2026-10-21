@@ -29,7 +29,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${post.title} - Gabriel Medina`,
       description: post.description,
-      images: [post.image],
+      images: [post.image ?? '/og.png'],
     },
   }
 }
