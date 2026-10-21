@@ -11,7 +11,7 @@ Site pessoal do Gabriel Medina. Perfil carregado do GitHub e posts escritos em M
 
 ## Requisitos
 
-- Node.js 22.13 ou mais recente
+- Node.js 24.x
 
 ## Scripts
 
