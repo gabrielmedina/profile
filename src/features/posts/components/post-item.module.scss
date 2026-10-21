@@ -27,7 +27,7 @@
 
 .meta {
   margin: 0.75rem 0 0;
-  color: var(--color-text-light);
+  color: var(--color-text-ultra-light);
   font-size: 0.75em;
 
   time {
@@ -46,6 +46,10 @@
   }
 
   .description {
+    font-size: 1.25em;
+  }
+
+  .meta {
     font-size: 1em;
   }
 }
