@@ -1,9 +1,9 @@
 ---
-title: 'Nesta feature, o estado não foi para a Context API'
+title: 'Porque não utilizei Context API nesta solução'
 description: 'Decisão local de uma entrega: o dado do fluxo ficou no React Query. O restante da aplicação manteve os providers que já faziam sentido.'
 keys: 'Frontend, React, Context API, TanStack Query, Estado'
 image: /imgs/posts/nao-usar-context-api.jpg
-slug: sem-context-nesta-feature
+slug: porque-nao-utilizei-context-api-nesta-solucao
 lang: pt-BR
 date: '2026-10-21'
 ---
