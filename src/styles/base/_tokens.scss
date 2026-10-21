@@ -31,6 +31,8 @@
 }
 
 :root {
+  color-scheme: dark;
+
   --color-neutral-10: #16161b;
   --color-neutral-20: #1a1a1e;
   --color-neutral-40: #323232;
@@ -45,6 +47,7 @@
 }
 
 .tokens-light {
+  color-scheme: light;
   @include tokens-light;
 }
 

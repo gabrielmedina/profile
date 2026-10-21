@@ -1,30 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Profile
 
-## Getting Started
+Site pessoal do Gabriel Medina. Perfil carregado do GitHub e posts escritos em Markdown.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 com App Router, Cache Components e Partial Prefetching
+- React 19
+- TypeScript 6, que ainda é a versão com API de compilador usada pelo ESLint do Next.js
+- ESLint flat config (`eslint-config-next`) e Prettier
+
+## Requisitos
+
+- Node.js 22.13 ou mais recente
+
+## Scripts
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
+npm run build
+npm run lint
+npm run typecheck
+npm run format
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`npm run dev` sobe o app em [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Para enviar eventos ao Amplitude em produção, defina `NEXT_PUBLIC_AMPLITUDE_KEY`. O arquivo `.env.example` lista a variável. Sem a chave, os eventos aparecem só no console durante o desenvolvimento.
 
-## Learn More
+## Estrutura
 
-To learn more about Next.js, take a look at the following resources:
+```text
+src/app          rotas, metadata e layout
+src/features     perfil e posts: dados, tipos e UI
+src/components   navegação, tema, markdown e analytics
+src/lib          helpers sem dependência de UI
+src/styles       tokens, reset e tema
+content/posts    markdown publicado
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`src/app` só compõe a página. A leitura de arquivos e da API do GitHub fica em módulos `server-only`, com `use cache` e um `cacheLife` explícito. Componentes de cliente existem só onde há interação: tema, links com evento e visualização de página.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Posts novos são um arquivo `.md` em `content/posts`. O slug do frontmatter precisa ser igual ao nome do arquivo, em minúsculas, com hífens.
