@@ -1,5 +1,5 @@
-.theme {
-  font-family: 'Raleway', sans-serif;
+body {
+  font-family: var(--font-raleway), sans-serif;
   padding-bottom: 3rem;
   background: var(--color-background);
   will-change: background;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .theme {
+  body {
     padding-bottom: 6rem;
   }
 }

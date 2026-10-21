@@ -1,0 +1,39 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: 0;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  svg {
+    margin: 0;
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+
+    path {
+      fill: var(--color-primary);
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: var(--color-background-interactive);
+  }
+}
+
+.toDark,
+.toLight {
+  display: none;
+}
+
+:global(html.tokens-light) .toDark,
+:global(html.tokens-dark) .toLight {
+  display: flex;
+}

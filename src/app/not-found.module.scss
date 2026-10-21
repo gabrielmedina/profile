@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.6rem 4rem;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-title);
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.text {
+  margin: 0.75rem 0 0;
+  color: var(--color-text);
+}
+
+.action {
+  margin-top: 1.5rem;
+  color: var(--color-primary);
+  font: inherit;
+  font-weight: 700;
+  text-underline-offset: 6px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}

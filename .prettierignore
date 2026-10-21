@@ -1,8 +1,7 @@
 .next
-.github
-next-env.d.ts
 node_modules
-yarn.lock
 package-lock.json
-public
 coverage
+public
+content
+next-env.d.ts
