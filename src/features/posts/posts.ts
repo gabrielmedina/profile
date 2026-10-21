@@ -15,7 +15,6 @@ const postFrontmatterSchema = z.object({
   description: z.string().min(1),
   keys: z.string().min(1),
   image: z.string().min(1).optional(),
-  imageAlt: z.string().min(1).optional(),
   slug: z.string().regex(/^[a-z0-9-]+$/),
   lang: z.string().min(1),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),

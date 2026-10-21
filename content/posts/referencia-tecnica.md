@@ -3,11 +3,12 @@ title: 'Referência técnica'
 description: 'Ser referência técnica não significa ter todas as respostas. Significa conseguir ajudar diferentes times a encontrá-las.'
 keys: 'Frontend, Liderança Técnica, Cultura de Engenharia'
 image: /imgs/posts/referencia-tecnica.png
-imageAlt: 'Ilustração de um quadrado central ligado a três quadrados ao redor, em verde sobre fundo escuro.'
 slug: referencia-tecnica
 lang: pt-BR
 date: '2026-10-21'
 ---
+
+![Capa: um quadrado central ligado a três quadrados ao redor, em verde sobre fundo escuro.](/imgs/posts/referencia-tecnica.webp)
 
 Nos últimos tempos, tenho vivenciado uma dinâmica interessante como Senior Front-end Engineer no Grupo SBF: atuar de forma cross-team, colaborando com diferentes squads conforme as necessidades e prioridades dos produtos.
 
