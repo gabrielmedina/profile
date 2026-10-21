@@ -32,6 +32,29 @@
   letter-spacing: 0.02em;
 }
 
+.lead {
+  max-width: 42rem;
+  margin: 0.75rem 0 0;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.feed {
+  display: inline-block;
+  margin-top: 0.85rem;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-underline-offset: 4px;
+}
+
+.empty {
+  margin: 2rem 0 0;
+  color: var(--color-text);
+}
+
 .list {
   display: flex;
   flex-direction: column;

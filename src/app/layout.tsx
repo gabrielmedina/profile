@@ -1,11 +1,16 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
 import { Lexend } from 'next/font/google'
 import { TrackColorScheme } from '@/components/analytics/track-color-scheme'
+import { Footer } from '@/components/footer/footer'
 import { Nav } from '@/components/nav/nav'
+import { JsonLd } from '@/components/seo/json-ld'
+import { SkipLink } from '@/components/skip-link/skip-link'
 import { site } from '@/lib/site'
-import { THEME_DARK, themeBootScript } from '@/lib/theme'
+import { websiteGraph } from '@/lib/structured-data'
+import { THEME_COLOR, THEME_DARK, themeBootScript } from '@/lib/theme'
 import '@/styles/styles.scss'
+import styles from './layout.module.scss'
 
 const lexend = Lexend({
   subsets: ['latin'],
@@ -15,23 +20,43 @@ const lexend = Lexend({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  applicationName: site.name,
   title: {
     default: site.title,
-    template: '%s - Gabriel Medina',
+    template: `%s - ${site.name}`,
   },
   description: site.description,
   keywords: [...site.keywords],
   authors: [{ name: site.name, url: site.url }],
-  icons: { icon: '/favicon.svg' },
-  openGraph: {
-    type: 'website',
-    locale: 'pt_BR',
-    url: site.url,
-    siteName: site.name,
-    title: site.title,
-    description: site.description,
-    images: [{ url: '/og.png', alt: site.title }],
+  creator: site.name,
+  publisher: site.name,
+  category: 'technology',
+  referrer: 'origin-when-cross-origin',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: THEME_COLOR[THEME_DARK],
 }
 
 export default function RootLayout({
@@ -41,15 +66,20 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="pt-BR"
+      lang={site.language}
       className={`${lexend.variable} ${THEME_DARK}`}
       suppressHydrationWarning
     >
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+        <JsonLd data={websiteGraph()} />
         <TrackColorScheme />
+        <SkipLink />
         <Nav />
-        {children}
+        <main id="conteudo" tabIndex={-1} className={styles.main}>
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )

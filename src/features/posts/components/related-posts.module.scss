@@ -1,0 +1,29 @@
+.section {
+  margin-top: 3rem;
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  color: var(--color-title);
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0 -1.6rem;
+  padding: 0;
+  list-style: none;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+  }
+
+  .list {
+    margin: 0;
+  }
+}

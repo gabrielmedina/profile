@@ -1,17 +1,29 @@
+import Link from 'next/link'
+import { Breadcrumbs } from '@/components/breadcrumbs/breadcrumbs'
 import { Markdown } from '@/components/markdown/markdown'
 import { formatDate } from '@/lib/format-date'
-import type { Post } from '../types'
+import { site } from '@/lib/site'
+import type { Post, PostSummary } from '../types'
 import styles from './post-article.module.scss'
 import { PostSpeech } from './post-speech'
+import { RelatedPosts } from './related-posts'
 
 type PostArticleProps = {
   post: Post
+  related: PostSummary[]
 }
 
-export function PostArticle({ post }: PostArticleProps) {
+export function PostArticle({ post, related }: PostArticleProps) {
   return (
     <article lang={post.lang} className={styles.wrapper}>
       <div className={styles.container}>
+        <Breadcrumbs
+          items={[
+            { name: 'Início', href: '/' },
+            { name: 'Posts', href: '/posts' },
+            { name: post.title, href: `/posts/${post.slug}` },
+          ]}
+        />
         <header className={styles.header}>
           <h1 className={styles.title}>{post.title}</h1>
           <p className={styles.description}>{post.description}</p>
@@ -19,6 +31,12 @@ export function PostArticle({ post }: PostArticleProps) {
 
         <div className={styles.infos}>
           <div className={styles.reading}>
+            <p className={styles.author}>
+              Por{' '}
+              <Link href="/" rel="author">
+                {site.name}
+              </Link>
+            </p>
             <p className={styles.timeToRead}>{post.readingTime}</p>
             <PostSpeech
               key={post.slug}
@@ -35,12 +53,14 @@ export function PostArticle({ post }: PostArticleProps) {
         </div>
 
         <div className={styles.content}>
-          <Markdown source={post.content} />
+          <Markdown source={post.content} images={post.images} />
         </div>
 
         <footer className={styles.footer}>
-          <p className={styles.keywords}>Keywords: {post.keys}.</p>
+          <p className={styles.keywords}>Assuntos: {post.keys}.</p>
         </footer>
+
+        <RelatedPosts posts={related} />
       </div>
     </article>
   )

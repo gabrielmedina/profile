@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     agentUpgrade: 'latest',
   },
   images: {
-    formats: ['image/webp'],
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
