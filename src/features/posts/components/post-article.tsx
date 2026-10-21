@@ -2,6 +2,7 @@ import { Markdown } from '@/components/markdown/markdown'
 import { formatDate } from '@/lib/format-date'
 import type { Post } from '../types'
 import styles from './post-article.module.scss'
+import { PostSpeech } from './post-speech'
 
 type PostArticleProps = {
   post: Post
@@ -17,7 +18,17 @@ export function PostArticle({ post }: PostArticleProps) {
         </header>
 
         <div className={styles.infos}>
-          <p className={styles.timeToRead}>{post.readingTime}</p>
+          <div className={styles.reading}>
+            <p className={styles.timeToRead}>{post.readingTime}</p>
+            <PostSpeech
+              key={post.slug}
+              title={post.title}
+              description={post.description}
+              content={post.content}
+              lang={post.lang}
+              slug={post.slug}
+            />
+          </div>
           <time dateTime={post.date} className={styles.date}>
             {formatDate(post.date)}
           </time>

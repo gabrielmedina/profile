@@ -48,7 +48,19 @@
 
 .infos {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 0.4rem 1rem;
+}
+
+.reading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  margin-top: 1rem;
+  color: var(--color-text-ultra-light);
+  font-size: 0.8em;
 }
 
 .date {
@@ -60,9 +72,7 @@
 }
 
 .timeToRead {
-  margin-top: 1rem;
-  color: var(--color-text-ultra-light);
-  font-size: 0.8em;
+  margin: 0;
 }
 
 .content {
@@ -191,7 +201,7 @@
   }
 
   .date,
-  .timeToRead {
+  .reading {
     font-size: 1em;
   }
 
