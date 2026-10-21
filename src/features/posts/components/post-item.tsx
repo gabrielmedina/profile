@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { track } from '@/lib/analytics'
+import { formatDate } from '@/lib/format-date'
 import type { PostSummary } from '../types'
 import styles from './post-item.module.scss'
 
@@ -18,6 +19,11 @@ export function PostItem({ post }: PostItemProps) {
     >
       <h2 className={styles.title}>{post.title}</h2>
       <p className={styles.description}>{post.description}</p>
+      <p className={styles.meta}>
+        <time dateTime={post.date}>{formatDate(post.date)}</time>
+        <span aria-hidden="true"> · </span>
+        <span>{post.readingTime}</span>
+      </p>
     </Link>
   )
 }

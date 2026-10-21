@@ -2,7 +2,7 @@ export type PostFrontmatter = {
   title: string
   description: string
   keys: string
-  image: string
+  image?: string
   imageAlt?: string
   slug: string
   lang: string

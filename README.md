@@ -41,4 +41,4 @@ content/posts    markdown publicado
 
 `src/app` só compõe a página. A leitura de arquivos e da API do GitHub fica em módulos `server-only`, com `use cache` e um `cacheLife` explícito. Componentes de cliente existem só onde há interação: tema, links com evento e visualização de página.
 
-Posts novos são um arquivo `.md` em `content/posts`. O slug do frontmatter precisa ser igual ao nome do arquivo, em minúsculas, com hífens.
+Posts novos são um arquivo `.md` em `content/posts`. O modelo é `content/posts/ia-acelera-o-desenvolvimento.md`: o slug do frontmatter precisa ser igual ao nome do arquivo, em minúsculas e com hífens. `image` é opcional; sem ela, o Open Graph usa `/og.png`.
