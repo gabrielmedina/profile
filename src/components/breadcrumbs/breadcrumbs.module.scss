@@ -1,14 +1,17 @@
 .nav {
   margin: 0 0 1.25rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
 }
 
 .list {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 0.35rem 0;
+  width: max-content;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0.35rem;
   list-style: none;
   color: var(--color-text-ultra-light);
   font-size: 0.8rem;
@@ -17,8 +20,9 @@
 
 .item {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
-  max-width: 100%;
+  white-space: nowrap;
 
   &:not(:last-child)::after {
     content: '/';
@@ -29,6 +33,7 @@
 
 .link {
   color: var(--color-primary);
+  white-space: nowrap;
   text-decoration: none;
   text-underline-offset: 4px;
 
@@ -40,4 +45,5 @@
 
 .current {
   color: var(--color-text);
+  white-space: nowrap;
 }

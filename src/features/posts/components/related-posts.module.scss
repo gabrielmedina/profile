@@ -1,9 +1,11 @@
 .section {
-  margin-top: 3rem;
+  margin: 4.5rem -1.6rem 0;
+  padding: 2.5rem 1.6rem 1.25rem;
+  background: var(--color-background-interactive);
 }
 
 .title {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.75rem;
   color: var(--color-title);
   font-size: 1.35rem;
   font-weight: 600;
@@ -15,15 +17,26 @@
   margin: 0 -1.6rem;
   padding: 0;
   list-style: none;
+
+  a:hover,
+  a:focus-visible {
+    background: var(--color-background);
+  }
 }
 
 @media screen and (min-width: 768px) {
+  .section {
+    margin: 7rem 0 0;
+    padding: 3rem 1.5rem 1.5rem;
+    border-radius: 4px;
+  }
+
   .title {
     margin-bottom: 1rem;
     font-size: 1.75rem;
   }
 
   .list {
-    margin: 0;
+    margin: 0 -1.5rem;
   }
 }

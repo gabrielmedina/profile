@@ -18,7 +18,7 @@ export function PostList({ posts }: PostListProps) {
             { name: 'Posts', href: '/posts' },
           ]}
         />
-        <header>
+        <header className={styles.header}>
           <h1 className={styles.title}>{site.posts.title}</h1>
           <p className={styles.lead}>{site.posts.description}</p>
           <a className={styles.feed} href={site.feedPath}>
