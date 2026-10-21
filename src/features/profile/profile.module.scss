@@ -62,15 +62,15 @@
   margin: 0;
   color: var(--color-title);
   font-size: 2.1em;
-  letter-spacing: 0.02em;
   text-align: center;
+  font-weight: 500;
 }
 
 .subtitle {
   margin: 0;
   color: var(--color-primary);
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.02em;
   text-align: center;
 }
@@ -79,9 +79,9 @@
   font-size: 1rem;
 
   > p {
-    margin: 0 0 1.25rem;
+    margin: 0 0 2rem;
     color: var(--color-text);
-    font-weight: 500;
+    font-weight: 300;
     font-size: 1em;
     letter-spacing: 0.02em;
     line-height: 1.6;
@@ -90,6 +90,11 @@
     &:last-of-type {
       margin-bottom: 0;
     }
+  }
+
+  b,
+  strong {
+    color: var(--color-primary);
   }
 
   blockquote {
@@ -123,7 +128,7 @@
 
 @media screen and (min-width: 375px) {
   .title {
-    font-size: 2.3em;
+    font-size: 2.5em;
   }
 
   .subtitle {
@@ -141,7 +146,7 @@
   }
 
   .header {
-    margin-bottom: 3.5rem;
+    margin-bottom: 4rem;
   }
 
   .figure {
@@ -149,7 +154,7 @@
   }
 
   .title {
-    font-size: 3em;
+    font-size: 4em;
   }
 
   .subtitle {
@@ -160,7 +165,7 @@
     font-size: 1.4rem;
 
     > p {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2.6rem;
     }
 
     blockquote {

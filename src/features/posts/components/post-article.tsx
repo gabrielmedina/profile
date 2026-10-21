@@ -28,7 +28,6 @@ export function PostArticle({ post }: PostArticleProps) {
         </div>
 
         <footer className={styles.footer}>
-          <p className={styles.copy}>Just keep going, Gabriel Medina.</p>
           <p className={styles.keywords}>Keywords: {post.keys}.</p>
         </footer>
       </div>
