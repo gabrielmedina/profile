@@ -1,17 +1,16 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import { Raleway } from 'next/font/google'
+import { Lexend } from 'next/font/google'
 import { TrackColorScheme } from '@/components/analytics/track-color-scheme'
 import { Nav } from '@/components/nav/nav'
 import { site } from '@/lib/site'
 import { THEME_DARK, themeBootScript } from '@/lib/theme'
 import '@/styles/styles.scss'
 
-const raleway = Raleway({
+const lexend = Lexend({
   subsets: ['latin'],
-  weight: ['500', '700'],
   display: 'swap',
-  variable: '--font-raleway',
+  variable: '--font-lexend',
 })
 
 export const metadata: Metadata = {
@@ -43,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${raleway.variable} ${THEME_DARK}`}
+      className={`${lexend.variable} ${THEME_DARK}`}
       suppressHydrationWarning
     >
       <body>
