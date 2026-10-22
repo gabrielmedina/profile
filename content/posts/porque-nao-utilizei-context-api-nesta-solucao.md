@@ -1,6 +1,6 @@
 ---
 title: 'Porque não utilizei Context API nesta solução'
-description: 'Decisão local de uma entrega: o dado do fluxo ficou no React Query. O restante da aplicação manteve os providers que já faziam sentido.'
+description: 'Nesta solução o dado ficou no React Query. Tema, sessão e navegação continuaram nos providers que já existiam.'
 keys: 'Frontend, React, Context API, TanStack Query, Estado'
 image: /imgs/posts/nao-usar-context-api.jpg
 slug: porque-nao-utilizei-context-api-nesta-solucao
@@ -10,60 +10,37 @@ date: '2026-10-21'
 
 ![Capa: um cartão iluminado com uma estrela e três cartões apagados ao fundo.](/imgs/posts/nao-usar-context-api.webp)
 
-Recentemente, na construção de uma funcionalidade de Front-end, precisávamos compartilhar entre os componentes o dado que a API devolvia. O caminho mais familiar era abrir um Context. Nesta feature, não seguimos por ele.
+Recentemente, numa funcionalidade de Front-end, vários componentes precisavam do mesmo dado que a API devolvia. O caminho mais familiar era abrir um Context. Nesta solução, não utilizei.
 
-A escolha para neste fluxo. Tema, sessão, navegação e os providers que já existiam na aplicação continuam no lugar. O que mudou foi o estado desta entrega: ele já tinha dono no React Query.
+Tema, sessão e navegação continuaram nos providers que já existiam. A decisão foi só deste fluxo.
 
-## 1. Por que o Context não servia aqui
+## 1. O problema
 
-- O valor que iria para o Context era o retorno da query. Um estado local, preenchido depois da resposta, copiaria o dado. A informação passaria a existir em dois lugares e, cedo ou tarde, os dois divergiriam.
-- Qualquer mudança nesse provider re-renderizaria todos os consumidores do fluxo, inclusive quem só lia um campo. Quem assina a chave da query não re-renderiza porque outra chave mudou.
-- Carregamento, erro e nova tentativa já vinham prontos. `isPending`, `isError` e `refetch`. Reescrever isso no Context seria código a mais, só desta feature.
-- Cache, tempo de validade, atualização ao voltar para a aba e deduplicação de pedidos feitos ao mesmo tempo já estavam na query. Context não oferece isso, e neste fluxo a gente precisava dos quatro.
-- O Devtools mostra o cache da feature. Um provider novo não mostraria.
+- O dado nascia numa query e precisava chegar em componentes irmãos.
+- Um Context guardaria uma cópia: um estado preenchido depois da resposta.
+- A tela passaria a ler de um lugar e a query de outro. Quando um atualizasse, o outro ficava para trás.
 
-## 2. O que ficou no React Query
+## 2. O que cada um resolveria
 
-Estado de servidor e estado de interface apareceram os dois neste fluxo, e cada um teve um destino.
+**Context.** Entrega um valor para a árvore. Serve para tema, sessão e o que está selecionado na navegação. Neste fluxo, só repassaria a resposta da API. Carregamento, erro, cache e nova tentativa ficariam escritos à mão.
 
-O dado remoto ficou na query. Lista, detalhe, status que o servidor pode alterar. Era o caso principal, e era dado que já deveria ser lido de lá.
+**React Query.** O dado remoto já estava lá: cache, deduplicação, revalidação ao voltar para a aba, `isPending`, `isError` e `refetch`. A aba e o filtro, lidos por mais de um componente, foram para uma chave local, sem nova requisição. O que durava um componente só ficou em `useState`.
 
-Uma parte da interface também era compartilhada dentro da feature: a aba selecionada, o filtro que mais de um componente lia. Guardar isso no React Query não significou disparar outra requisição. Significou uma chave local, com `useQuery` e `setQueryData`, sem função de busca na rede. Fez sentido porque o fluxo já estava organizado em torno do cache.
+## 3. A vantagem de usar só o React Query
 
-O que durava só o tempo de um componente ficou em `useState`. Um passo, um painel aberto. Nem Context, nem query.
+- Um lugar para ler o dado desta solução.
+- Menos código só para carregamento, erro e nova tentativa.
+- Quem observa uma chave não re-renderiza porque outra mudou.
+- O Devtools mostra o cache do fluxo.
 
-## 3. O que ficou como já estava
+## 4. Os maiores desafios
 
-Esta feature não redesenhou o estado da aplicação.
-
-- Navegação, menu e o que está selecionado fora deste fluxo continuam em provider. Transformar isso em query soaria forçado e não ganharia cache nenhum.
-- Tema e sessão autenticada continuam em provider. Não são dado desta entrega.
-- O formulário continua com a biblioteca que já resolve o estado interno.
-- A árvore de providers da aplicação ficou intacta. A feature entrou nela. Não removemos um Context que outras rotas usam, porque a ordem dessa árvore importa e muda conforme a rota.
-
-## 4. O cuidado dentro da feature
-
-- A chave de interface ganhou um espaço separado, como `['ui', 'feature', 'aba']`, para não colidir com a chave do dado da API.
-- O que precisava permanecer fresco entre uma visita e outra era o dado remoto. A revalidação da query cuidou disso. Não criamos um provider com armazenamento de sessão só para espelhar a resposta.
-- Função guardada em estado, no padrão `useState(() => fn)`, não passa com naturalidade para `setQueryData`. Onde isso apareceu, ficou no componente.
-- O teste desta feature monta um `QueryClientProvider`, com `retry: false`, e limpa o cache entre um caso e outro. O que seria mock de Context virou cliente pré-preenchido ou mock de `useQuery`. O teste afirma o que está na chave.
-
-## 5. Como a decisão foi tomada
-
-O critério vale para os valores deste fluxo.
-
-- Se vinha do servidor, ou se mais de uma tela da feature precisava dele, ia para a query.
-- Se era interface efêmera de um componente só, ficava em `useState`.
-- Se era infraestrutura da aplicação, tema, sessão ou formulário, ficava fora da conversa.
-
-O desenho que evitamos, aqui, era a query buscar a lista e um efeito copiar o resultado para um Context, só para um componente irmão ler de lá. O irmão passou a ler a mesma chave. Filtro e aba, quando eram da feature, foram para a chave de interface. A lista não foi duplicada.
-
-No review desta entrega, `useState` espelhando o `data` da query era o sinal de que o Context tinha voltado pela porta dos fundos.
-
-Três leituras, no próprio fluxo, mostraram que a escolha fazia sentido: menos re-renderização no trecho que doía, vista no profiler; menos código só para carregamento, erro e nova tentativa; e menos chance de a tela mostrar uma cópia enquanto a query já tinha outro valor.
+- Separar o que era dado de servidor do que era interface de um componente só. Forçar tudo para query pioraria a leitura.
+- Dar nome à chave de interface, separado da chave da API, para as duas não se misturarem.
+- No teste, trocar o mock de Context por um cliente de query, com nova tentativa desligada e cache limpo entre os casos.
 
 ## O principal aprendizado?
 
-**A decisão boa foi a desta feature. Levar a mesma regra para a aplicação inteira seria outro problema.**
+**Context resolveria o compartilhamento. React Query já resolvia o dado.**
 
-Context continua certo para o estado da aplicação que não é dado de servidor. Nesta entrega, o dado já estava no React Query. Abrir um Context teria duplicado o que o cache já entregava: um lugar só para ler, com deduplicação e revalidação.
+Nesta solução, abrir um Context seria criar um segundo dono para uma resposta que o cache já entregava.
