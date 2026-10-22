@@ -5,7 +5,7 @@ type ShareInput = {
 }
 
 export function whatsAppShareUrl({ title, description, url }: ShareInput) {
-  const text = `Achei que você ia gostar.\n\n${title}\n\n${description}\n\n${url}`
+  const text = `Para a próxima conversa.\n\n${title}\n\n${description}\n\n${url}`
 
   return `https://wa.me/?text=${encodeURIComponent(text)}`
 }

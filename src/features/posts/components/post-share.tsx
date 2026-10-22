@@ -51,9 +51,11 @@ export function PostShare({ title, description, slug, url }: PostShareProps) {
   return (
     <section className={styles.section} aria-labelledby={headingId}>
       <h2 id={headingId} className={styles.title}>
-        Se fez sentido, passa adiante.
+        Leva para a próxima conversa.
       </h2>
-      <p className={styles.hint}>Manda para quem também está nessa conversa.</p>
+      <p className={styles.hint}>
+        Se fez sentido aqui, pode fazer sentido para mais alguém.
+      </p>
       <ul className={styles.actions}>
         <li>
           <button
