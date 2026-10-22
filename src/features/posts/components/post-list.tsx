@@ -20,6 +20,7 @@ export function PostList({ posts }: PostListProps) {
         />
         <header className={styles.header}>
           <h1 className={styles.title}>{site.posts.title}</h1>
+          <h2 className={styles.subtitle}>{site.posts.subtitle}</h2>
           <p className={styles.lead}>{site.posts.description}</p>
           <a className={styles.feed} href={site.feedPath}>
             Assinar o feed

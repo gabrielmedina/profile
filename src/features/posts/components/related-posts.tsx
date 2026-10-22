@@ -14,6 +14,7 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
       <h2 id="continue-lendo" className={styles.title}>
         Continue lendo
       </h2>
+      
       <ol className={styles.list}>
         {posts.map((post) => (
           <li key={post.slug}>
