@@ -1,72 +1,39 @@
 .footer {
   margin-top: 4rem;
-  padding: 3.5rem 1.6rem 2.5rem;
+  padding: 2.5rem 1.6rem;
   background: var(--color-background-interactive);
   color: var(--color-text);
-}
-
-.inner {
-  display: grid;
-  gap: 2.75rem;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.brand {
-  max-width: 38rem;
+  text-align: center;
 }
 
 .name {
   margin: 0;
   color: var(--color-title);
-  font-size: 1.85rem;
+  font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
 .role {
-  margin: 0.55rem 0 0;
+  margin: 0.4rem 0 0;
   color: var(--color-primary);
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
 }
 
-.description {
-  margin: 1.1rem 0 0;
-  color: var(--color-text);
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.65;
-}
-
-.columns {
-  display: grid;
-  gap: 2rem;
-}
-
-.label {
-  margin: 0 0 0.9rem;
-  color: var(--color-text-ultra-light);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.list {
+.links {
   display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  margin: 0;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.15rem 0 0;
   padding: 0;
   list-style: none;
 }
 
 .link {
   color: var(--color-text);
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
   text-underline-offset: 4px;
@@ -78,34 +45,9 @@
   }
 }
 
-.note {
-  width: 100%;
-  max-width: 1200px;
-  margin: 2.75rem auto 0;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-text-ultra-light);
-  color: var(--color-text-ultra-light);
-  font-size: 0.85rem;
-}
-
 @media screen and (min-width: 768px) {
   .footer {
     margin-top: 5rem;
-    padding: 5rem 3rem 3rem;
-  }
-
-  .inner {
-    grid-template-columns: minmax(0, 1.4fr) auto;
-    gap: 4rem;
-    align-items: start;
-  }
-
-  .name {
-    font-size: 2.4rem;
-  }
-
-  .columns {
-    grid-template-columns: auto auto;
-    gap: 3rem;
+    padding: 3rem 2rem;
   }
 }
