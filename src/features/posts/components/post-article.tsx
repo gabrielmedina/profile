@@ -3,8 +3,10 @@ import { Breadcrumbs } from '@/components/breadcrumbs/breadcrumbs'
 import { Markdown } from '@/components/markdown/markdown'
 import { formatDate } from '@/lib/format-date'
 import { site } from '@/lib/site'
+import { absoluteUrl } from '@/lib/url'
 import type { Post, PostSummary } from '../types'
 import styles from './post-article.module.scss'
+import { PostShare } from './post-share'
 import { PostSpeech } from './post-speech'
 import { RelatedPosts } from './related-posts'
 
@@ -55,6 +57,13 @@ export function PostArticle({ post, related }: PostArticleProps) {
         <div className={styles.content}>
           <Markdown source={post.content} images={post.images} />
         </div>
+
+        <PostShare
+          title={post.title}
+          description={post.description}
+          slug={post.slug}
+          url={absoluteUrl(`/posts/${post.slug}`)}
+        />
 
         <footer className={styles.footer}>
           <p className={styles.keywords}>Assuntos: {post.keys}.</p>
