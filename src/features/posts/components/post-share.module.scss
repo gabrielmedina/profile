@@ -25,17 +25,24 @@
 
 .actions {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
   gap: 0.65rem;
   margin: 1.35rem 0 0;
   padding: 0;
   list-style: none;
+
+  > li {
+    display: flex;
+  }
 }
 
 .action {
   display: inline-flex;
+  flex: 1;
   align-items: center;
+  justify-content: center;
+  width: 100%;
   gap: 0.7rem;
   margin: 0;
   padding: 0.7rem 1.15rem;
@@ -88,6 +95,22 @@
 }
 
 @media screen and (min-width: 768px) {
+  .actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    > li {
+      display: block;
+      width: auto;
+    }
+  }
+
+  .action {
+    flex: none;
+    width: auto;
+  }
+
   .section {
     margin-bottom: 4rem;
     padding-top: 2.75rem;
