@@ -7,6 +7,9 @@ const pages = [
   { title: 'Posts', href: '/posts' },
 ] as const
 
+const summary =
+  'Senior Front-end Engineer e referência técnica. Atuo na arquitetura de front-end, na evolução de produtos digitais e nas decisões que sustentam a entrega.'
+
 export function Footer() {
   return (
     <footer className={styles.footer}>
@@ -14,12 +17,12 @@ export function Footer() {
         <div className={styles.brand}>
           <p className={styles.name}>{site.name}</p>
           <p className={styles.role}>{site.jobTitle}</p>
-          <p className={styles.description}>{site.description}</p>
+          <p className={styles.description}>{summary}</p>
         </div>
 
         <div className={styles.columns}>
           <nav aria-label="Rodapé">
-            <p className={styles.label}>Navegar</p>
+            <p className={styles.label}>Neste site</p>
             <ul className={styles.list}>
               {pages.map((page) => (
                 <li key={page.href}>
@@ -32,7 +35,7 @@ export function Footer() {
           </nav>
 
           <div>
-            <p className={styles.label}>Fora daqui</p>
+            <p className={styles.label}>Links</p>
             <ul className={styles.list}>
               <li>
                 <a
@@ -51,23 +54,10 @@ export function Footer() {
               </li>
             </ul>
           </div>
-
-          <div className={styles.topics}>
-            <p className={styles.label}>Assuntos</p>
-            <ul className={styles.topicList}>
-              {site.knowsAbout.map((topic) => (
-                <li key={topic} className={styles.topic}>
-                  {topic}
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
 
-      <p className={styles.note}>
-        {site.name} · {site.language}
-      </p>
+      <p className={styles.note}>{site.name}</p>
     </footer>
   )
 }

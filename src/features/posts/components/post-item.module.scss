@@ -55,3 +55,43 @@
     font-size: 1em;
   }
 }
+
+.compact {
+  padding: 1rem 1.15rem;
+
+  &:hover,
+  &:focus-visible {
+    transform: none;
+  }
+
+  .title {
+    font-size: 1.05rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .meta {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .compact {
+    padding: 1.25rem 1.5rem;
+
+    .title {
+      font-size: 1.2rem;
+    }
+
+    .description {
+      font-size: 1rem;
+    }
+
+    .meta {
+      font-size: 0.85rem;
+    }
+  }
+}

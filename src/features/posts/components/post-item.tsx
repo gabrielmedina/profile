@@ -8,13 +8,16 @@ import styles from './post-item.module.scss'
 
 type PostItemProps = {
   post: PostSummary
+  size?: 'default' | 'compact'
 }
 
-export function PostItem({ post }: PostItemProps) {
+export function PostItem({ post, size = 'default' }: PostItemProps) {
   return (
     <Link
       href={`/posts/${post.slug}`}
-      className={styles.link}
+      className={
+        size === 'compact' ? `${styles.link} ${styles.compact}` : styles.link
+      }
       onClick={() => track('clicked-post-item', { title: post.title })}
     >
       <h2 className={styles.title}>{post.title}</h2>
