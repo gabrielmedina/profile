@@ -18,6 +18,14 @@
   color: var(--color-text);
 }
 
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 1.5rem;
+  margin-top: 1.5rem;
+}
+
 .action {
   margin-top: 1.5rem;
   color: var(--color-primary);
@@ -28,4 +36,8 @@
   border: 0;
   padding: 0;
   cursor: pointer;
+}
+
+.actions .action {
+  margin-top: 0;
 }

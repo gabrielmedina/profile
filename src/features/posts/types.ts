@@ -1,3 +1,8 @@
+export type ImageSize = {
+  width: number
+  height: number
+}
+
 export type PostFrontmatter = {
   title: string
   description: string
@@ -10,7 +15,10 @@ export type PostFrontmatter = {
 
 export type Post = PostFrontmatter & {
   readingTime: string
+  wordCount: number
   content: string
+  images: Record<string, ImageSize>
+  contentImages: string[]
 }
 
-export type PostSummary = Omit<Post, 'content'>
+export type PostSummary = Omit<Post, 'content' | 'wordCount' | 'images'>

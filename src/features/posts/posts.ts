@@ -5,7 +5,8 @@ import path from 'node:path'
 import { cacheLife } from 'next/cache'
 import matter from 'gray-matter'
 import { z } from 'zod'
-import type { Post, PostSummary } from './types'
+import { readImageSize } from './image-size'
+import type { ImageSize, Post, PostSummary } from './types'
 
 const postsDirectory = path.join(process.cwd(), 'content', 'posts')
 const WORDS_PER_MINUTE = 200
@@ -26,6 +27,26 @@ function readingTimeLabel(content: string) {
   if (words <= 0) return '~1 min de leitura'
 
   return `~${Math.ceil(words / WORDS_PER_MINUTE)} min de leitura`
+}
+
+function countWords(content: string) {
+  const plain = content
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/!\[[^\]]*]\([^)]*\)/g, ' ')
+    .replace(/[#>*_[\]]/g, ' ')
+  const words = plain.trim().split(/\s+/).filter(Boolean)
+
+  return Math.max(words.length, 1)
+}
+
+function contentImagePaths(content: string) {
+  return [
+    ...new Set(
+      [...content.matchAll(/!\[[^\]]*]\((\/[^)\s]+)\)/g)]
+        .map((match) => match[1])
+        .filter((src): src is string => Boolean(src)),
+    ),
+  ]
 }
 
 function isEnoent(error: unknown) {
@@ -66,10 +87,29 @@ async function readPost(slug: string): Promise<Post | null> {
     )
   }
 
+  const contentImages = contentImagePaths(content)
+  const sources = [
+    ...new Set([
+      ...contentImages,
+      ...(parsed.data.image ? [parsed.data.image] : []),
+    ]),
+  ]
+  const measured = await Promise.all(
+    sources.map(async (src) => [src, await readImageSize(src)] as const),
+  )
+  const images: Record<string, ImageSize> = {}
+
+  for (const [src, size] of measured) {
+    if (size) images[src] = size
+  }
+
   return {
     ...parsed.data,
     content,
     readingTime: readingTimeLabel(content),
+    wordCount: countWords(content),
+    images,
+    contentImages,
   }
 }
 
@@ -83,6 +123,7 @@ function toSummary(post: Post): PostSummary {
     lang: post.lang,
     date: post.date,
     readingTime: post.readingTime,
+    contentImages: post.contentImages,
   }
 }
 

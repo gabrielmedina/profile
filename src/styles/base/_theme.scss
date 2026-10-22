@@ -1,14 +1,7 @@
 body {
   font-family: var(--font-lexend), sans-serif;
-  padding-bottom: 3rem;
   background: var(--color-background);
   will-change: background;
   transition: 0.2s ease;
   min-height: 100vh;
-}
-
-@media screen and (min-width: 768px) {
-  body {
-    padding-bottom: 6rem;
-  }
 }

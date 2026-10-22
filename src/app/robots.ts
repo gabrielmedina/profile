@@ -8,5 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
     },
     sitemap: `${site.url}/sitemap.xml`,
+    host: 'gabrielmedina.dev',
   }
 }

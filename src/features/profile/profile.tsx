@@ -20,7 +20,7 @@ export function Profile({ user, content }: ProfileProps) {
             />
           </figure>
           <h1 className={styles.title}>{user.name}</h1>
-          <h2 className={styles.subtitle}>{user.bio}</h2>
+          <p className={styles.subtitle}>{user.bio}</p>
         </header>
 
         <div className={styles.content}>
