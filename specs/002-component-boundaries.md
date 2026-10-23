@@ -36,6 +36,7 @@ Componentes de UI acumulam regras (clipboard, speech synthesis, progresso de lei
 
 - Speech: markup em `PostSpeech` + `speech-chrome.ts`; runtime em `public/speech.js` (lazy). Não recriar player com hook React.
 - Math de reading progress e ids de heading markdown ficam em utils puros.
+- A barra de progresso acompanha o scroll no compositor (`view-timeline` no trecho do artigo, `animation-range: contain`, `scaleX`). Medir o layout e animar `width` a cada frame força reflow e faz a barra travar. `public/site.js` só relê a geometria fora do scroll; sem scroll-driven animations, escreve `scaleX`.
 - Testes unitários miram utils/hooks, não o JSX.
 - Novos componentes client devem justificar a fronteira na review ou na spec relacionada.
 - Não reintroduzir wrappers React (`TrackedLink`, `lib/analytics` client) para o que `site.js` já cobre.

@@ -19,42 +19,44 @@ export function PostArticle({ post, related }: PostArticleProps) {
   return (
     <article lang={post.lang} className={styles.wrapper}>
       <div className={styles.container}>
-        <Breadcrumbs
-          items={[
-            { name: 'Início', href: '/' },
-            { name: 'Posts', href: '/posts' },
-            { name: post.title, href: `/posts/${post.slug}` },
-          ]}
-        />
-        <header className={styles.header}>
-          <h1 className={styles.title}>{post.title}</h1>
-          <p className={styles.description}>{post.description}</p>
-        </header>
+        <div className={styles.readingRange} data-reading-progress-range="">
+          <Breadcrumbs
+            items={[
+              { name: 'Início', href: '/' },
+              { name: 'Posts', href: '/posts' },
+              { name: post.title, href: `/posts/${post.slug}` },
+            ]}
+          />
+          <header className={styles.header}>
+            <h1 className={styles.title}>{post.title}</h1>
+            <p className={styles.description}>{post.description}</p>
+          </header>
 
-        <div className={styles.infos}>
-          <div className={styles.reading}>
-            <p className={styles.author}>
-              Por{' '}
-              <a href="/" rel="author">
-                {site.name}
-              </a>
-            </p>
-            <p className={styles.timeToRead}>{post.readingTime}</p>
-            <PostSpeech
-              title={post.title}
-              description={post.description}
-              content={post.content}
-              lang={post.lang}
-              slug={post.slug}
-            />
+          <div className={styles.infos}>
+            <div className={styles.reading}>
+              <p className={styles.author}>
+                Por{' '}
+                <a href="/" rel="author">
+                  {site.name}
+                </a>
+              </p>
+              <p className={styles.timeToRead}>{post.readingTime}</p>
+              <PostSpeech
+                title={post.title}
+                description={post.description}
+                content={post.content}
+                lang={post.lang}
+                slug={post.slug}
+              />
+            </div>
+            <time dateTime={post.date} className={styles.date}>
+              {formatDate(post.date)}
+            </time>
           </div>
-          <time dateTime={post.date} className={styles.date}>
-            {formatDate(post.date)}
-          </time>
-        </div>
 
-        <div className={styles.content} data-reading-progress="">
-          <Markdown source={post.content} images={post.images} />
+          <div className={styles.content}>
+            <Markdown source={post.content} images={post.images} />
+          </div>
         </div>
 
         <PostShare
