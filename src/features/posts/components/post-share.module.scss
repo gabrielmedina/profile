@@ -66,7 +66,7 @@
 
   &:hover,
   &:focus-visible,
-  &.copied {
+  &[data-copied='true'] {
     border-color: var(--color-border-interactive);
   }
 
@@ -92,6 +92,10 @@
   margin: 0.85rem 0 0;
   color: var(--color-text-light);
   font-size: 0.9rem;
+
+  &[hidden] {
+    display: none !important;
+  }
 }
 
 @media screen and (min-width: 768px) {

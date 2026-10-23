@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { TrackPageView } from '@/components/analytics/track-page-view'
+import { PageView } from '@/components/analytics/page-view'
 import { JsonLd } from '@/components/seo/json-ld'
 import { PostArticle } from '@/features/posts/components/post-article'
 import { splitKeywords } from '@/features/posts/keywords'
@@ -82,7 +82,7 @@ export default async function PostPage({ params }: PostPageProps) {
           imageHeight: imageSize?.height,
         })}
       />
-      <TrackPageView
+      <PageView
         event="opened-post-page"
         properties={{ post: post.title, slug: post.slug }}
       />

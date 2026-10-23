@@ -1,6 +1,3 @@
-'use client'
-
-import { applyTheme } from './apply-theme'
 import styles from './theme-switcher.module.scss'
 
 export function ThemeSwitcher() {
@@ -9,8 +6,8 @@ export function ThemeSwitcher() {
       <button
         type="button"
         className={`${styles.button} ${styles.toDark}`}
+        data-theme="tokens-dark"
         title="Change to dark mode"
-        onClick={() => applyTheme('tokens-dark')}
       >
         <svg
           width="100"
@@ -26,8 +23,8 @@ export function ThemeSwitcher() {
       <button
         type="button"
         className={`${styles.button} ${styles.toLight}`}
+        data-theme="tokens-light"
         title="Change to light mode"
-        onClick={() => applyTheme('tokens-light')}
       >
         <svg
           width="100"

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { feedAlternates, noIndexRobots } from '@/lib/metadata'
 import styles from './not-found.module.scss'
 
@@ -16,12 +15,12 @@ export default function NotFound() {
       <h1 className={styles.title}>Página não encontrada</h1>
       <p className={styles.text}>Esse caminho não existe mais.</p>
       <div className={styles.actions}>
-        <Link href="/" className={styles.action}>
+        <a href="/" className={styles.action}>
           Voltar para o início
-        </Link>
-        <Link href="/posts" className={styles.action}>
+        </a>
+        <a href="/posts" className={styles.action}>
           Ver os posts
-        </Link>
+        </a>
       </div>
     </section>
   )

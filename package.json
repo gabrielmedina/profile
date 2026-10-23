@@ -16,7 +16,6 @@
     "format:fix": "prettier --write ."
   },
   "dependencies": {
-    "@amplitude/analytics-browser": "^2.48.1",
     "gray-matter": "^4.0.3",
     "next": "^16.4.2",
     "react": "^19.3.1",
