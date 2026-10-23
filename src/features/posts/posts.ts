@@ -6,20 +6,29 @@ import { cacheLife } from 'next/cache'
 import matter from 'gray-matter'
 import { z } from 'zod'
 import { readImageSize } from './image-size'
+import { splitKeywords } from './keywords'
 import type { ImageSize, Post, PostSummary } from './types'
 
 const postsDirectory = path.join(process.cwd(), 'content', 'posts')
 const WORDS_PER_MINUTE = 200
 
-const postFrontmatterSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
-  keys: z.string().min(1),
-  image: z.string().min(1).optional(),
-  slug: z.string().regex(/^[a-z0-9-]+$/),
-  lang: z.string().min(1),
-  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-})
+const dateString = z.string().regex(/^\d{4}-\d{2}-\d{2}$/)
+
+const postFrontmatterSchema = z
+  .object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+    keys: z.string().min(1),
+    image: z.string().min(1).optional(),
+    slug: z.string().regex(/^[a-z0-9-]+$/),
+    lang: z.string().min(1),
+    date: dateString,
+    updated: dateString.optional(),
+  })
+  .transform(({ keys, ...rest }) => ({
+    ...rest,
+    keywords: splitKeywords(keys),
+  }))
 
 function readingTimeLabel(wordCount: number) {
   return `~${Math.ceil(wordCount / WORDS_PER_MINUTE)} min de leitura`
@@ -83,6 +92,12 @@ async function readPost(slug: string): Promise<Post | null> {
     )
   }
 
+  if (parsed.data.updated && parsed.data.updated < parsed.data.date) {
+    throw new Error(
+      `Invalid frontmatter in ${slug}.md: updated (${parsed.data.updated}) is before date (${parsed.data.date})`,
+    )
+  }
+
   const contentImages = contentImagePaths(content)
   const sources = [
     ...new Set([
@@ -115,11 +130,12 @@ function toSummary(post: Post): PostSummary {
   return {
     title: post.title,
     description: post.description,
-    keys: post.keys,
+    keywords: post.keywords,
     image: post.image,
     slug: post.slug,
     lang: post.lang,
     date: post.date,
+    ...(post.updated ? { updated: post.updated } : {}),
     readingTime: post.readingTime,
     contentImages: post.contentImages,
   }

@@ -34,7 +34,8 @@ Componentes de UI acumulam regras (clipboard, speech synthesis, progresso de lei
 
 ## Consequências
 
-- Extrações prioritárias: `post-speech` → script sob demanda / hook fino; math de reading progress → util puro; ids de heading markdown → util.
+- Speech: markup em `PostSpeech` + `speech-chrome.ts`; runtime em `public/speech.js` (lazy). Não recriar player com hook React.
+- Math de reading progress e ids de heading markdown ficam em utils puros.
 - Testes unitários miram utils/hooks, não o JSX.
 - Novos componentes client devem justificar a fronteira na review ou na spec relacionada.
 - Não reintroduzir wrappers React (`TrackedLink`, `lib/analytics` client) para o que `site.js` já cobre.

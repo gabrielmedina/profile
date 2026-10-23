@@ -8,6 +8,7 @@ Decisões de arquitetura e produto deste site vivem em `specs/`. Código novo e 
 2. **Atualizar a spec** quando a decisão mudar — o código não é a única fonte da verdade.
 3. **Marcar itens no backlog** (`backlog.md`) ao descobrir melhorias; implementar em ondas pequenas.
 4. **Preferir mudanças simples e performáticas**: menos JS no cliente, HTML semântico, assets leves.
+5. **Validar no preview da Vercel**, não com walkthrough/feedback no Cursor — o agente entrega no PR.
 
 ## Índice
 
