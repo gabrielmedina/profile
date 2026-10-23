@@ -6,11 +6,12 @@ export type ImageSize = {
 export type PostFrontmatter = {
   title: string
   description: string
-  keys: string
+  keywords: string[]
   image?: string
   slug: string
   lang: string
   date: string
+  updated?: string
 }
 
 export type Post = PostFrontmatter & {

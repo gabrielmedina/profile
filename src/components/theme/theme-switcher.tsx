@@ -7,7 +7,8 @@ export function ThemeSwitcher() {
         type="button"
         className={`${styles.button} ${styles.toDark}`}
         data-theme="tokens-dark"
-        title="Change to dark mode"
+        title="Mudar para o tema escuro"
+        aria-label="Mudar para o tema escuro"
       >
         <svg
           width="100"
@@ -24,7 +25,8 @@ export function ThemeSwitcher() {
         type="button"
         className={`${styles.button} ${styles.toLight}`}
         data-theme="tokens-light"
-        title="Change to light mode"
+        title="Mudar para o tema claro"
+        aria-label="Mudar para o tema claro"
       >
         <svg
           width="100"

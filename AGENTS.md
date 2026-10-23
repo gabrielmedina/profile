@@ -20,3 +20,9 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Posts follow SEO + HTML5 rules in `specs/003-posts-seo.md`. Images follow `specs/004-images.md` (`next/image`, light WebP/JPEG).
 - Architecture decisions and the refactor backlog live in `specs/`. Update a spec when a decision changes.
 - Format with Prettier. Lint with the Next.js ESLint flat config (`eslint-config-next`).
+
+## Validation (important)
+
+- Do **not** spend time on Cursor walkthroughs, screen recordings, or soliciting UI feedback in chat.
+- Visual validation happens on the **Vercel preview** of the PR. Ship the change, open/update the PR, and stop.
+- Local checks that matter before push: `typecheck`, `lint`, `format`, and `build` when the change can break them.

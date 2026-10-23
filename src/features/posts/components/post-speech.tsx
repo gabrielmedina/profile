@@ -1,4 +1,5 @@
 import { safeJson } from '@/lib/safe-json'
+import { formatRate, RATES, speechRevealScript } from '../speech-chrome'
 import { speechChunks } from '../speech-text'
 import styles from './post-speech.module.scss'
 
@@ -9,12 +10,6 @@ type PostSpeechProps = {
   lang: string
   slug: string
 }
-
-const RATES = [0.75, 1, 1.25, 1.5] as const
-
-// Safari and Chrome on iPhone and iPad expose speechSynthesis, but native
-// speech does not play. Leave the controls hidden on those browsers.
-const speechRevealScript = `(function(){var script=document.currentScript;var root=script&&script.previousElementSibling;if(!root)return;var ua=navigator.userAgent;var ios=/iPad|iPhone|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);var synth=window.speechSynthesis;var ok=!ios&&!!synth&&typeof synth.speak==="function"&&typeof SpeechSynthesisUtterance==="function";if(ok)root.hidden=false})();`
 
 export function PostSpeech({
   title,
@@ -114,10 +109,6 @@ export function PostSpeech({
       <script dangerouslySetInnerHTML={{ __html: speechRevealScript }} />
     </>
   )
-}
-
-function formatRate(rate: number) {
-  return `${rate.toLocaleString('pt-BR')}×`
 }
 
 function PlayIcon() {

@@ -25,7 +25,8 @@ Posts são o conteúdo indexável do site. Metadata, JSON-LD e markup precisam c
 - Canonical + alternate RSS em toda página pública.
 - Open Graph `type: article` com `publishedTime`, `modifiedTime`, `tags`, `section`.
 - JSON-LD alinhado aos mesmos campos (título, descrição, datas, keywords, `wordCount`, imagem).
-- Quando existir `updated` no frontmatter, usar em `modifiedTime` / `dateModified`; até lá, `dateModified` pode espelhar `datePublished` (documentado no backlog para evolução).
+- Frontmatter opcional `updated` (YYYY-MM-DD, ≥ `date`) alimenta `modifiedTime` / `dateModified`. Sem `updated`, `dateModified` espelha `datePublished`.
+- No domínio tipado, assuntos são `keywords: string[]`. O Markdown continua com o campo wire `keys` (string); o Zod faz o transform na borda.
 
 ### Hierarquia de headings no site
 

@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation'
 import { PageView } from '@/components/analytics/page-view'
 import { JsonLd } from '@/components/seo/json-ld'
 import { PostArticle } from '@/features/posts/components/post-article'
-import { splitKeywords } from '@/features/posts/keywords'
 import { getAllPosts, getPost } from '@/features/posts/posts'
 import { relatedPosts } from '@/features/posts/related'
 import { feedAlternates, noIndexRobots, pageMetadata } from '@/lib/metadata'
@@ -33,18 +32,18 @@ export async function generateMetadata({
     }
   }
 
-  const keywords = splitKeywords(post.keys)
   const imageSize = post.image ? post.images[post.image] : undefined
 
   return pageMetadata({
     title: post.title,
     description: post.description,
     path: `/posts/${post.slug}`,
-    keywords,
+    keywords: post.keywords,
     kind: 'article',
     publishedTime: `${post.date}T00:00:00.000Z`,
-    tags: keywords,
-    section: keywords[0],
+    modifiedTime: post.updated ? `${post.updated}T00:00:00.000Z` : undefined,
+    tags: post.keywords,
+    section: post.keywords[0],
     image: post.image
       ? {
           url: post.image,
@@ -63,7 +62,6 @@ export default async function PostPage({ params }: PostPageProps) {
   if (!post) notFound()
 
   const posts = await getAllPosts()
-  const keywords = splitKeywords(post.keys)
   const imageSize = post.image ? post.images[post.image] : undefined
 
   return (
@@ -74,8 +72,9 @@ export default async function PostPage({ params }: PostPageProps) {
           description: post.description,
           slug: post.slug,
           date: post.date,
+          updated: post.updated,
           lang: post.lang,
-          keywords,
+          keywords: post.keywords,
           wordCount: post.wordCount,
           image: post.image,
           imageWidth: imageSize?.width,

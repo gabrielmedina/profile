@@ -1,4 +1,3 @@
-import { splitKeywords } from '@/features/posts/keywords'
 import { getAllPosts } from '@/features/posts/posts'
 import { site } from '@/lib/site'
 import { absoluteUrl } from '@/lib/url'
@@ -11,7 +10,7 @@ export async function GET() {
   const items = posts
     .map((post) => {
       const url = absoluteUrl(`/posts/${post.slug}`)
-      const categories = splitKeywords(post.keys)
+      const categories = post.keywords
         .map((key) => `<category>${escapeXml(key)}</category>`)
         .join('')
 

@@ -19,6 +19,7 @@ type ArticleData = {
   description: string
   slug: string
   date: string
+  updated?: string
   lang: string
   keywords: string[]
   wordCount: number
@@ -103,7 +104,7 @@ export function postPageGraph(post: ArticleData) {
           ...(post.imageHeight ? { height: post.imageHeight } : {}),
         },
         datePublished: `${post.date}T00:00:00.000Z`,
-        dateModified: `${post.date}T00:00:00.000Z`,
+        dateModified: `${post.updated ?? post.date}T00:00:00.000Z`,
         inLanguage: post.lang,
         author: authorNode(),
         publisher: authorNode(),
