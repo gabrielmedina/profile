@@ -13,7 +13,7 @@ const MONTHS = [
   'dezembro',
 ] as const
 
-export function formatDate(isoDate: string) {
+export function formatLongDate(isoDate: string) {
   const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(isoDate)
 
   if (!match) return isoDate

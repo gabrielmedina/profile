@@ -1,7 +1,7 @@
+import { absoluteUrl } from '@/config/absolute-url'
+import { site } from '@/config/site'
 import { getAllPosts } from '@/features/posts/services/posts'
-import { site } from '@/lib/site'
-import { absoluteUrl } from '@/lib/url'
-import { rfc822Date } from '@/lib/rfc822'
+import { rfc822Date } from '@/lib/format/rfc822-date'
 
 export async function GET() {
   const posts = await getAllPosts()

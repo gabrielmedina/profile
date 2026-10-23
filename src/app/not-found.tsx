@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { feedAlternates, noIndexRobots } from '@/lib/metadata'
+import { feedAlternates, noIndexRobots } from '@/lib/seo/page-metadata'
 import styles from './not-found.module.scss'
 
 export const metadata: Metadata = {

@@ -1,4 +1,4 @@
-import { site } from '@/lib/site'
+import { site } from '@/config/site'
 import styles from './footer.module.scss'
 
 export function Footer() {

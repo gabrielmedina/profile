@@ -1,4 +1,4 @@
-export function slugify(value: string) {
+export function headingSlug(value: string) {
   const slug = value
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
