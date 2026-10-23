@@ -77,7 +77,7 @@ export function PostArticle({ post, related }: PostArticleProps) {
 
         <RelatedPosts posts={related} />
       </div>
-      <ReadingProgress key={post.slug} />
+      <ReadingProgress />
     </article>
   )
 }

@@ -31,7 +31,7 @@ async function readText(url: string, label: string) {
 
 export async function getProfile(): Promise<ProfileContent> {
   'use cache'
-  cacheLife('weeks')
+  cacheLife('max')
 
   const [userPayload, content] = await Promise.all([
     readText(githubUserUrl, 'GitHub profile'),

@@ -20,6 +20,7 @@
   document.addEventListener('click', onClick)
   trackPageViews()
   trackColorScheme()
+  initReadingProgress()
   site.flush()
 
   function onClick(event) {
@@ -60,6 +61,85 @@
     site.track('prefers-color-theme', {
       theme: dark ? 'tokens-dark' : 'tokens-light',
     })
+  }
+
+  function initReadingProgress() {
+    var bars = document.querySelectorAll('[data-reading-progress-bar]')
+    if (!bars.length) return
+
+    for (var index = 0; index < bars.length; index += 1) {
+      bindReadingProgress(bars[index])
+    }
+  }
+
+  function bindReadingProgress(bar) {
+    var frame = 0
+
+    function update() {
+      frame = 0
+      paintReadingProgress(bar)
+    }
+
+    function requestUpdate() {
+      if (frame) return
+      frame = window.requestAnimationFrame(update)
+    }
+
+    requestUpdate()
+    window.addEventListener('scroll', requestUpdate, { passive: true })
+    window.addEventListener('resize', requestUpdate)
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', requestUpdate)
+      window.visualViewport.addEventListener('scroll', requestUpdate)
+    }
+
+    var article = bar.closest('article')
+    var content =
+      article && article.querySelector('[data-reading-progress]')
+    if (typeof ResizeObserver !== 'undefined') {
+      var observer = new ResizeObserver(requestUpdate)
+      if (article) observer.observe(article)
+      if (content) observer.observe(content)
+    }
+  }
+
+  function paintReadingProgress(bar) {
+    var progress = readingProgress(bar)
+    var value = progress === null ? 0 : Math.round(progress * 100)
+    var visible = progress !== null && progress > 0
+
+    bar.style.width = (progress || 0) * 100 + '%'
+    bar.style.opacity = visible ? '1' : '0'
+
+    if (visible) bar.removeAttribute('aria-hidden')
+    else bar.setAttribute('aria-hidden', 'true')
+
+    if (bar.getAttribute('aria-valuenow') !== String(value)) {
+      bar.setAttribute('aria-valuenow', String(value))
+    }
+  }
+
+  // 0 when the article meets the top of the viewport, 1 when the end of the
+  // text meets the bottom. Null when the text already fits on screen.
+  function readingProgress(bar) {
+    var article = bar.closest('article')
+    var content =
+      article && article.querySelector('[data-reading-progress]')
+
+    if (!article || !content) return null
+
+    var articleTop = article.getBoundingClientRect().top + window.scrollY
+    var contentBottom =
+      content.getBoundingClientRect().bottom + window.scrollY
+    var range = contentBottom - articleTop - window.innerHeight
+
+    if (range <= 0) return null
+
+    return clamp((window.scrollY - articleTop) / range, 0, 1)
+  }
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value))
   }
 
   function send(event, props) {
