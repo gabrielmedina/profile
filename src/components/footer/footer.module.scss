@@ -1,6 +1,6 @@
 .footer {
   margin-top: 4rem;
-  padding: 4rem 1.6rem;
+  padding: 5rem 1.6rem;
   background: var(--color-background-interactive);
   color: var(--color-text);
   text-align: center;
@@ -17,7 +17,7 @@
   margin: 0;
   color: var(--color-title);
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.02em;
   line-height: 1.2;
 }
@@ -61,16 +61,16 @@
 
 @media screen and (min-width: 768px) {
   .footer {
-    margin-top: 5rem;
-    padding: 6rem 2rem;
+    margin-top: 8rem;
+    padding: 8rem 2rem;
   }
 
   .name {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
   .role {
-    font-size: 1rem;
+    font-size: 0.85rem;
   }
 
   .description {

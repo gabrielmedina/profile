@@ -1,12 +1,12 @@
 export const site = {
   name: 'Gabriel Medina',
-  title: 'Gabriel Medina: Software Engineering Specialist',
+  title: 'Gabriel Medina: Senior Front-end Engineer',
   description:
     'Senior Front-end Engineer, especializado em arquitetura front-end e desenvolvimento de aplicações escaláveis. Conectando tecnologia, experiência do usuário e visão de negócio para construir soluções que geram valor.',
   url: 'https://gabrielmedina.dev',
   locale: 'pt_BR',
   language: 'pt-BR',
-  jobTitle: 'Software Engineering Specialist',
+  jobTitle: 'Senior Front-end Engineer',
   avatarUrl: 'https://avatars.githubusercontent.com/u/2979365?v=4',
   keywords: [
     'Medina',
@@ -32,7 +32,7 @@ export const site = {
     url: '/og.png',
     width: 1200,
     height: 600,
-    alt: 'Gabriel Medina: Software Engineering Specialist',
+    alt: 'Gabriel Medina: Senior Front-end Engineer',
   },
   feedPath: '/feed.xml',
   posts: {
