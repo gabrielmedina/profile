@@ -9,6 +9,8 @@ type PostItemProps = {
 }
 
 export function PostItem({ post, size = 'default' }: PostItemProps) {
+  const Title = size === 'compact' ? 'h3' : 'h2'
+
   return (
     <a
       href={`/posts/${post.slug}`}
@@ -17,7 +19,7 @@ export function PostItem({ post, size = 'default' }: PostItemProps) {
       }
       {...trackAttrs('clicked-post-item', { title: post.title })}
     >
-      <h2 className={styles.title}>{post.title}</h2>
+      <Title className={styles.title}>{post.title}</Title>
       <p className={styles.description}>{post.description}</p>
       <p className={styles.meta}>
         <time dateTime={post.date}>{formatDate(post.date)}</time>

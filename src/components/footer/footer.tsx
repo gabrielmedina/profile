@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.header}>
-        <h3 className={styles.name}>{site.name}</h3>
+        <p className={styles.name}>{site.name}</p>
         <p className={styles.role}>{site.jobTitle}</p>
         <p className={styles.description}>{site.description}</p>
       </div>

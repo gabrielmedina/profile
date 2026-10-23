@@ -193,8 +193,21 @@
   color: var(--color-text);
 }
 
+.keywordsHeading {
+  margin: 0;
+  color: var(--color-text-ultra-light);
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
 .keywords {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 0.75rem;
   margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
   color: var(--color-text-ultra-light);
   font-size: 0.8em;
 }
