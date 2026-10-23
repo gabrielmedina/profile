@@ -1,4 +1,3 @@
-// Thin line fixed to the top edge, in the shape of the old Rails loader.
 .bar {
   position: fixed;
   top: 0;
@@ -10,18 +9,6 @@
   background: var(--color-primary);
   opacity: 0;
   transition: opacity 150ms linear;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100px;
-    height: 100%;
-    box-shadow:
-      0 0 10px var(--color-primary),
-      0 0 5px var(--color-primary);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
