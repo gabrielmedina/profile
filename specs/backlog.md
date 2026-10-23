@@ -17,7 +17,7 @@ Status: `feito` | `em progresso` | `próximo` | `depois`.
 | Feed RSS usa keywords tipadas                                 | 003             | feito  |
 | Trocar capa OG `referencia-tecnica.png` (1.2 MB) por JPG leve | 004             | feito  |
 
-## Onda 2 (esta PR)
+## Onda 2
 
 | Item                                                                | Spec                  | Status |
 | ------------------------------------------------------------------- | --------------------- | ------ |
@@ -26,6 +26,29 @@ Status: `feito` | `em progresso` | `próximo` | `depois`.
 | Campo `updated` no frontmatter → `dateModified` / `modifiedTime`    | 003                   | feito  |
 | `aria-label` pt-BR no theme switcher                                | —                     | feito  |
 | Afinar chrome de `PostSpeech` (`speech-chrome.ts`; sem hook React)  | 002                   | feito  |
+
+## Onda 3 (esta PR)
+
+| Item                                                               | Spec     | Status |
+| ------------------------------------------------------------------ | -------- | ------ |
+| Pasta por componente de feature (tsx + SCSS + helper privado)      | 001, 002 | feito  |
+| I/O do domínio em `services/`; regra pura em `utils/`              | 001, 002 | feito  |
+| `share-targets` e `speech-chrome` colados no componente que os usa | 002      | feito  |
+| `Profile` sai da raiz da feature e entra em `components/profile/`  | 001      | feito  |
+
+## Propostas para o refactor geral
+
+Ainda não implementadas. A onda 3 só fixa a árvore; estas decisões ficam para a próxima passagem.
+
+| Item                                                                                                    | Spec | Status | Notas                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ---- | ------ | ------------------------------------------------------------------------------------------------- |
+| Renomear `services/posts.ts` → `services/get-posts.ts`                                                  | 001  | depois | O arquivo diz o substantivo, não a leitura. `get-profile.ts` já usa o verbo.                      |
+| Extrair o schema Zod dos services para um módulo de borda                                               | 001  | depois | Hoje a validação vive no meio de `readPost` / `getProfile`. Testar sem FS nem rede.               |
+| Decidir o destino de `utils/reading-progress.ts`                                                        | 002  | depois | Nenhum import TS. A conta real está duplicada em `public/site.js`.                                |
+| Mover `utils/speech-text.ts` para `components/post-speech/` se a regra virar "um consumidor, uma pasta" | 002  | depois | Nesta onda ficou em `utils/` por ser parsing de markdown, não chrome de UI.                       |
+| Não introduzir `index.ts` nas pastas de componente                                                      | 001  | depois | O caminho repete o nome, como em `src/components`. Barrel mistura server e client com facilidade. |
+| Agrupar `src/lib` por papel (`seo/`, formatação) só se a raiz de `lib` ficar tão opaca quanto a feature | 001  | depois | Fora do escopo de features. `metadata.ts` e `structured-data.ts` são os primeiros candidatos.     |
+| `hooks/` continua inexistente até o primeiro `use-*`                                                    | 002  | depois | Pasta vazia não explica nada. Share, speech e progresso seguem em `public/*.js`.                  |
 
 ## Próximas ondas
 

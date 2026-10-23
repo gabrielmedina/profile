@@ -1,5 +1,5 @@
 import { trackAttrs } from '@/lib/track-attrs'
-import { linkedInShareUrl, whatsAppShareUrl } from '../share-targets'
+import { linkedInShareUrl, whatsAppShareUrl } from './share-targets'
 import styles from './post-share.module.scss'
 
 type PostShareProps = {

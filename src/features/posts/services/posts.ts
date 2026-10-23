@@ -5,9 +5,9 @@ import path from 'node:path'
 import { cacheLife } from 'next/cache'
 import matter from 'gray-matter'
 import { z } from 'zod'
+import { splitKeywords } from '../utils/keywords'
+import type { ImageSize, Post, PostSummary } from '../types'
 import { readImageSize } from './image-size'
-import { splitKeywords } from './keywords'
-import type { ImageSize, Post, PostSummary } from './types'
 
 const postsDirectory = path.join(process.cwd(), 'content', 'posts')
 const WORDS_PER_MINUTE = 200
