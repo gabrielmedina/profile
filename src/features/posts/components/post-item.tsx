@@ -1,8 +1,5 @@
-'use client'
-
-import Link from 'next/link'
-import { track } from '@/lib/analytics'
 import { formatDate } from '@/lib/format-date'
+import { trackAttrs } from '@/lib/track-attrs'
 import type { PostSummary } from '../types'
 import styles from './post-item.module.scss'
 
@@ -13,12 +10,12 @@ type PostItemProps = {
 
 export function PostItem({ post, size = 'default' }: PostItemProps) {
   return (
-    <Link
+    <a
       href={`/posts/${post.slug}`}
       className={
         size === 'compact' ? `${styles.link} ${styles.compact}` : styles.link
       }
-      onClick={() => track('clicked-post-item', { title: post.title })}
+      {...trackAttrs('clicked-post-item', { title: post.title })}
     >
       <h2 className={styles.title}>{post.title}</h2>
       <p className={styles.description}>{post.description}</p>
@@ -27,6 +24,6 @@ export function PostItem({ post, size = 'default' }: PostItemProps) {
         <span aria-hidden="true"> · </span>
         <span>{post.readingTime}</span>
       </p>
-    </Link>
+    </a>
   )
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { TrackPageView } from '@/components/analytics/track-page-view'
+import { PageView } from '@/components/analytics/page-view'
 import { JsonLd } from '@/components/seo/json-ld'
 import { getProfile } from '@/features/profile/get-profile'
 import { Profile } from '@/features/profile/profile'
@@ -19,7 +19,7 @@ export default async function HomePage() {
   return (
     <>
       <JsonLd data={profilePageGraph()} />
-      <TrackPageView event="opened-home-page" />
+      <PageView event="opened-home-page" />
       <Profile user={profile.user} content={profile.content} />
     </>
   )

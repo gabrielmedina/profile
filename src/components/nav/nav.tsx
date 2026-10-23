@@ -1,5 +1,5 @@
 import { ThemeSwitcher } from '@/components/theme/theme-switcher'
-import { NavLink } from './nav-link'
+import { trackAttrs } from '@/lib/track-attrs'
 import styles from './nav.module.scss'
 
 const items = [
@@ -13,7 +13,14 @@ export function Nav() {
       <ul className={styles.list}>
         {items.map((item) => (
           <li key={item.href} className={styles.item}>
-            <NavLink href={item.href} title={item.title} />
+            <a
+              href={item.href}
+              className={styles.link}
+              data-nav
+              {...trackAttrs('clicked-nav-link', { title: item.title })}
+            >
+              {item.title}
+            </a>
           </li>
         ))}
         <li className={styles.item}>

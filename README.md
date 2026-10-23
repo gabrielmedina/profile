@@ -4,7 +4,7 @@ Site pessoal do Gabriel Medina. Perfil carregado do GitHub e posts escritos em M
 
 ## Stack
 
-- Next.js 16 com App Router, Cache Components e Partial Prefetching
+- Next.js 16 com App Router e Cache Components
 - React 19
 - TypeScript 6, que ainda é a versão com API de compilador usada pelo ESLint do Next.js
 - ESLint flat config (`eslint-config-next`) e Prettier
@@ -26,7 +26,7 @@ npm run format
 
 `npm run dev` sobe o app em [http://localhost:3000](http://localhost:3000).
 
-Para enviar eventos ao Amplitude em produção, defina `NEXT_PUBLIC_AMPLITUDE_KEY`. O arquivo `.env.example` lista a variável. Sem a chave, os eventos aparecem só no console durante o desenvolvimento.
+Para enviar eventos ao Amplitude em produção, defina `NEXT_PUBLIC_AMPLITUDE_KEY`. O arquivo `.env.example` lista a variável. Sem a chave, ou fora de produção, os eventos aparecem só no console. O envio usa a HTTP API, sem o SDK do Amplitude no navegador.
 
 ## Estrutura
 
@@ -39,6 +39,6 @@ src/styles       tokens, reset e tema
 content/posts    markdown publicado
 ```
 
-`src/app` só compõe a página. A leitura de arquivos e da API do GitHub fica em módulos `server-only`, com `use cache` e um `cacheLife` explícito. Componentes de cliente existem só onde há interação: tema, links com evento e visualização de página.
+`src/app` só compõe a página. A leitura de arquivos e da API do GitHub fica em módulos `server-only`, com `use cache` e um `cacheLife` explícito. A interface sai como HTML do servidor. Tema, página atual, analytics e copiar link ficam num script pequeno, sem o runtime do React. A leitura em voz alta só baixa JavaScript quando alguém pede para ouvir. Links internos são âncoras nativas; o navegador faz prefetch do HTML com Speculation Rules.
 
 Posts novos são um arquivo `.md` em `content/posts`. O modelo é `content/posts/ia-acelera-o-desenvolvimento.md`: o slug do frontmatter precisa ser igual ao nome do arquivo, em minúsculas e com hífens. `image` é opcional; sem ela, o Open Graph usa `/og.png`.

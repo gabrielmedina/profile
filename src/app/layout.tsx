@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
 import { Lexend } from 'next/font/google'
-import { TrackColorScheme } from '@/components/analytics/track-color-scheme'
 import { Footer } from '@/components/footer/footer'
 import { Nav } from '@/components/nav/nav'
 import { JsonLd } from '@/components/seo/json-ld'
@@ -16,6 +15,27 @@ const lexend = Lexend({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-lexend',
+})
+
+const analyticsKey =
+  process.env.NODE_ENV === 'production'
+    ? (process.env.NEXT_PUBLIC_AMPLITUDE_KEY ?? '')
+    : ''
+
+const speculationRules = JSON.stringify({
+  prefetch: [
+    {
+      eagerness: 'moderate',
+      where: {
+        and: [
+          { href_matches: '/*' },
+          { not: { href_matches: '/feed.xml' } },
+          { not: { href_matches: '/sitemap.xml' } },
+          { not: { href_matches: '/robots.txt' } },
+        ],
+      },
+    },
+  ],
 })
 
 export const metadata: Metadata = {
@@ -71,15 +91,21 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
-        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+        <script
+          dangerouslySetInnerHTML={{ __html: themeBootScript(analyticsKey) }}
+        />
         <JsonLd data={websiteGraph()} />
-        <TrackColorScheme />
         <SkipLink />
         <Nav />
         <main id="conteudo" tabIndex={-1} className={styles.main}>
           {children}
         </main>
         <Footer />
+        <script src="/site.js" defer />
+        <script
+          type="speculationrules"
+          dangerouslySetInnerHTML={{ __html: speculationRules }}
+        />
       </body>
     </html>
   )
