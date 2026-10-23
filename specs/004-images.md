@@ -12,7 +12,7 @@ Imagens de capa e OG pesadas degradam LCP e o preview social. O Next já está c
 
 1. **Corpo do post (Markdown):** preferir **WebP** (ou AVIF) local em `/imgs/posts/…`.
 2. **Frontmatter `image` (OG / Twitter / JSON-LD):** JPEG ou WebP leve, tipicamente o par `.jpg` da capa. Alvo: **≤ ~100 KB** por asset social.
-3. **Render no app:** sempre `next/image` quando width/height são conhecidos (medidos em `image-size.ts` no load do post).
+3. **Render no app:** sempre `next/image` quando width/height são conhecidos (medidos em `services/image-size.ts` no load do post).
 4. **Fallback `<img>`:** só para remoto ou arquivo sem dimensão mensurável — nunca como padrão para assets locais versionados.
 5. **Primeira imagem do markdown:** `priority` para LCP.
 6. **`sizes`:** conteúdo de artigo usa `(min-width: 1200px) 1200px, 100vw` (ou valor equivalente se o layout mudar).

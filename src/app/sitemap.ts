@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { getAllPosts } from '@/features/posts/posts'
+import { getAllPosts } from '@/features/posts/services/posts'
 import { site } from '@/lib/site'
 import { absoluteUrl } from '@/lib/url'
 

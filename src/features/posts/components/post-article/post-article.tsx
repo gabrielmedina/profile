@@ -3,12 +3,12 @@ import { Markdown } from '@/components/markdown/markdown'
 import { formatDate } from '@/lib/format-date'
 import { site } from '@/lib/site'
 import { absoluteUrl } from '@/lib/url'
-import type { Post, PostSummary } from '../types'
+import type { Post, PostSummary } from '../../types'
 import styles from './post-article.module.scss'
-import { PostShare } from './post-share'
-import { PostSpeech } from './post-speech'
-import { ReadingProgress } from './reading-progress'
-import { RelatedPosts } from './related-posts'
+import { PostShare } from '../post-share/post-share'
+import { PostSpeech } from '../post-speech/post-speech'
+import { ReadingProgress } from '../reading-progress/reading-progress'
+import { RelatedPosts } from '../related-posts/related-posts'
 
 type PostArticleProps = {
   post: Post

@@ -19,11 +19,12 @@ Componentes de UI acumulam regras (clipboard, speech synthesis, progresso de lei
 
 | Tipo                              | Onde                                                                       |
 | --------------------------------- | -------------------------------------------------------------------------- |
-| Parsing, scoring, formatação pura | `features/<d>/*.ts` ou `lib/*.ts`                                          |
-| Validação de conteúdo / payloads  | Zod na borda (`posts.ts`, `get-profile.ts`)                                |
+| Parsing, scoring, formatação pura | `features/<d>/utils/*.ts` ou `lib/*.ts`                                    |
+| Validação de conteúdo / payloads  | Zod na borda (`services/posts.ts`, `services/get-profile.ts`)              |
 | Estado + efeitos de browser       | Preferir `public/*.js` quando não precisa de React; senão `hooks/use-*.ts` |
 | Tracking de analytics             | `trackAttrs` + `public/site.js` (sem SDK React)                            |
-| Leitura de FS / rede              | módulos `server-only`                                                      |
+| Leitura de FS / rede              | `features/<d>/services/*.ts` com `server-only`                             |
+| Helper só de um componente        | pasta desse componente (`share-targets.ts`, `speech-chrome.ts`)            |
 
 ### Regras práticas
 
@@ -34,8 +35,8 @@ Componentes de UI acumulam regras (clipboard, speech synthesis, progresso de lei
 
 ## Consequências
 
-- Speech: markup em `PostSpeech` + `speech-chrome.ts`; runtime em `public/speech.js` (lazy). Não recriar player com hook React.
-- Math de reading progress e ids de heading markdown ficam em utils puros.
+- Speech: markup em `PostSpeech` + `components/post-speech/speech-chrome.ts`; texto falado em `utils/speech-text.ts`; runtime em `public/speech.js` (lazy). Não recriar player com hook React.
+- Math de reading progress fica em `utils/reading-progress.ts`. Ids de heading do markdown ficam no helper puro ao lado de `Markdown`.
 - Testes unitários miram utils/hooks, não o JSX.
 - Novos componentes client devem justificar a fronteira na review ou na spec relacionada.
 - Não reintroduzir wrappers React (`TrackedLink`, `lib/analytics` client) para o que `site.js` já cobre.

@@ -1,4 +1,4 @@
-import type { PostSummary } from './types'
+import type { PostSummary } from '../types'
 
 export function relatedPosts(
   current: PostSummary,

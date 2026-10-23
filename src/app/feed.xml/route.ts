@@ -1,4 +1,4 @@
-import { getAllPosts } from '@/features/posts/posts'
+import { getAllPosts } from '@/features/posts/services/posts'
 import { site } from '@/lib/site'
 import { absoluteUrl } from '@/lib/url'
 import { rfc822Date } from '@/lib/rfc822'

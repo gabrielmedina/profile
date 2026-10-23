@@ -1,5 +1,5 @@
 import { Markdown } from '@/components/markdown/markdown'
-import type { ProfileContent } from './types'
+import type { ProfileContent } from '../../types'
 import styles from './profile.module.scss'
 
 type ProfileProps = ProfileContent

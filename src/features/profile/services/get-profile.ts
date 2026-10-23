@@ -2,7 +2,7 @@ import 'server-only'
 
 import { cacheLife } from 'next/cache'
 import { z } from 'zod'
-import type { ProfileContent } from './types'
+import type { ProfileContent } from '../types'
 
 const githubUserSchema = z.object({
   avatar_url: z.url(),

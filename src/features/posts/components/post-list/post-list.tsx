@@ -1,7 +1,7 @@
 import { Breadcrumbs } from '@/components/breadcrumbs/breadcrumbs'
 import { site } from '@/lib/site'
-import type { PostSummary } from '../types'
-import { PostItem } from './post-item'
+import type { PostSummary } from '../../types'
+import { PostItem } from '../post-item/post-item'
 import styles from './post-list.module.scss'
 
 type PostListProps = {

@@ -1,6 +1,6 @@
 import { safeJson } from '@/lib/safe-json'
-import { formatRate, RATES, speechRevealScript } from '../speech-chrome'
-import { speechChunks } from '../speech-text'
+import { speechChunks } from '../../utils/speech-text'
+import { formatRate, RATES, speechRevealScript } from './speech-chrome'
 import styles from './post-speech.module.scss'
 
 type PostSpeechProps = {

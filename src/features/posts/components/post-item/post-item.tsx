@@ -1,6 +1,6 @@
 import { formatDate } from '@/lib/format-date'
 import { trackAttrs } from '@/lib/track-attrs'
-import type { PostSummary } from '../types'
+import type { PostSummary } from '../../types'
 import styles from './post-item.module.scss'
 
 type PostItemProps = {
