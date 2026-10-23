@@ -27,7 +27,7 @@ Status: `feito` | `em progresso` | `próximo` | `depois`.
 | `aria-label` pt-BR no theme switcher                                | —                     | feito  |
 | Afinar chrome de `PostSpeech` (`speech-chrome.ts`; sem hook React)  | 002                   | feito  |
 
-## Onda 3 (esta PR)
+## Onda 3
 
 | Item                                                               | Spec     | Status |
 | ------------------------------------------------------------------ | -------- | ------ |
@@ -47,8 +47,16 @@ Ainda não implementadas. A onda 3 só fixa a árvore; estas decisões ficam par
 | Decidir o destino de `utils/reading-progress.ts`                                                        | 002  | depois | Nenhum import TS. A conta real está duplicada em `public/site.js`.                                |
 | Mover `utils/speech-text.ts` para `components/post-speech/` se a regra virar "um consumidor, uma pasta" | 002  | depois | Nesta onda ficou em `utils/` por ser parsing de markdown, não chrome de UI.                       |
 | Não introduzir `index.ts` nas pastas de componente                                                      | 001  | depois | O caminho repete o nome, como em `src/components`. Barrel mistura server e client com facilidade. |
-| Agrupar `src/lib` por papel (`seo/`, formatação) só se a raiz de `lib` ficar tão opaca quanto a feature | 001  | depois | Fora do escopo de features. `metadata.ts` e `structured-data.ts` são os primeiros candidatos.     |
 | `hooks/` continua inexistente até o primeiro `use-*`                                                    | 002  | depois | Pasta vazia não explica nada. Share, speech e progresso seguem em `public/*.js`.                  |
+
+## Onda 4 (esta PR)
+
+| Item                                                                                    | Spec | Status |
+| --------------------------------------------------------------------------------------- | ---- | ------ |
+| Identidade do site em `src/config` (`site.ts`, `absolute-url.ts`)                       | 001  | feito  |
+| `lib/format` para data longa e data RFC 822; `lib/seo` para metadata e grafo schema.org | 001  | feito  |
+| `safe-json` vira `json-for-script`; `JsonLd` usa o mesmo escape                         | 001  | feito  |
+| `heading-slug` cola no markdown; `track-attrs` cola no analytics; tema cola no theme    | 001  | feito  |
 
 ## Próximas ondas
 

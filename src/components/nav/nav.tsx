@@ -1,5 +1,5 @@
+import { trackAttrs } from '@/components/analytics/track-attrs'
 import { ThemeSwitcher } from '@/components/theme/theme-switcher'
-import { trackAttrs } from '@/lib/track-attrs'
 import styles from './nav.module.scss'
 
 const items = [

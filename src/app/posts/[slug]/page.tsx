@@ -5,8 +5,12 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { PostArticle } from '@/features/posts/components/post-article/post-article'
 import { getAllPosts, getPost } from '@/features/posts/services/posts'
 import { relatedPosts } from '@/features/posts/utils/related'
-import { feedAlternates, noIndexRobots, pageMetadata } from '@/lib/metadata'
-import { postPageGraph } from '@/lib/structured-data'
+import {
+  feedAlternates,
+  noIndexRobots,
+  pageMetadata,
+} from '@/lib/seo/page-metadata'
+import { postPageGraph } from '@/lib/seo/schema-graph'
 
 type PostPageProps = {
   params: Promise<{ slug: string }>
