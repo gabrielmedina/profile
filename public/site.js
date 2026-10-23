@@ -67,75 +67,112 @@
     var bars = document.querySelectorAll('[data-reading-progress-bar]')
     if (!bars.length) return
 
+    var native = supportsViewTimeline()
+
     for (var index = 0; index < bars.length; index += 1) {
-      bindReadingProgress(bars[index])
+      bindReadingProgress(bars[index], native)
     }
   }
 
-  function bindReadingProgress(bar) {
+  function supportsViewTimeline() {
+    return !!(
+      window.CSS &&
+      CSS.supports &&
+      CSS.supports('animation-timeline', 'view()')
+    )
+  }
+
+  // Scroll-driven CSS paints the bar on the compositor. Geometry is read on
+  // resize only. Browsers without that timeline get scaleX, never width.
+  function bindReadingProgress(bar, native) {
     var frame = 0
+    var metrics = null
 
-    function update() {
+    function measure() {
+      metrics = readReadingMetrics(bar)
+      if (metrics) bar.removeAttribute('data-reading-fits')
+      else bar.setAttribute('data-reading-fits', 'true')
+      paint()
+    }
+
+    function paint() {
       frame = 0
-      paintReadingProgress(bar)
+      syncReadingProgress(bar, readingProgress(metrics), native)
     }
 
-    function requestUpdate() {
+    function requestPaint() {
       if (frame) return
-      frame = window.requestAnimationFrame(update)
+      frame = window.requestAnimationFrame(paint)
     }
 
-    requestUpdate()
-    window.addEventListener('scroll', requestUpdate, { passive: true })
-    window.addEventListener('resize', requestUpdate)
+    measure()
+    window.addEventListener('resize', measure)
+    window.addEventListener('load', measure)
     if (window.visualViewport) {
-      window.visualViewport.addEventListener('resize', requestUpdate)
-      window.visualViewport.addEventListener('scroll', requestUpdate)
+      window.visualViewport.addEventListener('resize', measure)
+    }
+    // The article intro is a transform. Measuring through it caches the wrong
+    // document offset, so the fallback bar lags the scroll after it ends.
+    if (document.getAnimations) {
+      document.getAnimations().forEach(function (animation) {
+        if (!animation.finished) return
+        animation.finished.then(measure).catch(function () {})
+      })
     }
 
-    var article = bar.closest('article')
-    var content =
-      article && article.querySelector('[data-reading-progress]')
-    if (typeof ResizeObserver !== 'undefined') {
-      var observer = new ResizeObserver(requestUpdate)
-      if (article) observer.observe(article)
-      if (content) observer.observe(content)
+    var range = readingRangeElement(bar)
+    if (typeof ResizeObserver !== 'undefined' && range) {
+      new ResizeObserver(measure).observe(range)
+    }
+
+    window.addEventListener('scroll', requestPaint, { passive: true })
+    if (!native && window.visualViewport) {
+      window.visualViewport.addEventListener('scroll', requestPaint)
     }
   }
 
-  function paintReadingProgress(bar) {
-    var progress = readingProgress(bar)
+  function readingRangeElement(bar) {
+    var article = bar.closest('article')
+    return article && article.querySelector('[data-reading-progress-range]')
+  }
+
+  function readReadingMetrics(bar) {
+    var range = readingRangeElement(bar)
+    if (!range) return null
+
+    var rect = range.getBoundingClientRect()
+    var distance = rect.height - window.innerHeight
+    if (distance <= 0) return null
+
+    return {
+      top: rect.top + window.scrollY,
+      distance: distance,
+    }
+  }
+
+  function readingProgress(metrics) {
+    if (!metrics) return null
+    return clamp((window.scrollY - metrics.top) / metrics.distance, 0, 1)
+  }
+
+  function syncReadingProgress(bar, progress, native) {
     var value = progress === null ? 0 : Math.round(progress * 100)
     var visible = progress !== null && progress > 0
 
-    bar.style.width = (progress || 0) * 100 + '%'
-    bar.style.opacity = visible ? '1' : '0'
+    if (!native) {
+      bar.style.transform = 'scaleX(' + (progress || 0) + ')'
+      bar.style.opacity = visible ? '1' : '0'
+    }
 
-    if (visible) bar.removeAttribute('aria-hidden')
-    else bar.setAttribute('aria-hidden', 'true')
+    if (visible) {
+      if (bar.hasAttribute('aria-hidden')) bar.removeAttribute('aria-hidden')
+    } else if (bar.getAttribute('aria-hidden') !== 'true') {
+      bar.setAttribute('aria-hidden', 'true')
+    }
 
     if (bar.getAttribute('aria-valuenow') !== String(value)) {
       bar.setAttribute('aria-valuenow', String(value))
     }
-  }
-
-  // 0 when the article meets the top of the viewport, 1 when the end of the
-  // text meets the bottom. Null when the text already fits on screen.
-  function readingProgress(bar) {
-    var article = bar.closest('article')
-    var content =
-      article && article.querySelector('[data-reading-progress]')
-
-    if (!article || !content) return null
-
-    var articleTop = article.getBoundingClientRect().top + window.scrollY
-    var contentBottom =
-      content.getBoundingClientRect().bottom + window.scrollY
-    var range = contentBottom - articleTop - window.innerHeight
-
-    if (range <= 0) return null
-
-    return clamp((window.scrollY - articleTop) / range, 0, 1)
   }
 
   function clamp(value, min, max) {

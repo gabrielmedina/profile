@@ -2,32 +2,33 @@ export function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value))
 }
 
-// 0 when the article meets the top of the viewport, 1 when the end of the
-// text meets the bottom. Null when the text already fits on screen.
+// 0 when the top of the measured range meets the top of the viewport,
+// 1 when its bottom meets the bottom. Null when that box already fits.
 export function readingProgressRatio(input: {
-  articleTop: number
-  contentBottom: number
+  rangeTop: number
+  rangeHeight: number
   scrollY: number
   viewportHeight: number
 }) {
-  const range = input.contentBottom - input.articleTop - input.viewportHeight
+  const distance = input.rangeHeight - input.viewportHeight
 
-  if (range <= 0) return null
+  if (distance <= 0) return null
 
-  return clamp((input.scrollY - input.articleTop) / range, 0, 1)
+  return clamp((input.scrollY - input.rangeTop) / distance, 0, 1)
 }
 
 export function readingProgressFromBar(bar: HTMLElement) {
-  const article = bar.closest('article')
-  const content = article?.querySelector('[data-reading-progress]')
+  const range = bar
+    .closest('article')
+    ?.querySelector('[data-reading-progress-range]')
 
-  if (!(article instanceof HTMLElement) || !(content instanceof HTMLElement)) {
-    return null
-  }
+  if (!(range instanceof HTMLElement)) return null
+
+  const rect = range.getBoundingClientRect()
 
   return readingProgressRatio({
-    articleTop: article.getBoundingClientRect().top + window.scrollY,
-    contentBottom: content.getBoundingClientRect().bottom + window.scrollY,
+    rangeTop: rect.top + window.scrollY,
+    rangeHeight: rect.height,
     scrollY: window.scrollY,
     viewportHeight: window.innerHeight,
   })

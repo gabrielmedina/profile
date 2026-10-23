@@ -15,6 +15,13 @@
   justify-content: center;
   min-height: 100vh;
   padding: 0 1.6rem;
+  timeline-scope: --reading-progress;
+}
+
+.readingRange {
+  view-timeline: --reading-progress block;
+  width: 100%;
+  margin-bottom: 3rem;
 }
 
 .container {
@@ -94,7 +101,7 @@
 }
 
 .content {
-  margin: 3rem auto;
+  margin: 3rem auto 0;
   color: var(--color-text);
   font-size: 1rem;
   line-height: 1.6;
@@ -214,7 +221,12 @@
 
 @media screen and (min-width: 768px) {
   .wrapper {
-    padding: 2rem 2rem 6rem;
+    padding: 0 2rem 6rem;
+  }
+
+  .readingRange {
+    margin-bottom: 2rem;
+    padding-top: 2rem;
   }
 
   .header {
@@ -241,7 +253,7 @@
   }
 
   .content {
-    margin: 2rem auto;
+    margin: 2rem auto 0;
     font-size: 1.3rem;
 
     > p {

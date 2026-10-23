@@ -3,17 +3,37 @@
   top: 0;
   left: 0;
   z-index: 30;
-  width: 0;
+  width: 100%;
   height: 3px;
   pointer-events: none;
   background: var(--color-primary);
   opacity: 0;
-  transition: opacity 150ms linear;
+  transform: scaleX(0);
+  transform-origin: left center;
+
+  // Width on scroll forces layout and the bar stalls. scaleX runs on the
+  // compositor, in lockstep with scrolling.
+  @supports (animation-timeline: view()) {
+    &:not([data-reading-fits='true']) {
+      animation-name: reading-progress;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: --reading-progress;
+      animation-range: contain;
+    }
+  }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .bar {
-    transition: none;
+@keyframes reading-progress {
+  from {
+    opacity: 1;
+    transform: scaleX(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleX(1);
   }
 }
 
