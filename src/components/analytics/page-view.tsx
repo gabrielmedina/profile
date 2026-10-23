@@ -1,4 +1,4 @@
-import { safeJson } from '@/lib/safe-json'
+import { jsonForScript } from '@/lib/json-for-script'
 
 type PageViewProps = {
   event: string
@@ -10,7 +10,7 @@ export function PageView({ event, properties }: PageViewProps) {
     <script
       type="application/json"
       data-page-view={event}
-      dangerouslySetInnerHTML={{ __html: safeJson(properties ?? {}) }}
+      dangerouslySetInnerHTML={{ __html: jsonForScript(properties ?? {}) }}
     />
   )
 }

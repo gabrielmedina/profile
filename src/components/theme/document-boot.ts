@@ -1,17 +1,13 @@
-export const THEME_STORAGE_KEY = 'theme'
-export const THEME_DARK = 'tokens-dark'
-export const THEME_LIGHT = 'tokens-light'
+import {
+  THEME_COLOR,
+  THEME_DARK,
+  THEME_LIGHT,
+  THEME_STORAGE_KEY,
+} from './theme'
 
-export type ThemeName = typeof THEME_DARK | typeof THEME_LIGHT
-
-export const THEME_COLOR: Record<ThemeName, string> = {
-  [THEME_DARK]: '#16161b',
-  [THEME_LIGHT]: '#f5f5f5',
-}
-
-// Runs before paint. Applies the saved theme, marks the current path for CSS,
-// and toggles the theme from [data-theme] buttons. No client component.
-export function themeBootScript(analyticsKey: string) {
+// Runs before paint: saved theme, current path for CSS, [data-theme] toggles,
+// a tiny analytics queue, and aria-current on [data-nav]. No client component.
+export function documentBootScript(analyticsKey: string) {
   const key = JSON.stringify(THEME_STORAGE_KEY)
   const dark = JSON.stringify(THEME_DARK)
   const light = JSON.stringify(THEME_LIGHT)

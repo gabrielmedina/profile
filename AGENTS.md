@@ -12,7 +12,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 - Routes live in `src/app`. Keep them thin: load data, export metadata, render a feature.
 - Server Components are the default. Add `'use client'` only for state, effects, and browser APIs.
-- Domain code lives in `src/features/<domain>`: `components/<name>/` (tsx, styles, and helpers only that component uses), `services/` (server-only I/O), `utils/` (pure rules), and `types.ts`. Shared UI lives in `src/components`. Pure helpers that are not domain-specific live in `src/lib`.
+- Domain code lives in `src/features/<domain>`: `components/<name>/` (tsx, styles, and helpers only that component uses), `services/` (server-only I/O), `utils/` (pure rules), and `types.ts`. Shared UI lives in `src/components`. Site identity lives in `src/config`. Shared pure helpers live in `src/lib` (`format/`, `seo/`), grouped by role. A helper used by one component lives in that component's folder.
 - Presentation components stay presentational; business rules live in feature `utils/` or `hooks/` (`specs/002-component-boundaries.md`). Do not leave loose `.ts` files at the feature root.
 - Do not re-export server modules and client components from the same barrel. Import the module that owns the symbol.
 - Filesystem and remote reads belong in `server-only` modules. Cache them with `use cache` and an explicit `cacheLife`.

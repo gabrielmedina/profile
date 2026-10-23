@@ -1,4 +1,4 @@
-import { safeJson } from '@/lib/safe-json'
+import { jsonForScript } from '@/lib/json-for-script'
 import { speechChunks } from '../../utils/speech-text'
 import { formatRate, RATES, speechRevealScript } from './speech-chrome'
 import styles from './post-speech.module.scss'
@@ -21,7 +21,7 @@ export function PostSpeech({
   const panelId = `voz-${slug}`
   const rateLabelId = `velocidade-${slug}`
   const voiceId = `voz-select-${slug}`
-  const payload = safeJson({
+  const payload = jsonForScript({
     title,
     slug,
     lang,

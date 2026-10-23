@@ -1,5 +1,5 @@
-import { site } from './site'
-import { absoluteUrl } from './url'
+import { absoluteUrl } from '@/config/absolute-url'
+import { site } from '@/config/site'
 
 export const personId = `${site.url}/#person`
 export const websiteId = `${site.url}/#website`
