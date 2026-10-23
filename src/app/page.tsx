@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { PageView } from '@/components/analytics/page-view'
 import { JsonLd } from '@/components/seo/json-ld'
-import { getProfile } from '@/features/profile/get-profile'
-import { Profile } from '@/features/profile/profile'
-import { pageMetadata } from '@/lib/metadata'
-import { site } from '@/lib/site'
-import { profilePageGraph } from '@/lib/structured-data'
+import { site } from '@/config/site'
+import { Profile } from '@/features/profile/components/profile/profile'
+import { getProfile } from '@/features/profile/services/get-profile'
+import { pageMetadata } from '@/lib/seo/page-metadata'
+import { profilePageGraph } from '@/lib/seo/schema-graph'
 
 export const metadata: Metadata = pageMetadata({
   description: site.description,

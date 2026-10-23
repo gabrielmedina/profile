@@ -1,3 +1,4 @@
+import { THEME_DARK, THEME_LIGHT } from './theme'
 import styles from './theme-switcher.module.scss'
 
 export function ThemeSwitcher() {
@@ -6,7 +7,7 @@ export function ThemeSwitcher() {
       <button
         type="button"
         className={`${styles.button} ${styles.toDark}`}
-        data-theme="tokens-dark"
+        data-theme={THEME_DARK}
         title="Mudar para o tema escuro"
         aria-label="Mudar para o tema escuro"
       >
@@ -24,7 +25,7 @@ export function ThemeSwitcher() {
       <button
         type="button"
         className={`${styles.button} ${styles.toLight}`}
-        data-theme="tokens-light"
+        data-theme={THEME_LIGHT}
         title="Mudar para o tema claro"
         aria-label="Mudar para o tema claro"
       >

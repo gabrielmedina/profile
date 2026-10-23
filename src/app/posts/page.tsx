@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { PageView } from '@/components/analytics/page-view'
 import { JsonLd } from '@/components/seo/json-ld'
-import { PostList } from '@/features/posts/components/post-list'
-import { getAllPosts } from '@/features/posts/posts'
-import { pageMetadata } from '@/lib/metadata'
-import { site } from '@/lib/site'
-import { postsPageGraph } from '@/lib/structured-data'
+import { site } from '@/config/site'
+import { PostList } from '@/features/posts/components/post-list/post-list'
+import { getAllPosts } from '@/features/posts/services/posts'
+import { pageMetadata } from '@/lib/seo/page-metadata'
+import { postsPageGraph } from '@/lib/seo/schema-graph'
 
 export const metadata: Metadata = pageMetadata({
   title: site.posts.title,

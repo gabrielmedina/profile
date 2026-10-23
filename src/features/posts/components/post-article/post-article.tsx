@@ -1,14 +1,14 @@
 import { Breadcrumbs } from '@/components/breadcrumbs/breadcrumbs'
 import { Markdown } from '@/components/markdown/markdown'
-import { formatDate } from '@/lib/format-date'
-import { site } from '@/lib/site'
-import { absoluteUrl } from '@/lib/url'
-import type { Post, PostSummary } from '../types'
+import { absoluteUrl } from '@/config/absolute-url'
+import { site } from '@/config/site'
+import { formatLongDate } from '@/lib/format/long-date'
+import type { Post, PostSummary } from '../../types'
 import styles from './post-article.module.scss'
-import { PostShare } from './post-share'
-import { PostSpeech } from './post-speech'
-import { ReadingProgress } from './reading-progress'
-import { RelatedPosts } from './related-posts'
+import { PostShare } from '../post-share/post-share'
+import { PostSpeech } from '../post-speech/post-speech'
+import { ReadingProgress } from '../reading-progress/reading-progress'
+import { RelatedPosts } from '../related-posts/related-posts'
 
 type PostArticleProps = {
   post: Post
@@ -50,7 +50,7 @@ export function PostArticle({ post, related }: PostArticleProps) {
               />
             </div>
             <time dateTime={post.date} className={styles.date}>
-              {formatDate(post.date)}
+              {formatLongDate(post.date)}
             </time>
           </div>
 

@@ -2,7 +2,7 @@ import 'server-only'
 
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
-import type { ImageSize } from './types'
+import type { ImageSize } from '../types'
 
 export async function readImageSize(
   publicPath: string,

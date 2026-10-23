@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
-import { getAllPosts } from '@/features/posts/posts'
-import { site } from '@/lib/site'
-import { absoluteUrl } from '@/lib/url'
+import { absoluteUrl } from '@/config/absolute-url'
+import { site } from '@/config/site'
+import { getAllPosts } from '@/features/posts/services/posts'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getAllPosts()

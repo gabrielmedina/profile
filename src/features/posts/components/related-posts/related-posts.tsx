@@ -1,5 +1,5 @@
-import type { PostSummary } from '../types'
-import { PostItem } from './post-item'
+import type { PostSummary } from '../../types'
+import { PostItem } from '../post-item/post-item'
 import styles from './related-posts.module.scss'
 
 type RelatedPostsProps = {
