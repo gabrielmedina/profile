@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import { site } from './site'
-import { absoluteUrl } from './url'
+import { absoluteUrl } from '@/config/absolute-url'
+import { site } from '@/config/site'
 
 type SocialImage = {
   url: string

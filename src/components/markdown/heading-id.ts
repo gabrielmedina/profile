@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react'
-import { slugify } from '@/lib/slugify'
+import { headingSlug } from './heading-slug'
 
 export function uniqueHeadingId(value: string, usedIds: Map<string, number>) {
-  const base = slugify(value)
+  const base = headingSlug(value)
   const seen = usedIds.get(base) ?? 0
   usedIds.set(base, seen + 1)
 

@@ -5,9 +5,10 @@ import { Footer } from '@/components/footer/footer'
 import { Nav } from '@/components/nav/nav'
 import { JsonLd } from '@/components/seo/json-ld'
 import { SkipLink } from '@/components/skip-link/skip-link'
-import { site } from '@/lib/site'
-import { websiteGraph } from '@/lib/structured-data'
-import { THEME_COLOR, THEME_DARK, themeBootScript } from '@/lib/theme'
+import { documentBootScript } from '@/components/theme/document-boot'
+import { THEME_COLOR, THEME_DARK } from '@/components/theme/theme'
+import { site } from '@/config/site'
+import { websiteGraph } from '@/lib/seo/schema-graph'
 import '@/styles/styles.scss'
 import styles from './layout.module.scss'
 
@@ -92,7 +93,7 @@ export default function RootLayout({
     >
       <body>
         <script
-          dangerouslySetInnerHTML={{ __html: themeBootScript(analyticsKey) }}
+          dangerouslySetInnerHTML={{ __html: documentBootScript(analyticsKey) }}
         />
         <JsonLd data={websiteGraph()} />
         <SkipLink />

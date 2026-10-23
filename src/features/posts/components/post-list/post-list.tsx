@@ -1,5 +1,5 @@
 import { Breadcrumbs } from '@/components/breadcrumbs/breadcrumbs'
-import { site } from '@/lib/site'
+import { site } from '@/config/site'
 import type { PostSummary } from '../../types'
 import { PostItem } from '../post-item/post-item'
 import styles from './post-list.module.scss'

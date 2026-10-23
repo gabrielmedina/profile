@@ -1,5 +1,5 @@
-import { formatDate } from '@/lib/format-date'
-import { trackAttrs } from '@/lib/track-attrs'
+import { trackAttrs } from '@/components/analytics/track-attrs'
+import { formatLongDate } from '@/lib/format/long-date'
 import type { PostSummary } from '../../types'
 import styles from './post-item.module.scss'
 
@@ -22,7 +22,7 @@ export function PostItem({ post, size = 'default' }: PostItemProps) {
       <Title className={styles.title}>{post.title}</Title>
       <p className={styles.description}>{post.description}</p>
       <p className={styles.meta}>
-        <time dateTime={post.date}>{formatDate(post.date)}</time>
+        <time dateTime={post.date}>{formatLongDate(post.date)}</time>
         <span aria-hidden="true"> · </span>
         <span>{post.readingTime}</span>
       </p>
