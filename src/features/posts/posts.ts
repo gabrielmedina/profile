@@ -21,12 +21,8 @@ const postFrontmatterSchema = z.object({
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
 })
 
-function readingTimeLabel(content: string) {
-  const words = content.split(' ').length
-
-  if (words <= 0) return '~1 min de leitura'
-
-  return `~${Math.ceil(words / WORDS_PER_MINUTE)} min de leitura`
+function readingTimeLabel(wordCount: number) {
+  return `~${Math.ceil(wordCount / WORDS_PER_MINUTE)} min de leitura`
 }
 
 function countWords(content: string) {
@@ -103,11 +99,13 @@ async function readPost(slug: string): Promise<Post | null> {
     if (size) images[src] = size
   }
 
+  const wordCount = countWords(content)
+
   return {
     ...parsed.data,
     content,
-    readingTime: readingTimeLabel(content),
-    wordCount: countWords(content),
+    readingTime: readingTimeLabel(wordCount),
+    wordCount,
     images,
     contentImages,
   }

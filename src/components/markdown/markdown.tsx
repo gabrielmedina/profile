@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-import { slugify } from '@/lib/slugify'
+import { textContent, uniqueHeadingId } from './heading-id'
 import styles from './markdown.module.scss'
 
 type MarkdownImage = {
@@ -67,31 +67,11 @@ function heading(
   children: ReactNode,
   usedIds: Map<string, number>,
 ) {
-  const id = uniqueId(textContent(children), usedIds)
+  const id = uniqueHeadingId(textContent(children), usedIds)
 
   return (
     <Tag id={id} className={styles.heading}>
       <a href={`#${id}`}>{children}</a>
     </Tag>
   )
-}
-
-function uniqueId(value: string, usedIds: Map<string, number>) {
-  const base = slugify(value)
-  const seen = usedIds.get(base) ?? 0
-  usedIds.set(base, seen + 1)
-
-  return seen === 0 ? base : `${base}-${seen + 1}`
-}
-
-function textContent(node: ReactNode): string {
-  if (typeof node === 'string' || typeof node === 'number') return String(node)
-  if (Array.isArray(node)) return node.map(textContent).join('')
-
-  if (node && typeof node === 'object' && 'props' in node) {
-    const element = node as { props?: { children?: ReactNode } }
-    return textContent(element.props?.children)
-  }
-
-  return ''
 }

@@ -1,0 +1,49 @@
+# 001 — Arquitetura e hierarquia de pastas
+
+**Status:** aceita
+
+## Contexto
+
+O site é um perfil pessoal com posts em Markdown. Precisamos de uma árvore previsível para humanos e agentes navegarem sem adivinhar onde mora cada responsabilidade.
+
+## Decisão
+
+Mantemos e reforçamos a separação já descrita no `AGENTS.md` e no `README.md`:
+
+```text
+src/app            rotas finas: dados, metadata, composição
+src/features/<d>   domínio (posts, profile): dados, tipos, UI do domínio
+src/components     UI compartilhada (nav, markdown, seo, tema…)
+src/lib            helpers puros / sem UI (ou cliente explícito raro)
+src/styles         tokens, reset, tema global
+content/posts      markdown publicado
+public/            assets estáticos
+specs/             decisões e backlog (este diretório)
+```
+
+### Nomes e hierarquia
+
+- Arquivos e pastas em **kebab-case** (`post-article.tsx`, `reading-progress.ts`).
+- Componentes de feature: `src/features/<domínio>/components/<nome>/`.
+- Utilitários e regras do domínio: `src/features/<domínio>/<nome>.ts` (ex.: `related.ts`, `keywords.ts`).
+- Hooks de cliente do domínio: `src/features/<domínio>/hooks/use-<nome>.ts` (quando existirem).
+- UI compartilhada: um diretório por componente em `src/components/<nome>/`, com SCSS co-localizado.
+- Rotas em `src/app` **não** contêm regra de negócio nem parsing de conteúdo.
+
+### Imports
+
+- Importar sempre o módulo dono do símbolo (`@/features/posts/posts`, não um barrel genérico).
+- **Proibido** `index.ts` de feature que misture `server-only` e `'use client'`.
+- Preferir zero barrels; se um dia existirem, separar pacotes client-only / server-only / types-only.
+
+### Server vs client
+
+- Server Components por padrão.
+- `'use client'` só para estado, efeitos, APIs de browser ou requisitos do framework (`error.tsx`).
+- Módulos que leem filesystem ou rede remota: `import 'server-only'`, `use cache` e `cacheLife` explícito.
+
+## Consequências
+
+- Novas telas começam na rota (`app`) e empurram lógica para `features` / `lib`.
+- Renomeações devem preservar o vocabulário do domínio (`Post`, `PostSummary`, `PostArticle`, `PostList`, `PostItem`).
+- Analytics client-side em `src/lib/analytics.ts` é exceção documentada; evolução preferida: `src/components/analytics` ou `src/features/analytics` (ver backlog).

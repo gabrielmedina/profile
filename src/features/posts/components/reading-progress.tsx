@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { readingProgressFromBar } from '../reading-progress'
 import styles from './reading-progress.module.scss'
 
 export function ReadingProgress() {
@@ -59,7 +60,7 @@ export function ReadingProgress() {
 }
 
 function paint(bar: HTMLElement) {
-  const progress = readingProgress(bar)
+  const progress = readingProgressFromBar(bar)
   const value = progress === null ? 0 : Math.round(progress * 100)
   const visible = progress !== null && progress > 0
 
@@ -72,27 +73,4 @@ function paint(bar: HTMLElement) {
   if (bar.getAttribute('aria-valuenow') !== String(value)) {
     bar.setAttribute('aria-valuenow', String(value))
   }
-}
-
-// 0 when the article meets the top of the viewport, 1 when the end of the
-// text meets the bottom. Null when the text already fits on screen.
-function readingProgress(bar: HTMLElement) {
-  const article = bar.closest('article')
-  const content = article?.querySelector('[data-reading-progress]')
-
-  if (!(article instanceof HTMLElement) || !(content instanceof HTMLElement)) {
-    return null
-  }
-
-  const articleTop = article.getBoundingClientRect().top + window.scrollY
-  const contentBottom = content.getBoundingClientRect().bottom + window.scrollY
-  const range = contentBottom - articleTop - window.innerHeight
-
-  if (range <= 0) return null
-
-  return clamp((window.scrollY - articleTop) / range, 0, 1)
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value))
 }

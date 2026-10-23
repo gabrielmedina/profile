@@ -4,6 +4,7 @@ import { Markdown } from '@/components/markdown/markdown'
 import { formatDate } from '@/lib/format-date'
 import { site } from '@/lib/site'
 import { absoluteUrl } from '@/lib/url'
+import { splitKeywords } from '../keywords'
 import type { Post, PostSummary } from '../types'
 import styles from './post-article.module.scss'
 import { PostShare } from './post-share'
@@ -17,6 +18,8 @@ type PostArticleProps = {
 }
 
 export function PostArticle({ post, related }: PostArticleProps) {
+  const keywords = splitKeywords(post.keys)
+
   return (
     <article lang={post.lang} className={styles.wrapper}>
       <div className={styles.container}>
@@ -66,9 +69,16 @@ export function PostArticle({ post, related }: PostArticleProps) {
           url={absoluteUrl(`/posts/${post.slug}`)}
         />
 
-        <footer className={styles.footer}>
-          <p className={styles.keywords}>Assuntos: {post.keys}.</p>
-        </footer>
+        {keywords.length > 0 ? (
+          <footer className={styles.footer}>
+            <h2 className={styles.keywordsHeading}>Assuntos</h2>
+            <ul className={styles.keywords}>
+              {keywords.map((keyword) => (
+                <li key={keyword}>{keyword}</li>
+              ))}
+            </ul>
+          </footer>
+        ) : null}
 
         <RelatedPosts posts={related} />
       </div>

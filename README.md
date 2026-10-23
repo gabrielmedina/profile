@@ -37,8 +37,11 @@ src/components   navegação, tema, markdown e analytics
 src/lib          helpers sem dependência de UI
 src/styles       tokens, reset e tema
 content/posts    markdown publicado
+specs/           decisões (Spec Driven Development) e backlog
 ```
 
 `src/app` só compõe a página. A leitura de arquivos e da API do GitHub fica em módulos `server-only`, com `use cache` e um `cacheLife` explícito. Componentes de cliente existem só onde há interação: tema, links com evento e visualização de página.
 
-Posts novos são um arquivo `.md` em `content/posts`. O modelo é `content/posts/ia-acelera-o-desenvolvimento.md`: o slug do frontmatter precisa ser igual ao nome do arquivo, em minúsculas e com hífens. `image` é opcional; sem ela, o Open Graph usa `/og.png`.
+Decisões de arquitetura, fronteiras de componente, SEO de posts e política de imagens estão em [`specs/`](./specs/README.md). O backlog de refatoração vive em [`specs/backlog.md`](./specs/backlog.md).
+
+Posts novos são um arquivo `.md` em `content/posts`. O modelo é `content/posts/ia-acelera-o-desenvolvimento.md`: o slug do frontmatter precisa ser igual ao nome do arquivo, em minúsculas e com hífens. `image` é opcional (JPEG/WebP leve para OG); sem ela, o Open Graph usa `/og.png`. No corpo, preferir WebP e `next/image` (ver [`specs/004-images.md`](./specs/004-images.md)).
