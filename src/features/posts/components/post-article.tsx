@@ -8,6 +8,7 @@ import type { Post, PostSummary } from '../types'
 import styles from './post-article.module.scss'
 import { PostShare } from './post-share'
 import { PostSpeech } from './post-speech'
+import { ReadingProgress } from './reading-progress'
 import { RelatedPosts } from './related-posts'
 
 type PostArticleProps = {
@@ -54,7 +55,7 @@ export function PostArticle({ post, related }: PostArticleProps) {
           </time>
         </div>
 
-        <div className={styles.content}>
+        <div className={styles.content} data-reading-progress="">
           <Markdown source={post.content} images={post.images} />
         </div>
 
@@ -71,6 +72,7 @@ export function PostArticle({ post, related }: PostArticleProps) {
 
         <RelatedPosts posts={related} />
       </div>
+      <ReadingProgress key={post.slug} />
     </article>
   )
 }

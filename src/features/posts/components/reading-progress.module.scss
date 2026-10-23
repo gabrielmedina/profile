@@ -1,0 +1,38 @@
+// Turbolinks progress bar: a 3px blue line fixed to the top edge,
+// with the bright tip the old Rails loader used while it advanced.
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  width: 0;
+  height: 3px;
+  pointer-events: none;
+  background: #0076ff;
+  opacity: 0;
+  transition: opacity 150ms linear;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100%;
+    box-shadow:
+      0 0 10px #0076ff,
+      0 0 5px #0076ff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    transition: none;
+  }
+}
+
+@media print {
+  .bar {
+    display: none;
+  }
+}
