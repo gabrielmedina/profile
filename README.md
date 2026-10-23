@@ -40,7 +40,7 @@ content/posts    markdown publicado
 specs/           decisões (Spec Driven Development) e backlog
 ```
 
-`src/app` só compõe a página. A leitura de arquivos e da API do GitHub fica em módulos `server-only`, com `use cache` e um `cacheLife` explícito. A interface sai como HTML do servidor. Tema, página atual, analytics e copiar link ficam num script pequeno, sem o runtime do React. A leitura em voz alta só baixa JavaScript quando alguém pede para ouvir. Links internos são âncoras nativas; o navegador faz prefetch do HTML com Speculation Rules.
+`src/app` só compõe a página. A leitura de arquivos e da API do GitHub fica em módulos `server-only`, com `use cache` e `cacheLife('max')` — conteúdo gerado no build e atualizado no redeploy. A interface sai como HTML do servidor. Tema, progresso de leitura, página atual, analytics e copiar link ficam num script pequeno, sem o runtime do React. A leitura em voz alta só baixa JavaScript quando alguém pede para ouvir. Links internos são âncoras nativas; o navegador faz prefetch do HTML com Speculation Rules. Posts conhecidos saem de `generateStaticParams`; slug inexistente chama `notFound()` (com Cache Components, `dynamicParams` não é suportado).
 
 Decisões de arquitetura, fronteiras de componente, SEO de posts e política de imagens estão em [`specs/`](./specs/README.md). O backlog de refatoração vive em [`specs/backlog.md`](./specs/backlog.md).
 

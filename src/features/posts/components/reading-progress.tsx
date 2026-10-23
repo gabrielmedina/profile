@@ -1,76 +1,16 @@
-'use client'
-
-import { useEffect, useRef } from 'react'
-import { readingProgressFromBar } from '../reading-progress'
 import styles from './reading-progress.module.scss'
 
 export function ReadingProgress() {
-  const barRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const bar = barRef.current
-    if (!bar) return
-
-    let frame = 0
-
-    const update = () => {
-      frame = 0
-      paint(bar)
-    }
-
-    const requestUpdate = () => {
-      if (frame) return
-      frame = window.requestAnimationFrame(update)
-    }
-
-    requestUpdate()
-    window.addEventListener('scroll', requestUpdate, { passive: true })
-    window.addEventListener('resize', requestUpdate)
-    window.visualViewport?.addEventListener('resize', requestUpdate)
-    window.visualViewport?.addEventListener('scroll', requestUpdate)
-
-    const article = bar.closest('article')
-    const content = article?.querySelector('[data-reading-progress]')
-    const observer = new ResizeObserver(requestUpdate)
-
-    if (article) observer.observe(article)
-    if (content) observer.observe(content)
-
-    return () => {
-      window.removeEventListener('scroll', requestUpdate)
-      window.removeEventListener('resize', requestUpdate)
-      window.visualViewport?.removeEventListener('resize', requestUpdate)
-      window.visualViewport?.removeEventListener('scroll', requestUpdate)
-      observer.disconnect()
-      if (frame) window.cancelAnimationFrame(frame)
-    }
-  }, [])
-
   return (
     <div
-      ref={barRef}
       className={styles.bar}
+      data-reading-progress-bar=""
       role="progressbar"
       aria-label="Progresso de leitura"
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={0}
+      aria-hidden="true"
     />
   )
-}
-
-function paint(bar: HTMLElement) {
-  const progress = readingProgressFromBar(bar)
-  const value = progress === null ? 0 : Math.round(progress * 100)
-  const visible = progress !== null && progress > 0
-
-  bar.style.width = `${(progress ?? 0) * 100}%`
-  bar.style.opacity = visible ? '1' : '0'
-
-  if (visible) bar.removeAttribute('aria-hidden')
-  else bar.setAttribute('aria-hidden', 'true')
-
-  if (bar.getAttribute('aria-valuenow') !== String(value)) {
-    bar.setAttribute('aria-valuenow', String(value))
-  }
 }
