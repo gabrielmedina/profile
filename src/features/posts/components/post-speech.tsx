@@ -28,10 +28,24 @@ function subscribeSpeechSupport() {
 }
 
 function speechSupported() {
+  return hasSpeechSynthesis() && !isIosBrowser()
+}
+
+function hasSpeechSynthesis() {
   return (
-    'speechSynthesis' in window &&
+    typeof window.speechSynthesis?.speak === 'function' &&
     typeof SpeechSynthesisUtterance === 'function'
   )
+}
+
+// Safari and Chrome on iPhone and iPad expose speechSynthesis, but native
+// speech does not play. Leave the controls out on those browsers.
+function isIosBrowser() {
+  const ua = navigator.userAgent
+
+  if (/iPad|iPhone|iPod/.test(ua)) return true
+
+  return /Macintosh/.test(ua) && navigator.maxTouchPoints > 1
 }
 
 function subscribePreferences(listener: () => void) {
@@ -72,7 +86,7 @@ export function PostSpeech({
   const supported = useSyncExternalStore(
     subscribeSpeechSupport,
     speechSupported,
-    () => true,
+    () => false,
   )
   const rate = useSyncExternalStore(subscribePreferences, storedRate, () => 1)
   const voiceUri = useSyncExternalStore(
