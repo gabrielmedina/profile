@@ -46,4 +46,4 @@ specs/             decisões e backlog (este diretório)
 
 - Novas telas começam na rota (`app`) e empurram lógica para `features` / `lib`.
 - Renomeações devem preservar o vocabulário do domínio (`Post`, `PostSummary`, `PostArticle`, `PostList`, `PostItem`).
-- Analytics client-side em `src/lib/analytics.ts` é exceção documentada; evolução preferida: `src/components/analytics` ou `src/features/analytics` (ver backlog).
+- Analytics e clipboard no browser: `src/lib/track-attrs.ts` + `public/site.js` (sem SDK React). Page views via `src/components/analytics/page-view.tsx`.

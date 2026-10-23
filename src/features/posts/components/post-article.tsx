@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { Breadcrumbs } from '@/components/breadcrumbs/breadcrumbs'
 import { Markdown } from '@/components/markdown/markdown'
 import { formatDate } from '@/lib/format-date'
@@ -39,13 +38,12 @@ export function PostArticle({ post, related }: PostArticleProps) {
           <div className={styles.reading}>
             <p className={styles.author}>
               Por{' '}
-              <Link href="/" rel="author">
+              <a href="/" rel="author">
                 {site.name}
-              </Link>
+              </a>
             </p>
             <p className={styles.timeToRead}>{post.readingTime}</p>
             <PostSpeech
-              key={post.slug}
               title={post.title}
               description={post.description}
               content={post.content}

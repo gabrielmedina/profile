@@ -8,9 +8,8 @@ Itens descobertos na rodada inicial de SDD. Status: `feito` | `em progresso` | `
 | ------------------------------------------------------------- | --------------- | ------ |
 | Introduzir `specs/` e documentar decisões                     | README, 001–004 | feito  |
 | Extrair math de reading progress para util puro               | 002             | feito  |
-| Extrair clipboard para helper reutilizável                    | 002             | feito  |
 | Extrair ids de heading do markdown                            | 002             | feito  |
-| `TrackedLink` + `PostItem` como Server Component              | 002             | feito  |
+| `PostItem` / share como Server Component + `trackAttrs`       | 002             | feito  |
 | Hierarquia de headings na listagem e no footer                | 003             | feito  |
 | Assuntos do post como lista semântica                         | 003             | feito  |
 | Hierarquia `h2`/`h3` em listagem vs relacionados              | 003             | feito  |
@@ -27,7 +26,6 @@ Itens descobertos na rodada inicial de SDD. Status: `feito` | `em progresso` | `
 | Campo `updated` no frontmatter → `dateModified`                      | 003      | próximo | Hoje modified = published                                  |
 | Cover figure opcional no chrome do artigo                            | 003, 004 | depois  | Usar `post.image` + `next/image`, não só a 1ª imagem do MD |
 | Keywords como links / página de tag                                  | 003      | depois  | Só se houver navegação por assunto                         |
-| Mover `lib/analytics.ts` para analytics feature/component            | 001      | depois  | `lib/` fica mais isomorfo                                  |
 | `aria-label` pt-BR no theme switcher                                 | —        | próximo | Títulos hoje em inglês                                     |
 | Enclosure/imagem no RSS                                              | 003, 004 | depois  | Usar `post.image`                                          |
 | Testes unitários de `related`, `speech-text`, `image-size`, metadata | 002      | próximo | Ancorar SDD com regressão                                  |

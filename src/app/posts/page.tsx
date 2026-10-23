@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { TrackPageView } from '@/components/analytics/track-page-view'
+import { PageView } from '@/components/analytics/page-view'
 import { JsonLd } from '@/components/seo/json-ld'
 import { PostList } from '@/features/posts/components/post-list'
 import { getAllPosts } from '@/features/posts/posts'
@@ -20,7 +20,7 @@ export default async function PostsPage() {
   return (
     <>
       <JsonLd data={postsPageGraph(posts)} />
-      <TrackPageView event="opened-posts-page" />
+      <PageView event="opened-posts-page" />
       <PostList posts={posts} />
     </>
   )

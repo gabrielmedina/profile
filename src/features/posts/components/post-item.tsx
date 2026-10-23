@@ -1,5 +1,5 @@
-import { TrackedLink } from '@/components/analytics/tracked-link'
 import { formatDate } from '@/lib/format-date'
+import { trackAttrs } from '@/lib/track-attrs'
 import type { PostSummary } from '../types'
 import styles from './post-item.module.scss'
 
@@ -12,13 +12,12 @@ export function PostItem({ post, size = 'default' }: PostItemProps) {
   const Title = size === 'compact' ? 'h3' : 'h2'
 
   return (
-    <TrackedLink
+    <a
       href={`/posts/${post.slug}`}
       className={
         size === 'compact' ? `${styles.link} ${styles.compact}` : styles.link
       }
-      event="clicked-post-item"
-      properties={{ title: post.title }}
+      {...trackAttrs('clicked-post-item', { title: post.title })}
     >
       <Title className={styles.title}>{post.title}</Title>
       <p className={styles.description}>{post.description}</p>
@@ -27,6 +26,6 @@ export function PostItem({ post, size = 'default' }: PostItemProps) {
         <span aria-hidden="true"> · </span>
         <span>{post.readingTime}</span>
       </p>
-    </TrackedLink>
+    </a>
   )
 }

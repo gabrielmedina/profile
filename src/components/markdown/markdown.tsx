@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { textContent, uniqueHeadingId } from './heading-id'
@@ -35,24 +34,29 @@ export function Markdown({ source, images }: MarkdownProps) {
 
           const size = images?.[imageSrc]
 
-          if (!size) {
-            return (
-              // Remote or unsized markdown images keep the native tag.
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={imageSrc} alt={alt ?? ''} decoding="async" />
-            )
-          }
+          const priority = imageSrc === firstImage
 
           return (
-            <Image
-              src={imageSrc}
-              alt={alt ?? ''}
-              width={size.width}
-              height={size.height}
-              sizes="(min-width: 1200px) 1200px, 100vw"
-              priority={imageSrc === firstImage}
-              className={styles.media}
-            />
+            <>
+              {priority ? (
+                <link
+                  rel="preload"
+                  as="image"
+                  href={imageSrc}
+                  fetchPriority="high"
+                />
+              ) : null}
+              <img
+                src={imageSrc}
+                alt={alt ?? ''}
+                width={size?.width}
+                height={size?.height}
+                decoding="async"
+                loading={priority ? 'eager' : 'lazy'}
+                fetchPriority={priority ? 'high' : 'auto'}
+                className={size ? styles.media : undefined}
+              />
+            </>
           )
         },
       }}

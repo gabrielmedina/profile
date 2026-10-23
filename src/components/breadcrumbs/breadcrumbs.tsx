@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import styles from './breadcrumbs.module.scss'
 
 export type BreadcrumbItem = {
@@ -24,9 +23,9 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
                   {item.name}
                 </span>
               ) : (
-                <Link href={item.href} className={styles.link}>
+                <a href={item.href} className={styles.link}>
                   {item.name}
-                </Link>
+                </a>
               )}
             </li>
           )

@@ -1,8 +1,4 @@
-'use client'
-
-import { useEffect, useId, useState } from 'react'
-import { track } from '@/lib/analytics'
-import { writeClipboard } from '@/lib/clipboard'
+import { trackAttrs } from '@/lib/track-attrs'
 import { linkedInShareUrl, whatsAppShareUrl } from '../share-targets'
 import styles from './post-share.module.scss'
 
@@ -14,40 +10,9 @@ type PostShareProps = {
 }
 
 export function PostShare({ title, description, slug, url }: PostShareProps) {
-  const headingId = useId()
-  const [copied, setCopied] = useState(false)
-  const [copyAttempt, setCopyAttempt] = useState(0)
-  const [error, setError] = useState('')
+  const headingId = `compartilhar-${slug}`
   const whatsapp = whatsAppShareUrl({ title, description, url })
   const linkedin = linkedInShareUrl(url)
-
-  useEffect(() => {
-    if (copyAttempt === 0) return
-
-    const timeout = window.setTimeout(() => setCopied(false), 2400)
-
-    return () => window.clearTimeout(timeout)
-  }, [copyAttempt])
-
-  async function copyLink() {
-    setError('')
-
-    try {
-      await writeClipboard(url)
-      setCopied(true)
-      setCopyAttempt((attempt) => attempt + 1)
-      track('shared-post', { title, slug, channel: 'copy' })
-    } catch {
-      setCopied(false)
-      setError(
-        'Não consegui copiar daqui. O endereço continua na barra do navegador.',
-      )
-    }
-  }
-
-  function share(channel: 'whatsapp' | 'linkedin') {
-    track('shared-post', { title, slug, channel })
-  }
 
   return (
     <section className={styles.section} aria-labelledby={headingId}>
@@ -61,14 +26,13 @@ export function PostShare({ title, description, slug, url }: PostShareProps) {
         <li>
           <button
             type="button"
-            className={
-              copied ? `${styles.action} ${styles.copied}` : styles.action
-            }
-            onClick={copyLink}
+            className={styles.action}
+            data-copy={url}
+            {...trackAttrs('shared-post', { title, slug, channel: 'copy' })}
           >
             <LinkIcon />
-            <span aria-live="polite">
-              {copied ? 'Link copiado' : 'Copiar o link'}
+            <span aria-live="polite" data-copy-label>
+              Copiar o link
             </span>
           </button>
         </li>
@@ -78,7 +42,11 @@ export function PostShare({ title, description, slug, url }: PostShareProps) {
             href={whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => share('whatsapp')}
+            {...trackAttrs('shared-post', {
+              title,
+              slug,
+              channel: 'whatsapp',
+            })}
           >
             <WhatsAppIcon />
             WhatsApp
@@ -90,18 +58,18 @@ export function PostShare({ title, description, slug, url }: PostShareProps) {
             href={linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => share('linkedin')}
+            {...trackAttrs('shared-post', {
+              title,
+              slug,
+              channel: 'linkedin',
+            })}
           >
             <LinkedInIcon />
             LinkedIn
           </a>
         </li>
       </ul>
-      {error ? (
-        <p className={styles.error} role="status">
-          {error}
-        </p>
-      ) : null}
+      <p className={styles.error} data-copy-error hidden role="status" />
     </section>
   )
 }

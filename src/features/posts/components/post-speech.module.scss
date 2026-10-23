@@ -3,6 +3,12 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.15rem;
+
+  &[hidden],
+  .iconButton[hidden],
+  .panel[hidden] {
+    display: none !important;
+  }
 }
 
 .iconButton {
@@ -25,6 +31,18 @@
     width: 0.9rem;
     height: 0.9rem;
     fill: currentColor;
+  }
+
+  [data-icon='pause'] {
+    display: none;
+  }
+
+  &[aria-pressed='true'] [data-icon='play'] {
+    display: none;
+  }
+
+  &[aria-pressed='true'] [data-icon='pause'] {
+    display: block;
   }
 
   &:hover,
@@ -109,10 +127,6 @@
   }
 }
 
-.notice {
-  color: var(--color-text-ultra-light);
-}
-
 .live {
   position: absolute;
   width: 1px;
@@ -123,6 +137,17 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+
+  &[data-notice='true'] {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    color: var(--color-text-ultra-light);
+  }
 }
 
 @media screen and (min-width: 768px) {
