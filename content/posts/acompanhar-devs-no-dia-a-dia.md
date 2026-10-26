@@ -52,12 +52,10 @@ No dia a dia eu fico perto da tarefa. Dúvida de como fazer, um exemplo no códi
 
 Quando a pessoa trava, eu ajudo o suficiente para ela destravar e continuar. A implementação segue com ela, inclusive quando a primeira versão pede outra volta. Bug pequeno, uma primeira abordagem simples, review com pedido de mudança: tudo isso cabe. Eu explico o porquê, deixo ela aplicar e lembro o que já melhorou desde a última vez.
 
-## Um programa aberto, nesse tamanho
+## Um programa de evolução, nesse tamanho
 
-Tenho pensado em montar um programa aberto para mentorar devs front-end que queiram evoluir.
+Tenho pensado em montar um programa para mentorar devs front-end que queiram evoluir.
 
 No mesmo espírito. Entender o momento da pessoa, olhar o PDI que já existe ou apontar um com ela, conectar com produto e engenharia, e acompanhar no 1:1 e nas tarefas do dia. Inclusive na hora de ler o que a IA devolveu, com espaço para errar e com incentivo enquanto o critério amadurece.
 
 O protagonismo fica com quem está aprendendo. Eu ajudo a abrir o caminho e sigo junto.
-
-É nisso que eu estou pensando.
