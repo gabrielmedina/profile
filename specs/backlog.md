@@ -81,17 +81,20 @@ Ainda não implementadas. A onda 3 só fixa a árvore; estas decisões ficam par
 
 ## Próximas ondas
 
-| Item                                                                 | Spec     | Status  | Notas                                         |
-| -------------------------------------------------------------------- | -------- | ------- | --------------------------------------------- |
-| Cover figure opcional no chrome do artigo                            | 003, 004 | próximo | `post.image` + `next/image`                   |
-| Mostrar `<time>` de atualização no artigo quando houver `updated`    | 003      | próximo | UI alinhada ao SEO                            |
-| Enclosure/imagem no RSS                                              | 003, 004 | depois  | Usar `post.image`                             |
-| Testes unitários de `related`, `speech-text`, `image-size`, metadata | 002      | próximo | Ancorar SDD com regressão                     |
-| Política / sanitizer se `rehype-raw` sair de conteúdo só do repo     | 003      | depois  | Documentar trust model                        |
-| Cache helper de related posts por slug                               | 001      | depois  | Micro-otimização                              |
-| Placeholder blur em capas LCP                                        | 004      | depois  | Opcional                                      |
-| Checagem de tamanho de asset no CI                                   | 004      | depois  | Falhar build se OG > limiar                   |
-| Alinhar capas antigas ao fundo `#1a1d24`, variação por tema e logos  | 004      | feito   | Capas revisitadas com composição por metáfora |
+| Item                                                                 | Spec     | Status  | Notas                                           |
+| -------------------------------------------------------------------- | -------- | ------- | ----------------------------------------------- |
+| Cover figure opcional no chrome do artigo                            | 003, 004 | próximo | `post.image` + `next/image`                     |
+| Mostrar `<time>` de atualização no artigo quando houver `updated`    | 003      | próximo | UI alinhada ao SEO                              |
+| Enclosure/imagem no RSS                                              | 003, 004 | depois  | Usar `post.image`                               |
+| Testes unitários de `related`, `speech-text`, `image-size`, metadata | 002      | próximo | Ancorar SDD com regressão                       |
+| Política / sanitizer se `rehype-raw` sair de conteúdo só do repo     | 003      | depois  | Documentar trust model                          |
+| Cache helper de related posts por slug                               | 001      | depois  | Micro-otimização                                |
+| Placeholder blur em capas LCP                                        | 004      | depois  | Opcional                                        |
+| Checagem de tamanho de asset no CI                                   | 004      | depois  | Falhar build se OG > limiar                     |
+| Alinhar capas antigas ao fundo `#1a1d24`, variação por tema e logos  | 004      | feito   | Capas revisitadas com composição por metáfora   |
+| Página de mentoria, frase no post de liderança e linha no rodapé     | 005      | depois  | Exige preço e e-mail reais                      |
+| Frase de café com Pix depois do artigo                               | 005      | depois  | Exige chave ou link; sem SDK                    |
+| Bloco único de anúncio abaixo do artigo                              | 005      | depois  | Só com tráfego que pague script e consentimento |
 
 ## Critério para fechar um item
 
