@@ -335,7 +335,9 @@
 
   function articleContent(nav) {
     var frame = nav.closest('[data-article-frame]')
-    return frame && frame.querySelector('[data-article-content]')
+    if (!frame) return null
+    // The cover sits above the frame. Its height moves every heading.
+    return frame.parentElement || frame
   }
 
   function outlineHeading(link) {

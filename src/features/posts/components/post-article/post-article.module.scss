@@ -100,12 +100,19 @@
   }
 }
 
+.withOutline {
+  margin-top: 2rem;
+}
+
+[data-article-cover] + .withOutline {
+  margin-top: 0;
+}
+
 .withOutline .content {
   margin-top: 1.75rem;
 }
 
 .outline {
-  align-self: stretch;
   min-width: 0;
   min-height: 0;
 }
@@ -281,27 +288,6 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .withOutline {
-    display: grid;
-    grid-template-columns: minmax(0, 740px) 16.5rem;
-    column-gap: 2.75rem;
-    align-items: start;
-    justify-content: center;
-    margin-top: 2rem;
-  }
-
-  .withOutline .outline {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .withOutline .content {
-    grid-column: 1;
-    grid-row: 1;
-    max-width: none;
-    margin: 0;
-  }
-
   .content {
     img,
     iframe {
@@ -310,10 +296,16 @@
       border-radius: 4px;
     }
   }
+}
 
-  // The guide occupies the right side of the column. Wide images stay inside
-  // the text so they don't cover the links.
+@media screen and (min-width: 1400px) {
+  .withOutline {
+    position: relative;
+  }
+
   .withOutline .content {
+    margin-top: 0;
+
     img,
     iframe {
       width: 100%;
@@ -321,5 +313,15 @@
       margin-right: 0;
       margin-left: 0;
     }
+  }
+
+  // The guide starts with the text, after the cover, in the right gutter.
+  .withOutline .outline {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(50% + 370px + 2.5rem);
+    width: 15rem;
+    margin-top: 0;
   }
 }

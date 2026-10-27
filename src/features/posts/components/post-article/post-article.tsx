@@ -7,6 +7,7 @@ import { formatLongDate } from '@/lib/format/long-date'
 import type { Post, PostSummary } from '../../types'
 import { tagPath } from '../../utils/tags'
 import styles from './post-article.module.scss'
+import { splitLeadingCover } from './leading-cover'
 import { articleOutline } from '../post-outline/outline'
 import { PostOutline } from '../post-outline/post-outline'
 import { PostShare } from '../post-share/post-share'
@@ -21,6 +22,8 @@ type PostArticleProps = {
 
 export function PostArticle({ post, related }: PostArticleProps) {
   const outline = articleOutline(post.content)
+  const cover = splitLeadingCover(post.content)
+  const body = cover?.body ?? post.content
 
   return (
     <article lang={post.lang} className={styles.wrapper}>
@@ -60,6 +63,11 @@ export function PostArticle({ post, related }: PostArticleProps) {
             </time>
           </div>
 
+          {cover ? (
+            <div className={styles.content} data-article-cover="">
+              <Markdown source={cover.cover} images={post.images} />
+            </div>
+          ) : null}
           <div
             className={outline ? styles.withOutline : undefined}
             data-article-frame=""
@@ -70,7 +78,7 @@ export function PostArticle({ post, related }: PostArticleProps) {
               </div>
             ) : null}
             <div className={styles.content} data-article-content="">
-              <Markdown source={post.content} images={post.images} />
+              <Markdown source={body} images={post.images} priority={!cover} />
             </div>
           </div>
         </div>
