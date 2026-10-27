@@ -20,8 +20,6 @@
   min-width: 0;
   margin: 0;
   padding: 0;
-  // Extra room after the last chip so it can sit in the center, not on the edge.
-  padding-inline-end: calc(50% + 7.5rem);
   list-style: none;
   overflow-x: auto;
   overscroll-behavior-x: contain;

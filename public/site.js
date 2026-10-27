@@ -195,8 +195,7 @@
     }
 
     // fonts.ready resolves before the next layout. Measuring in that
-    // microtask centers the chip with fallback widths, then the real font
-    // leaves it short of the subject.
+    // microtask uses fallback widths, then the real font misses the chip.
     function scheduleReveal() {
       window.requestAnimationFrame(reveal)
     }
@@ -219,8 +218,9 @@
     list.addEventListener('touchstart', mark, { passive: true, once: true })
   }
 
-  // Move only the subject row. Centering the current chip keeps the page
-  // scroll where it is. A drag or wheel before the font swap wins.
+  // Move only the subject row. Park the current chip on the right edge when
+  // the real list is long enough; otherwise it stays where it already fits.
+  // A drag or wheel before the font swap wins.
   function scrollTagListToCurrent(list) {
     if (list.hasAttribute('data-tag-user-scroll')) return
 
@@ -230,12 +230,12 @@
     var item = current.closest('li') || current
     var listRect = list.getBoundingClientRect()
     var itemRect = item.getBoundingClientRect()
-    var target =
-      list.scrollLeft +
-      (itemRect.left - listRect.left) -
-      (listRect.width - itemRect.width) / 2
+    var fits = itemRect.width <= listRect.width
+    var edge = fits
+      ? itemRect.right - listRect.right
+      : itemRect.left - listRect.left
     var max = Math.max(0, list.scrollWidth - list.clientWidth)
-    var next = clamp(target, 0, max)
+    var next = clamp(list.scrollLeft + edge, 0, max)
 
     if (Math.abs(next - list.scrollLeft) < 1) return
 
