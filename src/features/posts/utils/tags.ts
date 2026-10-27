@@ -76,6 +76,13 @@ const catalog: readonly CatalogTag[] = [
     ],
   },
   {
+    slug: 'typescript',
+    name: 'TypeScript',
+    description:
+      'Tipos como contrato no front-end: props, estados, fronteiras de dado e o feedback que o editor e o compilador dão no dia a dia.',
+    aliases: ['typescript', 'ts'],
+  },
+  {
     slug: 'monorepos',
     name: 'Monorepos',
     description:
