@@ -92,6 +92,15 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
+        {/* Lightning CSS rewrites `-webkit-text-size-adjust` to `-moz-text-size-adjust`.
+            Safari inflates a `pre` with a long line unless it sees the WebKit prefix,
+            and it ignores `none` — `100%` keeps the authored size. */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              'html,pre,code,pre [data-line],pre span{-webkit-text-size-adjust:100% !important}',
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{ __html: documentBootScript(analyticsKey) }}
         />

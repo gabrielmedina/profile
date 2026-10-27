@@ -126,9 +126,9 @@
   line-height: 1.55;
   max-width: 100%;
   overflow-x: auto;
-  // Same authored size on every block. iOS text autosizing skips `text-size-adjust` inherited from `html` inside `pre`.
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
+  // Same authored size on every block. iOS ignores `none` and a value inherited from `html`.
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 
   code {
     display: grid;
@@ -146,8 +146,8 @@
   :global([data-line]),
   span {
     font-size: inherit;
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   :global([data-line]) {
