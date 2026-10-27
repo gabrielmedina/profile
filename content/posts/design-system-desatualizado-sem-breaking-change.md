@@ -8,7 +8,7 @@ lang: pt-BR
 date: '2026-10-25'
 ---
 
-![Capa: cartões apagados ligados por uma linha e um cartão iluminado com uma estrela, com uma fissura sugerindo risco de breaking change.](/imgs/posts/design-system-desatualizado.webp)
+![Capa: grade de peças de vidro; uma delas rachada e apagada, sugerindo breaking change.](/imgs/posts/design-system-desatualizado.webp)
 
 Um design system que não evolui deixa de ser acelerador e vira atrito. Um design system que só evolui por breaking change deixa de ser contrato e vira fila de migração.
 

@@ -85,7 +85,7 @@ Ainda não implementadas. A onda 3 só fixa a árvore; estas decisões ficam par
 | Cache helper de related posts por slug                               | 001      | depois  | Micro-otimização            |
 | Placeholder blur em capas LCP                                        | 004      | depois  | Opcional                    |
 | Checagem de tamanho de asset no CI                                   | 004      | depois  | Falhar build se OG > limiar |
-| Alinhar capas antigas ao fundo `#1a1d24` e à regra de logo oficial   | 004      | depois  | Só novas capas já seguem; backfill opcional |
+| Alinhar capas antigas ao fundo `#1a1d24`, variação por tema e logos  | 004      | feito   | Capas revisitadas com composição por metáfora |
 
 ## Critério para fechar um item
 

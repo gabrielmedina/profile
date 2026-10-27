@@ -41,26 +41,50 @@ O nome do arquivo no frontmatter e no markdown não precisa coincidir, mas o fro
 - Tamanhos lidos no servidor e anexados em `post.images`.
 - Sem width/height conhecidos → não inventar; usar fallback documentado ou corrigir o asset.
 
-### Geração de capas (padrão visual)
+### Geração de capas (família visual, composição por tema)
 
-Capas de post seguem o mesmo sistema visual da série (plano atmosférico + cartões de vidro / âncora iluminada). A geração **não** inventa identidade de marca alheia nem troca a atmosfera a cada artigo.
+Capas compartilham uma **família** minimalista — não um template único. Fundo, material e tipografia de marca se repetem; **formas e ligações mudam com o post**.
 
-1. **Logo oficial quando a tecnologia existe.** Se o post trata de uma lib, linguagem, API ou produto com branding público (TypeScript, React, etc.), a marca na capa vem do **kit/branding oficial** (ex.: [TypeScript Branding](https://www.typescriptlang.org/branding/)). Não redesenhar, não distorcer o desenho das letras, não fundir a logo no “logo do site”.
-2. **Compor sobre o nosso padrão — sem quadrado-sobre-quadrado.** Mantém-se a composição da série (fundo + cartões / linha / âncora). A marca entra por **composição** no cartão iluminado. Se o container já é o nosso quadrado/cartão de vidro, **não** empilhar a logo com fundo próprio (o quadrado azul do TypeScript, o escudo de outra marca, etc.). Preferir, nesta ordem:
-   1. **só a escrita / monograma** do asset oficial (letras “TS”, wordmark, glyph cutout) em branco ou tom único sobre o cartão;
-   2. **logo completa com tratamento** — preto e branco, monocromático ou overlay suave — para a marca não brigar com o vidro;
-   3. só então a marca colorida full-bleed, e **somente** se ela for a âncora sozinha (sem nosso quadrado por baixo).
-3. **Fundo estável entre capas.** O fundo das capas usa um tom fixo da série, ligeiramente distinto do `--color-background` dark do site (`#16161b`), para a capa não “sumir” no chrome — mas **não** varia de post para post. Cor-alvo da série: **`#1a1d24`** (slate escuro). Evitar teal, navy saturado, roxo ou gradientes de marca diferentes a cada geração. Variação permitida: luz/vinheta da âncora; o campo de fundo permanece o mesmo.
-4. **Sem tipografia inventada da marca.** Nada de monograma “aproximado”, wordmark recriado ou ícone “inspirado”. Ou é o asset oficial (letras/logo), ou a capa fica só com o padrão abstrato da série (estrela / cartão), sem fingir a marca.
-5. **Prompt / checklist de geração.** Ao pedir ou montar uma capa:
-   - referenciar 1–2 capas existentes da série;
-   - fixar o hex do fundo (`#1a1d24`);
-   - se houver marca: baixar o asset oficial; deixar a âncora limpa no prompt da base; compor **letras/wordmark** (ou logo filtrada) **centralizada** no cartão — sem placa/fundo extra atrás da escrita; escala menor e padding generoso quando o nosso quadrado for maior que o da marca;
-   - exportar o par WebP (corpo) + JPEG leve (OG) em ~1200×674 (ou equivalente 16:9 da série), ≤ ~100 KB no social.
+#### Família (estável)
+
+- Fundo: **`#1a1d24`** (slate escuro, distinto do `--color-background` dark `#16161b`). Não variar o campo de fundo entre posts.
+- Material: vidro fosco / nós luminosos / acento mint-teal suave. Sem roxo, sem glow de marca alheia, sem clutter.
+- Export: ~1200×674 (16:9), WebP no corpo + JPEG leve no OG (≤ ~100 KB social).
+
+#### Composição (varia por post)
+
+1. **Ler o tema antes de desenhar.** A geometria deve ecoar a ideia do artigo — não repetir “três cartões + linha + estrela” por padrão.
+2. **Formas e ligações com intenção.** Exemplos (não checklist obrigatória):
+   - sequência / migração → trilha, arco, antes→depois;
+   - monorepo / fronteiras → hub + pacotes, anéis de limite;
+   - aceleração → trajetória diagonal, nó à frente;
+   - decisão escrita → painel/documento como âncora, satélite perto;
+   - mentoria → de contorno guiado a nó autônomo;
+   - design system / breaking → grade de peças, uma com fissura vs evolução;
+   - escolha técnica (ex.: Context vs Query) → bifuração ou um caminho aceso e outros apagados.
+3. **Evitar série clone.** Se duas capas consecutivas usam a mesma estrutura (fila horizontal de cards + estrela), redesenhar uma delas.
+4. **Minimalismo.** Poucos elementos, um foco, sem texto inventado, sem ilustração narrativa densa.
+
+#### Logos oficiais
+
+1. Se o post trata de lib/linguagem/API/produto com branding público, usar asset do **kit oficial** (ex.: [TypeScript Branding](https://www.typescriptlang.org/branding/)).
+2. Não redesenhar, não distorcer letras, não fundir no logo do site.
+3. Com o nosso container (cartão/nó de vidro): **não** empilhar logo com fundo próprio (quadrado azul TS, escudo, etc.). Preferir:
+   1. escrita / monograma / glyph cutout em branco ou tom único, **centralizado**;
+   2. logo completa em P&B / monocromático / overlay;
+   3. marca colorida full-bleed só se for a âncora sozinha (sem nosso quadrado por baixo).
+4. Sem monograma “aproximado”: ou asset oficial, ou abstrato puro.
+
+#### Checklist de geração
+
+- Definir em uma frase a metáfora geométrica do post.
+- Fixar fundo `#1a1d24`; comparar com 1–2 capas vizinhas e mudar a estrutura se estiver clone.
+- Se houver marca: baixar oficial → compor letras/filtro no foco → centralizar com padding generoso.
+- Atualizar o `alt` do Markdown para descrever a composição real (não um template genérico).
 
 ## Consequências
 
 - Novos posts entram no repo já com par jpg + webp (ou só webp leve se o jpg for desnecessário).
 - CI / checklist humano: rejeitar PNG de capa > ~100 KB no frontmatter.
 - Cover figure opcional no chrome do artigo (fora do markdown) continua no backlog; quando existir, usa o mesmo `post.image` + `next/image`.
-- Posts sobre tecnologia/lib existente preferem marca oficial composta (escrita/monograma ou logo filtrada quando o container é nosso); o fundo das capas da série permanece `#1a1d24` salvo decisão explícita de mudar a série inteira.
+- Capas da série compartilham atmosfera (`#1a1d24` + minimalismo); a composição é escolhida pelo tema. Tecnologia/lib existente leva marca oficial composta (escrita ou filtrada quando o container é nosso).

@@ -8,7 +8,7 @@ lang: pt-BR
 date: '2026-10-21'
 ---
 
-![Capa: um quadrado central ligado a três quadrados ao redor, em verde sobre fundo escuro.](/imgs/posts/referencia-tecnica.webp)
+![Capa: nó central iluminado ligado em radial a três nós menores.](/imgs/posts/referencia-tecnica.webp)
 
 Nos últimos tempos, tenho vivenciado uma dinâmica interessante como Senior Front-end Engineer no Grupo SBF: atuar de forma cross-team, colaborando com diferentes squads conforme as necessidades e prioridades dos produtos.
 

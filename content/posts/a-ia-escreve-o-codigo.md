@@ -8,7 +8,7 @@ lang: pt-BR
 date: '2026-10-22'
 ---
 
-![Capa: três cartões apagados ao longo de uma linha e um cartão iluminado com uma estrela.](/imgs/posts/a-ia-escreve-o-codigo.webp)
+![Capa: linhas abstratas de código com um cursor iluminado no meio.](/imgs/posts/a-ia-escreve-o-codigo.webp)
 
 Durante muito tempo, uma parte importante do nosso trabalho foi transformar ideias e requisitos em código. Pensávamos na solução, definíamos a estrutura e passávamos horas implementando cada parte.
 
