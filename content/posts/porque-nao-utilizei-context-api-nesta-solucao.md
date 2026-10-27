@@ -8,7 +8,7 @@ lang: pt-BR
 date: '2026-10-21'
 ---
 
-![Capa: um cartão iluminado com uma estrela e três cartões apagados ao fundo.](/imgs/posts/nao-usar-context-api.webp)
+![Capa: bifuração com um caminho aceso até um nó de vidro com a logo React em branco; os outros ramos ficam apagados.](/imgs/posts/nao-usar-context-api.webp)
 
 Recentemente, numa funcionalidade de Front-end, vários componentes precisavam do mesmo dado que a API devolvia. O caminho mais familiar era abrir um Context. Nesta solução, não utilizei.
 

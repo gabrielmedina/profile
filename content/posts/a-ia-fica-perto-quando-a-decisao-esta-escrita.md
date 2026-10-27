@@ -8,7 +8,7 @@ lang: pt-BR
 date: '2026-10-22'
 ---
 
-![Capa: três cartões de vidro ligados por uma linha, o do centro aceso com uma estrela.](/imgs/posts/a-ia-fica-perto-quando-a-decisao-esta-escrita.webp)
+![Capa: painel de decisão escrita ao centro e um nó satélite perto, ligado por um fio curto.](/imgs/posts/a-ia-fica-perto-quando-a-decisao-esta-escrita.webp)
 
 No [Raise Clubs](https://raiseclubs.com) eu tenho testado uma pergunta que vale para qualquer front-end com IA: como o modelo evolui o produto e ainda entrega o front-end que eu espero.
 

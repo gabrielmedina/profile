@@ -8,7 +8,7 @@ lang: pt-BR
 date: '2026-10-27'
 ---
 
-![Capa: cartões apagados ligados por uma linha e um cartão iluminado com uma estrela, sugerindo a troca de Date por Temporal.](/imgs/posts/javascript-temporal-esta-chegando.webp)
+![Capa: arco temporal com marcas de relógio e o monograma JS oficial em branco no centro.](/imgs/posts/javascript-temporal-esta-chegando.webp)
 
 Quem desenvolve para a web já teve, em algum momento, uma conversa difícil com `Date`. Parsing inconsistente. Objeto mutável. Fuso horário incompleto. Cálculo atravessando horário de verão que “funciona no meu notebook” e falha em produção.
 

@@ -8,7 +8,7 @@ lang: pt-BR
 date: '2026-10-26'
 ---
 
-![Capa: à esquerda, um cartão ainda dentro de um contorno; à direita, no fim da linha, um cartão aceso seguindo sozinho.](/imgs/posts/acompanhar-devs-no-dia-a-dia.webp)
+![Capa: à esquerda, nó ainda dentro de um contorno guia; à direita, nó aceso caminhando sozinho.](/imgs/posts/acompanhar-devs-no-dia-a-dia.webp)
 
 Quando penso em acompanhar devs, penso em algo pequeno. Uma pessoa por perto, com paciência para a falha e vontade de ver a próxima tentativa.
 

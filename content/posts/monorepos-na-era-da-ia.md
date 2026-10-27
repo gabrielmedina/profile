@@ -8,7 +8,7 @@ lang: pt-BR
 date: '2026-10-26'
 ---
 
-![Capa: um cartão central aceso ligado a cartões menores, um deles com uma estrela.](/imgs/posts/monorepos-na-era-da-ia.webp)
+![Capa: hub central com anel de fronteira e pacotes ao redor ligados por raios curtos.](/imgs/posts/monorepos-na-era-da-ia.webp)
 
 A inteligência artificial lê o repositório antes de escrever a próxima linha. Quando o código, a convenção e o contexto do negócio estão no mesmo lugar, o modelo chega mais perto do que o time já decidiu. Quando cada pedaço mora num repositório diferente, ele completa a lacuna com um padrão que o projeto não usa.
 

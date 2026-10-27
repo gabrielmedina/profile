@@ -8,7 +8,7 @@ lang: pt-BR
 date: '2026-10-21'
 ---
 
-![Capa: dois cartões translúcidos ligados por uma linha, com uma estrela no cartão da frente.](/imgs/posts/ia-acelera-o-desenvolvimento.webp)
+![Capa: trajetória diagonal ascendente de nós de vidro, o da frente mais iluminado.](/imgs/posts/ia-acelera-o-desenvolvimento.webp)
 
 Recentemente, participei da construção de uma funcionalidade Front-end e tive a oportunidade de aplicar algumas práticas que considero fundamentais para equilibrar velocidade, qualidade e previsibilidade.
 
