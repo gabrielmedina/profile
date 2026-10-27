@@ -1,9 +1,11 @@
+import { trackAttrs } from '@/components/analytics/track-attrs'
 import { Breadcrumbs } from '@/components/breadcrumbs/breadcrumbs'
 import { Markdown } from '@/components/markdown/markdown'
 import { absoluteUrl } from '@/config/absolute-url'
 import { site } from '@/config/site'
 import { formatLongDate } from '@/lib/format/long-date'
 import type { Post, PostSummary } from '../../types'
+import { tagPath } from '../../utils/tags'
 import styles from './post-article.module.scss'
 import { PostShare } from '../post-share/post-share'
 import { PostSpeech } from '../post-speech/post-speech'
@@ -66,12 +68,23 @@ export function PostArticle({ post, related }: PostArticleProps) {
           url={absoluteUrl(`/posts/${post.slug}`)}
         />
 
-        {post.keywords.length > 0 ? (
+        {post.tags.length > 0 ? (
           <footer className={styles.footer}>
             <h2 className={styles.keywordsHeading}>Assuntos</h2>
             <ul className={styles.keywords}>
-              {post.keywords.map((keyword) => (
-                <li key={keyword}>{keyword}</li>
+              {post.tags.map((tag) => (
+                <li key={tag.slug}>
+                  <a
+                    href={tagPath(tag.slug)}
+                    rel="tag"
+                    {...trackAttrs('clicked-subject', {
+                      title: tag.name,
+                      slug: tag.slug,
+                    })}
+                  >
+                    {tag.name}
+                  </a>
+                </li>
               ))}
             </ul>
           </footer>

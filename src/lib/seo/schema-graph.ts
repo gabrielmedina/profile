@@ -14,6 +14,11 @@ type PostListItem = {
   slug: string
 }
 
+type ArticleTag = {
+  name: string
+  slug: string
+}
+
 type ArticleData = {
   title: string
   description: string
@@ -21,11 +26,17 @@ type ArticleData = {
   date: string
   updated?: string
   lang: string
-  keywords: string[]
+  tags: ArticleTag[]
   wordCount: number
   image?: string
   imageWidth?: number
   imageHeight?: number
+}
+
+type SubjectData = {
+  name: string
+  slug: string
+  description: string
 }
 
 export function websiteGraph() {
@@ -83,6 +94,75 @@ export function postsPageGraph(posts: PostListItem[]) {
   }
 }
 
+export function subjectsPageGraph(tags: SubjectData[]) {
+  const url = absoluteUrl(site.subjects.path)
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': `${url}#page`,
+        url,
+        name: `${site.subjects.title} - ${site.name}`,
+        description: site.subjects.description,
+        inLanguage: site.language,
+        isPartOf: { '@id': websiteId },
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: tags.length,
+          itemListElement: tags.map((tag, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: tag.name,
+            description: tag.description,
+            url: absoluteUrl(subjectPath(tag.slug)),
+          })),
+        },
+      },
+      breadcrumbList([
+        { name: 'Início', path: '/' },
+        { name: site.subjects.title, path: site.subjects.path },
+      ]),
+    ],
+  }
+}
+
+export function subjectPageGraph(tag: SubjectData, posts: PostListItem[]) {
+  const url = absoluteUrl(subjectPath(tag.slug))
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': `${url}#page`,
+        url,
+        name: `${tag.name} - ${site.name}`,
+        description: tag.description,
+        inLanguage: site.language,
+        isPartOf: { '@id': websiteId },
+        about: definedTerm(tag),
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: posts.length,
+          itemListElement: posts.map((post, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: post.title,
+            url: absoluteUrl(`/posts/${post.slug}`),
+          })),
+        },
+      },
+      breadcrumbList([
+        { name: 'Início', path: '/' },
+        { name: site.subjects.title, path: site.subjects.path },
+        { name: tag.name, path: subjectPath(tag.slug) },
+      ]),
+    ],
+  }
+}
+
 export function postPageGraph(post: ArticleData) {
   const url = absoluteUrl(`/posts/${post.slug}`)
   const image = absoluteUrl(post.image ?? site.image.url)
@@ -108,8 +188,9 @@ export function postPageGraph(post: ArticleData) {
         inLanguage: post.lang,
         author: authorNode(),
         publisher: authorNode(),
-        keywords: post.keywords.join(', '),
-        articleSection: post.keywords[0],
+        keywords: post.tags.map((tag) => tag.name).join(', '),
+        articleSection: post.tags[0]?.name,
+        about: post.tags.map((tag) => definedTerm(tag)),
         wordCount: post.wordCount,
         isAccessibleForFree: true,
       },
@@ -150,6 +231,19 @@ function personNode() {
       '@type': 'PostalAddress',
       addressCountry: 'BR',
     },
+  }
+}
+
+function subjectPath(slug: string) {
+  return `${site.subjects.path}/${slug}`
+}
+
+function definedTerm(tag: ArticleTag) {
+  return {
+    '@type': 'DefinedTerm',
+    name: tag.name,
+    url: absoluteUrl(subjectPath(tag.slug)),
+    inDefinedTermSet: absoluteUrl(site.subjects.path),
   }
 }
 

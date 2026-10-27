@@ -38,7 +38,7 @@ src/features/<domínio>/
 - Arquivos e pastas em **kebab-case** (`post-article.tsx`, `reading-progress.ts`).
 - Componente de feature: `src/features/<domínio>/components/<nome>/<nome>.tsx` mais o SCSS module ao lado. Helper privado (URL de share, chrome de speech) mora nessa mesma pasta. Não criar `index.ts`.
 - I/O do domínio: `src/features/<domínio>/services/` (`posts.ts`, `image-size.ts`, `get-profile.ts`).
-- Regra pura do domínio: `src/features/<domínio>/utils/` (`related.ts`, `keywords.ts`, `speech-text.ts`).
+- Regra pura do domínio: `src/features/<domínio>/utils/` (`related.ts`, `keywords.ts`, `tags.ts`, `speech-text.ts`).
 - Hooks de cliente: `src/features/<domínio>/hooks/use-<nome>.ts`, e só a partir do primeiro hook. Interação que cabe em `public/*.js` não ganha hook React.
 - `types.ts` fica na raiz da feature enquanto for um único módulo de contrato. Um segundo arquivo de tipos abre `types/`, não volta a espalhar `.ts` na raiz.
 - UI compartilhada: um diretório por componente em `src/components/<nome>/`, com SCSS co-localizado. Helper que só esse componente usa fica na mesma pasta.

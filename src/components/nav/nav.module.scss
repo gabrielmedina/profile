@@ -18,7 +18,7 @@
 .list {
   margin: 0;
   display: flex;
-  gap: 2rem;
+  gap: 1.25rem;
   align-items: center;
   justify-content: center;
   padding: 0;
@@ -63,7 +63,9 @@
 }
 
 :global(html[data-path='/']) .link[href='/'],
-:global(html[data-path^='/posts']) .link[href='/posts'] {
+:global(html[data-path^='/posts']) .link[href='/posts'],
+:global(html[data-path='/assuntos']) .link[href='/assuntos'],
+:global(html[data-path^='/assuntos/']) .link[href='/assuntos'] {
   &:after {
     width: 100%;
   }
