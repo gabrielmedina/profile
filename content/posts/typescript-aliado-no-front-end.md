@@ -14,7 +14,7 @@ No front-end, o bug caro quase nunca é “o botão não renderizou”. É a pro
 
 TypeScript não elimina esse risco sozinho. Mas muda **quando** você encontra o problema: do runtime do usuário para o editor e o compilador. O [Handbook](https://www.typescriptlang.org/docs/handbook/2/basic-types.html) descreve isso de forma direta — um type-checker estático faz previsões sobre o código **antes** de ele rodar.
 
-Na minha opinião, esse é o valor real no dia a dia: menos folklore de “funciona na minha máquina”, mais contrato explícito entre componente, feature e dado.
+Na minha opinião, esse é o valor real no dia a dia: menos “funciona na minha máquina”, mais contrato explícito entre componente, feature e dado.
 
 ## O que o TypeScript realmente entrega
 
