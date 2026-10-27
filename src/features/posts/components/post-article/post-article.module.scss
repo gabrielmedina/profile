@@ -147,29 +147,11 @@
     }
   }
 
-  code {
+  :not(pre) > code {
     padding: 0.2em 0.3em;
     font-size: 0.8em;
     border-radius: 4px;
     background-color: var(--color-code-background);
-  }
-
-  > pre {
-    margin-bottom: 2rem;
-    color: var(--color-code);
-    font-size: 0.7em;
-    padding: 1.6rem;
-    line-height: 1.4;
-    border-radius: 4px;
-    background-color: var(--color-code-background);
-    overflow-x: auto;
-
-    > code {
-      font-size: 1em;
-      padding: unset;
-      border-radius: unset;
-      background-color: unset;
-    }
   }
 
   img,
@@ -274,11 +256,6 @@
     > ol,
     > ul {
       margin: 0 0 2rem;
-    }
-
-    > pre {
-      margin-bottom: 2.6rem;
-      font-size: 0.7em;
     }
 
     img,

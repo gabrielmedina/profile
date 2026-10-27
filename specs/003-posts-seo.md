@@ -56,6 +56,7 @@ Posts são o conteúdo indexável do site. Metadata, JSON-LD e markup precisam c
 
 - Fonte confiável: arquivos versionados em `content/posts` (autor do repo).
 - `rehype-raw` só enquanto essa premissa valer; se a fonte mudar, exigir sanitização (backlog).
+- Blocos fenced no Markdown: highlight no servidor com Shiki (`rehype-pretty-code`), tema duplo alinhado a `.tokens-light` / `.tokens-dark`, chrome com linguagem e botão Copiar via `data-copy-code` em `public/site.js` (sem React client). Inline `code` permanece com o estilo do artigo.
 
 ## Consequências
 
