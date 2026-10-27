@@ -18,6 +18,7 @@ type MarkdownImage = {
 type MarkdownProps = {
   source: string
   images?: Record<string, MarkdownImage>
+  priority?: boolean
 }
 
 type PreProps = ComponentPropsWithoutRef<'pre'> & {
@@ -28,13 +29,19 @@ type FigureProps = ComponentPropsWithoutRef<'figure'> & {
   'data-rehype-pretty-code-figure'?: string
 }
 
-export async function Markdown({ source, images }: MarkdownProps) {
+export async function Markdown({
+  source,
+  images,
+  priority = true,
+}: MarkdownProps) {
   // Shiki touches Date.now(); cache keeps prerender deterministic.
   'use cache'
   cacheLife('max')
 
   const usedIds = new Map<string, number>()
-  const firstImage = /!\[[^\]]*]\(([^)\s]+)\)/.exec(source)?.[1]
+  const firstImage = priority
+    ? /!\[[^\]]*]\(([^)\s]+)\)/.exec(source)?.[1]
+    : undefined
 
   return (
     <MarkdownAsync

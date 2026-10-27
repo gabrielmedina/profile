@@ -100,6 +100,23 @@
   }
 }
 
+.withOutline {
+  margin-top: 2rem;
+}
+
+[data-article-cover] + .withOutline {
+  margin-top: 0;
+}
+
+.withOutline .content {
+  margin-top: 1.75rem;
+}
+
+.outline {
+  min-width: 0;
+  min-height: 0;
+}
+
 .content {
   margin: 3rem auto 0;
   color: var(--color-text);
@@ -278,5 +295,33 @@
       margin: 3.6rem -230px;
       border-radius: 4px;
     }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .withOutline {
+    position: relative;
+  }
+
+  .withOutline .content {
+    margin-top: 0;
+
+    img,
+    iframe {
+      width: 100%;
+      max-width: 100%;
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  // The guide starts with the text, after the cover, in the right gutter.
+  .withOutline .outline {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(50% + 370px + 2.5rem);
+    width: 15rem;
+    margin-top: 0;
   }
 }

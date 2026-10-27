@@ -7,6 +7,9 @@ import { formatLongDate } from '@/lib/format/long-date'
 import type { Post, PostSummary } from '../../types'
 import { tagPath } from '../../utils/tags'
 import styles from './post-article.module.scss'
+import { splitLeadingCover } from './leading-cover'
+import { articleOutline } from '../post-outline/outline'
+import { PostOutline } from '../post-outline/post-outline'
 import { PostShare } from '../post-share/post-share'
 import { PostSpeech } from '../post-speech/post-speech'
 import { ReadingProgress } from '../reading-progress/reading-progress'
@@ -18,6 +21,10 @@ type PostArticleProps = {
 }
 
 export function PostArticle({ post, related }: PostArticleProps) {
+  const outline = articleOutline(post.content)
+  const cover = splitLeadingCover(post.content)
+  const body = cover?.body ?? post.content
+
   return (
     <article lang={post.lang} className={styles.wrapper}>
       <div className={styles.container}>
@@ -56,8 +63,23 @@ export function PostArticle({ post, related }: PostArticleProps) {
             </time>
           </div>
 
-          <div className={styles.content}>
-            <Markdown source={post.content} images={post.images} />
+          {cover ? (
+            <div className={styles.content} data-article-cover="">
+              <Markdown source={cover.cover} images={post.images} />
+            </div>
+          ) : null}
+          <div
+            className={outline ? styles.withOutline : undefined}
+            data-article-frame=""
+          >
+            {outline ? (
+              <div className={styles.outline}>
+                <PostOutline sections={outline} slug={post.slug} />
+              </div>
+            ) : null}
+            <div className={styles.content} data-article-content="">
+              <Markdown source={body} images={post.images} priority={!cover} />
+            </div>
           </div>
         </div>
 

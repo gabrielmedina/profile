@@ -36,6 +36,7 @@ Componentes de UI acumulam regras (clipboard, speech synthesis, progresso de lei
 ## Consequências
 
 - Speech: markup em `PostSpeech` + `components/post-speech/speech-chrome.ts`; texto falado em `utils/speech-text.ts`; runtime em `public/speech.js` (lazy). Não recriar player com hook React.
+- Guia do artigo: markup em `PostOutline`; a árvore em `components/post-outline/outline.ts` reutiliza `uniqueHeadingId` para o `href` bater com o `id` do heading. A seção corrente e abrir/fechar subseções ficam em `public/site.js` (`data-article-outline`). Sem hook React. Sem script, as subseções continuam visíveis.
 - Math de reading progress fica em `utils/reading-progress.ts`. Ids de heading do markdown ficam no helper puro ao lado de `Markdown`.
 - A barra de progresso acompanha o scroll no compositor (`view-timeline` no trecho do artigo, `animation-range: contain`, `scaleX`). Medir o layout e animar `width` a cada frame força reflow e faz a barra travar. `public/site.js` só relê a geometria fora do scroll; sem scroll-driven animations, escreve `scaleX`.
 - Testes unitários miram utils/hooks, não o JSX.
