@@ -13,7 +13,7 @@ Componentes de UI acumulam regras (clipboard, speech synthesis, progresso de lei
 - Markup semântico e classes de estilo
 - Composição de outros componentes
 - Props tipadas já resolvidas (dados prontos)
-- Atributos declarativos para o script do site (`data-track`, `data-copy`, `data-speech`) via helpers como `trackAttrs`
+- Atributos declarativos para o script do site (`data-track`, `data-copy`, `data-copy-code`, `data-speech`) via helpers como `trackAttrs`
 
 ### O que deve viver fora
 
@@ -29,7 +29,7 @@ Componentes de UI acumulam regras (clipboard, speech synthesis, progresso de lei
 ### Regras práticas
 
 1. Se um `.tsx` de apresentação passa de ~150–200 linhas por lógica (não por markup), extrair.
-2. `'use client'` no menor pedaço possível. Lista de posts e compartilhar **não** viram client por analytics — usam `data-track` / `data-copy`.
+2. `'use client'` no menor pedaço possível. Lista de posts, compartilhar e copiar código **não** viram client por analytics/clipboard — usam `data-track` / `data-copy` / `data-copy-code`.
 3. Ícones SVG inline podem ficar no componente de UI; a lógica ao redor não.
 4. Páginas em `app/` recebem dados tipados e renderizam features; não calculam related posts “na mão” além de chamar a função do domínio.
 

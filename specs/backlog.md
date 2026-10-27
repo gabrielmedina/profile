@@ -67,6 +67,12 @@ Ainda não implementadas. A onda 3 só fixa a árvore; estas decisões ficam par
 | Filtro de assuntos em `/posts` e links `rel="tag"` no artigo   | 003  | feito  |
 | Sitemap e `BlogPosting.about` apontam para a página do assunto | 003  | feito  |
 
+## Onda 6
+
+| Item                                                                            | Spec     | Status |
+| ------------------------------------------------------------------------------- | -------- | ------ |
+| Blocos de código com highlight (Shiki) + copiar (`data-copy-code` em `site.js`) | 002, 003 | feito  |
+
 ## Próximas ondas
 
 | Item                                                                 | Spec     | Status  | Notas                       |

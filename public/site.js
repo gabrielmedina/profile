@@ -29,9 +29,16 @@
     if (!node || !node.closest) return
 
     var tracked = node.closest('[data-track]')
-    if (tracked && !tracked.hasAttribute('data-copy')) {
+    if (
+      tracked &&
+      !tracked.hasAttribute('data-copy') &&
+      !tracked.hasAttribute('data-copy-code')
+    ) {
       site.track(tracked.getAttribute('data-track'), readProps(tracked))
     }
+
+    var copyCode = node.closest('[data-copy-code]')
+    if (copyCode) copyCodeBlock(copyCode)
 
     var copy = node.closest('[data-copy]')
     if (copy) copyUrl(copy)
@@ -375,6 +382,36 @@
           error.hidden = false
           error.textContent =
             'Não consegui copiar daqui. O endereço continua na barra do navegador.'
+        }
+      },
+    )
+  }
+
+  function copyCodeBlock(button) {
+    var block = button.closest('[data-code-block]')
+    var code = block && block.querySelector('pre code')
+    var text = code ? code.textContent || '' : ''
+    var label = button.querySelector('[data-copy-label]')
+    var error = block && block.querySelector('[data-copy-error]')
+
+    writeClipboard(text).then(
+      function () {
+        button.setAttribute('data-copied', 'true')
+        if (label) label.textContent = 'Copiado'
+        if (error) error.hidden = true
+        window.clearTimeout(button._copyTimer)
+        button._copyTimer = window.setTimeout(function () {
+          button.removeAttribute('data-copied')
+          if (label) label.textContent = 'Copiar'
+        }, 2400)
+      },
+      function () {
+        button.removeAttribute('data-copied')
+        if (label) label.textContent = 'Copiar'
+        if (error) {
+          error.hidden = false
+          error.textContent =
+            'Não consegui copiar o código. Selecione o trecho e copie manualmente.'
         }
       },
     )
