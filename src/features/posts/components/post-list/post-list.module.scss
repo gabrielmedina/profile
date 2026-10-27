@@ -21,11 +21,13 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-width: 0;
   max-width: 1200px;
   animation: posts-in ease 0.7s;
 }
 
 .header {
+  min-width: 0;
   margin-bottom: 3rem;
 }
 

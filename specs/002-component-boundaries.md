@@ -41,3 +41,4 @@ Componentes de UI acumulam regras (clipboard, speech synthesis, progresso de lei
 - Testes unitários miram utils/hooks, não o JSX.
 - Novos componentes client devem justificar a fronteira na review ou na spec relacionada.
 - Não reintroduzir wrappers React (`TrackedLink`, `lib/analytics` client) para o que `site.js` já cobre.
+- O filtro de assuntos marca a lista com `data-tag-list`. `public/site.js` rola só essa faixa até o assunto com `aria-current="page"`, encostado no canto direito quando a lista alcança, sem mover a página. A barra no desktop fica fina e usa a cor de texto do tema.
