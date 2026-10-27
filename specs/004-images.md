@@ -58,7 +58,7 @@ Capas compartilham uma **família** minimalista — não um template único. Fun
    - sequência / migração → trilha, arco, antes→depois;
    - monorepo / fronteiras → hub + pacotes, anéis de limite;
    - aceleração → trajetória diagonal, nó à frente;
-   - decisão escrita → painel/documento como âncora, satélite perto;
+   - spec-driven / decisão escrita → pilha de specs (convenção, decisão, aceite) com IAs satélite perto;
    - mentoria → de contorno guiado a nó autônomo;
    - design system / breaking → grade de peças, uma com fissura vs evolução;
    - escolha técnica (ex.: Context vs Query) → bifuração ou um caminho aceso e outros apagados.
