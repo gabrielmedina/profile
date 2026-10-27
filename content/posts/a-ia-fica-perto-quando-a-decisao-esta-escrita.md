@@ -1,7 +1,7 @@
 ---
 title: 'A IA fica perto do projeto quando a decisão já está escrita.'
 description: 'No Raise Clubs, a plataforma evolui por especificação. Convenção, decisão e aceite ficam no repositório para o modelo implementar o front-end que eu espero.'
-keys: 'Front-end, Software Engineering, IA, Spec-driven Development'
+keys: 'Front-end, Software Engineering, IA'
 image: /imgs/posts/a-ia-fica-perto-quando-a-decisao-esta-escrita.jpg
 slug: a-ia-fica-perto-quando-a-decisao-esta-escrita
 lang: pt-BR
