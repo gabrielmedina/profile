@@ -4,9 +4,10 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // iOS inflates some text blocks (often `pre`) when a line is wider than the screen.
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
+  // `100%`, not `none`: WebKit drops `none`. The `-webkit-` prefix itself is
+  // restored in the layout `<style>`, because Lightning CSS rewrites it to `-moz-`.
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 * {

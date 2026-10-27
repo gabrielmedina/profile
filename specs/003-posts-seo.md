@@ -57,7 +57,7 @@ Posts são o conteúdo indexável do site. Metadata, JSON-LD e markup precisam c
 
 - Fonte confiável: arquivos versionados em `content/posts` (autor do repo).
 - `rehype-raw` só enquanto essa premissa valer; se a fonte mudar, exigir sanitização (backlog).
-- Blocos fenced no Markdown: highlight no servidor com Shiki (`rehype-pretty-code`), tema duplo alinhado a `.tokens-light` / `.tokens-dark`, chrome com linguagem e botão Copiar via `data-copy-code` em `public/site.js` (sem React client). No celular, todo bloco usa o mesmo tamanho de fonte (`text-size-adjust: none`): o Safari não infla o `pre` quando a linha passa da tela, e essa linha rola dentro do bloco. Inline `code` permanece com o estilo do artigo, também sem inflar.
+- Blocos fenced no Markdown: highlight no servidor com Shiki (`rehype-pretty-code`), tema duplo alinhado a `.tokens-light` / `.tokens-dark`, chrome com linguagem e botão Copiar via `data-copy-code` em `public/site.js` (sem React client). No celular, todo bloco usa o mesmo tamanho de fonte. O pipeline de CSS troca `-webkit-text-size-adjust` por `-moz-text-size-adjust`, e o Safari ignora `text-size-adjust: none` — o valor que segura a fonte é `100%` com o prefixo WebKit, num `<style>` do layout que não passa por esse pipeline. A linha que passa da tela rola dentro do bloco. Inline `code` também não infla.
 
 ## Consequências
 

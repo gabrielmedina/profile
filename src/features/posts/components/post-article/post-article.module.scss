@@ -172,8 +172,8 @@
     font-size: 0.8em;
     border-radius: 4px;
     background-color: var(--color-code-background);
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   img,
