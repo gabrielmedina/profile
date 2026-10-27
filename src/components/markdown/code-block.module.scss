@@ -140,24 +140,24 @@
   }
 }
 
-:global(.tokens-light) {
-  .pre :global(.shiki),
-  .pre :global(.shiki) span {
-    color: var(--shiki-light) !important;
-    font-style: var(--shiki-light-font-style) !important;
-    font-weight: var(--shiki-light-font-weight) !important;
-    text-decoration: var(--shiki-light-text-decoration) !important;
+// Dual theme leaves only --shiki-light / --shiki-dark on each token.
+// rehype-pretty-code removes the .shiki class, so the color has to land on the span.
+:global(html.tokens-light) {
+  .pre span {
+    color: var(--shiki-light, var(--color-code)) !important;
+    font-style: var(--shiki-light-font-style, inherit) !important;
+    font-weight: var(--shiki-light-font-weight, inherit) !important;
+    text-decoration: var(--shiki-light-text-decoration, none) !important;
   }
 }
 
 :global(html.tokens-dark),
-:global(:root:not(.tokens-light)) {
-  .pre :global(.shiki),
-  .pre :global(.shiki) span {
-    color: var(--shiki-dark) !important;
-    font-style: var(--shiki-dark-font-style) !important;
-    font-weight: var(--shiki-dark-font-weight) !important;
-    text-decoration: var(--shiki-dark-text-decoration) !important;
+:global(html:not(.tokens-light)) {
+  .pre span {
+    color: var(--shiki-dark, var(--color-code)) !important;
+    font-style: var(--shiki-dark-font-style, inherit) !important;
+    font-weight: var(--shiki-dark-font-weight, inherit) !important;
+    text-decoration: var(--shiki-dark-text-decoration, none) !important;
   }
 }
 
