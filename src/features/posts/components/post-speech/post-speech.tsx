@@ -34,6 +34,9 @@ export function PostSpeech({
         className={styles.controls}
         data-speech
         hidden
+        // speechRevealScript drops `hidden` before hydration when the browser
+        // can speak. React must not treat that as a mismatch or put it back.
+        suppressHydrationWarning
         role="group"
         aria-label="Leitura em voz alta"
       >

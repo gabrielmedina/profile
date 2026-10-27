@@ -70,7 +70,7 @@ O que saiu de `lib` porque o nome da pasta antiga não dizia o dono:
 | `track-attrs.ts`    | `components/analytics/`               | contrato `data-track` do analytics                      |
 | `theme.ts`          | `components/theme/`                   | classes do tema e o script que as aplica antes do paint |
 
-`components/theme/document-boot.ts` também marca o path atual, a fila de analytics e `aria-current` da nav. Continua ao lado do tema porque o motivo do script inline é aplicar `tokens-*` antes do primeiro paint.
+`components/theme/document-boot.ts` também marca o path atual (o CSS da nav usa `data-path`) e a fila de analytics. Continua ao lado do tema porque o motivo do script inline é aplicar `tokens-*` antes do primeiro paint. O `aria-current` da nav é renderizado por `components/nav/nav-links.tsx`, no HTML, para o servidor e o cliente hidratarem o mesmo atributo.
 
 ### Imports
 
