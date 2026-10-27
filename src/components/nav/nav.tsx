@@ -5,7 +5,6 @@ import styles from './nav.module.scss'
 const items = [
   { title: 'Home', href: '/' },
   { title: 'Posts', href: '/posts' },
-  { title: 'Assuntos', href: '/assuntos' },
 ] as const
 
 export function Nav() {

@@ -37,17 +37,18 @@ Posts são o conteúdo indexável do site. Metadata, JSON-LD e markup precisam c
 - Subtítulos de marketing na listagem de posts são `<p>`, não `<h2>` falso.
 - Itens da listagem de posts usam `<h2>`; itens em “Continue lendo” (sob um `<h2>` de seção) usam `<h3>`.
 - Rodapé do site: nome/marca como texto destacado (`<p>`), não heading que quebre o outline.
-- Índice de assuntos: um `<h1>`; cada assunto é um `<h2>` dentro do link do card.
-- Filtro de assuntos na listagem é `<nav aria-label="Filtrar por assunto">`, sem heading próprio. O assunto corrente (ou “Todos” em `/posts`) usa `aria-current="page"`.
+- Filtro de assuntos na listagem é `<nav aria-label="Filtrar por assunto">`, com rótulo em `<p>`. O assunto corrente (ou “Todos” em `/posts`) usa `aria-current="page"`. A página do assunto usa `<h1>` com o nome do tema; os posts seguem como `<h2>`.
 
 ### Assuntos
 
-1. **Índice** (`app/assuntos/page.tsx`): `CollectionPage` + `ItemList` + `BreadcrumbList`. Cada item aponta para a página do assunto.
-2. **Assunto** (`app/assuntos/[slug]/page.tsx`): mesma forma de collection, com `about` `DefinedTerm` e a lista dos posts daquele slug. `generateStaticParams` só emite assuntos que têm post. Slug desconhecido chama `notFound()`.
-3. **Filtro**: `/posts` e a página do assunto compartilham os mesmos links. Não há `?assunto=` — a URL canônica do filtro é `/assuntos/[slug]`.
-4. **Artigo**: cada assunto é um link com `rel="tag"` para a página do assunto. `BlogPosting.about` repete esses `DefinedTerm`.
-5. **Sitemap**: `/assuntos` e cada `/assuntos/[slug]`, com `lastModified` do post mais recente daquele assunto.
-6. Posts relacionados pontuam pelo slug canônico, não pela grafia crua do `keys`.
+`/posts` é a entrada dos assuntos. Cada tema tem a própria URL canônica em `/assuntos/[slug]`; essa página lista só os posts daquele slug.
+
+1. **Assunto** (`app/assuntos/[slug]/page.tsx`): `CollectionPage` + `ItemList` + `BreadcrumbList` (Início, Posts, assunto), com `about` `DefinedTerm`. `generateStaticParams` só emite assuntos que têm post. Slug desconhecido chama `notFound()`.
+2. **Filtro**: `/posts` e a página do assunto compartilham os mesmos links. A URL canônica do filtro é `/assuntos/[slug]`.
+3. **Artigo**: cada assunto é um link com `rel="tag"` para a página do assunto. `BlogPosting.about` repete esses `DefinedTerm`, e `inDefinedTermSet` aponta para `/posts`.
+4. **Sitemap**: cada `/assuntos/[slug]`, com `lastModified` do post mais recente daquele assunto.
+5. Posts relacionados pontuam pelo slug canônico, não pela grafia crua do `keys`.
+6. Na navegação, Posts continua sendo o item corrente também em `/assuntos/[slug]`.
 
 ### Conteúdo Markdown
 

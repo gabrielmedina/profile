@@ -63,7 +63,7 @@ Ainda não implementadas. A onda 3 só fixa a árvore; estas decisões ficam par
 | Item                                                           | Spec | Status |
 | -------------------------------------------------------------- | ---- | ------ |
 | Assuntos canônicos (`tags.ts`): aliases e dedupe por slug      | 003  | feito  |
-| Páginas `/assuntos` e `/assuntos/[slug]` com CollectionPage    | 003  | feito  |
+| Página `/assuntos/[slug]`; `/posts` é a entrada dos assuntos   | 003  | feito  |
 | Filtro de assuntos em `/posts` e links `rel="tag"` no artigo   | 003  | feito  |
 | Sitemap e `BlogPosting.about` apontam para a página do assunto | 003  | feito  |
 

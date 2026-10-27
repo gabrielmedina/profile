@@ -94,40 +94,6 @@ export function postsPageGraph(posts: PostListItem[]) {
   }
 }
 
-export function subjectsPageGraph(tags: SubjectData[]) {
-  const url = absoluteUrl(site.subjects.path)
-
-  return {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'CollectionPage',
-        '@id': `${url}#page`,
-        url,
-        name: `${site.subjects.title} - ${site.name}`,
-        description: site.subjects.description,
-        inLanguage: site.language,
-        isPartOf: { '@id': websiteId },
-        mainEntity: {
-          '@type': 'ItemList',
-          numberOfItems: tags.length,
-          itemListElement: tags.map((tag, index) => ({
-            '@type': 'ListItem',
-            position: index + 1,
-            name: tag.name,
-            description: tag.description,
-            url: absoluteUrl(subjectPath(tag.slug)),
-          })),
-        },
-      },
-      breadcrumbList([
-        { name: 'Início', path: '/' },
-        { name: site.subjects.title, path: site.subjects.path },
-      ]),
-    ],
-  }
-}
-
 export function subjectPageGraph(tag: SubjectData, posts: PostListItem[]) {
   const url = absoluteUrl(subjectPath(tag.slug))
 
@@ -156,7 +122,7 @@ export function subjectPageGraph(tag: SubjectData, posts: PostListItem[]) {
       },
       breadcrumbList([
         { name: 'Início', path: '/' },
-        { name: site.subjects.title, path: site.subjects.path },
+        { name: 'Posts', path: '/posts' },
         { name: tag.name, path: subjectPath(tag.slug) },
       ]),
     ],
@@ -243,7 +209,7 @@ function definedTerm(tag: ArticleTag) {
     '@type': 'DefinedTerm',
     name: tag.name,
     url: absoluteUrl(subjectPath(tag.slug)),
-    inDefinedTermSet: absoluteUrl(site.subjects.path),
+    inDefinedTermSet: absoluteUrl('/posts'),
   }
 }
 

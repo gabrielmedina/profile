@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { PageView } from '@/components/analytics/page-view'
 import { JsonLd } from '@/components/seo/json-ld'
-import { site } from '@/config/site'
 import { PostList } from '@/features/posts/components/post-list/post-list'
 import { getAllPosts } from '@/features/posts/services/posts'
 import {
@@ -76,7 +75,7 @@ export default async function SubjectPage({ params }: SubjectPageProps) {
         description={tag.description}
         breadcrumbs={[
           { name: 'Início', href: '/' },
-          { name: site.subjects.title, href: site.subjects.path },
+          { name: 'Posts', href: '/posts' },
           { name: tag.name, href: tagPath(tag.slug) },
         ]}
         tags={tags}

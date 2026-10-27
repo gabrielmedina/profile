@@ -1,5 +1,4 @@
 import { trackAttrs } from '@/components/analytics/track-attrs'
-import { site } from '@/config/site'
 import { postCountLabel, tagPath, type TagSummary } from '../../utils/tags'
 import styles from './tag-filters.module.scss'
 
@@ -14,9 +13,7 @@ export function TagFilters({ tags, total, activeSlug }: TagFiltersProps) {
 
   return (
     <nav className={styles.nav} aria-label="Filtrar por assunto">
-      <p className={styles.label}>
-        <a href={site.subjects.path}>Assuntos</a>
-      </p>
+      <p className={styles.label}>Assuntos</p>
       <ul className={styles.list}>
         <li>
           <a
