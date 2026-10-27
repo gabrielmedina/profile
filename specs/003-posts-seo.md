@@ -16,6 +16,7 @@ Posts são o conteúdo indexável do site. Metadata, JSON-LD e markup precisam c
    - `<header>` com `<h1>` (título) e descrição em `<p>`
    - metadados: autor (`rel="author"`), tempo de leitura, `<time dateTime>`
    - corpo em container com landmark claro (conteúdo principal do artigo)
+   - guia “Neste artigo” quando o corpo tem pelo menos duas seções: `<nav>` com os `h2` e, sob cada um, os `h3+`. O rótulo é um `<p>`, não um heading. Cada link usa o mesmo `id` do heading. Grupo com filhos mostra a contagem e um botão que revela a lista (`aria-expanded`). A seção em leitura usa `aria-current="location"`. Some o guia se o corpo tem menos de duas seções. Em viewport larga fica sticky à direita da coluna; abaixo disso, entra entre os metadados e o corpo. Imagens do corpo não invadem essa coluna.
    - assuntos como lista semântica (`<ul>` / `<li>`), cada item com link `rel="tag"`
    - compartilhar / relacionados como seções com heading próprio
 3. **Markdown**: headings `h2+` com `id` estável; imagens via `next/image` quando o tamanho é conhecido; sem `h1` no corpo (o `h1` é o título do artigo).

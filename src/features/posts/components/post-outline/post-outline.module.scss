@@ -1,0 +1,170 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+  max-width: 740px;
+  margin: 2.5rem auto 0;
+}
+
+.label {
+  flex: none;
+  margin: 0 0 0.85rem;
+  color: var(--color-text-ultra-light);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.list,
+.nested {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list {
+  position: relative;
+  min-height: 0;
+  box-shadow: inset 1px 0 0
+    color-mix(in srgb, var(--color-title) 18%, transparent);
+}
+
+.item,
+.nestedItem {
+  position: relative;
+}
+
+.item[data-outline-active]::before,
+.nestedItem[data-outline-active]::before {
+  content: '';
+  position: absolute;
+  top: 0.55rem;
+  left: 0;
+  z-index: 1;
+  width: 2px;
+  pointer-events: none;
+  height: 0.9rem;
+  border-radius: 999px;
+  background: var(--color-title);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.link {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  padding: 0.42rem 0.2rem 0.42rem 0.9rem;
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.35;
+  text-decoration: none;
+  text-wrap: pretty;
+  transition: color 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-title);
+  }
+
+  &:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  &[aria-current='location'] {
+    color: var(--color-title);
+    font-weight: 500;
+  }
+}
+
+.nested .link {
+  padding-left: 1.65rem;
+  font-size: 0.8125rem;
+}
+
+.toggle {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.3rem;
+  margin-right: 0.1rem;
+  padding: 0.35rem 0.15rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-light);
+  font: inherit;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-title);
+  }
+
+  &:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+
+.count {
+  font-weight: 500;
+}
+
+.chevron {
+  display: block;
+  transition: transform 0.15s ease;
+}
+
+.toggle[aria-expanded='true'] .chevron {
+  transform: rotate(180deg);
+}
+
+.nested {
+  display: none;
+  padding-bottom: 0.2rem;
+}
+
+.item[data-outline-open] > .nested {
+  display: block;
+}
+
+@media (min-width: 1200px) {
+  .nav {
+    position: sticky;
+    top: 1.5rem;
+    max-width: none;
+    max-height: calc(100vh - 3rem);
+    margin: 0;
+  }
+
+  .list {
+    overflow: auto;
+    scrollbar-color: var(--color-border) transparent;
+    scrollbar-width: thin;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .chevron {
+    transition: none;
+  }
+}
+
+@media print {
+  .nav {
+    display: none;
+  }
+}

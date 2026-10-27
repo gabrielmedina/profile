@@ -22,6 +22,7 @@
   trackColorScheme()
   initReadingProgress()
   initTagFilters()
+  initArticleOutline()
   site.flush()
 
   function onClick(event) {
@@ -45,6 +46,9 @@
 
     var speech = node.closest('[data-speech]')
     if (speech) loadSpeech(speech, event)
+
+    var outlineToggle = node.closest('[data-outline-toggle]')
+    if (outlineToggle) toggleOutlineGroup(outlineToggle)
   }
 
   function trackPageViews() {
@@ -247,6 +251,169 @@
     if (Math.abs(next - list.scrollLeft) < 1) return
 
     list.scrollTo({ left: next })
+  }
+
+  function initArticleOutline() {
+    var navs = document.querySelectorAll('[data-article-outline]')
+    if (!navs.length) return
+
+    for (var index = 0; index < navs.length; index += 1) {
+      bindArticleOutline(navs[index])
+    }
+  }
+
+  function bindArticleOutline(nav) {
+    var links = nav.querySelectorAll('[data-outline-link]')
+    var items = []
+
+    for (var index = 0; index < links.length; index += 1) {
+      var link = links[index]
+      var heading = outlineHeading(link)
+      if (!heading) continue
+      items.push({ link: link, heading: heading, top: 0 })
+    }
+
+    if (!items.length) return
+
+    var frame = 0
+    var currentId = null
+    var content = articleContent(nav)
+
+    function measure() {
+      for (var index = 0; index < items.length; index += 1) {
+        var rect = items[index].heading.getBoundingClientRect()
+        items[index].top = rect.top + window.scrollY
+      }
+      sync()
+    }
+
+    function sync() {
+      frame = 0
+      var line = window.scrollY + Math.min(128, window.innerHeight * 0.28)
+      var next = null
+
+      for (var index = 0; index < items.length; index += 1) {
+        if (items[index].top <= line) next = items[index]
+      }
+
+      var maxScroll = document.documentElement.scrollHeight - window.innerHeight
+      if (maxScroll > 0 && window.scrollY >= maxScroll - 4) {
+        next = items[items.length - 1]
+      }
+
+      var nextId = next ? next.heading.id : ''
+      if (nextId === currentId) return
+      currentId = nextId
+      applyOutlineCurrent(nav, next)
+    }
+
+    function requestSync() {
+      if (frame) return
+      frame = window.requestAnimationFrame(sync)
+    }
+
+    measure()
+    window.addEventListener('scroll', requestSync, { passive: true })
+    window.addEventListener('resize', measure)
+    window.addEventListener('load', measure)
+    window.addEventListener('hashchange', measure)
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', measure)
+    }
+    if (typeof ResizeObserver !== 'undefined' && content) {
+      new ResizeObserver(measure).observe(content)
+    }
+    // The article intro is a transform. Measuring through it caches the
+    // wrong document offset, same as the reading bar.
+    if (document.getAnimations) {
+      document.getAnimations().forEach(function (animation) {
+        if (!animation.finished) return
+        animation.finished.then(measure).catch(function () {})
+      })
+    }
+  }
+
+  function articleContent(nav) {
+    var frame = nav.closest('[data-article-frame]')
+    return frame && frame.querySelector('[data-article-content]')
+  }
+
+  function outlineHeading(link) {
+    var href = link.getAttribute('href') || ''
+    if (href.charAt(0) !== '#') return null
+
+    var id = href.slice(1)
+    try {
+      id = decodeURIComponent(id)
+    } catch (error) {
+      id = href.slice(1)
+    }
+
+    return document.getElementById(id)
+  }
+
+  function applyOutlineCurrent(nav, item) {
+    var currents = nav.querySelectorAll('[aria-current="location"]')
+    for (var index = 0; index < currents.length; index += 1) {
+      currents[index].removeAttribute('aria-current')
+    }
+
+    var actives = nav.querySelectorAll('[data-outline-active]')
+    for (var active = 0; active < actives.length; active += 1) {
+      actives[active].removeAttribute('data-outline-active')
+    }
+
+    if (!item) return
+
+    item.link.setAttribute('aria-current', 'location')
+    var nested = item.link.closest('[data-outline-nested]')
+    if (nested) openOutlineGroup(nested)
+
+    var row = item.link.closest('[data-outline-item]')
+    if (row) row.setAttribute('data-outline-active', 'true')
+    revealOutlineLink(nav, item.link)
+  }
+
+  function openOutlineGroup(nested) {
+    var branch = nested.parentElement
+    if (!branch || !branch.hasAttribute('data-outline-item')) return
+    setOutlineGroup(branch, true)
+  }
+
+  function toggleOutlineGroup(button) {
+    var branch = button.closest('[data-outline-item]')
+    if (!branch) return
+    setOutlineGroup(branch, !branch.hasAttribute('data-outline-open'))
+  }
+
+  function setOutlineGroup(branch, open) {
+    var button = branch.querySelector('[data-outline-toggle]')
+    if (!button) return
+
+    if (open) branch.setAttribute('data-outline-open', 'true')
+    else branch.removeAttribute('data-outline-open')
+
+    button.setAttribute('aria-expanded', open ? 'true' : 'false')
+    var name = button.getAttribute('data-outline-name') || ''
+    button.setAttribute(
+      'aria-label',
+      (open ? 'Ocultar subseções de ' : 'Mostrar subseções de ') + name,
+    )
+  }
+
+  function revealOutlineLink(nav, link) {
+    var list = nav.querySelector('[data-outline-list]')
+    if (!list || list.scrollHeight <= list.clientHeight + 1) return
+
+    var listRect = list.getBoundingClientRect()
+    var linkRect = link.getBoundingClientRect()
+    if (linkRect.top >= listRect.top && linkRect.bottom <= listRect.bottom) {
+      return
+    }
+
+    var delta =
+      linkRect.top - listRect.top - (listRect.height - linkRect.height) / 2
+    list.scrollTop += delta
   }
 
   function send(event, props) {
