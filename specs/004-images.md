@@ -55,7 +55,7 @@ Capas de post seguem o mesmo sistema visual da série (plano atmosférico + cart
 5. **Prompt / checklist de geração.** Ao pedir ou montar uma capa:
    - referenciar 1–2 capas existentes da série;
    - fixar o hex do fundo (`#1a1d24`);
-   - se houver marca: baixar o asset oficial; deixar a âncora limpa no prompt da base; compor **letras/wordmark** (ou logo filtrada) no cartão — sem placa/fundo extra atrás da escrita; respeitar a região da marca oficial (ex.: monograma TS na faixa inferior) com escala menor e mais padding quando o nosso quadrado for maior;
+   - se houver marca: baixar o asset oficial; deixar a âncora limpa no prompt da base; compor **letras/wordmark** (ou logo filtrada) **centralizada** no cartão — sem placa/fundo extra atrás da escrita; escala menor e padding generoso quando o nosso quadrado for maior que o da marca;
    - exportar o par WebP (corpo) + JPEG leve (OG) em ~1200×674 (ou equivalente 16:9 da série), ≤ ~100 KB no social.
 
 ## Consequências
