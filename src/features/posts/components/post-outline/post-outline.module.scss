@@ -48,7 +48,7 @@
   pointer-events: none;
   height: 0.9rem;
   border-radius: 999px;
-  background: var(--color-title);
+  background: var(--color-primary);
 }
 
 .row {
@@ -81,7 +81,7 @@
   }
 
   &[aria-current='location'] {
-    color: var(--color-title);
+    color: var(--color-primary);
     font-weight: 500;
   }
 }
