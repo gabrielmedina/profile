@@ -14,7 +14,7 @@ export function TagFilters({ tags, total, activeSlug }: TagFiltersProps) {
   return (
     <nav className={styles.nav} aria-label="Filtrar por assunto">
       <p className={styles.label}>Assuntos</p>
-      <ul className={styles.list}>
+      <ul className={styles.list} data-tag-list>
         <li>
           <a
             href="/posts"

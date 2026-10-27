@@ -21,6 +21,7 @@
   trackPageViews()
   trackColorScheme()
   initReadingProgress()
+  initTagFilters()
   site.flush()
 
   function onClick(event) {
@@ -177,6 +178,68 @@
 
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value))
+  }
+
+  function initTagFilters() {
+    var lists = document.querySelectorAll('[data-tag-list]')
+    if (!lists.length) return
+
+    for (var index = 0; index < lists.length; index += 1) {
+      watchTagList(lists[index])
+    }
+
+    function reveal() {
+      for (var index = 0; index < lists.length; index += 1) {
+        scrollTagListToCurrent(lists[index])
+      }
+    }
+
+    // fonts.ready resolves before the next layout. Measuring in that
+    // microtask centers the chip with fallback widths, then the real font
+    // leaves it short of the subject.
+    function scheduleReveal() {
+      window.requestAnimationFrame(reveal)
+    }
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(scheduleReveal).catch(scheduleReveal)
+      return
+    }
+
+    scheduleReveal()
+  }
+
+  function watchTagList(list) {
+    function mark() {
+      list.setAttribute('data-tag-user-scroll', 'true')
+    }
+
+    list.addEventListener('pointerdown', mark, { once: true })
+    list.addEventListener('wheel', mark, { passive: true, once: true })
+    list.addEventListener('touchstart', mark, { passive: true, once: true })
+  }
+
+  // Move only the subject row. Centering the current chip keeps the page
+  // scroll where it is. A drag or wheel before the font swap wins.
+  function scrollTagListToCurrent(list) {
+    if (list.hasAttribute('data-tag-user-scroll')) return
+
+    var current = list.querySelector('[aria-current="page"]')
+    if (!current) return
+
+    var item = current.closest('li') || current
+    var listRect = list.getBoundingClientRect()
+    var itemRect = item.getBoundingClientRect()
+    var target =
+      list.scrollLeft +
+      (itemRect.left - listRect.left) -
+      (listRect.width - itemRect.width) / 2
+    var max = Math.max(0, list.scrollWidth - list.clientWidth)
+    var next = clamp(target, 0, max)
+
+    if (Math.abs(next - list.scrollLeft) < 1) return
+
+    list.scrollTo({ left: next })
   }
 
   function send(event, props) {
