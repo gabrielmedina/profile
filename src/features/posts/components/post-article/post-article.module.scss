@@ -21,6 +21,7 @@
 .readingRange {
   view-timeline: --reading-progress block;
   width: 100%;
+  min-width: 0;
   margin-bottom: 3rem;
 }
 
@@ -28,6 +29,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-width: 0;
   max-width: 1200px;
   animation: post-in ease 0.7s;
 }
@@ -123,6 +125,7 @@
   font-size: 1rem;
   line-height: 1.6;
   width: 100%;
+  min-width: 0;
   max-width: 740px;
 
   h1,
@@ -169,6 +172,8 @@
     font-size: 0.8em;
     border-radius: 4px;
     background-color: var(--color-code-background);
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
   }
 
   img,

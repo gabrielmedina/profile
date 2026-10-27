@@ -3,6 +3,8 @@
   border: 1px solid var(--color-border);
   border-radius: 6px;
   background: var(--color-code-background);
+  max-width: 100%;
+  min-width: 0;
   overflow: hidden;
   transition:
     border-color 0.2s ease,
@@ -122,11 +124,16 @@
   color: var(--color-code);
   font-size: 0.78rem;
   line-height: 1.55;
+  max-width: 100%;
   overflow-x: auto;
+  // Same authored size on every block. iOS text autosizing skips `text-size-adjust` inherited from `html` inside `pre`.
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 
   code {
     display: grid;
-    font-size: 1em;
+    width: max-content;
+    min-width: 100%;
     padding: 0;
     border-radius: 0;
     background: transparent;
@@ -135,7 +142,15 @@
       'Courier New', monospace;
   }
 
-  :global(.line) {
+  code,
+  :global([data-line]),
+  span {
+    font-size: inherit;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  :global([data-line]) {
     padding: 0;
   }
 }
