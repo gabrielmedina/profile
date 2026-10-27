@@ -1,7 +1,7 @@
 ---
 title: 'Porque não utilizei Context API nesta solução'
 description: 'Nesta solução o dado ficou no React Query. Tema, sessão e navegação continuaram nos providers que já existiam.'
-keys: 'Front-end, React, Context API, TanStack Query, Estado'
+keys: 'Front-end, React, Context API'
 image: /imgs/posts/nao-usar-context-api.jpg
 slug: porque-nao-utilizei-context-api-nesta-solucao
 lang: pt-BR

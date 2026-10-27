@@ -51,13 +51,6 @@ const catalog: readonly CatalogTag[] = [
     aliases: ['design system', 'design systems', 'componentes', 'componente'],
   },
   {
-    slug: 'breaking-changes',
-    name: 'Breaking Changes',
-    description:
-      'Mudanças incompatíveis em componentes e APIs, e o custo de transformar cada melhoria numa migração.',
-    aliases: ['breaking changes', 'breaking change'],
-  },
-  {
     slug: 'ux',
     name: 'UX',
     description:
@@ -68,22 +61,22 @@ const catalog: readonly CatalogTag[] = [
     slug: 'react',
     name: 'React',
     description:
-      'React na interface: composição, dados e as escolhas que seguram uma tela grande.',
-    aliases: ['react'],
+      'React na interface: composição, estado, dados de servidor e as escolhas que seguram uma tela grande.',
+    aliases: [
+      'react',
+      'estado',
+      'gerenciamento de estado',
+      'state management',
+      'tanstack query',
+      'react query',
+    ],
   },
   {
-    slug: 'tanstack-query',
-    name: 'TanStack Query',
+    slug: 'monorepos',
+    name: 'Monorepos',
     description:
-      'Cache, sincronização e estado de servidor com TanStack Query, também chamado de React Query.',
-    aliases: ['tanstack query', 'react query'],
-  },
-  {
-    slug: 'nx',
-    name: 'Nx',
-    description:
-      'Monorepos, pacotes isolados e a organização do código com Nx.',
-    aliases: ['nx'],
+      'Monorepos, pacotes isolados e a organização do código entre projetos.',
+    aliases: ['monorepos', 'monorepo', 'nx'],
   },
   {
     slug: 'context-api',
@@ -93,18 +86,16 @@ const catalog: readonly CatalogTag[] = [
     aliases: ['context api', 'contextapi', 'react context'],
   },
   {
-    slug: 'estado',
-    name: 'Estado',
-    description:
-      'Onde o estado mora na aplicação e como escolher o mecanismo certo para cada dado.',
-    aliases: ['estado', 'gerenciamento de estado', 'state management'],
-  },
-  {
     slug: 'lideranca-tecnica',
     name: 'Liderança Técnica',
     description:
-      'O papel de quem referencia o time: critério, exemplo e decisão técnica entre squads.',
-    aliases: ['lideranca tecnica', 'technical leadership'],
+      'O papel de quem referencia o time: critério, mentoria e decisão técnica entre squads.',
+    aliases: [
+      'lideranca tecnica',
+      'technical leadership',
+      'mentoria',
+      'mentorship',
+    ],
   },
   {
     slug: 'cultura-de-engenharia',
