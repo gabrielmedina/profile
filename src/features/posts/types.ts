@@ -3,10 +3,16 @@ export type ImageSize = {
   height: number
 }
 
+export type PostTag = {
+  slug: string
+  name: string
+}
+
 export type PostFrontmatter = {
   title: string
   description: string
   keywords: string[]
+  tags: PostTag[]
   image?: string
   slug: string
   lang: string

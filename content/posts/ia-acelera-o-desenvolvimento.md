@@ -1,7 +1,7 @@
 ---
 title: 'IA acelera o desenvolvimento. Boas decisões de engenharia sustentam a entrega.'
 description: 'Práticas para equilibrar velocidade, qualidade e previsibilidade em uma entrega de front-end.'
-keys: 'Frontend, Software Engineering, React, TanStack Query, Nx, AI'
+keys: 'Front-end, Software Engineering, React, TanStack Query, Nx, IA'
 image: /imgs/posts/ia-acelera-o-desenvolvimento.jpg
 slug: ia-acelera-o-desenvolvimento
 lang: pt-BR

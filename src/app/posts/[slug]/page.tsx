@@ -78,7 +78,7 @@ export default async function PostPage({ params }: PostPageProps) {
           date: post.date,
           updated: post.updated,
           lang: post.lang,
-          keywords: post.keywords,
+          tags: post.tags,
           wordCount: post.wordCount,
           image: post.image,
           imageWidth: imageSize?.width,

@@ -16,7 +16,7 @@ Posts são o conteúdo indexável do site. Metadata, JSON-LD e markup precisam c
    - `<header>` com `<h1>` (título) e descrição em `<p>`
    - metadados: autor (`rel="author"`), tempo de leitura, `<time dateTime>`
    - corpo em container com landmark claro (conteúdo principal do artigo)
-   - assuntos como lista semântica (`<ul>` / `<li>`), não blob de texto
+   - assuntos como lista semântica (`<ul>` / `<li>`), cada item com link `rel="tag"`
    - compartilhar / relacionados como seções com heading próprio
 3. **Markdown**: headings `h2+` com `id` estável; imagens via `next/image` quando o tamanho é conhecido; sem `h1` no corpo (o `h1` é o título do artigo).
 
@@ -26,7 +26,10 @@ Posts são o conteúdo indexável do site. Metadata, JSON-LD e markup precisam c
 - Open Graph `type: article` com `publishedTime`, `modifiedTime`, `tags`, `section`.
 - JSON-LD alinhado aos mesmos campos (título, descrição, datas, keywords, `wordCount`, imagem).
 - Frontmatter opcional `updated` (YYYY-MM-DD, ≥ `date`) alimenta `modifiedTime` / `dateModified`. Sem `updated`, `dateModified` espelha `datePublished`.
-- No domínio tipado, assuntos são `keywords: string[]`. O Markdown continua com o campo wire `keys` (string); o Zod faz o transform na borda.
+- No domínio tipado, assuntos são `tags: { slug, name }[]` e `keywords: string[]` (os nomes canônicos, na mesma ordem). O Markdown continua com o campo wire `keys` (string). Na borda, `splitKeywords` + `canonicalizeTags` (`utils/tags.ts`) colapsam aliases e deduplicam pelo slug.
+- Grafias e o mesmo conceito viram uma tag só: `Frontend` → `Front-end`; `AI` / `IA` → `IA`; `Componentes` → `Design System`; `React Query` → `TanStack Query`.
+- Permanecem distintos: `Software Engineering` e `Cultura de Engenharia` (ofício e cultura do time); `Estado`, `Context API` e `TanStack Query` (o problema e cada mecanismo). Um alias como `Engenharia de software` cai em `Software Engineering`, para não abrir uma segunda tag do mesmo ofício.
+- Assunto fora do catálogo ainda publica, com slug estável e descrição genérica. Descrição editorial entra no catálogo.
 
 ### Hierarquia de headings no site
 
@@ -34,6 +37,18 @@ Posts são o conteúdo indexável do site. Metadata, JSON-LD e markup precisam c
 - Subtítulos de marketing na listagem de posts são `<p>`, não `<h2>` falso.
 - Itens da listagem de posts usam `<h2>`; itens em “Continue lendo” (sob um `<h2>` de seção) usam `<h3>`.
 - Rodapé do site: nome/marca como texto destacado (`<p>`), não heading que quebre o outline.
+- Filtro de assuntos na listagem é `<nav aria-label="Filtrar por assunto">`, com rótulo em `<p>`. O assunto corrente (ou “Todos” em `/posts`) usa `aria-current="page"`. A página do assunto usa `<h1>` com o nome do tema; os posts seguem como `<h2>`.
+
+### Assuntos
+
+`/posts` é a entrada dos assuntos. Cada tema tem a própria URL canônica em `/assuntos/[slug]`; essa página lista só os posts daquele slug.
+
+1. **Assunto** (`app/assuntos/[slug]/page.tsx`): `CollectionPage` + `ItemList` + `BreadcrumbList` (Início, Posts, assunto), com `about` `DefinedTerm`. `generateStaticParams` só emite assuntos que têm post. Slug desconhecido chama `notFound()`.
+2. **Filtro**: `/posts` e a página do assunto compartilham os mesmos links. A URL canônica do filtro é `/assuntos/[slug]`.
+3. **Artigo**: cada assunto é um link com `rel="tag"` para a página do assunto. `BlogPosting.about` repete esses `DefinedTerm`, e `inDefinedTermSet` aponta para `/posts`.
+4. **Sitemap**: cada `/assuntos/[slug]`, com `lastModified` do post mais recente daquele assunto.
+5. Posts relacionados pontuam pelo slug canônico, não pela grafia crua do `keys`.
+6. Na navegação, Posts continua sendo o item corrente também em `/assuntos/[slug]`.
 
 ### Conteúdo Markdown
 
@@ -42,6 +57,6 @@ Posts são o conteúdo indexável do site. Metadata, JSON-LD e markup precisam c
 
 ## Consequências
 
-- Qualquer nova superfície de post (cover figure, tags linkadas, TOC) atualiza esta spec.
-- Feed RSS reutiliza o mesmo parser de keywords (`splitKeywords`) que a página e o JSON-LD.
+- Qualquer nova superfície de post (cover figure, TOC) atualiza esta spec.
+- Feed RSS reutiliza os `keywords` canônicos (o mesmo nome que a página, o filtro e o JSON-LD).
 - Contagem de palavras / tempo de leitura usam o mesmo pipeline de texto limpo.

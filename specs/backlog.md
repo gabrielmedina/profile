@@ -58,19 +58,27 @@ Ainda não implementadas. A onda 3 só fixa a árvore; estas decisões ficam par
 | `safe-json` vira `json-for-script`; `JsonLd` usa o mesmo escape                         | 001  | feito  |
 | `heading-slug` cola no markdown; `track-attrs` cola no analytics; tema cola no theme    | 001  | feito  |
 
+## Onda 5
+
+| Item                                                           | Spec | Status |
+| -------------------------------------------------------------- | ---- | ------ |
+| Assuntos canônicos (`tags.ts`): aliases e dedupe por slug      | 003  | feito  |
+| Página `/assuntos/[slug]`; `/posts` é a entrada dos assuntos   | 003  | feito  |
+| Filtro de assuntos em `/posts` e links `rel="tag"` no artigo   | 003  | feito  |
+| Sitemap e `BlogPosting.about` apontam para a página do assunto | 003  | feito  |
+
 ## Próximas ondas
 
-| Item                                                                 | Spec     | Status  | Notas                              |
-| -------------------------------------------------------------------- | -------- | ------- | ---------------------------------- |
-| Cover figure opcional no chrome do artigo                            | 003, 004 | próximo | `post.image` + `next/image`        |
-| Mostrar `<time>` de atualização no artigo quando houver `updated`    | 003      | próximo | UI alinhada ao SEO                 |
-| Enclosure/imagem no RSS                                              | 003, 004 | depois  | Usar `post.image`                  |
-| Keywords como links / página de tag                                  | 003      | depois  | Só se houver navegação por assunto |
-| Testes unitários de `related`, `speech-text`, `image-size`, metadata | 002      | próximo | Ancorar SDD com regressão          |
-| Política / sanitizer se `rehype-raw` sair de conteúdo só do repo     | 003      | depois  | Documentar trust model             |
-| Cache helper de related posts por slug                               | 001      | depois  | Micro-otimização                   |
-| Placeholder blur em capas LCP                                        | 004      | depois  | Opcional                           |
-| Checagem de tamanho de asset no CI                                   | 004      | depois  | Falhar build se OG > limiar        |
+| Item                                                                 | Spec     | Status  | Notas                       |
+| -------------------------------------------------------------------- | -------- | ------- | --------------------------- |
+| Cover figure opcional no chrome do artigo                            | 003, 004 | próximo | `post.image` + `next/image` |
+| Mostrar `<time>` de atualização no artigo quando houver `updated`    | 003      | próximo | UI alinhada ao SEO          |
+| Enclosure/imagem no RSS                                              | 003, 004 | depois  | Usar `post.image`           |
+| Testes unitários de `related`, `speech-text`, `image-size`, metadata | 002      | próximo | Ancorar SDD com regressão   |
+| Política / sanitizer se `rehype-raw` sair de conteúdo só do repo     | 003      | depois  | Documentar trust model      |
+| Cache helper de related posts por slug                               | 001      | depois  | Micro-otimização            |
+| Placeholder blur em capas LCP                                        | 004      | depois  | Opcional                    |
+| Checagem de tamanho de asset no CI                                   | 004      | depois  | Falhar build se OG > limiar |
 
 ## Critério para fechar um item
 

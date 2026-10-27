@@ -1,7 +1,7 @@
 ---
 title: 'Referência técnica'
 description: 'Ser referência técnica não significa ter todas as respostas. Significa conseguir ajudar diferentes times a encontrá-las.'
-keys: 'Frontend, Liderança Técnica, Cultura de Engenharia'
+keys: 'Front-end, Liderança Técnica, Cultura de Engenharia'
 image: /imgs/posts/referencia-tecnica.jpg
 slug: referencia-tecnica
 lang: pt-BR

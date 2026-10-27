@@ -41,4 +41,7 @@ export const site = {
     description:
       'Ideias, experiências e aprendizados sobre engenharia front-end, arquitetura de software, design e tudo o que acontece entre código e produto.',
   },
+  subjects: {
+    path: '/assuntos',
+  },
 } as const

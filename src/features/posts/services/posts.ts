@@ -6,6 +6,7 @@ import { cacheLife } from 'next/cache'
 import matter from 'gray-matter'
 import { z } from 'zod'
 import { splitKeywords } from '../utils/keywords'
+import { canonicalizeTags } from '../utils/tags'
 import type { ImageSize, Post, PostSummary } from '../types'
 import { readImageSize } from './image-size'
 
@@ -25,10 +26,18 @@ const postFrontmatterSchema = z
     date: dateString,
     updated: dateString.optional(),
   })
-  .transform(({ keys, ...rest }) => ({
-    ...rest,
-    keywords: splitKeywords(keys),
-  }))
+  .transform(({ keys, ...rest }) => {
+    const tags = canonicalizeTags(splitKeywords(keys))
+
+    return {
+      ...rest,
+      tags,
+      keywords: tags.map((tag) => tag.name),
+    }
+  })
+  .refine((post) => post.tags.length > 0, {
+    message: 'Informe ao menos um assunto em keys',
+  })
 
 function readingTimeLabel(wordCount: number) {
   return `~${Math.ceil(wordCount / WORDS_PER_MINUTE)} min de leitura`
@@ -131,6 +140,7 @@ function toSummary(post: Post): PostSummary {
     title: post.title,
     description: post.description,
     keywords: post.keywords,
+    tags: post.tags,
     image: post.image,
     slug: post.slug,
     lang: post.lang,

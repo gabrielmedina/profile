@@ -1,7 +1,7 @@
 ---
 title: 'A IA escreve o código. E nós, desenvolvedores?'
 description: 'Se a IA escreve boa parte do código, o papel de quem desenvolve continua sendo compreender o problema e tomar boas decisões.'
-keys: 'Frontend, Software Engineering, AI'
+keys: 'Front-end, Software Engineering, IA'
 image: /imgs/posts/a-ia-escreve-o-codigo.jpg
 slug: a-ia-escreve-o-codigo
 lang: pt-BR

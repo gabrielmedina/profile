@@ -217,6 +217,17 @@
   list-style: none;
   color: var(--color-text-ultra-light);
   font-size: 0.8em;
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    text-underline-offset: 4px;
+
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {

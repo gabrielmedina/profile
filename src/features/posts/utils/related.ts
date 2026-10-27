@@ -5,14 +5,13 @@ export function relatedPosts(
   posts: PostSummary[],
   limit = 2,
 ) {
-  const currentKeys = new Set(current.keywords.map((key) => key.toLowerCase()))
+  const currentTags = new Set(current.tags.map((tag) => tag.slug))
 
   return posts
     .filter((post) => post.slug !== current.slug)
     .map((post) => ({
       post,
-      score: post.keywords.filter((key) => currentKeys.has(key.toLowerCase()))
-        .length,
+      score: post.tags.filter((tag) => currentTags.has(tag.slug)).length,
     }))
     .sort((left, right) => {
       if (right.score !== left.score) return right.score - left.score
