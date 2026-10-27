@@ -80,7 +80,7 @@ Quando o modelo da linguagem acompanha o modelo do problema, a conversa no code 
 
 ## Ainda é experimental — e isso não tira o valor
 
-Firefox Nightly está entre as implementações mais maduras, atrás de preferência. Safari e Chrome têm bugs de tracking abertos. Dá para experimentar com o polyfill `@js-temporal/polyfill` e pelos docs do TC39.
+Firefox Nightly está entre as implementações mais maduras, atrás de preferência. Safari e Chrome têm bugs de tracking abertos — o [Can I Use](https://caniuse.com/?search=temporal) ajuda a acompanhar o suporte. Dá para experimentar com o polyfill `@js-temporal/polyfill` e pelos docs do TC39.
 
 Eu não colocaria Temporal como dependência crítica de produção em todos os browsers hoje. Colocaria na lista do que o time precisa **aprender cedo**.
 
