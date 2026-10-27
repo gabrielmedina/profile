@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/assuntos/context-api',
+        destination: '/assuntos/react',
+        permanent: true,
+      },
+      {
         source: '/assuntos/estado',
         destination: '/assuntos/react',
         permanent: true,
@@ -13,6 +18,11 @@ const nextConfig: NextConfig = {
       {
         source: '/assuntos/tanstack-query',
         destination: '/assuntos/react',
+        permanent: true,
+      },
+      {
+        source: '/assuntos/spec-driven-development',
+        destination: '/assuntos/ia',
         permanent: true,
       },
       {

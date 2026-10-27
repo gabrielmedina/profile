@@ -33,15 +33,15 @@ const catalog: readonly CatalogTag[] = [
     slug: 'ia',
     name: 'IA',
     description:
-      'Como a inteligência artificial entra no desenvolvimento e muda o que o time escreve e decide.',
-    aliases: ['ia', 'ai', 'inteligencia artificial'],
-  },
-  {
-    slug: 'spec-driven-development',
-    name: 'Spec-driven Development',
-    description:
-      'Especificar o comportamento antes de gerar código, para a IA e o time seguirem o mesmo contrato.',
-    aliases: ['spec-driven development', 'spec driven development', 'sdd'],
+      'Como a inteligência artificial entra no desenvolvimento, da especificação ao código, e muda o que o time escreve e decide.',
+    aliases: [
+      'ia',
+      'ai',
+      'inteligencia artificial',
+      'spec-driven development',
+      'spec driven development',
+      'sdd',
+    ],
   },
   {
     slug: 'design-system',
@@ -61,9 +61,13 @@ const catalog: readonly CatalogTag[] = [
     slug: 'react',
     name: 'React',
     description:
-      'React na interface: composição, estado, dados de servidor e as escolhas que seguram uma tela grande.',
+      'React na interface: composição, Context, estado, dados de servidor e as escolhas que seguram uma tela grande.',
     aliases: [
       'react',
+      'context',
+      'context api',
+      'contextapi',
+      'react context',
       'estado',
       'gerenciamento de estado',
       'state management',
@@ -77,13 +81,6 @@ const catalog: readonly CatalogTag[] = [
     description:
       'Monorepos, pacotes isolados e a organização do código entre projetos.',
     aliases: ['monorepos', 'monorepo', 'nx'],
-  },
-  {
-    slug: 'context-api',
-    name: 'Context API',
-    description:
-      'Quando a Context API do React serve o fluxo e quando outro modelo de estado cabe melhor.',
-    aliases: ['context api', 'contextapi', 'react context'],
   },
   {
     slug: 'lideranca-tecnica',
