@@ -49,6 +49,7 @@
       background: var(--color-primary);
       opacity: 0;
       pointer-events: none;
+      transition: 0.4s ease;
     }
 
     &:hover::before,
@@ -84,7 +85,7 @@
 
   &:hover,
   &:focus-visible {
-    color: var(--color-title);
+    color: var(--color-primary);
   }
 
   &:focus-visible {
@@ -100,6 +101,7 @@
 
 .nested .link {
   font-size: 0.8125rem;
+  padding-left: 1.5rem;
 }
 
 .toggle {
@@ -108,7 +110,7 @@
   align-items: center;
   gap: 0.3rem;
   margin-right: 0.1rem;
-  padding: 0.42rem 0.15rem;
+  padding: 0.65rem 0.15rem;
   border: 0;
   background: transparent;
   color: var(--color-text-light);
