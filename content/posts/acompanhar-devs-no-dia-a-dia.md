@@ -1,7 +1,7 @@
 ---
 title: 'Acompanhar devs pode ser pequeno e constante'
 description: 'Um PDI vivido, pontes com produto e engenharia, e companhia no dia a dia. A IA acelera a informação. O critério decide o que aceitar.'
-keys: 'Frontend, Mentoria, Liderança Técnica, AI'
+keys: 'Frontend, Liderança Técnica, AI'
 image: /imgs/posts/acompanhar-devs-no-dia-a-dia.jpg
 slug: acompanhar-devs-no-dia-a-dia
 lang: pt-BR

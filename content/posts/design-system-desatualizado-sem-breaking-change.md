@@ -1,7 +1,7 @@
 ---
 title: 'Design system desatualizado custa caro. Toda inovação virar breaking change custa mais.'
 description: 'Os riscos de um design system parado no tempo e os desafios reais para evoluir componentes sem transformar cada melhoria numa migração obrigatória.'
-keys: 'Front-end, Design System, Breaking Changes, UX'
+keys: 'Front-end, Design System, UX'
 image: /imgs/posts/design-system-desatualizado.jpg
 slug: design-system-desatualizado-sem-breaking-change
 lang: pt-BR

@@ -27,8 +27,10 @@ Posts são o conteúdo indexável do site. Metadata, JSON-LD e markup precisam c
 - JSON-LD alinhado aos mesmos campos (título, descrição, datas, keywords, `wordCount`, imagem).
 - Frontmatter opcional `updated` (YYYY-MM-DD, ≥ `date`) alimenta `modifiedTime` / `dateModified`. Sem `updated`, `dateModified` espelha `datePublished`.
 - No domínio tipado, assuntos são `tags: { slug, name }[]` e `keywords: string[]` (os nomes canônicos, na mesma ordem). O Markdown continua com o campo wire `keys` (string). Na borda, `splitKeywords` + `canonicalizeTags` (`utils/tags.ts`) colapsam aliases e deduplicam pelo slug.
-- Grafias e o mesmo conceito viram uma tag só: `Frontend` → `Front-end`; `AI` / `IA` → `IA`; `Componentes` → `Design System`; `React Query` → `TanStack Query`.
-- Permanecem distintos: `Software Engineering` e `Cultura de Engenharia` (ofício e cultura do time); `Estado`, `Context API` e `TanStack Query` (o problema e cada mecanismo). Um alias como `Engenharia de software` cai em `Software Engineering`, para não abrir uma segunda tag do mesmo ofício.
+- Grafias e o mesmo conceito viram uma tag só: `Frontend` → `Front-end`; `AI` / `IA` → `IA`; `Componentes` → `Design System`; `Nx` → `Monorepos`; `Mentoria` → `Liderança Técnica`; `Estado`, `TanStack Query` e `React Query` → `React`.
+- Permanecem distintos: `Software Engineering` e `Cultura de Engenharia` (ofício e cultura do time); `Context API` e `React` (o mecanismo e o ecossistema). Um alias como `Engenharia de software` cai em `Software Engineering`, para não abrir uma segunda tag do mesmo ofício.
+- `Breaking Changes` não é assunto. O texto continua no post; a página do tema não existe.
+- Slugs aposentados redirecionam em definitivo: `/assuntos/estado` e `/assuntos/tanstack-query` → `/assuntos/react`; `/assuntos/nx` → `/assuntos/monorepos`; `/assuntos/mentoria` → `/assuntos/lideranca-tecnica`; `/assuntos/breaking-changes` → `/assuntos/design-system`.
 - Assunto fora do catálogo ainda publica, com slug estável e descrição genérica. Descrição editorial entra no catálogo.
 
 ### Hierarquia de headings no site
