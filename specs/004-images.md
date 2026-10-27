@@ -45,14 +45,17 @@ O nome do arquivo no frontmatter e no markdown não precisa coincidir, mas o fro
 
 Capas de post seguem o mesmo sistema visual da série (plano atmosférico + cartões de vidro / âncora iluminada). A geração **não** inventa identidade de marca alheia nem troca a atmosfera a cada artigo.
 
-1. **Logo oficial quando a tecnologia existe.** Se o post trata de uma lib, linguagem, API ou produto com branding público (TypeScript, React, etc.), a marca na capa é a **logo oficial** do projeto — baixada do kit/branding oficial (ex.: [TypeScript Branding](https://www.typescriptlang.org/branding/)). Não redesenhar, não distorcer, não recolorir o símbolo, não fundir a logo no “logo do site”.
-2. **Compor sobre o nosso padrão.** Mantém-se a composição da série (fundo + cartões / linha / âncora). A logo oficial entra como elemento nítido no cartão ou âncora iluminada — tipicamente por **composição** (asset oficial sobre a base), não por reinterpretar a marca num gerador de imagem.
+1. **Logo oficial quando a tecnologia existe.** Se o post trata de uma lib, linguagem, API ou produto com branding público (TypeScript, React, etc.), a marca na capa vem do **kit/branding oficial** (ex.: [TypeScript Branding](https://www.typescriptlang.org/branding/)). Não redesenhar, não distorcer o desenho das letras, não fundir a logo no “logo do site”.
+2. **Compor sobre o nosso padrão — sem quadrado-sobre-quadrado.** Mantém-se a composição da série (fundo + cartões / linha / âncora). A marca entra por **composição** no cartão iluminado. Se o container já é o nosso quadrado/cartão de vidro, **não** empilhar a logo com fundo próprio (o quadrado azul do TypeScript, o escudo de outra marca, etc.). Preferir, nesta ordem:
+   1. **só a escrita / monograma** do asset oficial (letras “TS”, wordmark, glyph cutout) em branco ou tom único sobre o cartão;
+   2. **logo completa com tratamento** — preto e branco, monocromático ou overlay suave — para a marca não brigar com o vidro;
+   3. só então a marca colorida full-bleed, e **somente** se ela for a âncora sozinha (sem nosso quadrado por baixo).
 3. **Fundo estável entre capas.** O fundo das capas usa um tom fixo da série, ligeiramente distinto do `--color-background` dark do site (`#16161b`), para a capa não “sumir” no chrome — mas **não** varia de post para post. Cor-alvo da série: **`#1a1d24`** (slate escuro). Evitar teal, navy saturado, roxo ou gradientes de marca diferentes a cada geração. Variação permitida: luz/vinheta da âncora; o campo de fundo permanece o mesmo.
-4. **Sem tipografia inventada da marca.** Nada de monograma “aproximado”, wordmark recriado ou ícone “inspirado”. Ou é o asset oficial, ou a capa fica só com o padrão abstrato da série (estrela / cartão), sem fingir a logo.
+4. **Sem tipografia inventada da marca.** Nada de monograma “aproximado”, wordmark recriado ou ícone “inspirado”. Ou é o asset oficial (letras/logo), ou a capa fica só com o padrão abstrato da série (estrela / cartão), sem fingir a marca.
 5. **Prompt / checklist de geração.** Ao pedir ou montar uma capa:
    - referenciar 1–2 capas existentes da série;
    - fixar o hex do fundo (`#1a1d24`);
-   - se houver marca: baixar o asset oficial e compor; no prompt da base, deixar a área da âncora limpa (sem letras falsas);
+   - se houver marca: baixar o asset oficial; deixar a âncora limpa no prompt da base; compor **letras/wordmark** (ou logo filtrada) centralizada no cartão — sem placa/fundo extra atrás da escrita;
    - exportar o par WebP (corpo) + JPEG leve (OG) em ~1200×674 (ou equivalente 16:9 da série), ≤ ~100 KB no social.
 
 ## Consequências
@@ -60,4 +63,4 @@ Capas de post seguem o mesmo sistema visual da série (plano atmosférico + cart
 - Novos posts entram no repo já com par jpg + webp (ou só webp leve se o jpg for desnecessário).
 - CI / checklist humano: rejeitar PNG de capa > ~100 KB no frontmatter.
 - Cover figure opcional no chrome do artigo (fora do markdown) continua no backlog; quando existir, usa o mesmo `post.image` + `next/image`.
-- Posts sobre tecnologia/lib existente preferem capa com logo oficial composta; o fundo das capas da série permanece `#1a1d24` salvo decisão explícita de mudar a série inteira.
+- Posts sobre tecnologia/lib existente preferem marca oficial composta (escrita/monograma ou logo filtrada quando o container é nosso); o fundo das capas da série permanece `#1a1d24` salvo decisão explícita de mudar a série inteira.

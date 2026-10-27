@@ -8,7 +8,7 @@ lang: pt-BR
 date: '2026-10-28'
 ---
 
-![Capa: cartões de vidro ligados por uma linha e, no cartão iluminado, a logo oficial do TypeScript.](/imgs/posts/typescript-aliado-no-front-end.webp)
+![Capa: cartões de vidro ligados por uma linha e, no cartão iluminado, o monograma TS da marca oficial em branco.](/imgs/posts/typescript-aliado-no-front-end.webp)
 
 No front-end, o bug caro quase nunca é “o botão não renderizou”. É a prop errada que só aparece depois do deploy. É o estado de loading misturado com sucesso. É a resposta da API que mudou de forma e a tela ainda confia no formato antigo.
 
