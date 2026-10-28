@@ -94,19 +94,15 @@ export function postsPageGraph(posts: PostListItem[]) {
   }
 }
 
-type ConsultingServiceData = {
-  name: string
-  description: string
-  path: string
-  prices: { name: string; price: number }[]
-}
-
 type ConsultingPageData = {
   title: string
   description: string
   path: string
   crumbs: Crumb[]
-  services: ConsultingServiceData[]
+  service: {
+    name: string
+    description: string
+  }
 }
 
 export function consultingPageGraph(page: ConsultingPageData) {
@@ -125,28 +121,12 @@ export function consultingPageGraph(page: ConsultingPageData) {
         isPartOf: { '@id': websiteId },
         about: { '@id': personId },
         mainEntity: {
-          '@type': 'ItemList',
-          numberOfItems: page.services.length,
-          itemListElement: page.services.map((service, index) => ({
-            '@type': 'ListItem',
-            position: index + 1,
-            item: {
-              '@type': 'Service',
-              name: service.name,
-              description: service.description,
-              url: absoluteUrl(service.path),
-              provider: { '@id': personId },
-              areaServed: 'BR',
-              offers: service.prices.map((price) => ({
-                '@type': 'Offer',
-                name: price.name,
-                price: price.price,
-                priceCurrency: 'BRL',
-                availability: 'https://schema.org/InStock',
-                url: absoluteUrl(service.path),
-              })),
-            },
-          })),
+          '@type': 'Service',
+          name: page.service.name,
+          description: page.service.description,
+          url,
+          provider: { '@id': personId },
+          areaServed: 'BR',
         },
       },
       breadcrumbList(page.crumbs),

@@ -39,7 +39,7 @@ export const site = {
     path: '/consultoria',
     title: 'Consultoria',
     description:
-      'O que trava agora vira um plano escrito. Para quem desenvolve, ou para um time preso numa dor.',
+      'Padrões, revisão do que a IA já entregou e observabilidade para o front-end. O preço sai depois de entender o problema.',
   },
   posts: {
     title: 'Posts',

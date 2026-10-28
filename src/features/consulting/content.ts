@@ -1,155 +1,42 @@
 import { site } from '@/config/site'
 
-export type ConsultingPrice = {
-  label: string
-  display: string
-  value: number
-}
-
-export type ConsultingPriceGroup = {
-  intro?: string
-  prices: readonly ConsultingPrice[]
-}
-
-export type ConsultingOffer = {
-  id: 'individual' | 'company'
-  slug: string
-  title: string
-  kicker: string
-  summary: string
-  steps: readonly string[]
-  groups: readonly ConsultingPriceGroup[]
-  note: string
-  boundary: string
-  whatsappLabel: string
-  whatsappMessage: string
-}
-
-export const consultingCover = {
-  src: '/imgs/consultoria/consultoria.webp',
-  social: '/imgs/consultoria/consultoria.jpg',
-  width: 1200,
-  height: 675,
-  alt: 'Capa: uma linha reta na primeira metade e, a partir do meio, uma subida em mint até o fim.',
-} as const
-
 const whatsapp = {
   e164: '5567996096006',
   display: '+55 67 99609-6006',
+  label: 'Chamar no WhatsApp',
+  message: `Olá, Gabriel. Vim pelo site.
+O front-end daqui está sendo feito com IA.
+O que mais dói hoje: `,
 } as const
 
 export const consulting = {
   path: site.consulting.path,
   title: site.consulting.title,
   description: site.consulting.description,
-  promise: 'O que trava agora vira um plano.',
+  promise: 'O front-end que a IA escreveu está difícil de manter.',
   audience:
-    'Para quem desenvolve sem o próximo passo, e para um time preso na mesma dor.',
+    'Para empresas em que fullstack e back-end estão entregando a interface.',
   mechanism:
-    'Eu leio o momento e devolvo o plano por escrito. Quem executa continua na tarefa.',
-  proof: [
-    { value: '16 anos', caption: 'de front-end em e-commerce.' },
-    { value: 'Grupo Boticário', caption: 'evolução da loja.' },
-    { value: 'Grupo SBF', caption: 'painel de backoffice, cross-team.' },
-  ],
-  proofNote:
-    'Arquitetura, padronização e entrega que acerta. Esse é o critério que entra no plano.',
-  choiceHeading: 'Escolha o formato',
-  fit: 'O plano é o que você leva. A implementação fica com você, ou com o time.',
-  offers: [
+    'O código sai rápido. Fica anêmico, falha com facilidade, e custa manter e escalar.',
+  proof:
+    '16 anos de front-end. Grupo Boticário, na evolução do e-commerce. Grupo SBF, no painel de backoffice, cross-team.',
+  workHeading: 'O trabalho',
+  work: [
     {
-      id: 'individual',
-      slug: 'individual',
-      title: 'Consultoria individual',
-      kicker: 'Para uma pessoa',
-      summary:
-        'O próximo passo deixa de ser um chute. Um encontro lê onde você está e devolve um plano para as próximas quatro semanas.',
-      steps: [
-        'Você conta o momento, o que trava, e manda um material real: um projeto, uma pull request, ou uma decisão que está na sua mão.',
-        'No encontro a gente confirma onde você está, olha o material e escolhe um próximo passo que cabe nas próximas semanas.',
-        'Em até três dias você recebe o plano: onde está, o que trava, uma meta, três passos, e como perceber que andou.',
-      ],
-      groups: [
-        {
-          prices: [
-            { label: 'Encontro e plano', display: 'R$ 320', value: 320 },
-          ],
-        },
-        {
-          intro:
-            'Para quem já tem o plano: quatro encontros semanais de 45 minutos.',
-          prices: [
-            { label: 'Quatro encontros', display: 'R$ 640', value: 640 },
-          ],
-        },
-      ],
-      note: 'Pix antes de marcar. Dá para reagendar uma vez, avisando com um dia.',
-      boundary:
-        'O plano é o que você leva. Os quatro encontros são a continuação, para quem já tem esse plano.',
-      whatsappLabel: 'Chamar no WhatsApp',
-      whatsappMessage: `Olá, Gabriel. Vim pelo site e quero uma consultoria individual.
-Meu momento hoje: `,
+      title: 'Padrões',
+      text: 'Defino como o front-end deve ser escrito. Arquitetura, convenção, e o que a próxima geração da IA precisa respeitar.',
     },
     {
-      id: 'company',
-      slug: 'empresarial',
-      title: 'Consultoria empresarial',
-      kicker: 'Para um time',
-      summary:
-        'O time sai da mesma dor. Uma sessão olha a causa e devolve um plano de 30 e 60 dias, com ordem e dono.',
-      steps: [
-        'Uma página de combinado: a dor em uma frase, quem entra na sala, dois exemplos concretos enviados com cinco dias de antecedência, e o que fica de fora.',
-        'Quarenta e cinco minutos com quem patrocina, para entender a restrição e o que “melhor” significa.',
-        'Sessão de 2h30 com 6 a 12 pessoas. A gente corrige o que eu entendi, olha os exemplos e rascunha três movimentos, com dono do lado de vocês.',
-        'Em até cinco dias úteis, o plano: a dor no dia a dia, a causa, o que não mudar agora, as ações com ordem e dono, e os sinais de que funcionou. Uma call de 30 minutos entrega o texto.',
-      ],
-      groups: [
-        {
-          prices: [
-            { label: 'Um time, uma dor', display: 'R$ 8.000', value: 8000 },
-            {
-              label: 'A mesma dor em mais de um time',
-              display: 'R$ 12.000',
-              value: 12000,
-            },
-            {
-              label: 'Retorno de 90 minutos, 30 dias depois',
-              display: 'R$ 2.500',
-              value: 2500,
-            },
-          ],
-        },
-      ],
-      note: 'Metade ao fechar a data, metade na entrega do plano.',
-      boundary:
-        'O time executa. Eu entrego a sessão e o plano. Outra dor é outro contrato.',
-      whatsappLabel: 'Chamar no WhatsApp',
-      whatsappMessage: `Olá, Gabriel. Vim pelo site e quero uma consultoria empresarial.
-A dor que queremos olhar:
-Quantas pessoas entrariam na sessão: `,
+      title: 'O que a IA já entregou',
+      text: 'Reviso as features feitas com IA. O que fica, o que sai, e o que precisa de outra volta.',
+    },
+    {
+      title: 'Observabilidade',
+      text: 'O time passa a ver a falha quando ela acontece, e se o padrão segurou.',
     },
   ],
+  startHeading: 'Como começa',
+  start:
+    'Sem preço fechado. Primeiro eu entendo o problema. Depois sai um plano de evolução e de melhorias.',
   whatsapp,
 } as const
-
-export function offerPath(slug: string) {
-  return `${consulting.path}/${slug}`
-}
-
-export function findOffer(slug: string) {
-  return consulting.offers.find((offer) => offer.slug === slug)
-}
-
-export function consultingServices() {
-  return consulting.offers.map((offer) => ({
-    name: offer.title,
-    description: offer.summary,
-    path: offerPath(offer.slug),
-    prices: offer.groups.flatMap((group) =>
-      group.prices.map((price) => ({
-        name: `${offer.title}: ${price.label}`,
-        price: price.value,
-      })),
-    ),
-  }))
-}

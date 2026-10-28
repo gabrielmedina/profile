@@ -92,7 +92,7 @@ Ainda não implementadas. A onda 3 só fixa a árvore; estas decisões ficam par
 | Placeholder blur em capas LCP                                        | 004      | depois  | Opcional                                        |
 | Checagem de tamanho de asset no CI                                   | 004      | depois  | Falhar build se OG > limiar                     |
 | Alinhar capas antigas ao fundo `#1a1d24`, variação por tema e logos  | 004      | feito   | Capas revisitadas com composição por metáfora   |
-| Página `/consultoria` com os dois formatos, preços e WhatsApp        | 005      | feito   | Mensagem pronta para leitura e para empresa     |
+| Página `/consultoria` para front-end feito com IA                    | 005      | feito   | Padrão, revisão e observabilidade; sem preço    |
 | Frase no post de liderança e link no rodapé e na navegação           | 005      | feito   | Aponta para `/consultoria`                      |
 | Frase de café com Pix depois do artigo                               | 005      | depois  | Exige chave ou link; sem SDK                    |
 | Bloco único de anúncio abaixo do artigo                              | 005      | depois  | Só com tráfego que pague script e consentimento |

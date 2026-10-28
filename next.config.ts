@@ -42,12 +42,22 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/consultoria/leitura-de-carreira',
-        destination: '/consultoria/individual',
+        destination: '/consultoria',
         permanent: true,
       },
       {
         source: '/consultoria/para-um-time',
-        destination: '/consultoria/empresarial',
+        destination: '/consultoria',
+        permanent: true,
+      },
+      {
+        source: '/consultoria/individual',
+        destination: '/consultoria',
+        permanent: true,
+      },
+      {
+        source: '/consultoria/empresarial',
+        destination: '/consultoria',
         permanent: true,
       },
     ]

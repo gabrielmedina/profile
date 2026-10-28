@@ -1,7 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { absoluteUrl } from '@/config/absolute-url'
 import { site } from '@/config/site'
-import { consulting, offerPath } from '@/features/consulting/content'
 import { getAllPosts } from '@/features/posts/services/posts'
 import { tagPath, tagsFromPosts } from '@/features/posts/utils/tags'
 
@@ -28,11 +27,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
-    ...consulting.offers.map((offer) => ({
-      url: absoluteUrl(offerPath(offer.slug)),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    })),
     ...tags.map((tag) => ({
       url: absoluteUrl(tagPath(tag.slug)),
       lastModified: tag.latest,
