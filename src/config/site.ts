@@ -39,7 +39,7 @@ export const site = {
     path: '/consultoria',
     title: 'Consultoria',
     description:
-      'Padrões, revisão do que a IA já entregou e observabilidade para o front-end. O preço sai depois de entender o problema.',
+      'Um front-end com IA, padronizado e observável, pronto para as próximas features.',
   },
   posts: {
     title: 'Posts',

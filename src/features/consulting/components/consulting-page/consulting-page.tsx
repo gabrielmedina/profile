@@ -15,9 +15,9 @@ export function ConsultingPage() {
         />
 
         <header className={styles.pitch}>
-          <h1 className={styles.promise}>{consulting.promise}</h1>
-          <p className={styles.audience}>{consulting.audience}</p>
-          <p className={styles.mechanism}>{consulting.mechanism}</p>
+          <h1 className={styles.title}>{consulting.promise}</h1>
+          <p className={styles.subtitle}>{consulting.audience}</p>
+          <p className={styles.lead}>{consulting.mechanism}</p>
           <p className={styles.proof}>{consulting.proof}</p>
         </header>
 
@@ -25,21 +25,17 @@ export function ConsultingPage() {
           <h2 id="trabalho" className={styles.sectionTitle}>
             {consulting.workHeading}
           </h2>
-          <ol className={styles.work}>
-            {consulting.work.map((item) => (
-              <li key={item.title}>
-                <h3 className={styles.workTitle}>{item.title}</h3>
-                <p className={styles.workText}>{item.text}</p>
-              </li>
+          <div className={styles.work}>
+            {consulting.work.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
             ))}
-          </ol>
+          </div>
         </section>
 
-        <section className={styles.section} aria-labelledby="comeco">
-          <h2 id="comeco" className={styles.sectionTitle}>
-            {consulting.startHeading}
+        <section className={styles.section} aria-labelledby="convite">
+          <h2 id="convite" className={styles.ask}>
+            {consulting.ask}
           </h2>
-          <p className={styles.mechanism}>{consulting.start}</p>
           <WhatsAppCta />
         </section>
       </div>

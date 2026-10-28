@@ -31,38 +31,36 @@
 }
 
 .pitch {
-  max-width: 40rem;
+  max-width: 46rem;
 }
 
-.promise {
-  margin: 0;
-  max-width: 14em;
+.title {
+  margin: 0 0 1rem;
   color: var(--color-title);
-  font-size: 2.35rem;
+  font-size: 2rem;
   font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.08;
+  line-height: 1.2;
 }
 
-.audience {
-  margin: 1.15rem 0 0;
+.subtitle {
+  margin: 0;
   color: var(--color-primary);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.4;
 }
 
-.mechanism,
+.lead,
 .proof {
-  margin: 0.85rem 0 0;
-  color: var(--color-text);
-  font-size: 1.05rem;
+  margin: 0.75rem 0 0;
+  color: var(--color-text-light);
+  font-size: 1rem;
   font-weight: 300;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .proof {
-  color: var(--color-text-light);
+  max-width: 40rem;
 }
 
 .section {
@@ -78,42 +76,28 @@
 }
 
 .work {
-  display: grid;
-  gap: 1.5rem;
+  max-width: 44rem;
+
+  p {
+    margin: 0 0 1.35rem;
+    color: var(--color-text);
+    font-size: 1.125rem;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ask {
   margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: work;
-}
-
-.work li {
-  counter-increment: work;
-}
-
-.work li::before {
-  content: counter(work);
-  display: block;
-  margin-bottom: 0.45rem;
-  color: var(--color-primary);
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1;
-}
-
-.workTitle {
-  margin: 0;
+  max-width: 16em;
   color: var(--color-title);
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   font-weight: 600;
-  line-height: 1.25;
-}
-
-.workText {
-  margin: 0.45rem 0 0;
-  color: var(--color-text);
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.55;
+  line-height: 1.2;
 }
 
 .cta {
@@ -157,12 +141,16 @@
     padding: 2rem;
   }
 
-  .promise {
-    font-size: 3.5rem;
+  .title {
+    font-size: 3.25rem;
   }
 
-  .audience {
-    font-size: 1.4rem;
+  .subtitle {
+    font-size: 1.5rem;
+  }
+
+  .ask {
+    font-size: 2.25rem;
   }
 
   .section {
@@ -173,8 +161,7 @@
     font-size: 1.75rem;
   }
 
-  .work {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2rem;
+  .work p {
+    font-size: 1.25rem;
   }
 }

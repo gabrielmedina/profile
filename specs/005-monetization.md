@@ -8,19 +8,15 @@ O site é um perfil com posts. Três ideias de receita foram consideradas: anún
 
 Quem oferece o trabalho é Senior Front-end Engineer, com 16 anos de experiência, especializado em arquitetura, padronização e entregas que acertam. O percurso público passa por Grupo Boticário e Grupo SBF. Não há firma nem certificado. O que se vende é um trabalho para o front-end que a IA está escrevendo.
 
-Empresas estão gerando a interface só com IA. Quem escreve, muitas vezes, é fullstack ou back-end. O código sai rápido, fica anêmico, falha com facilidade, e custa manter e escalar.
+Empresas estão gerando a interface com IA. A entrega acelera. O trabalho é deixar esse código compreensível, observável e pronto para a próxima feature, sem apontar o ofício de quem escreveu.
 
 ## Decisão
 
 Café e anúncio continuam fora do produto. A página `/consultoria` publica um único trabalho, sem preço. A navegação ganha o item Consultoria, ao lado de Home e Posts. O rodapé também aponta para a página.
 
-O trabalho tem três partes:
+O trabalho não é uma lista de passos. É o entendimento do que já foi gerado e dos gargalos, a proposta de padrões e melhorias, e features que saem com observabilidade, padronizadas, operando com fluidez. O front-end fica otimizado e bem estruturado, uma base para as próximas features.
 
-1. **Padrões.** Como o front-end deve ser escrito: arquitetura, convenção, e o que a próxima geração da IA precisa respeitar.
-2. **O que a IA já entregou.** Revisão das features feitas com IA: o que fica, o que sai, e o que precisa de outra volta.
-3. **Observabilidade.** O time passa a ver a falha quando ela acontece, e se o padrão segurou.
-
-Não há preço publicado. O primeiro passo é entender o problema. O entregável seguinte é um plano de evolução e de melhorias. O valor sai nessa conversa.
+Não há preço publicado. O valor sai depois de entender o problema e de escrever o plano.
 
 ### Contato
 
@@ -28,8 +24,8 @@ WhatsApp `+55 67 99609-6006` (`wa.me/5567996096006`). A mensagem pronta:
 
 ```text
 Olá, Gabriel. Vim pelo site.
-O front-end daqui está sendo feito com IA.
-O que mais dói hoje:
+Quero melhorar o front-end do projeto.
+O que a IA já gerou:
 ```
 
 Sem widget, popup ou script de agenda. O link é uma âncora para o WhatsApp. A mensagem pronta vive só no `href`. A página mostra o botão e o número, e não o texto da mensagem.
@@ -38,7 +34,7 @@ Sem widget, popup ou script de agenda. O link é uma âncora para o WhatsApp. A 
 
 O texto vive em `src/features/consulting/content.ts`. A URL do WhatsApp é função pura ao lado do componente. A rota é fina: metadata, JSON-LD, page view, render.
 
-**`/consultoria`** é a única página, na coluna de 1200px. O `<h1>` nomeia a dor: o front-end que a IA escreveu está difícil de manter. Em seguida, para quem é, o que acontece com o código, e a prova curta (16 anos, Grupo Boticário, Grupo SBF). “O trabalho” lista padrões, revisão e observabilidade. “Como começa” diz que o preço fica em aberto e termina no WhatsApp.
+**`/consultoria`** é a única página, na coluna de 1200px. O `<h1>` usa o mesmo tamanho da lista de posts (2rem, 3.25rem a partir de 768px) e diz o resultado: um front-end com IA, pronto para as próximas features. Em seguida, para quem é, o que o trabalho faz, e a prova curta (16 anos, Grupo Boticário, Grupo SBF). “O trabalho” explica o entendimento e o que fica no projeto, sem numerar etapas. O fechamento é a pergunta “Quer melhorar o front-end do seu projeto?” e o botão de WhatsApp.
 
 As rotas antigas redirecionam para `/consultoria`: `/consultoria/individual`, `/consultoria/empresarial`, `/consultoria/leitura-de-carreira` e `/consultoria/para-um-time`.
 

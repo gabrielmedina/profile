@@ -5,38 +5,26 @@ const whatsapp = {
   display: '+55 67 99609-6006',
   label: 'Chamar no WhatsApp',
   message: `Olá, Gabriel. Vim pelo site.
-O front-end daqui está sendo feito com IA.
-O que mais dói hoje: `,
+Quero melhorar o front-end do projeto.
+O que a IA já gerou: `,
 } as const
 
 export const consulting = {
   path: site.consulting.path,
   title: site.consulting.title,
   description: site.consulting.description,
-  promise: 'O front-end que a IA escreveu está difícil de manter.',
+  promise: 'Um front-end com IA, pronto para as próximas features.',
   audience:
-    'Para empresas em que fullstack e back-end estão entregando a interface.',
+    'Para times que constroem a interface com IA e querem uma base estável para continuar.',
   mechanism:
-    'O código sai rápido. Fica anêmico, falha com facilidade, e custa manter e escalar.',
+    'A geração acelera a entrega. O trabalho é deixar esse código compreensível, observável e pronto para a feature seguinte.',
   proof:
     '16 anos de front-end. Grupo Boticário, na evolução do e-commerce. Grupo SBF, no painel de backoffice, cross-team.',
   workHeading: 'O trabalho',
   work: [
-    {
-      title: 'Padrões',
-      text: 'Defino como o front-end deve ser escrito. Arquitetura, convenção, e o que a próxima geração da IA precisa respeitar.',
-    },
-    {
-      title: 'O que a IA já entregou',
-      text: 'Reviso as features feitas com IA. O que fica, o que sai, e o que precisa de outra volta.',
-    },
-    {
-      title: 'Observabilidade',
-      text: 'O time passa a ver a falha quando ela acontece, e se o padrão segurou.',
-    },
+    'Eu entendo o que já foi gerado e onde o código aperta: gargalos, problemas de manutenção e o que impede a próxima feature de nascer com segurança.',
+    'A partir disso, proponho padrões e melhorias. As features ficam com observabilidade, padronizadas e operando com fluidez. O front-end sai otimizado e bem estruturado, uma base para o que ainda vai ser construído.',
   ],
-  startHeading: 'Como começa',
-  start:
-    'Sem preço fechado. Primeiro eu entendo o problema. Depois sai um plano de evolução e de melhorias.',
+  ask: 'Quer melhorar o front-end do seu projeto?',
   whatsapp,
 } as const
