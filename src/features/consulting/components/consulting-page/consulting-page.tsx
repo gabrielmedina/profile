@@ -1,43 +1,37 @@
 import { Breadcrumbs } from '@/components/breadcrumbs/breadcrumbs'
+import article from '@/features/posts/components/post-article/post-article.module.scss'
 import { consulting } from '../../content'
 import styles from './consulting.module.scss'
 import { WhatsAppCta } from './whatsapp-cta'
 
 export function ConsultingPage() {
   return (
-    <div className={styles.wrapper}>
-      <div className={`${styles.container} ${styles.landing}`}>
-        <Breadcrumbs
-          items={[
-            { name: 'Início', href: '/' },
-            { name: consulting.title, href: consulting.path },
-          ]}
-        />
+    <div className={article.wrapper}>
+      <div className={article.container}>
+        <div className={article.readingRange}>
+          <Breadcrumbs
+            items={[
+              { name: 'Início', href: '/' },
+              { name: consulting.title, href: consulting.path },
+            ]}
+          />
 
-        <header className={styles.pitch}>
-          <h1 className={styles.title}>{consulting.promise}</h1>
-          <p className={styles.subtitle}>{consulting.audience}</p>
-          <p className={styles.lead}>{consulting.mechanism}</p>
-          <p className={styles.proof}>{consulting.proof}</p>
-        </header>
+          <header className={article.header}>
+            <h1 className={article.title}>{consulting.promise}</h1>
+            <p className={article.description}>{consulting.audience}</p>
+          </header>
 
-        <section className={styles.section} aria-labelledby="trabalho">
-          <h2 id="trabalho" className={styles.sectionTitle}>
-            {consulting.workHeading}
-          </h2>
-          <div className={styles.work}>
+          <div className={`${article.content} ${styles.body}`}>
+            <p>{consulting.mechanism}</p>
+            <p>{consulting.proof}</p>
+            <h2 id="trabalho">{consulting.workHeading}</h2>
             {consulting.work.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
+            <h2 id="convite">{consulting.ask}</h2>
+            <WhatsAppCta />
           </div>
-        </section>
-
-        <section className={styles.section} aria-labelledby="convite">
-          <h2 id="convite" className={styles.ask}>
-            {consulting.ask}
-          </h2>
-          <WhatsAppCta />
-        </section>
+        </div>
       </div>
     </div>
   )

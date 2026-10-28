@@ -1,103 +1,6 @@
-@keyframes consulting-in {
-  from {
-    opacity: 0;
-    transform: translateY(2rem);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.wrapper {
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 0 1.6rem;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-width: 0;
-  max-width: 740px;
-  animation: consulting-in ease 0.7s;
-}
-
-.landing {
-  max-width: 1200px;
-}
-
-.pitch {
-  max-width: 46rem;
-}
-
-.title {
-  margin: 0 0 1rem;
-  color: var(--color-title);
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-.subtitle {
-  margin: 0;
-  color: var(--color-primary);
-  font-size: 1.25rem;
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-.lead,
-.proof {
-  margin: 0.75rem 0 0;
-  color: var(--color-text-light);
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.5;
-}
-
-.proof {
-  max-width: 40rem;
-}
-
-.section {
-  margin-top: 3.5rem;
-}
-
-.sectionTitle {
-  margin: 0 0 1.25rem;
-  color: var(--color-title);
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-.work {
-  max-width: 44rem;
-
-  p {
-    margin: 0 0 1.35rem;
-    color: var(--color-text);
-    font-size: 1.125rem;
-    font-weight: 300;
-    line-height: 1.65;
-  }
-
-  p:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.ask {
-  margin: 0;
-  max-width: 16em;
-  color: var(--color-title);
-  font-size: 1.75rem;
-  font-weight: 600;
-  line-height: 1.2;
+.body a.cta {
+  color: var(--color-background);
+  text-decoration: none;
 }
 
 .cta {
@@ -108,7 +11,7 @@
   gap: 0.2rem;
   width: fit-content;
   max-width: 100%;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   padding: 1.05rem 1.35rem;
   border-radius: 6px;
   background: var(--color-primary);
@@ -116,6 +19,7 @@
   font-size: 1.05rem;
   font-weight: 600;
   line-height: 1.2;
+  letter-spacing: 0;
   text-align: center;
   text-decoration: none;
   transition: transform 0.2s ease;
@@ -134,34 +38,4 @@
 .ctaPhone {
   font-size: 0.85rem;
   font-weight: 500;
-}
-
-@media screen and (min-width: 768px) {
-  .wrapper {
-    padding: 2rem;
-  }
-
-  .title {
-    font-size: 3.25rem;
-  }
-
-  .subtitle {
-    font-size: 1.5rem;
-  }
-
-  .ask {
-    font-size: 2.25rem;
-  }
-
-  .section {
-    margin-top: 4.5rem;
-  }
-
-  .sectionTitle {
-    font-size: 1.75rem;
-  }
-
-  .work p {
-    font-size: 1.25rem;
-  }
 }
