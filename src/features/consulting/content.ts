@@ -26,11 +26,14 @@ export const consulting = {
   mechanism:
     'A geração acelera a entrega. **O trabalho é deixar esse código compreensível, observável e pronto para a feature seguinte.**',
   proof:
-    '16 anos de front-end. Grupo Boticário, na evolução do e-commerce. Grupo SBF, no painel de backoffice, cross-team.',
-  workHeading: 'O trabalho',
-  work: [
-    'Eu entendo o que já foi gerado e onde o código aperta: gargalos, problemas de manutenção e o que impede a próxima feature de nascer com segurança.',
-    'A partir disso, proponho padrões e melhorias. As features ficam com observabilidade, padronizadas e operando com fluidez. **O front-end sai otimizado e bem estruturado, uma base para o que ainda vai ser construído.**',
+    'Senior Front-end há 16 anos, em arquitetura e padronização. Passei pelo Grupo Boticário, na evolução do e-commerce, e pelo Grupo SBF, no painel de backoffice, cross-team.',
+  howHeading: 'Como funciona',
+  steps: [
+    'Entendo qual feature merece atenção. Em geral é a que trava a próxima entrega, ou a que a IA já gerou e o time precisa continuar.',
+    'Analiso o que ela deveria estar fazendo: o comportamento da interface e o que o time precisa conseguir manter.',
+    'Olho o código e defino boas práticas e padrões de front-end. A feature ganha um caminho claro para a próxima mudança.',
+    'Adiciono ou melhoro a camada de observabilidade. Dá para ver quando a feature falha e se o padrão segurou.',
+    'Deixo a feature como exemplo. As melhorias seguintes e as features novas partem desse padrão.',
   ],
   ask: 'Quer melhorar o front-end do seu projeto?',
   whatsapp,

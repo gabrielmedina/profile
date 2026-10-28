@@ -38,12 +38,12 @@ export function ConsultingPage() {
             <p>
               <Emphasis text={consulting.proof} />
             </p>
-            <h2 id="trabalho">{consulting.workHeading}</h2>
-            {consulting.work.map((paragraph) => (
-              <p key={paragraph}>
-                <Emphasis text={paragraph} />
-              </p>
-            ))}
+            <h2 id="como-funciona">{consulting.howHeading}</h2>
+            <ol className={styles.steps}>
+              {consulting.steps.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
             <section className={styles.close} aria-labelledby="convite">
               <h2 id="convite">{consulting.ask}</h2>
               <WhatsAppCta />

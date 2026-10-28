@@ -14,7 +14,7 @@ Empresas estão gerando a interface com IA. A entrega acelera. O trabalho é dei
 
 Café e anúncio continuam fora do produto. A página `/consultoria` publica um único trabalho, sem preço. A navegação ganha o item Consultoria, ao lado de Home e Posts. O rodapé também aponta para a página.
 
-O trabalho não é uma lista de passos. É o entendimento do que já foi gerado e dos gargalos, a proposta de padrões e melhorias, e features que saem com observabilidade, padronizadas, operando com fluidez. O front-end fica otimizado e bem estruturado, uma base para as próximas features.
+“Como funciona” lista cinco passos, nessa ordem: entender qual feature merece atenção; analisar o que ela deveria estar fazendo; olhar o código e definir boas práticas e padrões de front-end; adicionar ou melhorar a observabilidade; deixar a feature como exemplo para as próximas.
 
 Não há preço publicado. O valor sai depois de entender o problema e de escrever o plano.
 
@@ -34,7 +34,7 @@ Sem widget, popup ou script de agenda. O link é uma âncora para o WhatsApp. A 
 
 O texto vive em `src/features/consulting/content.ts`. A URL do WhatsApp é função pura ao lado do componente. A rota é fina: metadata, JSON-LD, page view, render.
 
-**`/consultoria`** é a única página e usa o mesmo layout de um post (`post-article`): invólucro de 1200px, `<h1>` e descrição no mesmo tamanho e na mesma cor, corpo centralizado em 740px com os mesmos parágrafos e `h2`. O `<h1>` diz o resultado: um front-end com IA, pronto para as próximas features. A descrição, em primary, diz para quem é. A capa entra no corpo, no mesmo lugar da imagem de um post, numa faixa mais baixa (1200×281): barras soltas seguem por uma linha até um traço mint. WebP na página, JPEG no OG. O texto traz o que o trabalho faz e a prova curta (16 anos, Grupo Boticário, Grupo SBF). O `<h1>` não leva `<strong>`. No corpo, o destaque segue o dos posts: uma frase de impacto por vez, na cor primary. “O trabalho” explica o entendimento e o que fica no projeto, sem numerar etapas. O fechamento fica na coluna do texto, na mesma superfície dos cards de post (`background-interactive`): a pergunta “Quer melhorar o front-end do seu projeto?” e o botão de WhatsApp, sem o número.
+**`/consultoria`** é a única página e usa o mesmo layout de um post (`post-article`): invólucro de 1200px, `<h1>` e descrição no mesmo tamanho e na mesma cor, corpo centralizado em 740px com os mesmos parágrafos e `h2`. O `<h1>` diz o resultado: um front-end com IA, pronto para as próximas features. A descrição, em primary, diz para quem é. A capa entra no corpo, no mesmo lugar da imagem de um post, numa faixa mais baixa (1200×281): barras soltas seguem por uma linha até um traço mint. WebP na página, JPEG no OG. O texto traz o que o trabalho faz e uma apresentação curta: Senior Front-end há 16 anos, em arquitetura e padronização, com Grupo Boticário e Grupo SBF. O `<h1>` não leva `<strong>`. No corpo, o destaque segue o dos posts: uma frase de impacto, na cor primary. “Como funciona” é uma lista ordenada com os cinco passos. O fechamento fica na coluna do texto, na mesma superfície dos cards de post (`background-interactive`): a pergunta “Quer melhorar o front-end do seu projeto?” e o botão de WhatsApp, sem o número.
 
 As rotas antigas redirecionam para `/consultoria`: `/consultoria/individual`, `/consultoria/empresarial`, `/consultoria/leitura-de-carreira` e `/consultoria/para-um-time`.
 
