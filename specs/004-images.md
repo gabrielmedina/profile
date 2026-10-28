@@ -50,7 +50,7 @@ Capas compartilham uma **família** minimalista — não um template único. Fun
 - Fundo: **`#1a1d24`** (slate escuro, distinto do `--color-background` dark `#16161b`). Não variar o campo de fundo entre posts.
 - Material: vidro fosco / nós luminosos / acento mint-teal suave. Sem roxo, sem glow de marca alheia, sem clutter.
 - Export: ~1200×674 (16:9), WebP no corpo + JPEG leve no OG (≤ ~100 KB social).
-- A página `/consultoria` usa a mesma família numa faixa mais baixa (1200×281). A altura do 16:9 fica grande demais nessa página. Ver `005`.
+- A página `/consultoria` usa a mesma família numa faixa mais baixa (1200×281). A altura do 16:9 fica grande demais nessa página. A composição são as três IAs (OpenAI, Claude, Gemini), em tom único, entrando num fluxo alinhado. Ver `005`.
 
 #### Composição (varia por post)
 

@@ -6,6 +6,19 @@ import styles from './consulting.module.scss'
 import { Emphasis } from './emphasis'
 import { WhatsAppCta } from './whatsapp-cta'
 
+function StepText({ text }: { text: string }) {
+  const breakAt = text.indexOf('. ')
+
+  if (breakAt === -1) return text
+
+  return (
+    <p>
+      <span className={styles.stepLead}>{text.slice(0, breakAt + 1)}</span>{' '}
+      {text.slice(breakAt + 2)}
+    </p>
+  )
+}
+
 export function ConsultingPage() {
   return (
     <div className={article.wrapper}>
@@ -41,13 +54,12 @@ export function ConsultingPage() {
             <h2 id="como-funciona">{consulting.howHeading}</h2>
             <ol className={styles.steps}>
               {consulting.steps.map((step) => (
-                <li key={step}>{step}</li>
+                <li key={step}>
+                  <StepText text={step} />
+                </li>
               ))}
             </ol>
-            <section className={styles.close} aria-labelledby="convite">
-              <h2 id="convite">{consulting.ask}</h2>
-              <WhatsAppCta />
-            </section>
+            <WhatsAppCta />
           </div>
         </div>
       </div>

@@ -1,16 +1,41 @@
-.body .steps li + li {
-  margin-top: 1.25rem;
+.body .steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
 }
 
-.close {
-  margin-top: 0.5rem;
-  padding: 1.6rem;
+.steps li {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr;
+  gap: 0.85rem;
+  align-items: start;
+  margin: 0;
+  padding: 1.05rem 1.15rem;
+  counter-increment: step;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
   background: var(--color-background-interactive);
 
-  h2 {
-    margin: 0;
-    max-width: 16em;
+  &::before {
+    content: counter(step);
+    color: var(--color-primary);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.45;
   }
+
+  p {
+    margin: 0;
+  }
+}
+
+.stepLead {
+  color: var(--color-title);
+  font-weight: 500;
 }
 
 .cta {
@@ -19,7 +44,7 @@
   justify-content: center;
   width: fit-content;
   max-width: 100%;
-  margin-top: 1.5rem;
+  margin-top: 0;
   padding: 1.05rem 1.35rem;
   border-radius: 6px;
   background: var(--color-primary);
@@ -49,8 +74,9 @@
 }
 
 @media screen and (min-width: 768px) {
-  .close {
-    padding: 3rem;
-    border-radius: 4px;
+  .steps li {
+    grid-template-columns: 1.85rem 1fr;
+    gap: 1rem;
+    padding: 1.3rem 1.5rem;
   }
 }

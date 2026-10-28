@@ -3,7 +3,7 @@ import { site } from '@/config/site'
 const whatsapp = {
   e164: '5567996096006',
   display: '+55 67 99609-6006',
-  label: 'Chamar no WhatsApp',
+  label: 'Quero saber mais',
   message: `Olá, Gabriel. Vim pelo site.
 Quero melhorar o front-end do projeto.
 O que a IA já gerou: `,
@@ -18,7 +18,7 @@ export const consulting = {
     social: '/imgs/consultoria/consultoria.jpg',
     width: 1200,
     height: 281,
-    alt: 'Barras soltas à esquerda seguem por uma linha até um traço mint.',
+    alt: 'OpenAI, Claude e Gemini convergem num fluxo só, até um traço mint.',
   },
   promise: 'Um front-end com IA, pronto para as próximas features.',
   audience:
@@ -35,6 +35,5 @@ export const consulting = {
     'Adiciono ou melhoro a camada de observabilidade. Dá para ver quando a feature falha e se o padrão segurou.',
     'Deixo a feature como exemplo. As melhorias seguintes e as features novas partem desse padrão.',
   ],
-  ask: 'Quer melhorar o front-end do seu projeto?',
   whatsapp,
 } as const
