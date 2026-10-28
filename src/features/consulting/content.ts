@@ -49,23 +49,41 @@ export const consulting = {
     statement: 'Dev front-end sênior, com 16 anos de experiência.',
     note: 'Especializado em arquitetura, padronização e entregas que acertam, com impacto no produto.',
     milestones: [
-      { value: 'Agência W3', caption: 'Criando produtos digitais.' },
-      { value: 'Grupo VFX', caption: 'Evoluindo a plataforma de e-learning.' },
+      {
+        value: 'Agência W3',
+        caption:
+          'Criação de produtos digitais, do zero. Interface, fluxo e a entrega com o cliente na mesa.',
+        focus: false,
+      },
+      {
+        value: 'Grupo VFX',
+        caption:
+          'Evolução da plataforma de e-learning. O aluno precisava achar o próximo passo, e o produto precisava aguentar conteúdo e uso real.',
+        focus: false,
+      },
       {
         value: 'Quero Educação',
-        caption: 'Evolução do e-commerce focado em bolsa de estudos.',
+        caption:
+          'Evolução do e-commerce de bolsa de estudos. A oferta fica clara, e a compra termina sem a pessoa se perder.',
+        focus: false,
       },
       {
         value: 'EmCasa',
-        caption: 'Evolução do e-commerce de venda de imóveis.',
+        caption:
+          'Evolução do e-commerce de imóveis. Anúncio, busca e a decisão de compra no mesmo caminho.',
+        focus: false,
       },
       {
         value: 'Grupo Boticário',
-        caption: 'Especialista na evolução do e-commerce.',
+        caption:
+          'Especialista na evolução do e-commerce. Arquitetura, padrão entre os times e entregas que mudam o que a pessoa vê e compra na loja.',
+        focus: true,
       },
       {
         value: 'Grupo SBF',
-        caption: 'Cross-team, com foco no painel de backoffice.',
+        caption:
+          'Referência cross-team no painel de backoffice. Cada squad chega com outro contexto. O trabalho é entender a dor, alinhar a arquitetura e acompanhar até a entrega.',
+        focus: true,
       },
     ],
   },

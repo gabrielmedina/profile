@@ -48,7 +48,14 @@ export function ConsultingPage() {
           <p className={styles.statementNote}>{consulting.experience.note}</p>
           <ol className={styles.track}>
             {consulting.experience.milestones.map((mark) => (
-              <li key={mark.value} className={styles.mark}>
+              <li
+                key={mark.value}
+                className={
+                  mark.focus
+                    ? `${styles.mark} ${styles.markFocus}`
+                    : styles.mark
+                }
+              >
                 <p className={styles.markValue}>{mark.value}</p>
                 <p className={styles.markCaption}>{mark.caption}</p>
               </li>

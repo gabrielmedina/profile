@@ -100,21 +100,10 @@
   line-height: 1.15;
 }
 
-.landing .title::before,
-.landing .sectionTitle::before {
-  content: '';
-  display: block;
-  width: 2.75rem;
-  height: 3px;
-  margin-bottom: 0.85rem;
-  border-radius: 2px;
-  background: var(--color-primary);
-}
-
 .statement {
   margin: 1.15rem 0 0;
   max-width: 28em;
-  color: var(--color-title);
+  color: var(--color-primary);
   font-size: 1.35rem;
   font-weight: 500;
   line-height: 1.35;
@@ -149,7 +138,7 @@
   bottom: 0;
   left: 4px;
   width: 2px;
-  background: var(--color-primary);
+  background: var(--color-border);
 }
 
 .mark::after {
@@ -160,12 +149,12 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--color-primary);
+  background: var(--color-border);
 }
 
 .markValue {
   margin: 0;
-  color: var(--color-primary);
+  color: var(--color-title);
   font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -173,11 +162,30 @@
 }
 
 .markCaption {
-  margin: 0.3rem 0 0;
+  margin: 0.35rem 0 0;
+  max-width: 36rem;
   color: var(--color-text);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 300;
-  line-height: 1.4;
+  line-height: 1.5;
+}
+
+.markFocus {
+  padding-bottom: 2rem;
+}
+
+.markFocus .markValue {
+  color: var(--color-primary);
+  font-size: 1.45rem;
+}
+
+.markFocus .markCaption {
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.markFocus::after {
+  background: var(--color-primary);
 }
 
 .cards {
@@ -428,8 +436,9 @@
 @media screen and (min-width: 1100px) {
   .track {
     position: relative;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    column-gap: 1rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 1.5rem;
+    row-gap: 3.25rem;
     margin-top: 3.5rem;
     padding-top: 2rem;
   }
@@ -441,10 +450,11 @@
     right: 0;
     left: 0;
     height: 2px;
-    background: var(--color-primary);
+    background: var(--color-border);
   }
 
-  .mark {
+  .mark,
+  .markFocus {
     padding: 0;
   }
 
@@ -459,11 +469,42 @@
     height: 10px;
   }
 
+  .markFocus {
+    grid-column: span 2;
+    padding-top: 2rem;
+  }
+
+  .markFocus:not(:last-child)::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: calc(200% + 1.5rem);
+    height: 2px;
+    background: var(--color-border);
+  }
+
+  .markFocus::after {
+    top: -2px;
+    width: 14px;
+    height: 14px;
+  }
+
   .markValue {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
+  }
+
+  .markFocus .markValue {
+    font-size: 1.7rem;
   }
 
   .markCaption {
-    font-size: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .markFocus .markCaption {
+    max-width: 34rem;
+    font-size: 1.08rem;
   }
 }
