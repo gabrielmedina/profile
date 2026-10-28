@@ -1,12 +1,6 @@
-import Image from 'next/image'
 import { trackAttrs } from '@/components/analytics/track-attrs'
 import { Breadcrumbs } from '@/components/breadcrumbs/breadcrumbs'
-import {
-  consulting,
-  consultingCover,
-  offerPath,
-  type ConsultingOffer,
-} from '../../content'
+import { consulting, offerPath, type ConsultingOffer } from '../../content'
 import styles from './consulting.module.scss'
 import { OfferIcon } from './offer-icon'
 
@@ -21,59 +15,34 @@ export function ConsultingPage() {
           ]}
         />
 
-        <div className={styles.hero}>
-          <header className={styles.header}>
-            <h1 className={styles.title}>{consulting.title}</h1>
-            <p className={styles.subtitle}>{consulting.subtitle}</p>
-            <p className={styles.lead}>{consulting.intro}</p>
-          </header>
-          <figure className={styles.cover}>
-            <Image
-              src={consultingCover.src}
-              alt={consultingCover.alt}
-              width={consultingCover.width}
-              height={consultingCover.height}
-              priority
-              sizes="(min-width: 900px) 640px, 100vw"
-              className={styles.coverImage}
-            />
-          </figure>
-        </div>
+        <header className={styles.pitch}>
+          <h1 className={styles.promise}>{consulting.promise}</h1>
+          <p className={styles.audience}>{consulting.audience}</p>
+          <p className={styles.mechanism}>{consulting.mechanism}</p>
+        </header>
 
-        <section className={styles.section} aria-labelledby="experiencia">
-          <div className={styles.reason}>
-            <p className={styles.reasonSubtitle}>
-              {consulting.experience.subtitle}
-            </p>
-            <h2 id="experiencia" className={styles.reasonTitle}>
-              {consulting.experience.title}
-            </h2>
-            <div className={styles.reasonText}>
-              {consulting.experience.paragraphs.map((paragraph) => (
-                <p key={paragraph[0].text}>
-                  {paragraph.map((part) =>
-                    part.emphasis ? (
-                      <strong key={part.text}>{part.text}</strong>
-                    ) : (
-                      part.text
-                    ),
-                  )}
-                </p>
-              ))}
-            </div>
-          </div>
+        <section className={styles.proof} aria-label="De onde sai o critério">
+          <ul className={styles.proofList}>
+            {consulting.proof.map((item) => (
+              <li key={item.value}>
+                <p className={styles.proofValue}>{item.value}</p>
+                <p className={styles.proofCaption}>{item.caption}</p>
+              </li>
+            ))}
+          </ul>
+          <p className={styles.proofNote}>{consulting.proofNote}</p>
         </section>
 
-        <section className={styles.section} aria-labelledby="entrega">
-          <h2 id="entrega" className={styles.sectionTitle}>
-            {consulting.deliveryHeading}
+        <section className={styles.choice} aria-labelledby="formato">
+          <h2 id="formato" className={styles.sectionTitle}>
+            {consulting.choiceHeading}
           </h2>
-          <p className={styles.lead}>{consulting.deliveryLead}</p>
           <div className={styles.cards}>
             {consulting.offers.map((offer) => (
               <OfferCard key={offer.id} offer={offer} />
             ))}
           </div>
+          <p className={styles.fit}>{consulting.fit}</p>
         </section>
       </div>
     </div>

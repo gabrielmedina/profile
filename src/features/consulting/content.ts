@@ -42,38 +42,20 @@ export const consulting = {
   path: site.consulting.path,
   title: site.consulting.title,
   description: site.consulting.description,
-  subtitle: 'O que muda na carreira e na empresa.',
-  intro:
-    'Na carreira, o critério fica mais firme e o próximo passo deixa de ser um chute. Na empresa, o time sai da mesma dor e passa a entregar com mais acerto.',
-  experience: {
-    subtitle: 'Por que a minha consultoria?',
-    title: 'Senior Front-end Engineer',
-    paragraphs: [
-      [
-        { text: '16 anos', emphasis: true },
-        {
-          text: ' de experiência, com foco em ecommerces. Arquitetura, padronização e entregas que acertam, com impacto no produto.',
-          emphasis: false,
-        },
-      ],
-      [
-        { text: 'No ', emphasis: false },
-        { text: 'Grupo Boticário', emphasis: true },
-        {
-          text: ', especialista na evolução do e-commerce: arquitetura, padrão entre os times e entregas que mudam o que a pessoa vê e compra na loja. No ',
-          emphasis: false,
-        },
-        { text: 'Grupo SBF', emphasis: true },
-        {
-          text: ', referência cross-team no painel de backoffice: cada squad chega com outro contexto, e o trabalho é entender a dor, alinhar a arquitetura e acompanhar até a entrega.',
-          emphasis: false,
-        },
-      ],
-    ],
-  },
-  deliveryHeading: 'Como começar',
-  deliveryLead:
-    'Dois formatos. Os dois olham o momento e terminam com um plano escrito.',
+  promise: 'O que trava agora vira um plano.',
+  audience:
+    'Para quem desenvolve sem o próximo passo, e para um time preso na mesma dor.',
+  mechanism:
+    'Eu leio o momento e devolvo o plano por escrito. Quem executa continua na tarefa.',
+  proof: [
+    { value: '16 anos', caption: 'de front-end em e-commerce.' },
+    { value: 'Grupo Boticário', caption: 'evolução da loja.' },
+    { value: 'Grupo SBF', caption: 'painel de backoffice, cross-team.' },
+  ],
+  proofNote:
+    'Arquitetura, padronização e entrega que acerta. Esse é o critério que entra no plano.',
+  choiceHeading: 'Escolha o formato',
+  fit: 'O plano é o que você leva. A implementação fica com você, ou com o time.',
   offers: [
     {
       id: 'individual',

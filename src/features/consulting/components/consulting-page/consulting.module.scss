@@ -30,14 +30,38 @@
   max-width: 1200px;
 }
 
-.hero {
-  display: grid;
-  gap: 1.75rem;
-  align-items: center;
+.pitch {
+  max-width: 40rem;
 }
 
 .header {
   min-width: 0;
+}
+
+.promise {
+  margin: 0;
+  max-width: 12em;
+  color: var(--color-title);
+  font-size: 2.35rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+.audience {
+  margin: 1.15rem 0 0;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.mechanism {
+  margin: 0.85rem 0 0;
+  color: var(--color-text);
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.55;
 }
 
 .title {
@@ -67,20 +91,6 @@
   line-height: 1.5;
 }
 
-.cover {
-  margin: 0;
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  order: -1;
-}
-
-.coverImage {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
 .section {
   margin-top: 4.5rem;
 }
@@ -93,49 +103,57 @@
   line-height: 1.2;
 }
 
-.reason {
-  padding: 1.6rem;
-  background: var(--color-background-interactive);
-  border: solid 2px transparent;
+.proof {
+  margin-top: 2.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
 }
 
-.reasonSubtitle {
+.proofList {
+  display: grid;
+  gap: 1.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.proofValue {
   margin: 0;
   color: var(--color-primary);
-  font-size: 1em;
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
-.reasonTitle {
-  margin: 0.2rem 0 0;
-  color: var(--color-title);
-  font-size: 2.1em;
-  font-weight: 500;
-  line-height: 1.15;
-}
-
-.reasonText {
-  margin-top: 1.25rem;
+.proofCaption {
+  margin: 0.3rem 0 0;
+  color: var(--color-text);
   font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.4;
+}
 
-  p {
-    margin: 0 0 2rem;
-    color: var(--color-text);
-    font-size: 1em;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    line-height: 1.6;
-  }
+.proofNote {
+  margin: 1.35rem 0 0;
+  max-width: 36rem;
+  color: var(--color-text);
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.55;
+}
 
-  p:last-child {
-    margin-bottom: 0;
-  }
+.choice {
+  margin-top: 3.5rem;
+}
 
-  strong {
-    color: var(--color-primary);
-    font-weight: 500;
-  }
+.fit {
+  margin: 1.5rem 0 0;
+  max-width: 36rem;
+  color: var(--color-text-light);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
 }
 
 .cards {
@@ -384,32 +402,21 @@
   font-weight: 500;
 }
 
-@media screen and (min-width: 375px) {
-  .reasonSubtitle {
-    font-size: 1.1em;
-  }
-
-  .reasonTitle {
-    font-size: 2.5em;
-  }
-
-  .reasonText {
-    font-size: 1.1rem;
-  }
-}
-
 @media screen and (min-width: 768px) {
   .wrapper {
     padding: 2rem;
   }
 
-  .hero {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap: 3rem;
+  .promise {
+    font-size: 3.6rem;
   }
 
-  .cover {
-    order: 0;
+  .audience {
+    font-size: 1.4rem;
+  }
+
+  .mechanism {
+    font-size: 1.15rem;
   }
 
   .title {
@@ -420,34 +427,27 @@
     font-size: 1.5rem;
   }
 
-  .landing .section {
-    margin-top: 6rem;
-  }
-
   .sectionTitle {
     margin-bottom: 1rem;
     font-size: 1.75rem;
   }
 
-  .reason {
-    padding: 3rem;
-    border-radius: 4px;
+  .proof {
+    margin-top: 3.25rem;
+    padding-top: 1.75rem;
   }
 
-  .reasonSubtitle {
-    font-size: 1.4em;
+  .proofList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
   }
 
-  .reasonTitle {
-    font-size: 4em;
+  .proofValue {
+    font-size: 1.5rem;
   }
 
-  .reasonText {
-    font-size: 1.4rem;
-
-    p {
-      margin-bottom: 2.6rem;
-    }
+  .choice {
+    margin-top: 4.5rem;
   }
 
   .cards {

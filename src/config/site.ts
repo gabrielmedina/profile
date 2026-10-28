@@ -39,7 +39,7 @@ export const site = {
     path: '/consultoria',
     title: 'Consultoria',
     description:
-      'Consultoria individual para quem desenvolve, e consultoria empresarial para uma dor de um time. Preços e WhatsApp.',
+      'O que trava agora vira um plano escrito. Para quem desenvolve, ou para um time preso numa dor.',
   },
   posts: {
     title: 'Posts',
