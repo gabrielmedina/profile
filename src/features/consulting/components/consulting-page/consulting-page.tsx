@@ -60,6 +60,7 @@ export function ConsultingPage() {
           <h2 id="entrega" className={styles.sectionTitle}>
             {consulting.deliveryHeading}
           </h2>
+          <p className={styles.statementNote}>{consulting.deliveryLead}</p>
           <div className={styles.cards}>
             {consulting.offers.map((offer) => (
               <OfferCard key={offer.id} offer={offer} />

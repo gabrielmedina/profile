@@ -29,7 +29,7 @@ export const consultingCover = {
   social: '/imgs/consultoria/consultoria.jpg',
   width: 1200,
   height: 675,
-  alt: 'Capa: uma lâmina fosca ao centro. Um nó à esquerda e três nós à direita ligam-se a ela por fios mint.',
+  alt: 'Capa: uma linha reta na primeira metade e, a partir do meio, uma subida em mint até o fim.',
 } as const
 
 const whatsapp = {
@@ -41,13 +41,13 @@ export const consulting = {
   path: site.consulting.path,
   title: site.consulting.title,
   description: site.consulting.description,
-  subtitle: 'Um plano para quem desenvolve. Um plano para a dor de um time.',
+  subtitle: 'Um plano para o próximo passo.',
   intro:
-    'Sou Gabriel Medina, senior front-end engineer. Há mais de 16 anos trabalho com web, e há mais de 8 com React. Passei pelo Grupo Boticário, em plataformas de e-commerce, e hoje atuo no Grupo SBF como referência técnica entre times.',
+    'Sou Gabriel Medina. Eu olho o momento com você, ou com o seu time, e devolvo o próximo passo por escrito. Quem executa continua na tarefa.',
   experience: {
-    heading: 'Experiência',
-    statement: 'O que eu levo para a conversa é critério.',
-    note: 'Arquitetura, design system, a fronteira de um sistema, e o que fazer com o que a IA devolveu.',
+    heading: 'De onde sai o plano',
+    statement: 'Dezesseis anos de front-end em produto.',
+    note: 'Arquitetura, design system, e o que fazer com o que a IA devolveu. Esse é o critério que entra no plano.',
     milestones: [
       { value: '16 anos', caption: 'de desenvolvimento web' },
       { value: '8 anos', caption: 'com React, TypeScript e Next.js' },
@@ -55,14 +55,16 @@ export const consulting = {
       { value: 'SBF', caption: 'referência técnica entre times' },
     ],
   },
-  deliveryHeading: 'O que eu entrego',
+  deliveryHeading: 'Como começar',
+  deliveryLead:
+    'Dois formatos. Os dois olham o momento e terminam com um plano escrito.',
   offers: [
     {
       id: 'individual',
       slug: 'individual',
       title: 'Consultoria individual',
       summary:
-        'Um encontro de 75 minutos e um plano escrito para as próximas quatro semanas.',
+        'Para uma pessoa. Um encontro de 75 minutos e um plano para as próximas quatro semanas.',
       steps: [
         'Você conta o momento, o que trava, e manda um material real: um projeto, uma pull request, ou uma decisão que está na sua mão.',
         'No encontro a gente confirma onde você está, olha o material e escolhe um próximo passo que cabe nas próximas semanas.',
@@ -94,7 +96,7 @@ Meu momento hoje: `,
       slug: 'empresarial',
       title: 'Consultoria empresarial',
       summary:
-        'Um time chega com uma dor já dita. Eu olho com o grupo e devolvo um plano de 30 e 60 dias. Quem executa é o time.',
+        'Para um time. Uma sessão em volta de uma dor e um plano de 30 e 60 dias.',
       steps: [
         'Uma página de combinado: a dor em uma frase, quem entra na sala, dois exemplos concretos enviados com cinco dias de antecedência, e o que fica de fora.',
         'Quarenta e cinco minutos com quem patrocina, para entender a restrição e o que “melhor” significa.',
