@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { trackAttrs } from '@/components/analytics/track-attrs'
 import { Breadcrumbs } from '@/components/breadcrumbs/breadcrumbs'
 import {
   consulting,
@@ -7,11 +8,12 @@ import {
   type ConsultingOffer,
 } from '../../content'
 import styles from './consulting.module.scss'
+import { OfferIcon } from './offer-icon'
 
 export function ConsultingPage() {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.container}>
+      <div className={`${styles.container} ${styles.landing}`}>
         <Breadcrumbs
           items={[
             { name: 'Início', href: '/' },
@@ -32,7 +34,7 @@ export function ConsultingPage() {
               width={consultingCover.width}
               height={consultingCover.height}
               priority
-              sizes="(min-width: 768px) 480px, 100vw"
+              sizes="(min-width: 900px) 640px, 100vw"
               className={styles.coverImage}
             />
           </figure>
@@ -42,12 +44,16 @@ export function ConsultingPage() {
           <h2 id="experiencia" className={styles.sectionTitle}>
             {consulting.experience.heading}
           </h2>
-          <p className={styles.body}>{consulting.experience.body}</p>
-          <ul className={styles.experience}>
-            {consulting.experience.items.map((item) => (
-              <li key={item}>{item}</li>
+          <p className={styles.statement}>{consulting.experience.statement}</p>
+          <p className={styles.statementNote}>{consulting.experience.note}</p>
+          <ol className={styles.track}>
+            {consulting.experience.milestones.map((mark) => (
+              <li key={mark.value} className={styles.mark}>
+                <p className={styles.markValue}>{mark.value}</p>
+                <p className={styles.markCaption}>{mark.caption}</p>
+              </li>
             ))}
-          </ul>
+          </ol>
         </section>
 
         <section className={styles.section} aria-labelledby="entrega">
@@ -60,34 +66,28 @@ export function ConsultingPage() {
             ))}
           </div>
         </section>
-
-        <section className={styles.section} aria-labelledby="tamanho">
-          <h2 id="tamanho" className={styles.sectionTitle}>
-            {consulting.scope.heading}
-          </h2>
-          <ul className={styles.scope}>
-            {consulting.scope.items.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
       </div>
     </div>
   )
 }
 
 function OfferCard({ offer }: { offer: ConsultingOffer }) {
-  const from = offer.groups[0]?.prices[0]
-
   return (
-    <a className={styles.card} href={offerPath(offer.slug)}>
-      <p className={styles.eyebrow}>{offer.eyebrow}</p>
-      <h3 className={styles.cardTitle}>{offer.title}</h3>
-      <p className={styles.cardSummary}>{offer.summary}</p>
-      {from ? (
-        <p className={styles.cardFrom}>A partir de {from.display}</p>
-      ) : null}
-      <p className={styles.cardAction}>Ver o formato</p>
-    </a>
+    <article className={styles.card}>
+      <span className={styles.icon} aria-hidden="true">
+        <OfferIcon id={offer.id} />
+      </span>
+      <div className={styles.cardCopy}>
+        <h3 className={styles.cardTitle}>{offer.title}</h3>
+        <p className={styles.cardSummary}>{offer.summary}</p>
+      </div>
+      <a
+        className={styles.more}
+        href={offerPath(offer.slug)}
+        {...trackAttrs('clicked-consulting-offer', { offer: offer.id })}
+      >
+        Quero saber mais
+      </a>
+    </article>
   )
 }

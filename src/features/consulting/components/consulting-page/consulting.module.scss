@@ -14,7 +14,7 @@
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  padding: 0 1.6rem 3rem;
+  padding: 0 clamp(1.25rem, 5vw, 5rem) 5rem;
 }
 
 .container {
@@ -22,12 +22,12 @@
   flex-direction: column;
   width: 100%;
   min-width: 0;
-  max-width: 1080px;
+  max-width: 740px;
   animation: consulting-in ease 0.7s;
 }
 
-.reading {
-  max-width: 740px;
+.landing {
+  max-width: 1440px;
 }
 
 .hero {
@@ -84,7 +84,11 @@
 }
 
 .section {
-  margin-top: 3.75rem;
+  margin-top: 4.5rem;
+}
+
+.landing .section {
+  margin-top: 7rem;
 }
 
 .sectionTitle {
@@ -95,85 +99,154 @@
   line-height: 1.3;
 }
 
-.experience,
-.scope {
+.statement {
+  margin: 1.35rem 0 0;
+  max-width: 16em;
+  color: var(--color-title);
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.statementNote {
+  margin: 1rem 0 0;
+  max-width: 38rem;
+  color: var(--color-text);
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.track {
   display: grid;
-  gap: 0.75rem;
-  margin: 1.25rem 0 0;
+  gap: 0;
+  margin: 2.75rem 0 0;
   padding: 0;
   list-style: none;
 }
 
-.experience li,
-.scope li {
+.mark {
+  position: relative;
+  padding: 0 0 2.5rem 1.85rem;
+}
+
+.mark:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: 0.85rem;
+  bottom: 0;
+  left: 5px;
+  width: 2px;
+  background: var(--color-border);
+}
+
+.mark::after {
+  content: '';
+  position: absolute;
+  top: 0.2rem;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.markValue {
   margin: 0;
-  padding: 1.15rem 1.2rem;
-  background: var(--color-background-interactive);
-  border-radius: 6px;
+  color: var(--color-title);
+  font-size: 2.15rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.markCaption {
+  margin: 0.45rem 0 0;
   color: var(--color-text);
   font-weight: 300;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .cards {
-  display: grid;
-  gap: 1rem;
-  margin-top: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  margin-top: 2rem;
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  padding: 1.5rem;
+  display: grid;
+  gap: 1.35rem;
+  width: 100%;
+  padding: 1.6rem;
   background: var(--color-background-interactive);
-  border: 2px solid transparent;
-  border-radius: 6px;
-  text-decoration: none;
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
 
-  &:hover,
-  &:focus-visible {
-    transform: translateY(-4px);
-    border-color: var(--color-primary);
+.icon {
+  display: grid;
+  width: 5.5rem;
+  height: 5.5rem;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-background);
+  color: var(--color-primary);
+
+  svg {
+    display: block;
+    width: auto;
+    height: 2.55rem;
   }
 }
 
-.eyebrow {
-  margin: 0 0 0.55rem;
-  color: var(--color-primary);
-  font-size: 0.92rem;
-  font-weight: 500;
+.cardCopy {
+  min-width: 0;
 }
 
 .cardTitle {
   margin: 0;
   color: var(--color-title);
-  font-size: 1.55rem;
+  font-size: 1.7rem;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .cardSummary {
-  margin: 0.75rem 0 0;
+  margin: 0.7rem 0 0;
   color: var(--color-text);
+  font-size: 1.05rem;
   font-weight: 300;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
-.cardFrom {
-  margin: 1.5rem 0 0;
-  color: var(--color-title);
-  font-size: 1.35rem;
+.more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+  padding: 0.95rem 1.35rem;
+  border-radius: 6px;
+  background: var(--color-primary);
+  color: var(--color-background);
   font-weight: 600;
-}
+  line-height: 1.2;
+  text-decoration: none;
+  transition: transform 0.2s ease;
 
-.cardAction {
-  margin: 0.35rem 0 0;
-  color: var(--color-primary);
-  font-weight: 600;
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-title);
+    outline-offset: 3px;
+  }
 }
 
 .steps {
@@ -288,12 +361,13 @@
 
 @media screen and (min-width: 768px) {
   .wrapper {
-    padding: 2rem 2rem 4rem;
+    padding-top: 1.5rem;
+    padding-bottom: 8rem;
   }
 
   .hero {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap: 3rem;
+    gap: 3.5rem;
   }
 
   .cover {
@@ -301,26 +375,74 @@
   }
 
   .title {
-    font-size: 3.15rem;
+    font-size: 2.75rem;
+  }
+
+  .landing .title {
+    font-size: 4.25rem;
   }
 
   .subtitle {
-    font-size: 1.4rem;
+    font-size: 1.55rem;
   }
 
-  .experience {
-    grid-template-columns: 1fr 1fr;
+  .landing .section {
+    margin-top: 11rem;
   }
 
-  .scope {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .cards {
-    grid-template-columns: 1fr 1fr;
+  .statement {
+    font-size: 2.75rem;
   }
 
   .card {
-    padding: 1.85rem;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.25rem 2.5rem;
+  }
+
+  .cardTitle {
+    font-size: 2rem;
+  }
+
+  .more {
+    min-width: 12.5rem;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .track {
+    position: relative;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 2rem;
+    margin-top: 4rem;
+    padding-top: 2.4rem;
+  }
+
+  .track::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: var(--color-border);
+  }
+
+  .mark {
+    padding: 0;
+  }
+
+  .mark:not(:last-child)::before,
+  .mark::before {
+    display: none;
+  }
+
+  .mark::after {
+    top: -2.4rem;
+  }
+
+  .markValue {
+    font-size: 2.6rem;
   }
 }

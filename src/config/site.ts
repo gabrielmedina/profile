@@ -39,7 +39,7 @@ export const site = {
     path: '/consultoria',
     title: 'Consultoria',
     description:
-      'Leitura de carreira para devs júnior e pleno, e consultoria para uma dor de um time de engenharia. Preços e WhatsApp.',
+      'Consultoria individual para quem desenvolve, e consultoria empresarial para uma dor de um time. Preços e WhatsApp.',
   },
   posts: {
     title: 'Posts',

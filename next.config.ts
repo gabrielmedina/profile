@@ -40,6 +40,16 @@ const nextConfig: NextConfig = {
         destination: '/assuntos/design-system',
         permanent: true,
       },
+      {
+        source: '/consultoria/leitura-de-carreira',
+        destination: '/consultoria/individual',
+        permanent: true,
+      },
+      {
+        source: '/consultoria/para-um-time',
+        destination: '/consultoria/empresarial',
+        permanent: true,
+      },
     ]
   },
   experimental: {

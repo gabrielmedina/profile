@@ -14,7 +14,6 @@ export type ConsultingPriceGroup = {
 export type ConsultingOffer = {
   id: 'individual' | 'company'
   slug: string
-  eyebrow: string
   title: string
   summary: string
   steps: readonly string[]
@@ -47,23 +46,23 @@ export const consulting = {
     'Sou Gabriel Medina, senior front-end engineer. Há mais de 16 anos trabalho com web, e há mais de 8 com React. Passei pelo Grupo Boticário, em plataformas de e-commerce, e hoje atuo no Grupo SBF como referência técnica entre times.',
   experience: {
     heading: 'Experiência',
-    body: 'O que eu levo para a conversa é critério. Arquitetura, design system, a fronteira de um sistema, e o que fazer com o que a IA devolveu.',
-    items: [
-      'Mais de 16 anos em desenvolvimento web, e mais de 8 com React, TypeScript e Next.js.',
-      'Arquitetura de front-end, design systems e microfrontends.',
-      'Grupo Boticário: evolução de plataformas de e-commerce.',
-      'Grupo SBF: referência técnica entre squads, da concepção da solução até a entrega.',
+    statement: 'O que eu levo para a conversa é critério.',
+    note: 'Arquitetura, design system, a fronteira de um sistema, e o que fazer com o que a IA devolveu.',
+    milestones: [
+      { value: '16 anos', caption: 'de desenvolvimento web' },
+      { value: '8 anos', caption: 'com React, TypeScript e Next.js' },
+      { value: 'Boticário', caption: 'plataformas de e-commerce' },
+      { value: 'SBF', caption: 'referência técnica entre times' },
     ],
   },
   deliveryHeading: 'O que eu entrego',
   offers: [
     {
       id: 'individual',
-      slug: 'leitura-de-carreira',
-      eyebrow: 'Para uma pessoa',
-      title: 'Leitura de carreira',
+      slug: 'individual',
+      title: 'Consultoria individual',
       summary:
-        'Para dev júnior ou pleno. Um encontro de 75 minutos e um plano escrito para as próximas quatro semanas.',
+        'Um encontro de 75 minutos e um plano escrito para as próximas quatro semanas.',
       steps: [
         'Você conta o momento, o que trava, e manda um material real: um projeto, uma pull request, ou uma decisão que está na sua mão.',
         'No encontro a gente confirma onde você está, olha o material e escolhe um próximo passo que cabe nas próximas semanas.',
@@ -72,16 +71,14 @@ export const consulting = {
       groups: [
         {
           prices: [
-            { label: 'Júnior', display: 'R$ 320', value: 320 },
-            { label: 'Pleno', display: 'R$ 520', value: 520 },
+            { label: 'Encontro e plano', display: 'R$ 320', value: 320 },
           ],
         },
         {
           intro:
             'Para quem já tem o plano: quatro encontros semanais de 45 minutos.',
           prices: [
-            { label: 'Júnior', display: 'R$ 640', value: 640 },
-            { label: 'Pleno', display: 'R$ 960', value: 960 },
+            { label: 'Quatro encontros', display: 'R$ 640', value: 640 },
           ],
         },
       ],
@@ -89,17 +86,15 @@ export const consulting = {
       boundary:
         'O plano é o que você leva. Os quatro encontros são a continuação, para quem já tem esse plano.',
       whatsappLabel: 'Chamar no WhatsApp',
-      whatsappMessage: `Olá, Gabriel. Vim pelo site e quero uma leitura de carreira.
-Sou júnior ou pleno:
+      whatsappMessage: `Olá, Gabriel. Vim pelo site e quero uma consultoria individual.
 Meu momento hoje: `,
     },
     {
       id: 'company',
-      slug: 'para-um-time',
-      eyebrow: 'Para um time',
-      title: 'Consultoria para uma dor',
+      slug: 'empresarial',
+      title: 'Consultoria empresarial',
       summary:
-        'Para um time de engenharia. Vocês chegam com uma dor já dita. Eu olho com o grupo e devolvo um plano de 30 e 60 dias. Quem executa é o time.',
+        'Um time chega com uma dor já dita. Eu olho com o grupo e devolvo um plano de 30 e 60 dias. Quem executa é o time.',
       steps: [
         'Uma página de combinado: a dor em uma frase, quem entra na sala, dois exemplos concretos enviados com cinco dias de antecedência, e o que fica de fora.',
         'Quarenta e cinco minutos com quem patrocina, para entender a restrição e o que “melhor” significa.',
@@ -127,19 +122,11 @@ Meu momento hoje: `,
       boundary:
         'O time executa. Eu entrego a sessão e o plano. Outra dor é outro contrato.',
       whatsappLabel: 'Chamar no WhatsApp',
-      whatsappMessage: `Olá, Gabriel. Vim pelo site e quero uma consultoria para o time.
+      whatsappMessage: `Olá, Gabriel. Vim pelo site e quero uma consultoria empresarial.
 A dor que queremos olhar:
 Quantas pessoas entrariam na sessão: `,
     },
   ],
-  scope: {
-    heading: 'O tamanho do trabalho',
-    items: [
-      'Na leitura, o plano é o que você leva. Os quatro encontros são a continuação, para quem já tem esse plano.',
-      'Na consultoria, o time executa. Eu entrego a sessão e o plano.',
-      'Cada contrato olha uma dor. Outra dor é outro contrato.',
-    ],
-  },
   whatsapp,
 } as const
 

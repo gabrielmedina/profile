@@ -10,7 +10,7 @@ type ConsultingOfferPageProps = {
 export function ConsultingOfferPage({ offer }: ConsultingOfferPageProps) {
   return (
     <div className={styles.wrapper}>
-      <div className={`${styles.container} ${styles.reading}`}>
+      <div className={styles.container}>
         <Breadcrumbs
           items={[
             { name: 'Início', href: '/' },
@@ -20,7 +20,6 @@ export function ConsultingOfferPage({ offer }: ConsultingOfferPageProps) {
         />
 
         <header className={styles.header}>
-          <p className={styles.eyebrow}>{offer.eyebrow}</p>
           <h1 className={styles.title}>{offer.title}</h1>
           <p className={styles.lead}>{offer.summary}</p>
           <WhatsAppCta offer={offer} />

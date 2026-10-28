@@ -12,9 +12,9 @@ Quem oferece o trabalho é senior front-end engineer, com mais de 16 anos de web
 
 Café e anúncio continuam fora do produto. A página `/consultoria` publica os dois formatos abaixo, com preço e WhatsApp. A navegação ganha o item Consultoria, ao lado de Home e Posts. O rodapé também aponta para a página.
 
-### Leitura de carreira
+### Consultoria individual
 
-Para dev júnior ou pleno, pagando do próprio bolso. O entregável é um plano, não companhia no dia a dia.
+Para quem desenvolve, pagando do próprio bolso. Júnior e pleno pagam o mesmo. O entregável é um plano, não companhia no dia a dia.
 
 1. A pessoa conta o momento, o que trava, e manda um material real: projeto, pull request, ou uma decisão que está na mão dela.
 2. Um encontro de 75 minutos confirma onde ela está, olha o material e escolhe um próximo passo que cabe nas semanas seguintes.
@@ -22,22 +22,20 @@ Para dev júnior ou pleno, pagando do próprio bolso. O entregável é um plano,
 
 Preços, no Pix, pagos antes de marcar:
 
-| Quem                     | Valor  |
-| ------------------------ | ------ |
-| Júnior, leitura e plano  | R$ 320 |
-| Pleno, leitura e plano   | R$ 520 |
-| Júnior, quatro encontros | R$ 640 |
-| Pleno, quatro encontros  | R$ 960 |
+| Formato          | Valor  |
+| ---------------- | ------ |
+| Encontro e plano | R$ 320 |
+| Quatro encontros | R$ 640 |
 
 Os quatro encontros são semanais, de 45 minutos, e só existem para quem já tem o plano. Dá para reagendar uma vez, avisando com um dia. Teto interno: quatro leituras por mês.
 
-### Consultoria para uma dor
+### Consultoria empresarial
 
 Para um time de engenharia. A empresa chega com uma dor já dita. O entregável é a sessão com o grupo e um plano de 30 e 60 dias. Quem executa é o time.
 
 1. Uma página de combinado: a dor em uma frase, quem entra na sala, dois exemplos concretos enviados com cinco dias de antecedência, e o que fica de fora.
 2. Quarenta e cinco minutos com quem patrocina, para a restrição e para o que “melhor” significa.
-3. Sessão de 2h30 com 6 a 12 pessoas. Corrige-se o entendimento, olham-se os exemplos e rascunham-se três movimentos, com dono do lado deles. Abaixo de quatro pessoas o formato é a leitura de carreira. Acima de doze vira palestra, e este contrato não cobre palestra.
+3. Sessão de 2h30 com 6 a 12 pessoas. Corrige-se o entendimento, olham-se os exemplos e rascunham-se três movimentos, com dono do lado deles. Abaixo de quatro pessoas o formato é a consultoria individual. Acima de doze vira palestra, e este contrato não cobre palestra.
 4. Em até cinco dias úteis, o plano: a dor no dia a dia, a causa, o que não mudar agora, as ações com ordem e dono, e os sinais de que funcionou. Uma call de 30 minutos entrega o texto.
 
 Preços:
@@ -56,18 +54,17 @@ Empresa em geral pede nota. Consultoria de tecnologia costuma não caber no MEI.
 
 WhatsApp `+55 67 99609-6006` (`wa.me/5567996096006`). Cada formato abre com a mensagem pronta. A pessoa completa antes de enviar.
 
-Leitura de carreira:
+Consultoria individual:
 
 ```text
-Olá, Gabriel. Vim pelo site e quero uma leitura de carreira.
-Sou júnior ou pleno:
+Olá, Gabriel. Vim pelo site e quero uma consultoria individual.
 Meu momento hoje:
 ```
 
-Consultoria para um time:
+Consultoria empresarial:
 
 ```text
-Olá, Gabriel. Vim pelo site e quero uma consultoria para o time.
+Olá, Gabriel. Vim pelo site e quero uma consultoria empresarial.
 A dor que queremos olhar:
 Quantas pessoas entrariam na sessão:
 ```
@@ -78,9 +75,9 @@ Sem widget, popup ou script de agenda. O link é uma âncora para o WhatsApp. A 
 
 O texto e os preços vivem em `src/features/consulting/content.ts`. A URL do WhatsApp é função pura ao lado do componente. Cada rota é fina: metadata, JSON-LD, page view, render.
 
-**`/consultoria`** é a entrada. Um `<h1>`. A capa fica junto ao cabeçalho (acima no celular, ao lado a partir de 768px) e segue a família de `004`: fundo `#1a1d24`, ~1200×675, WebP no corpo e JPEG leve no Open Graph. A metáfora é o plano escrito: uma lâmina ao centro, um nó à esquerda, três nós à direita. Depois vêm a experiência, dois cartões (um por formato, com o preço de entrada e o link da página) e o tamanho do trabalho.
+**`/consultoria`** é a entrada, mais larga que o miolo dos posts. Um `<h1>`. A capa fica junto ao cabeçalho (acima no celular, ao lado a partir de 768px) e segue a família de `004`: fundo `#1a1d24`, ~1200×675, WebP no corpo e JPEG leve no Open Graph. A metáfora é o plano escrito: uma lâmina ao centro, um nó à esquerda, três nós à direita. A experiência é uma trilha (16 anos, 8 com React, Boticário, SBF), não uma grade de cartões. Os dois formatos são faixas de 100% da largura, uma abaixo da outra: ícone de uma pessoa ou de três, o texto, e o botão “Quero saber mais”. O preço não aparece nessa entrada. Não há seção “tamanho do trabalho”.
 
-**`/consultoria/leitura-de-carreira`** e **`/consultoria/para-um-time`** carregam o passo a passo, os preços e o botão de WhatsApp. O botão aparece no alto e de novo depois dos valores. Slug desconhecido chama `notFound()`.
+**`/consultoria/individual`** e **`/consultoria/empresarial`** carregam o passo a passo, os preços e o botão de WhatsApp. O botão aparece no alto e de novo depois dos valores. Os slugs antigos redirecionam: `/consultoria/leitura-de-carreira` e `/consultoria/para-um-time`. Slug desconhecido chama `notFound()`.
 
 Sitemap inclui as três URLs. JSON-LD é `WebPage` + `BreadcrumbList` + `Service`/`Offer` em BRL. O post `acompanhar-devs-no-dia-a-dia` fecha com uma frase apontando para `/consultoria`. Os outros posts seguem sem oferta.
 
