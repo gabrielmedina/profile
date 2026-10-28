@@ -46,7 +46,8 @@ export const consulting = {
     'Na carreira, o critério fica mais firme e o próximo passo deixa de ser um chute. Na empresa, o time sai da mesma dor e passa a entregar com mais acerto.',
   experience: {
     heading: 'Por que a minha consultoria?',
-    statement: 'Dev front-end sênior, com 16 anos de experiência.',
+    statement:
+      'Senior Front-end Engineer com 16 anos de experiência, com foco em ecommerces!',
     note: 'Especializado em arquitetura, padronização e entregas que acertam, com impacto no produto.',
     milestones: [
       {

@@ -102,7 +102,7 @@
 
 .statement {
   margin: 1.15rem 0 0;
-  max-width: 28em;
+  max-width: 16em;
   color: var(--color-primary);
   font-size: 1.35rem;
   font-weight: 500;
@@ -420,7 +420,8 @@
   }
 
   .statement {
-    font-size: 1.5rem;
+    max-width: 40rem;
+    font-size: 1.55rem;
   }
 
   .cards {
@@ -435,76 +436,38 @@
 
 @media screen and (min-width: 1100px) {
   .track {
-    position: relative;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    column-gap: 1.5rem;
-    row-gap: 3.25rem;
-    margin-top: 3.5rem;
-    padding-top: 2rem;
+    max-width: 46rem;
+    margin-top: 3.25rem;
   }
 
-  .track::before {
-    content: '';
-    position: absolute;
-    top: 4px;
-    right: 0;
-    left: 0;
-    height: 2px;
-    background: var(--color-border);
-  }
-
-  .mark,
-  .markFocus {
-    padding: 0;
-  }
-
-  .mark:not(:last-child)::before,
-  .mark::before {
-    display: none;
-  }
-
-  .mark::after {
-    top: -2rem;
-    width: 10px;
-    height: 10px;
-  }
-
-  .markFocus {
-    grid-column: span 2;
-    padding-top: 2rem;
-  }
-
-  .markFocus:not(:last-child)::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 4px;
-    left: 0;
-    width: calc(200% + 1.5rem);
-    height: 2px;
-    background: var(--color-border);
-  }
-
-  .markFocus::after {
-    top: -2px;
-    width: 14px;
-    height: 14px;
+  .mark {
+    padding-bottom: 2.1rem;
   }
 
   .markValue {
-    font-size: 1.05rem;
-  }
-
-  .markFocus .markValue {
-    font-size: 1.7rem;
+    font-size: 1.15rem;
   }
 
   .markCaption {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
+  }
+
+  .markFocus {
+    padding-bottom: 2.5rem;
+  }
+
+  .markFocus .markValue {
+    font-size: 1.85rem;
   }
 
   .markFocus .markCaption {
-    max-width: 34rem;
-    font-size: 1.08rem;
+    font-size: 1.15rem;
+  }
+
+  .markFocus::after {
+    top: 0.28rem;
+    left: -2px;
+    width: 14px;
+    height: 14px;
   }
 }
