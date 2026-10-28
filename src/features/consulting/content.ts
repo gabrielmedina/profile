@@ -20,18 +20,18 @@ export const consulting = {
     height: 281,
     alt: 'Barras soltas à esquerda seguem por uma linha até um traço mint.',
   },
-  promise: 'Um front-end com IA, **pronto para as próximas features.**',
+  promise: 'Um front-end com IA, pronto para as próximas features.',
   audience:
     'Para times que constroem a interface com IA e querem uma base estável para continuar.',
   mechanism:
-    'A geração **acelera a entrega**. O trabalho é deixar esse código **compreensível, observável** e **pronto para a feature seguinte**.',
+    'A geração acelera a entrega. **O trabalho é deixar esse código compreensível, observável e pronto para a feature seguinte.**',
   proof:
-    '**16 anos** de front-end. **Grupo Boticário**, na evolução do e-commerce. **Grupo SBF**, no painel de backoffice, cross-team.',
+    '16 anos de front-end. Grupo Boticário, na evolução do e-commerce. Grupo SBF, no painel de backoffice, cross-team.',
   workHeading: 'O trabalho',
   work: [
-    'Eu **entendo o que já foi gerado** e onde o código aperta: **gargalos, problemas de manutenção** e o que impede a próxima feature de nascer com segurança.',
-    'A partir disso, **proponho padrões e melhorias**. As features ficam com **observabilidade, padronizadas e operando com fluidez**. O front-end sai **otimizado e bem estruturado**, uma **base para o que ainda vai ser construído**.',
+    'Eu entendo o que já foi gerado e onde o código aperta: gargalos, problemas de manutenção e o que impede a próxima feature de nascer com segurança.',
+    'A partir disso, proponho padrões e melhorias. As features ficam com observabilidade, padronizadas e operando com fluidez. **O front-end sai otimizado e bem estruturado, uma base para o que ainda vai ser construído.**',
   ],
-  ask: 'Quer **melhorar o front-end** do seu projeto?',
+  ask: 'Quer melhorar o front-end do seu projeto?',
   whatsapp,
 } as const

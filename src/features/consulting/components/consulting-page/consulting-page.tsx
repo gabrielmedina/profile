@@ -19,9 +19,7 @@ export function ConsultingPage() {
           />
 
           <header className={article.header}>
-            <h1 className={`${article.title} ${styles.promise}`}>
-              <Emphasis text={consulting.promise} />
-            </h1>
+            <h1 className={article.title}>{consulting.promise}</h1>
             <p className={article.description}>{consulting.audience}</p>
           </header>
 
@@ -46,10 +44,8 @@ export function ConsultingPage() {
                 <Emphasis text={paragraph} />
               </p>
             ))}
-            <section className={styles.banner} aria-labelledby="convite">
-              <h2 id="convite">
-                <Emphasis text={consulting.ask} />
-              </h2>
+            <section className={styles.close} aria-labelledby="convite">
+              <h2 id="convite">{consulting.ask}</h2>
               <WhatsAppCta />
             </section>
           </div>

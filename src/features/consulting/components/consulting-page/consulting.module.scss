@@ -1,42 +1,11 @@
-.promise strong {
-  color: var(--color-primary);
-}
-
-.body strong {
-  font-weight: 500;
-}
-
-.body .banner h2 {
-  color: #fff;
-  font-weight: 600;
-}
-
-.body .banner strong {
-  color: #28f5be;
-  font-weight: 600;
-}
-
-.banner {
-  width: calc(100% + 3.2rem);
-  margin: 1rem -1.6rem 0;
-  padding: 2.25rem 1.6rem;
-  border: 1px solid rgb(40 245 190 / 35%);
-  background:
-    linear-gradient(180deg, rgb(40 245 190 / 16%), rgb(40 245 190 / 4%)),
-    #1a1d24;
+.close {
+  margin-top: 0.5rem;
+  padding: 1.6rem;
+  background: var(--color-background-interactive);
 
   h2 {
     margin: 0;
-    max-width: 12em;
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 600;
-    line-height: 1.15;
-  }
-
-  strong {
-    color: #28f5be;
-    font-weight: 600;
+    max-width: 16em;
   }
 }
 
@@ -44,14 +13,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  max-width: 20rem;
-  margin-top: 1.75rem;
-  padding: 1.15rem 1.6rem;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 1.5rem;
+  padding: 1.05rem 1.35rem;
   border-radius: 6px;
-  background: #28f5be;
-  color: #16161b;
-  font-size: 1.15rem;
+  background: var(--color-primary);
+  color: var(--color-background);
+  font-size: 1.05rem;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0;
@@ -65,31 +34,19 @@
   }
 
   &:focus-visible {
-    outline: 2px solid #fff;
+    outline: 2px solid var(--color-title);
     outline-offset: 3px;
   }
 }
 
 .body a.cta {
-  color: #16161b;
+  color: var(--color-background);
   text-decoration: none;
 }
 
 @media screen and (min-width: 768px) {
-  .banner {
-    padding: 3rem 2.75rem;
+  .close {
+    padding: 3rem;
     border-radius: 4px;
-
-    h2 {
-      font-size: 2.75rem;
-    }
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .banner {
-    width: calc(100% + 460px);
-    margin: 1.5rem -230px 0;
-    padding: 3.5rem 3.25rem;
   }
 }
