@@ -12,8 +12,7 @@ export function WhatsAppCta() {
       href={whatsappHref(whatsapp.e164, whatsapp.message)}
       {...trackAttrs('clicked-consulting-whatsapp')}
     >
-      <span>{whatsapp.label}</span>
-      <span className={styles.ctaPhone}>{whatsapp.display}</span>
+      {whatsapp.label}
     </a>
   )
 }

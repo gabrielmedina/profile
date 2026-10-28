@@ -1,22 +1,57 @@
-.body a.cta {
-  color: var(--color-background);
-  text-decoration: none;
+.promise strong {
+  color: var(--color-primary);
+}
+
+.body strong {
+  font-weight: 500;
+}
+
+.body .banner h2 {
+  color: #fff;
+  font-weight: 600;
+}
+
+.body .banner strong {
+  color: #28f5be;
+  font-weight: 600;
+}
+
+.banner {
+  width: calc(100% + 3.2rem);
+  margin: 1rem -1.6rem 0;
+  padding: 2.25rem 1.6rem;
+  border: 1px solid rgb(40 245 190 / 35%);
+  background:
+    linear-gradient(180deg, rgb(40 245 190 / 16%), rgb(40 245 190 / 4%)),
+    #1a1d24;
+
+  h2 {
+    margin: 0;
+    max-width: 12em;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  strong {
+    color: #28f5be;
+    font-weight: 600;
+  }
 }
 
 .cta {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.2rem;
-  width: fit-content;
-  max-width: 100%;
-  margin-top: 0.5rem;
-  padding: 1.05rem 1.35rem;
+  width: 100%;
+  max-width: 20rem;
+  margin-top: 1.75rem;
+  padding: 1.15rem 1.6rem;
   border-radius: 6px;
-  background: var(--color-primary);
-  color: var(--color-background);
-  font-size: 1.05rem;
+  background: #28f5be;
+  color: #16161b;
+  font-size: 1.15rem;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0;
@@ -30,12 +65,31 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-title);
+    outline: 2px solid #fff;
     outline-offset: 3px;
   }
 }
 
-.ctaPhone {
-  font-size: 0.85rem;
-  font-weight: 500;
+.body a.cta {
+  color: #16161b;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+  .banner {
+    padding: 3rem 2.75rem;
+    border-radius: 4px;
+
+    h2 {
+      font-size: 2.75rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .banner {
+    width: calc(100% + 460px);
+    margin: 1.5rem -230px 0;
+    padding: 3.5rem 3.25rem;
+  }
 }

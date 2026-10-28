@@ -28,13 +28,13 @@ Quero melhorar o front-end do projeto.
 O que a IA já gerou:
 ```
 
-Sem widget, popup ou script de agenda. O link é uma âncora para o WhatsApp. A mensagem pronta vive só no `href`. A página mostra o botão e o número, e não o texto da mensagem.
+Sem widget, popup ou script de agenda. O link é uma âncora para o WhatsApp. A mensagem pronta vive só no `href`. A página mostra só o botão, sem o número e sem o texto da mensagem.
 
 ### Páginas
 
 O texto vive em `src/features/consulting/content.ts`. A URL do WhatsApp é função pura ao lado do componente. A rota é fina: metadata, JSON-LD, page view, render.
 
-**`/consultoria`** é a única página e usa o mesmo layout de um post (`post-article`): invólucro de 1200px, `<h1>` e descrição no mesmo tamanho e na mesma cor, corpo centralizado em 740px com os mesmos parágrafos e `h2`. O `<h1>` diz o resultado: um front-end com IA, pronto para as próximas features. A descrição, em primary, diz para quem é. A capa entra no corpo, no mesmo lugar da imagem de um post, numa faixa mais baixa (1200×281): barras soltas seguem por uma linha até um traço mint. WebP na página, JPEG no OG. O texto traz o que o trabalho faz, a prova curta (16 anos, Grupo Boticário, Grupo SBF), “O trabalho” e a pergunta “Quer melhorar o front-end do seu projeto?” com o botão de WhatsApp. Sem lista de passos.
+**`/consultoria`** é a única página e usa o mesmo layout de um post (`post-article`): invólucro de 1200px, `<h1>` e descrição no mesmo tamanho e na mesma cor, corpo centralizado em 740px com os mesmos parágrafos e `h2`. O `<h1>` diz o resultado: um front-end com IA, pronto para as próximas features. A descrição, em primary, diz para quem é. A capa entra no corpo, no mesmo lugar da imagem de um post, numa faixa mais baixa (1200×281): barras soltas seguem por uma linha até um traço mint. WebP na página, JPEG no OG. O texto traz o que o trabalho faz e a prova curta (16 anos, Grupo Boticário, Grupo SBF). As frases que carregam a oferta ficam em `<strong>`, na cor primary, como nos posts. “O trabalho” explica o entendimento e o que fica no projeto, sem numerar etapas. O fechamento é um banner na largura da capa, campo `#1a1d24`: a pergunta “Quer melhorar o front-end do seu projeto?” e o botão de WhatsApp, sem o número.
 
 As rotas antigas redirecionam para `/consultoria`: `/consultoria/individual`, `/consultoria/empresarial`, `/consultoria/leitura-de-carreira` e `/consultoria/para-um-time`.
 

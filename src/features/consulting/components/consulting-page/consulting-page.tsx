@@ -3,6 +3,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs/breadcrumbs'
 import article from '@/features/posts/components/post-article/post-article.module.scss'
 import { consulting } from '../../content'
 import styles from './consulting.module.scss'
+import { Emphasis } from './emphasis'
 import { WhatsAppCta } from './whatsapp-cta'
 
 export function ConsultingPage() {
@@ -18,7 +19,9 @@ export function ConsultingPage() {
           />
 
           <header className={article.header}>
-            <h1 className={article.title}>{consulting.promise}</h1>
+            <h1 className={`${article.title} ${styles.promise}`}>
+              <Emphasis text={consulting.promise} />
+            </h1>
             <p className={article.description}>{consulting.audience}</p>
           </header>
 
@@ -31,14 +34,24 @@ export function ConsultingPage() {
               priority
               sizes="(min-width: 1200px) 1200px, 100vw"
             />
-            <p>{consulting.mechanism}</p>
-            <p>{consulting.proof}</p>
+            <p>
+              <Emphasis text={consulting.mechanism} />
+            </p>
+            <p>
+              <Emphasis text={consulting.proof} />
+            </p>
             <h2 id="trabalho">{consulting.workHeading}</h2>
             {consulting.work.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+              <p key={paragraph}>
+                <Emphasis text={paragraph} />
+              </p>
             ))}
-            <h2 id="convite">{consulting.ask}</h2>
-            <WhatsAppCta />
+            <section className={styles.banner} aria-labelledby="convite">
+              <h2 id="convite">
+                <Emphasis text={consulting.ask} />
+              </h2>
+              <WhatsAppCta />
+            </section>
           </div>
         </div>
       </div>
