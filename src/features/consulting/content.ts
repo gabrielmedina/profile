@@ -41,18 +41,32 @@ export const consulting = {
   path: site.consulting.path,
   title: site.consulting.title,
   description: site.consulting.description,
-  subtitle: 'Um plano para o próximo passo.',
+  subtitle: 'O que muda na carreira e na empresa.',
   intro:
-    'Sou Gabriel Medina. Eu olho o momento com você, ou com o seu time, e devolvo o próximo passo por escrito. Quem executa continua na tarefa.',
+    'Na carreira, o critério fica mais firme e o próximo passo deixa de ser um chute. Na empresa, o time sai da mesma dor e passa a entregar com mais acerto.',
   experience: {
-    heading: 'De onde sai o plano',
-    statement: 'Dezesseis anos de front-end em produto.',
-    note: 'Arquitetura, design system, e o que fazer com o que a IA devolveu. Esse é o critério que entra no plano.',
+    heading: 'Por que a minha consultoria?',
+    statement: 'Dev front-end sênior, com 16 anos de experiência.',
+    note: 'Especializado em arquitetura, padronização e entregas que acertam, com impacto no produto.',
     milestones: [
-      { value: '16 anos', caption: 'de desenvolvimento web' },
-      { value: '8 anos', caption: 'com React, TypeScript e Next.js' },
-      { value: 'Boticário', caption: 'plataformas de e-commerce' },
-      { value: 'SBF', caption: 'referência técnica entre times' },
+      { value: 'Agência W3', caption: 'Criando produtos digitais.' },
+      { value: 'Grupo VFX', caption: 'Evoluindo a plataforma de e-learning.' },
+      {
+        value: 'Quero Educação',
+        caption: 'Evolução do e-commerce focado em bolsa de estudos.',
+      },
+      {
+        value: 'EmCasa',
+        caption: 'Evolução do e-commerce de venda de imóveis.',
+      },
+      {
+        value: 'Grupo Boticário',
+        caption: 'Especialista na evolução do e-commerce.',
+      },
+      {
+        value: 'Grupo SBF',
+        caption: 'Cross-team, com foco no painel de backoffice.',
+      },
     ],
   },
   deliveryHeading: 'Como começar',

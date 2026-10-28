@@ -6,7 +6,7 @@
 
 O site é um perfil com posts. Três ideias de receita foram consideradas: anúncio, um agradecimento no estilo “me paga um café”, e trabalho pago de mentoria ou consultoria. O texto `acompanhar-devs-no-dia-a-dia` já descreve o espírito do acompanhamento. O catálogo é curto e o tráfego ainda não justifica rede de anúncio. O site sai como HTML, com um script pequeno, sem SDK de terceiro.
 
-Quem oferece o trabalho é senior front-end engineer, com mais de 16 anos de web, mais de 8 com React, passagem pelo Grupo Boticário em plataformas de e-commerce e atuação no Grupo SBF como referência técnica entre times. Não há firma nem certificado de mentor. O que se vende é esse percurso, em dois formatos com compradores diferentes.
+Quem oferece o trabalho é senior front-end engineer, com 16 anos de experiência, especializado em arquitetura, padronização e entregas que acertam. O percurso público passa por Agência W3, Grupo VFX, Quero Educação, EmCasa, Grupo Boticário e Grupo SBF. Não há firma nem certificado de mentor. O que se vende é esse percurso, em dois formatos com compradores diferentes.
 
 ## Decisão
 
@@ -75,7 +75,7 @@ Sem widget, popup ou script de agenda. O link é uma âncora para o WhatsApp. A 
 
 O texto e os preços vivem em `src/features/consulting/content.ts`. A URL do WhatsApp é função pura ao lado do componente. Cada rota é fina: metadata, JSON-LD, page view, render.
 
-**`/consultoria`** é a entrada, mais larga que o miolo dos posts. Um `<h1>`. A capa fica junto ao cabeçalho (acima no celular, ao lado a partir de 768px) e segue a família de `004`: fundo `#1a1d24`, ~1200×675, WebP no corpo e JPEG leve no Open Graph. A metáfora da capa é a evolução: uma linha reta na primeira metade e, a partir do meio, uma subida até o fim. A experiência é uma trilha (16 anos, 8 com React, Boticário, SBF), não uma grade de cartões. O texto segue uma linha só: o que a consultoria devolve, de onde sai o plano, e como começar. Os dois formatos são faixas de 100% da largura, uma abaixo da outra: ícone de uma pessoa ou de três, o texto, e o botão “Quero saber mais”. O preço não aparece nessa entrada. Não há seção “tamanho do trabalho”.
+**`/consultoria`** é a entrada, mais larga que o miolo dos posts. Um `<h1>`. A capa fica junto ao cabeçalho (acima no celular, ao lado a partir de 768px) e segue a família de `004`: fundo `#1a1d24`, ~1200×675, WebP no corpo e JPEG leve no Open Graph. A metáfora da capa é a evolução: uma linha reta na primeira metade e, a partir do meio, uma subida até o fim. O texto abre pela melhoria, na carreira e na empresa, segue com o porquê (16 anos e a trilha Agência W3, Grupo VFX, Quero Educação, EmCasa, Grupo Boticário, Grupo SBF) e fecha em como começar. Os dois formatos ficam lado a lado a partir de 900px, cada um com ícone e o botão “Quero saber mais”. O preço não aparece nessa entrada. Não há seção “tamanho do trabalho”.
 
 **`/consultoria/individual`** e **`/consultoria/empresarial`** carregam o passo a passo, os preços e o botão de WhatsApp. O botão aparece no alto e de novo depois dos valores. Os slugs antigos redirecionam: `/consultoria/leitura-de-carreira` e `/consultoria/para-um-time`. Slug desconhecido chama `notFound()`.
 
