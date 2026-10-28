@@ -13,6 +13,13 @@ export const consulting = {
   path: site.consulting.path,
   title: site.consulting.title,
   description: site.consulting.description,
+  cover: {
+    src: '/imgs/consultoria/consultoria.webp',
+    social: '/imgs/consultoria/consultoria.jpg',
+    width: 1200,
+    height: 281,
+    alt: 'Barras soltas à esquerda seguem por uma linha até um traço mint.',
+  },
   promise: 'Um front-end com IA, pronto para as próximas features.',
   audience:
     'Para times que constroem a interface com IA e querem uma base estável para continuar.',

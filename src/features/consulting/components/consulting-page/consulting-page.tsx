@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Breadcrumbs } from '@/components/breadcrumbs/breadcrumbs'
 import article from '@/features/posts/components/post-article/post-article.module.scss'
 import { consulting } from '../../content'
@@ -22,6 +23,14 @@ export function ConsultingPage() {
           </header>
 
           <div className={`${article.content} ${styles.body}`}>
+            <Image
+              src={consulting.cover.src}
+              alt={consulting.cover.alt}
+              width={consulting.cover.width}
+              height={consulting.cover.height}
+              priority
+              sizes="(min-width: 1200px) 1200px, 100vw"
+            />
             <p>{consulting.mechanism}</p>
             <p>{consulting.proof}</p>
             <h2 id="trabalho">{consulting.workHeading}</h2>

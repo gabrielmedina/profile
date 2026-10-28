@@ -23,6 +23,12 @@ export const metadata: Metadata = pageMetadata({
     'Observabilidade',
     'Arquitetura',
   ],
+  image: {
+    url: consulting.cover.social,
+    alt: consulting.cover.alt,
+    width: consulting.cover.width,
+    height: consulting.cover.height,
+  },
 })
 
 export default function ConsultoriaPage() {
@@ -37,6 +43,11 @@ export default function ConsultoriaPage() {
           service: {
             name: consulting.title,
             description: consulting.description,
+          },
+          image: {
+            url: consulting.cover.social,
+            width: consulting.cover.width,
+            height: consulting.cover.height,
           },
         })}
       />

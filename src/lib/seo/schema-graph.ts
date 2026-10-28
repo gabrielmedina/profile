@@ -103,6 +103,11 @@ type ConsultingPageData = {
     name: string
     description: string
   }
+  image: {
+    url: string
+    width: number
+    height: number
+  }
 }
 
 export function consultingPageGraph(page: ConsultingPageData) {
@@ -120,6 +125,12 @@ export function consultingPageGraph(page: ConsultingPageData) {
         inLanguage: site.language,
         isPartOf: { '@id': websiteId },
         about: { '@id': personId },
+        primaryImageOfPage: {
+          '@type': 'ImageObject',
+          url: absoluteUrl(page.image.url),
+          width: page.image.width,
+          height: page.image.height,
+        },
         mainEntity: {
           '@type': 'Service',
           name: page.service.name,
