@@ -5,7 +5,7 @@ keys: 'Front-end, Software Engineering, React'
 image: /imgs/posts/bff-vantagens-e-desvantagens.jpg
 slug: bff-vantagens-e-desvantagens
 lang: pt-BR
-date: '2026-10-28'
+date: '2026-10-29'
 ---
 
 ![Capa: três nós de serviço à esquerda ligam a um cartão de vidro central (BFF); uma linha segue até a tela do cliente à direita.](/imgs/posts/bff-vantagens-e-desvantagens.webp)
