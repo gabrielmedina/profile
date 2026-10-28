@@ -15,6 +15,7 @@ export type ConsultingOffer = {
   id: 'individual' | 'company'
   slug: string
   title: string
+  kicker: string
   summary: string
   steps: readonly string[]
   groups: readonly ConsultingPriceGroup[]
@@ -49,42 +50,14 @@ export const consulting = {
     statement:
       'Senior Front-end Engineer com 16 anos de experiência, com foco em ecommerces!',
     note: 'Especializado em arquitetura, padronização e entregas que acertam, com impacto no produto.',
-    milestones: [
+    cases: [
       {
-        value: 'Agência W3',
-        caption:
-          'Criação de produtos digitais, do zero. Interface, fluxo e a entrega com o cliente na mesa.',
-        focus: false,
+        company: 'Grupo Boticário',
+        text: 'Especialista na evolução do e-commerce. Arquitetura e padrão entre os times, com entregas que mudam o que a pessoa vê e compra na loja.',
       },
       {
-        value: 'Grupo VFX',
-        caption:
-          'Evolução da plataforma de e-learning. O aluno precisava achar o próximo passo, e o produto precisava aguentar conteúdo e uso real.',
-        focus: false,
-      },
-      {
-        value: 'Quero Educação',
-        caption:
-          'Evolução do e-commerce de bolsa de estudos. A oferta fica clara, e a compra termina sem a pessoa se perder.',
-        focus: false,
-      },
-      {
-        value: 'EmCasa',
-        caption:
-          'Evolução do e-commerce de imóveis. Anúncio, busca e a decisão de compra no mesmo caminho.',
-        focus: false,
-      },
-      {
-        value: 'Grupo Boticário',
-        caption:
-          'Especialista na evolução do e-commerce. Arquitetura, padrão entre os times e entregas que mudam o que a pessoa vê e compra na loja.',
-        focus: true,
-      },
-      {
-        value: 'Grupo SBF',
-        caption:
-          'Referência cross-team no painel de backoffice. Cada squad chega com outro contexto. O trabalho é entender a dor, alinhar a arquitetura e acompanhar até a entrega.',
-        focus: true,
+        company: 'Grupo SBF',
+        text: 'Referência cross-team no painel de backoffice. Cada squad chega com outro contexto: entender a dor, alinhar a arquitetura e acompanhar até a entrega.',
       },
     ],
   },
@@ -96,8 +69,9 @@ export const consulting = {
       id: 'individual',
       slug: 'individual',
       title: 'Consultoria individual',
+      kicker: 'Para uma pessoa',
       summary:
-        'Para uma pessoa. Um encontro de 75 minutos e um plano para as próximas quatro semanas.',
+        'O próximo passo deixa de ser um chute. Um encontro lê onde você está e devolve um plano para as próximas quatro semanas.',
       steps: [
         'Você conta o momento, o que trava, e manda um material real: um projeto, uma pull request, ou uma decisão que está na sua mão.',
         'No encontro a gente confirma onde você está, olha o material e escolhe um próximo passo que cabe nas próximas semanas.',
@@ -128,8 +102,9 @@ Meu momento hoje: `,
       id: 'company',
       slug: 'empresarial',
       title: 'Consultoria empresarial',
+      kicker: 'Para um time',
       summary:
-        'Para um time. Uma sessão em volta de uma dor e um plano de 30 e 60 dias.',
+        'O time sai da mesma dor. Uma sessão olha a causa e devolve um plano de 30 e 60 dias, com ordem e dono.',
       steps: [
         'Uma página de combinado: a dor em uma frase, quem entra na sala, dois exemplos concretos enviados com cinco dias de antecedência, e o que fica de fora.',
         'Quarenta e cinco minutos com quem patrocina, para entender a restrição e o que “melhor” significa.',

@@ -118,74 +118,33 @@
   line-height: 1.6;
 }
 
-.track {
+.cases {
   display: grid;
-  gap: 0;
-  margin: 2.75rem 0 0;
-  padding: 0;
-  list-style: none;
+  gap: 2.5rem;
+  margin-top: 3rem;
 }
 
-.mark {
-  position: relative;
-  padding: 0 0 1.6rem 1.6rem;
+.case + .case {
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--color-border);
 }
 
-.mark:not(:last-child)::before {
-  content: '';
-  position: absolute;
-  top: 0.55rem;
-  bottom: 0;
-  left: 4px;
-  width: 2px;
-  background: var(--color-border);
-}
-
-.mark::after {
-  content: '';
-  position: absolute;
-  top: 0.15rem;
-  left: 0;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--color-border);
-}
-
-.markValue {
+.caseName {
   margin: 0;
-  color: var(--color-title);
-  font-size: 1.05rem;
+  color: var(--color-primary);
+  font-size: 1.85rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
-.markCaption {
-  margin: 0.35rem 0 0;
+.caseText {
+  margin: 0.9rem 0 0;
   max-width: 36rem;
   color: var(--color-text);
-  font-size: 1rem;
+  font-size: 1.12rem;
   font-weight: 300;
-  line-height: 1.5;
-}
-
-.markFocus {
-  padding-bottom: 2rem;
-}
-
-.markFocus .markValue {
-  color: var(--color-primary);
-  font-size: 1.45rem;
-}
-
-.markFocus .markCaption {
-  font-size: 1.05rem;
-  line-height: 1.55;
-}
-
-.markFocus::after {
-  background: var(--color-primary);
+  line-height: 1.6;
 }
 
 .cards {
@@ -196,6 +155,8 @@
 }
 
 .card {
+  --offer: var(--color-primary);
+  --offer-ink: var(--color-background);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -203,10 +164,43 @@
   width: 100%;
   height: 100%;
   padding: 1.6rem;
-  background: var(--color-background-interactive);
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-primary);
+  border: 2px solid color-mix(in srgb, var(--offer) 42%, transparent);
   border-radius: 8px;
+  background: color-mix(in srgb, var(--offer) 14%, var(--color-background));
+  text-decoration: none;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-4px);
+    border-color: var(--offer);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-title);
+    outline-offset: 3px;
+  }
+}
+
+.cardIndividual {
+  --offer: var(--color-primary);
+  --offer-ink: var(--color-background);
+}
+
+.cardCompany {
+  --offer: #e3c27a;
+  --offer-ink: #1a160f;
+  --card-text: #ddd6c8;
+  border-color: color-mix(in srgb, var(--offer) 48%, transparent);
+  background: #241f16;
+  color: var(--card-text);
+}
+
+:global(html.tokens-light) .cardCompany {
+  background: #1a1916;
 }
 
 .icon {
@@ -214,10 +208,10 @@
   width: 5.5rem;
   height: 5.5rem;
   place-items: center;
-  border: 1px solid var(--color-primary);
+  border: 1px solid var(--offer);
   border-radius: 50%;
-  background: var(--color-background);
-  color: var(--color-primary);
+  background: color-mix(in srgb, var(--offer) 16%, var(--color-background));
+  color: var(--offer);
 
   svg {
     display: block;
@@ -226,14 +220,26 @@
   }
 }
 
+.cardCompany .icon {
+  background: color-mix(in srgb, var(--offer) 14%, #14130f);
+}
+
 .cardCopy {
   flex: 1;
   min-width: 0;
 }
 
-.cardTitle {
+.cardKicker {
   margin: 0;
-  color: var(--color-primary);
+  color: var(--offer);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.cardTitle {
+  margin: 0.35rem 0 0;
+  color: var(--offer);
   font-size: 1.7rem;
   font-weight: 600;
   line-height: 1.2;
@@ -248,6 +254,10 @@
   line-height: 1.6;
 }
 
+.cardCompany .cardSummary {
+  color: var(--card-text);
+}
+
 .more {
   display: inline-flex;
   align-items: center;
@@ -256,22 +266,10 @@
   margin-top: auto;
   padding: 0.95rem 1.35rem;
   border-radius: 6px;
-  background: var(--color-primary);
-  color: var(--color-background);
+  background: var(--offer);
+  color: var(--offer-ink);
   font-weight: 600;
   line-height: 1.2;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-
-  &:hover,
-  &:focus-visible {
-    transform: translateY(-2px);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-title);
-    outline-offset: 3px;
-  }
 }
 
 .steps {
@@ -424,6 +422,32 @@
     font-size: 1.55rem;
   }
 
+  .cases {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3.5rem;
+  }
+
+  .case + .case {
+    position: relative;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .case + .case::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -2rem;
+    width: 1px;
+    background: var(--color-border);
+  }
+
+  .caseName {
+    font-size: 2.15rem;
+  }
+
   .cards {
     grid-template-columns: 1fr 1fr;
     align-items: stretch;
@@ -431,43 +455,5 @@
 
   .card {
     padding: 2rem 1.75rem;
-  }
-}
-
-@media screen and (min-width: 1100px) {
-  .track {
-    max-width: 46rem;
-    margin-top: 3.25rem;
-  }
-
-  .mark {
-    padding-bottom: 2.1rem;
-  }
-
-  .markValue {
-    font-size: 1.15rem;
-  }
-
-  .markCaption {
-    font-size: 1.05rem;
-  }
-
-  .markFocus {
-    padding-bottom: 2.5rem;
-  }
-
-  .markFocus .markValue {
-    font-size: 1.85rem;
-  }
-
-  .markFocus .markCaption {
-    font-size: 1.15rem;
-  }
-
-  .markFocus::after {
-    top: 0.28rem;
-    left: -2px;
-    width: 14px;
-    height: 14px;
   }
 }

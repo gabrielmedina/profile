@@ -46,21 +46,14 @@ export function ConsultingPage() {
           </h2>
           <p className={styles.statement}>{consulting.experience.statement}</p>
           <p className={styles.statementNote}>{consulting.experience.note}</p>
-          <ol className={styles.track}>
-            {consulting.experience.milestones.map((mark) => (
-              <li
-                key={mark.value}
-                className={
-                  mark.focus
-                    ? `${styles.mark} ${styles.markFocus}`
-                    : styles.mark
-                }
-              >
-                <p className={styles.markValue}>{mark.value}</p>
-                <p className={styles.markCaption}>{mark.caption}</p>
-              </li>
+          <div className={styles.cases}>
+            {consulting.experience.cases.map((item) => (
+              <article key={item.company} className={styles.case}>
+                <h3 className={styles.caseName}>{item.company}</h3>
+                <p className={styles.caseText}>{item.text}</p>
+              </article>
             ))}
-          </ol>
+          </div>
         </section>
 
         <section className={styles.section} aria-labelledby="entrega">
@@ -80,22 +73,24 @@ export function ConsultingPage() {
 }
 
 function OfferCard({ offer }: { offer: ConsultingOffer }) {
+  const tone =
+    offer.id === 'individual' ? styles.cardIndividual : styles.cardCompany
+
   return (
-    <article className={styles.card}>
+    <a
+      className={`${styles.card} ${tone}`}
+      href={offerPath(offer.slug)}
+      {...trackAttrs('clicked-consulting-offer', { offer: offer.id })}
+    >
       <span className={styles.icon} aria-hidden="true">
         <OfferIcon id={offer.id} />
       </span>
       <div className={styles.cardCopy}>
+        <p className={styles.cardKicker}>{offer.kicker}</p>
         <h3 className={styles.cardTitle}>{offer.title}</h3>
         <p className={styles.cardSummary}>{offer.summary}</p>
       </div>
-      <a
-        className={styles.more}
-        href={offerPath(offer.slug)}
-        {...trackAttrs('clicked-consulting-offer', { offer: offer.id })}
-      >
-        Quero saber mais
-      </a>
-    </article>
+      <span className={styles.more}>Quero saber mais</span>
+    </a>
   )
 }
