@@ -13,14 +13,25 @@ export type ConsultingPriceGroup = {
 
 export type ConsultingOffer = {
   id: 'individual' | 'company'
+  slug: string
+  eyebrow: string
   title: string
   summary: string
   steps: readonly string[]
   groups: readonly ConsultingPriceGroup[]
   note: string
+  boundary: string
   whatsappLabel: string
   whatsappMessage: string
 }
+
+export const consultingCover = {
+  src: '/imgs/consultoria/consultoria.webp',
+  social: '/imgs/consultoria/consultoria.jpg',
+  width: 1200,
+  height: 675,
+  alt: 'Capa: uma lâmina fosca ao centro. Um nó à esquerda e três nós à direita ligam-se a ela por fios mint.',
+} as const
 
 const whatsapp = {
   e164: '5567996096006',
@@ -48,6 +59,8 @@ export const consulting = {
   offers: [
     {
       id: 'individual',
+      slug: 'leitura-de-carreira',
+      eyebrow: 'Para uma pessoa',
       title: 'Leitura de carreira',
       summary:
         'Para dev júnior ou pleno. Um encontro de 75 minutos e um plano escrito para as próximas quatro semanas.',
@@ -73,13 +86,17 @@ export const consulting = {
         },
       ],
       note: 'Pix antes de marcar. Dá para reagendar uma vez, avisando com um dia.',
-      whatsappLabel: 'Chamar no WhatsApp sobre a leitura de carreira',
+      boundary:
+        'O plano é o que você leva. Os quatro encontros são a continuação, para quem já tem esse plano.',
+      whatsappLabel: 'Chamar no WhatsApp',
       whatsappMessage: `Olá, Gabriel. Vim pelo site e quero uma leitura de carreira.
 Sou júnior ou pleno:
 Meu momento hoje: `,
     },
     {
       id: 'company',
+      slug: 'para-um-time',
+      eyebrow: 'Para um time',
       title: 'Consultoria para uma dor',
       summary:
         'Para um time de engenharia. Vocês chegam com uma dor já dita. Eu olho com o grupo e devolvo um plano de 30 e 60 dias. Quem executa é o time.',
@@ -107,7 +124,9 @@ Meu momento hoje: `,
         },
       ],
       note: 'Metade ao fechar a data, metade na entrega do plano.',
-      whatsappLabel: 'Chamar no WhatsApp sobre a consultoria',
+      boundary:
+        'O time executa. Eu entrego a sessão e o plano. Outra dor é outro contrato.',
+      whatsappLabel: 'Chamar no WhatsApp',
       whatsappMessage: `Olá, Gabriel. Vim pelo site e quero uma consultoria para o time.
 A dor que queremos olhar:
 Quantas pessoas entrariam na sessão: `,
@@ -123,3 +142,25 @@ Quantas pessoas entrariam na sessão: `,
   },
   whatsapp,
 } as const
+
+export function offerPath(slug: string) {
+  return `${consulting.path}/${slug}`
+}
+
+export function findOffer(slug: string) {
+  return consulting.offers.find((offer) => offer.slug === slug)
+}
+
+export function consultingServices() {
+  return consulting.offers.map((offer) => ({
+    name: offer.title,
+    description: offer.summary,
+    path: offerPath(offer.slug),
+    prices: offer.groups.flatMap((group) =>
+      group.prices.map((price) => ({
+        name: `${offer.title}: ${price.label}`,
+        price: price.value,
+      })),
+    ),
+  }))
+}

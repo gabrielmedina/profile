@@ -72,20 +72,17 @@ A dor que queremos olhar:
 Quantas pessoas entrariam na sessão:
 ```
 
-Sem widget, popup ou script de agenda. O link é uma âncora para o WhatsApp.
+Sem widget, popup ou script de agenda. O link é uma âncora para o WhatsApp. A mensagem pronta vive só no `href`. A página mostra o botão e o número, e não o texto da mensagem.
 
-### Página `/consultoria`
+### Páginas
 
-Rota fina em `src/app/consultoria/page.tsx`: metadata, JSON-LD, page view, render do componente. O texto e os preços vivem em `src/features/consulting/content.ts`. A URL do WhatsApp é função pura ao lado do componente.
+O texto e os preços vivem em `src/features/consulting/content.ts`. A URL do WhatsApp é função pura ao lado do componente. Cada rota é fina: metadata, JSON-LD, page view, render.
 
-A página tem um `<h1>` e esta ordem:
+**`/consultoria`** é a entrada. Um `<h1>`. A capa fica junto ao cabeçalho (acima no celular, ao lado a partir de 768px) e segue a família de `004`: fundo `#1a1d24`, ~1200×675, WebP no corpo e JPEG leve no Open Graph. A metáfora é o plano escrito: uma lâmina ao centro, um nó à esquerda, três nós à direita. Depois vêm a experiência, dois cartões (um por formato, com o preço de entrada e o link da página) e o tamanho do trabalho.
 
-1. Abertura com quem é: senior front-end engineer, 16 anos de web, 8 de React, Grupo Boticário, Grupo SBF.
-2. Experiência: arquitetura de front-end, design systems, microfrontends, e as duas empresas acima.
-3. O que entrega: os dois formatos, com o passo a passo, os preços e o WhatsApp de cada um. A mensagem pronta aparece na página.
-4. O tamanho do trabalho: o plano é o entregável da leitura; na consultoria o time executa; cada contrato olha uma dor.
+**`/consultoria/leitura-de-carreira`** e **`/consultoria/para-um-time`** carregam o passo a passo, os preços e o botão de WhatsApp. O botão aparece no alto e de novo depois dos valores. Slug desconhecido chama `notFound()`.
 
-Sitemap inclui `/consultoria`. JSON-LD é `WebPage` + `BreadcrumbList` + `Service`/`Offer` em BRL para cada preço. O post `acompanhar-devs-no-dia-a-dia` fecha com uma frase apontando para a página. Os outros posts seguem sem oferta.
+Sitemap inclui as três URLs. JSON-LD é `WebPage` + `BreadcrumbList` + `Service`/`Offer` em BRL. O post `acompanhar-devs-no-dia-a-dia` fecha com uma frase apontando para `/consultoria`. Os outros posts seguem sem oferta.
 
 ### Café e anúncio
 

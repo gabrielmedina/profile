@@ -94,14 +94,23 @@ export function postsPageGraph(posts: PostListItem[]) {
   }
 }
 
-type ConsultingOfferData = {
+type ConsultingServiceData = {
   name: string
   description: string
+  path: string
   prices: { name: string; price: number }[]
 }
 
-export function consultingPageGraph(offers: ConsultingOfferData[]) {
-  const url = absoluteUrl(site.consulting.path)
+type ConsultingPageData = {
+  title: string
+  description: string
+  path: string
+  crumbs: Crumb[]
+  services: ConsultingServiceData[]
+}
+
+export function consultingPageGraph(page: ConsultingPageData) {
+  const url = absoluteUrl(page.path)
 
   return {
     '@context': 'https://schema.org',
@@ -110,39 +119,37 @@ export function consultingPageGraph(offers: ConsultingOfferData[]) {
         '@type': 'WebPage',
         '@id': `${url}#page`,
         url,
-        name: `${site.consulting.title} - ${site.name}`,
-        description: site.consulting.description,
+        name: `${page.title} - ${site.name}`,
+        description: page.description,
         inLanguage: site.language,
         isPartOf: { '@id': websiteId },
         about: { '@id': personId },
         mainEntity: {
           '@type': 'ItemList',
-          numberOfItems: offers.length,
-          itemListElement: offers.map((offer, index) => ({
+          numberOfItems: page.services.length,
+          itemListElement: page.services.map((service, index) => ({
             '@type': 'ListItem',
             position: index + 1,
             item: {
               '@type': 'Service',
-              name: offer.name,
-              description: offer.description,
+              name: service.name,
+              description: service.description,
+              url: absoluteUrl(service.path),
               provider: { '@id': personId },
               areaServed: 'BR',
-              offers: offer.prices.map((price) => ({
+              offers: service.prices.map((price) => ({
                 '@type': 'Offer',
                 name: price.name,
                 price: price.price,
                 priceCurrency: 'BRL',
                 availability: 'https://schema.org/InStock',
-                url,
+                url: absoluteUrl(service.path),
               })),
             },
           })),
         },
       },
-      breadcrumbList([
-        { name: 'Início', path: '/' },
-        { name: site.consulting.title, path: site.consulting.path },
-      ]),
+      breadcrumbList(page.crumbs),
     ],
   }
 }
