@@ -8,7 +8,7 @@ lang: pt-BR
 date: '2026-10-28'
 ---
 
-![Capa: fragmentos irregulares à esquerda passam por um portão de vidro e viram nós ordenados à direita, com acento mint-teal.](/imgs/posts/zod-vantagens-e-aprendizados.webp)
+![Capa: cartão de vidro central com a logo oficial do Zod em branco.](/imgs/posts/zod-vantagens-e-aprendizados.webp)
 
 TypeScript tipa o que você modelou. Ele não tipa o JSON que chegou da API, o frontmatter lido do disco nem o payload do formulário. Esses valores entram como `unknown` de fato — mesmo quando o tipo anotado diz o contrário.
 
