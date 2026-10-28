@@ -1,9 +1,11 @@
 import { trackAttrs } from '@/components/analytics/track-attrs'
+import { site } from '@/config/site'
 import styles from './nav.module.scss'
 
 const navItems = [
   { title: 'Home', href: '/' },
   { title: 'Posts', href: '/posts' },
+  { title: site.consulting.title, href: site.consulting.path },
 ] as const
 
 // Home is only the index. Posts also covers each post and each subject page.

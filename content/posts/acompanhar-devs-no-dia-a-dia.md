@@ -59,3 +59,5 @@ Tenho pensado em montar um programa para mentorar devs front-end que queiram evo
 No mesmo espírito. Entender o momento da pessoa, olhar o PDI que já existe ou apontar um com ela, conectar com produto e engenharia, e acompanhar no 1:1 e nas tarefas do dia. Inclusive na hora de ler o que a IA devolveu, com espaço para errar e com incentivo enquanto o critério amadurece.
 
 **O protagonismo fica com quem está aprendendo.** Eu ajudo a abrir o caminho e sigo junto.
+
+Quem quiser preços e contato encontra os dois formatos na página de [Consultoria](/consultoria).

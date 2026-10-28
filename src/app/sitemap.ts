@@ -22,6 +22,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
+    {
+      url: absoluteUrl(site.consulting.path),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
     ...tags.map((tag) => ({
       url: absoluteUrl(tagPath(tag.slug)),
       lastModified: tag.latest,

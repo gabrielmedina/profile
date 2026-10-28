@@ -18,7 +18,7 @@ Decisões de arquitetura e produto deste site vivem em `specs/`. Código novo e 
 | [002-component-boundaries.md](./002-component-boundaries.md) | Apresentação vs domínio          |
 | [003-posts-seo.md](./003-posts-seo.md)                       | Publicações, SEO e HTML5         |
 | [004-images.md](./004-images.md)                             | Imagens leves e `next/image`     |
-| [005-monetization.md](./005-monetization.md)                 | Mentoria, café e anúncio         |
+| [005-monetization.md](./005-monetization.md)                 | Consultoria, café e anúncio      |
 | [backlog.md](./backlog.md)                                   | Melhorias identificadas e status |
 
 ## Formato de uma spec

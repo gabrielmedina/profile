@@ -13,7 +13,7 @@ Mantemos e reforçamos a separação já descrita no `AGENTS.md` e no `README.md
 ```text
 src/app            rotas finas: dados, metadata, composição
 src/config         identidade do site e URL absoluta
-src/features/<d>   domínio (posts, profile): ver árvore abaixo
+src/features/<d>   domínio (posts, profile, consulting): ver árvore abaixo
 src/components     UI compartilhada (nav, markdown, seo, tema…)
 src/lib            helpers puros compartilhados, agrupados por papel
 src/styles         tokens, reset, tema global

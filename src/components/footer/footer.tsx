@@ -12,6 +12,11 @@ export function Footer() {
 
       <ul className={styles.links}>
         <li>
+          <a href={site.consulting.path} className={styles.link}>
+            {site.consulting.title}
+          </a>
+        </li>
+        <li>
           <a
             href={site.sameAs[0]}
             className={styles.link}

@@ -64,7 +64,8 @@
 
 :global(html[data-path='/']) .link[href='/'],
 :global(html[data-path^='/posts']) .link[href='/posts'],
-:global(html[data-path^='/assuntos/']) .link[href='/posts'] {
+:global(html[data-path^='/assuntos/']) .link[href='/posts'],
+:global(html[data-path^='/consultoria']) .link[href='/consultoria'] {
   &:after {
     width: 100%;
   }

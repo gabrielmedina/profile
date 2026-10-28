@@ -35,6 +35,12 @@ export const site = {
     alt: 'Gabriel Medina: Senior Front-end Engineer',
   },
   feedPath: '/feed.xml',
+  consulting: {
+    path: '/consultoria',
+    title: 'Consultoria',
+    description:
+      'Leitura de carreira para devs júnior e pleno, e consultoria para uma dor de um time de engenharia. Preços e WhatsApp.',
+  },
   posts: {
     title: 'Posts',
     subtitle: 'Explorando. Construindo. Compartilhando.',
