@@ -46,19 +46,29 @@ export const consulting = {
   intro:
     'Na carreira, o critério fica mais firme e o próximo passo deixa de ser um chute. Na empresa, o time sai da mesma dor e passa a entregar com mais acerto.',
   experience: {
-    heading: 'Por que a minha consultoria?',
-    statement:
-      'Senior Front-end Engineer com 16 anos de experiência, com foco em ecommerces!',
-    note: 'Especializado em arquitetura, padronização e entregas que acertam, com impacto no produto.',
-    cases: [
-      {
-        company: 'Grupo Boticário',
-        text: 'Especialista na evolução do e-commerce. Arquitetura e padrão entre os times, com entregas que mudam o que a pessoa vê e compra na loja.',
-      },
-      {
-        company: 'Grupo SBF',
-        text: 'Referência cross-team no painel de backoffice. Cada squad chega com outro contexto: entender a dor, alinhar a arquitetura e acompanhar até a entrega.',
-      },
+    subtitle: 'Por que a minha consultoria?',
+    title: 'Senior Front-end Engineer',
+    paragraphs: [
+      [
+        { text: '16 anos', emphasis: true },
+        {
+          text: ' de experiência, com foco em ecommerces. Arquitetura, padronização e entregas que acertam, com impacto no produto.',
+          emphasis: false,
+        },
+      ],
+      [
+        { text: 'No ', emphasis: false },
+        { text: 'Grupo Boticário', emphasis: true },
+        {
+          text: ', especialista na evolução do e-commerce: arquitetura, padrão entre os times e entregas que mudam o que a pessoa vê e compra na loja. No ',
+          emphasis: false,
+        },
+        { text: 'Grupo SBF', emphasis: true },
+        {
+          text: ', referência cross-team no painel de backoffice: cada squad chega com outro contexto, e o trabalho é entender a dor, alinhar a arquitetura e acompanhar até a entrega.',
+          emphasis: false,
+        },
+      ],
     ],
   },
   deliveryHeading: 'Como começar',

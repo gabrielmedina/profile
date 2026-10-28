@@ -14,7 +14,7 @@
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  padding: 0 clamp(1.25rem, 5vw, 5rem) 5rem;
+  padding: 0 1.6rem;
 }
 
 .container {
@@ -27,7 +27,7 @@
 }
 
 .landing {
-  max-width: 1440px;
+  max-width: 1200px;
 }
 
 .hero {
@@ -41,20 +41,18 @@
 }
 
 .title {
-  margin: 0;
+  margin: 0 0 1rem;
   color: var(--color-title);
-  font-size: 2.15rem;
+  font-size: 2rem;
   font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .subtitle {
-  margin: 0.85rem 0 0;
+  margin: 0;
   color: var(--color-primary);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 500;
-  line-height: 1.4;
 }
 
 .lead,
@@ -62,11 +60,11 @@
 .note,
 .boundary,
 .groupIntro {
-  margin: 1rem 0 0;
-  color: var(--color-text);
-  font-size: 1.05rem;
+  margin: 0.75rem 0 0;
+  color: var(--color-text-light);
+  font-size: 1rem;
   font-weight: 300;
-  line-height: 1.65;
+  line-height: 1.5;
 }
 
 .cover {
@@ -87,64 +85,57 @@
   margin-top: 4.5rem;
 }
 
-.landing .section {
-  margin-top: 7rem;
-}
-
 .sectionTitle {
-  margin: 0;
+  margin: 0 0 1rem;
   color: var(--color-title);
-  font-size: 1.85rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
-.statement {
-  margin: 1.15rem 0 0;
-  max-width: 16em;
-  color: var(--color-primary);
-  font-size: 1.35rem;
-  font-weight: 500;
-  line-height: 1.35;
+.reason {
+  padding: 1.6rem;
+  background: var(--color-background-interactive);
+  border: solid 2px transparent;
 }
 
-.statementNote {
-  margin: 1rem 0 0;
-  max-width: 38rem;
-  color: var(--color-text);
-  font-size: 1.15rem;
-  font-weight: 300;
-  line-height: 1.6;
-}
-
-.cases {
-  display: grid;
-  gap: 2.5rem;
-  margin-top: 3rem;
-}
-
-.case + .case {
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--color-border);
-}
-
-.caseName {
+.reasonSubtitle {
   margin: 0;
   color: var(--color-primary);
-  font-size: 1.85rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
+  font-size: 1em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.reasonTitle {
+  margin: 0.2rem 0 0;
+  color: var(--color-title);
+  font-size: 2.1em;
+  font-weight: 500;
   line-height: 1.15;
 }
 
-.caseText {
-  margin: 0.9rem 0 0;
-  max-width: 36rem;
-  color: var(--color-text);
-  font-size: 1.12rem;
-  font-weight: 300;
-  line-height: 1.6;
+.reasonText {
+  margin-top: 1.25rem;
+  font-size: 1rem;
+
+  p {
+    margin: 0 0 2rem;
+    color: var(--color-text);
+    font-size: 1em;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  strong {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
 }
 
 .cards {
@@ -200,7 +191,16 @@
 }
 
 :global(html.tokens-light) .cardCompany {
-  background: #1a1916;
+  --offer: #8a5a1e;
+  --offer-ink: #fffaf3;
+  --card-text: var(--color-text);
+  border-color: color-mix(in srgb, var(--offer) 35%, transparent);
+  background: #f6f0e4;
+  color: var(--card-text);
+}
+
+:global(html.tokens-light) .cardCompany .icon {
+  background: color-mix(in srgb, var(--offer) 12%, #fff);
 }
 
 .icon {
@@ -301,7 +301,9 @@
 }
 
 .boundary {
+  margin-top: 1rem;
   padding: 1rem 1.15rem;
+  color: var(--color-text);
   background: var(--color-background-interactive);
   border-radius: 6px;
 }
@@ -382,15 +384,28 @@
   font-weight: 500;
 }
 
+@media screen and (min-width: 375px) {
+  .reasonSubtitle {
+    font-size: 1.1em;
+  }
+
+  .reasonTitle {
+    font-size: 2.5em;
+  }
+
+  .reasonText {
+    font-size: 1.1rem;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .wrapper {
-    padding-top: 1.5rem;
-    padding-bottom: 8rem;
+    padding: 2rem;
   }
 
   .hero {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap: 3.5rem;
+    gap: 3rem;
   }
 
   .cover {
@@ -398,62 +413,51 @@
   }
 
   .title {
-    font-size: 2.75rem;
-  }
-
-  .landing .title {
-    font-size: 4.25rem;
+    font-size: 3.25rem;
   }
 
   .subtitle {
-    font-size: 1.55rem;
+    font-size: 1.5rem;
   }
 
   .landing .section {
-    margin-top: 11rem;
+    margin-top: 6rem;
   }
 
-  .landing .sectionTitle {
-    font-size: 2.35rem;
+  .sectionTitle {
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
   }
 
-  .statement {
-    max-width: 40rem;
-    font-size: 1.55rem;
+  .reason {
+    padding: 3rem;
+    border-radius: 4px;
   }
 
-  .cases {
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    margin-top: 3.5rem;
+  .reasonSubtitle {
+    font-size: 1.4em;
   }
 
-  .case + .case {
-    position: relative;
-    padding-top: 0;
-    border-top: 0;
+  .reasonTitle {
+    font-size: 4em;
   }
 
-  .case + .case::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -2rem;
-    width: 1px;
-    background: var(--color-border);
-  }
+  .reasonText {
+    font-size: 1.4rem;
 
-  .caseName {
-    font-size: 2.15rem;
+    p {
+      margin-bottom: 2.6rem;
+    }
   }
 
   .cards {
+    gap: 2rem;
     grid-template-columns: 1fr 1fr;
     align-items: stretch;
   }
 
   .card {
-    padding: 2rem 1.75rem;
+    padding: 3rem;
+    border-radius: 4px;
   }
 }

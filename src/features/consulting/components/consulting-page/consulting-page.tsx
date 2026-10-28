@@ -41,18 +41,26 @@ export function ConsultingPage() {
         </div>
 
         <section className={styles.section} aria-labelledby="experiencia">
-          <h2 id="experiencia" className={styles.sectionTitle}>
-            {consulting.experience.heading}
-          </h2>
-          <p className={styles.statement}>{consulting.experience.statement}</p>
-          <p className={styles.statementNote}>{consulting.experience.note}</p>
-          <div className={styles.cases}>
-            {consulting.experience.cases.map((item) => (
-              <article key={item.company} className={styles.case}>
-                <h3 className={styles.caseName}>{item.company}</h3>
-                <p className={styles.caseText}>{item.text}</p>
-              </article>
-            ))}
+          <div className={styles.reason}>
+            <p className={styles.reasonSubtitle}>
+              {consulting.experience.subtitle}
+            </p>
+            <h2 id="experiencia" className={styles.reasonTitle}>
+              {consulting.experience.title}
+            </h2>
+            <div className={styles.reasonText}>
+              {consulting.experience.paragraphs.map((paragraph) => (
+                <p key={paragraph[0].text}>
+                  {paragraph.map((part) =>
+                    part.emphasis ? (
+                      <strong key={part.text}>{part.text}</strong>
+                    ) : (
+                      part.text
+                    ),
+                  )}
+                </p>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -60,7 +68,7 @@ export function ConsultingPage() {
           <h2 id="entrega" className={styles.sectionTitle}>
             {consulting.deliveryHeading}
           </h2>
-          <p className={styles.statementNote}>{consulting.deliveryLead}</p>
+          <p className={styles.lead}>{consulting.deliveryLead}</p>
           <div className={styles.cards}>
             {consulting.offers.map((offer) => (
               <OfferCard key={offer.id} offer={offer} />
