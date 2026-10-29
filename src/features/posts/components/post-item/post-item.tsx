@@ -6,9 +6,10 @@ import styles from './post-item.module.scss'
 type PostItemProps = {
   post: PostSummary
   size?: 'default' | 'compact'
+  surface: 'list' | 'continue-reading'
 }
 
-export function PostItem({ post, size = 'default' }: PostItemProps) {
+export function PostItem({ post, size = 'default', surface }: PostItemProps) {
   const Title = size === 'compact' ? 'h3' : 'h2'
 
   return (
@@ -17,7 +18,11 @@ export function PostItem({ post, size = 'default' }: PostItemProps) {
       className={
         size === 'compact' ? `${styles.link} ${styles.compact}` : styles.link
       }
-      {...trackAttrs('clicked-post-item', { title: post.title })}
+      {...trackAttrs('clicked-post-item', {
+        title: post.title,
+        slug: post.slug,
+        surface,
+      })}
     >
       <Title className={styles.title}>{post.title}</Title>
       <p className={styles.description}>{post.description}</p>

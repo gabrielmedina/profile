@@ -62,7 +62,7 @@ export function PostList({
           <ol className={styles.list}>
             {posts.map((post) => (
               <li key={post.slug}>
-                <PostItem post={post} />
+                <PostItem post={post} surface="list" />
               </li>
             ))}
           </ol>

@@ -1,21 +1,33 @@
 ;(function () {
   var SESSION_MS = 30 * 60 * 1000
+  var FLUSH_MS = 1000
+  // Mobile chrome and subpixels leave the ratio a hair under 1 at the real end.
+  var READING_END_PX = 8
   var site = (window.__site = window.__site || { queue: [], key: '' })
+  var flushTimer = 0
 
   if (!site.track) {
     site.track = function (event, props) {
-      site.queue.push([event, props || {}])
+      site.queue.push([event, props || {}, Date.now()])
       if (site.flush) site.flush()
     }
   }
 
+  // One request per quiet second. pagehide flushes the queue so a click that
+  // navigates still leaves with its events. Dev, without a key, logs at once.
   site.flush = function () {
-    var batch = site.queue.splice(0, site.queue.length)
-
-    for (var index = 0; index < batch.length; index += 1) {
-      send(batch[index][0], batch[index][1])
+    if (!site.key) {
+      flushNow()
+      return
     }
+    if (flushTimer) return
+    flushTimer = window.setTimeout(flushNow, FLUSH_MS)
   }
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') flushNow()
+  })
+  window.addEventListener('pagehide', flushNow)
 
   document.addEventListener('click', onClick)
   trackPageViews()
@@ -68,11 +80,19 @@
     }
   }
 
+  // OS theme is a device trait. Sending it on every page doubles volume and
+  // does not change a funnel. Report again only when the value changes.
   function trackColorScheme() {
-    var dark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    site.track('prefers-color-theme', {
-      theme: dark ? 'tokens-dark' : 'tokens-light',
-    })
+    var theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'tokens-dark'
+      : 'tokens-light'
+    var stored = readIdentity()
+
+    if (stored.optOut || stored.colorTheme === theme) return
+
+    stored.colorTheme = theme
+    writeIdentity(stored)
+    site.track('prefers-color-theme', { theme: theme })
   }
 
   function initReadingProgress() {
@@ -105,11 +125,13 @@
       if (metrics) bar.removeAttribute('data-reading-fits')
       else bar.setAttribute('data-reading-fits', 'true')
       paint()
+      if (!metrics && laidOutRange(bar)) finishReading(bar, 'visible')
     }
 
     function paint() {
       frame = 0
       syncReadingProgress(bar, readingProgress(metrics), native)
+      if (reachedReadingEnd(metrics)) finishReading(bar, 'scrolled')
     }
 
     function requestPaint() {
@@ -120,6 +142,9 @@
     measure()
     window.addEventListener('resize', measure)
     window.addEventListener('load', measure)
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(measure).catch(function () {})
+    }
     if (window.visualViewport) {
       window.visualViewport.addEventListener('resize', measure)
     }
@@ -148,6 +173,13 @@
     return article && article.querySelector('[data-reading-progress-range]')
   }
 
+  // A range with no height is not laid out yet. That is not a short post.
+  function laidOutRange(bar) {
+    var range = readingRangeElement(bar)
+    if (!range) return false
+    return range.getBoundingClientRect().height > 0
+  }
+
   function readReadingMetrics(bar) {
     var range = readingRangeElement(bar)
     if (!range) return null
@@ -165,6 +197,30 @@
   function readingProgress(metrics) {
     if (!metrics) return null
     return clamp((window.scrollY - metrics.top) / metrics.distance, 0, 1)
+  }
+
+  function reachedReadingEnd(metrics) {
+    if (!metrics) return false
+    return metrics.distance - (window.scrollY - metrics.top) <= READING_END_PX
+  }
+
+  // Fires once per view, after load and fonts, so a short post that fits and a
+  // long post scrolled to the end share one funnel step. `post` and `slug`
+  // match opened-post-page, which is what the funnel holds constant.
+  function finishReading(bar, completion) {
+    if (document.readyState !== 'complete') return
+    if (document.fonts && document.fonts.status === 'loading') return
+    if (bar.hasAttribute('data-reading-finished')) return
+
+    var slug = bar.getAttribute('data-reading-slug')
+    if (!slug) return
+
+    bar.setAttribute('data-reading-finished', 'true')
+    site.track('finished-reading-post', {
+      post: bar.getAttribute('data-reading-title') || '',
+      slug: slug,
+      completion: completion,
+    })
   }
 
   function syncReadingProgress(bar, progress, native) {
@@ -418,42 +474,51 @@
     list.scrollTop += delta
   }
 
-  function send(event, props) {
+  function flushNow() {
+    if (flushTimer) {
+      window.clearTimeout(flushTimer)
+      flushTimer = 0
+    }
+
+    var batch = site.queue.splice(0, site.queue.length)
+    if (!batch.length) return
+
     if (!site.key) {
-      console.info('[analytics] ' + event, props || {})
+      for (var index = 0; index < batch.length; index += 1) {
+        console.info('[analytics] ' + batch[index][0], batch[index][1] || {})
+      }
       return
     }
 
-    var identity = nextIdentity()
+    var identity = reserveIdentity(batch.length)
     if (!identity) return
 
-    var body = JSON.stringify({
-      api_key: site.key,
-      events: [
-        {
-          device_id: identity.deviceId,
-          session_id: identity.sessionId,
-          event_id: identity.lastEventId,
-          insert_id: uuid(),
-          event_type: event,
-          time: Date.now(),
-          event_properties: props || {},
-          platform: 'Web',
-          language: navigator.language,
-          os_name: osName(),
-        },
-      ],
-    })
+    var events = []
+
+    for (var eventIndex = 0; eventIndex < batch.length; eventIndex += 1) {
+      events.push({
+        device_id: identity.deviceId,
+        session_id: identity.sessionId,
+        event_id: identity.eventId + eventIndex,
+        insert_id: uuid(),
+        event_type: batch[eventIndex][0],
+        time: batch[eventIndex][2] || Date.now(),
+        event_properties: batch[eventIndex][1] || {},
+        platform: 'Web',
+        language: navigator.language,
+        os_name: osName(),
+      })
+    }
 
     fetch('https://api2.amplitude.com/2/httpapi', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: body,
+      body: JSON.stringify({ api_key: site.key, events: events }),
       keepalive: true,
     }).catch(function () {})
   }
 
-  function nextIdentity() {
+  function reserveIdentity(count) {
     var stored = readIdentity()
 
     if (stored.optOut) return null
@@ -465,8 +530,7 @@
         writeIdentity(stored)
         return null
       }
-      stored.deviceId =
-        (previous && previous.deviceId) || uuid()
+      stored.deviceId = (previous && previous.deviceId) || uuid()
     }
 
     var now = Date.now()
@@ -478,10 +542,15 @@
       stored.sessionId = now
     }
 
-    stored.lastEventId = (stored.lastEventId || 0) + 1
+    var eventId = (stored.lastEventId || 0) + 1
+    stored.lastEventId = eventId + count - 1
     stored.lastEventTime = now
     writeIdentity(stored)
-    return stored
+    return {
+      deviceId: stored.deviceId,
+      sessionId: stored.sessionId,
+      eventId: eventId,
+    }
   }
 
   function readIdentity() {

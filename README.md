@@ -26,7 +26,7 @@ npm run format
 
 `npm run dev` sobe o app em [http://localhost:3000](http://localhost:3000).
 
-Para enviar eventos ao Amplitude em produção, defina `NEXT_PUBLIC_AMPLITUDE_KEY`. O arquivo `.env.example` lista a variável. Sem a chave, ou fora de produção, os eventos aparecem só no console. O envio usa a HTTP API, sem o SDK do Amplitude no navegador.
+Para enviar eventos ao Amplitude em produção, defina `NEXT_PUBLIC_AMPLITUDE_KEY`. O arquivo `.env.example` lista a variável. Sem a chave, ou fora de produção, os eventos aparecem só no console. O envio usa a HTTP API, sem o SDK do Amplitude no navegador. O catálogo, o funil de leitura e as métricas de clique e compartilhamento estão em [`specs/005-analytics.md`](./specs/005-analytics.md).
 
 ## Estrutura
 

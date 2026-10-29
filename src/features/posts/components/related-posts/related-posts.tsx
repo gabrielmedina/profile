@@ -18,7 +18,7 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
       <ol className={styles.list}>
         {posts.map((post) => (
           <li key={post.slug}>
-            <PostItem post={post} size="compact" />
+            <PostItem post={post} size="compact" surface="continue-reading" />
           </li>
         ))}
       </ol>
