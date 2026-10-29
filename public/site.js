@@ -3,6 +3,30 @@
   var FLUSH_MS = 1000
   // Mobile chrome and subpixels leave the ratio a hair under 1 at the real end.
   var READING_END_PX = 8
+  var CAMPAIGN_KEY = 'site-analytics-campaign'
+  var EMPTY_CAMPAIGN = 'EMPTY'
+  // Same names the Browser SDK wrote, so existing charts keep filling.
+  var CAMPAIGN_KEYS = [
+    'utm_source',
+    'utm_medium',
+    'utm_campaign',
+    'utm_term',
+    'utm_content',
+    'utm_id',
+    'referrer',
+    'referring_domain',
+    'dclid',
+    'fbclid',
+    'gbraid',
+    'gclid',
+    'ko_click_id',
+    'li_fat_id',
+    'msclkid',
+    'rdt_cid',
+    'ttclid',
+    'twclid',
+    'wbraid',
+  ]
   var site = (window.__site = window.__site || { queue: [], key: '' })
   var flushTimer = 0
 
@@ -483,31 +507,57 @@
     var batch = site.queue.splice(0, site.queue.length)
     if (!batch.length) return
 
+    var campaign = readCampaign()
+
     if (!site.key) {
       for (var index = 0; index < batch.length; index += 1) {
-        console.info('[analytics] ' + batch[index][0], batch[index][1] || {})
+        console.info(
+          '[analytics] ' + batch[index][0],
+          merge(campaign, batch[index][1] || {}),
+        )
       }
       return
     }
 
-    var identity = reserveIdentity(batch.length)
+    var previous = readStoredCampaign()
+    var freshSession = sessionStale(readIdentity(), Date.now())
+    var identify = isNewCampaign(campaign, previous, freshSession)
+      ? identifyOps(campaign)
+      : null
+    var identity = reserveIdentity(batch.length + (identify ? 1 : 0))
     if (!identity) return
+    if (identify) writeStoredCampaign(campaign)
 
     var events = []
+    var offset = 0
+
+    // Same timestamp as the first event, and a lower event_id, so the user
+    // properties are already set when that event is counted.
+    if (identify) {
+      events.push(
+        payload(
+          identity,
+          identity.eventId,
+          '$identify',
+          batch[0][2] || Date.now(),
+          null,
+          identify,
+        ),
+      )
+      offset = 1
+    }
 
     for (var eventIndex = 0; eventIndex < batch.length; eventIndex += 1) {
-      events.push({
-        device_id: identity.deviceId,
-        session_id: identity.sessionId,
-        event_id: identity.eventId + eventIndex,
-        insert_id: uuid(),
-        event_type: batch[eventIndex][0],
-        time: batch[eventIndex][2] || Date.now(),
-        event_properties: batch[eventIndex][1] || {},
-        platform: 'Web',
-        language: navigator.language,
-        os_name: osName(),
-      })
+      events.push(
+        payload(
+          identity,
+          identity.eventId + offset + eventIndex,
+          batch[eventIndex][0],
+          batch[eventIndex][2] || Date.now(),
+          merge(campaign, batch[eventIndex][1] || {}),
+          null,
+        ),
+      )
     }
 
     fetch('https://api2.amplitude.com/2/httpapi', {
@@ -534,13 +584,7 @@
     }
 
     var now = Date.now()
-    if (
-      !stored.sessionId ||
-      !stored.lastEventTime ||
-      now - stored.lastEventTime > SESSION_MS
-    ) {
-      stored.sessionId = now
-    }
+    if (sessionStale(stored, now)) stored.sessionId = now
 
     var eventId = (stored.lastEventId || 0) + 1
     stored.lastEventId = eventId + count - 1
@@ -570,13 +614,16 @@
   }
 
   function readAmplitude(apiKey) {
-    var name = 'AMP_' + apiKey.slice(0, 10)
+    return readAmplitudeCookie('AMP_' + apiKey.slice(0, 10))
+  }
+
+  function readAmplitudeCookie(name) {
     var value = cookieValue(name)
     if (!value) return null
 
     try {
       var data = JSON.parse(decodeURIComponent(atob(value)))
-      if (!data || typeof data !== 'object') return null
+      if (!data || typeof data !== 'object' || Array.isArray(data)) return null
       return data
     } catch (error) {
       return null
@@ -721,14 +768,174 @@
     )
   }
 
-  function osName() {
-    var ua = navigator.userAgent
-    if (/Windows/.test(ua)) return 'Windows'
-    if (/Android/.test(ua)) return 'Android'
-    if (/iPhone|iPad|iPod/.test(ua)) return 'iOS'
-    if (/Mac OS X/.test(ua)) return 'Mac OS X'
-    if (/CrOS/.test(ua)) return 'Chrome OS'
-    if (/Linux/.test(ua)) return 'Linux'
-    return 'Unknown'
+  function sessionStale(stored, now) {
+    return (
+      !stored.sessionId ||
+      !stored.lastEventTime ||
+      now - stored.lastEventTime > SESSION_MS
+    )
+  }
+
+  // Country is the request IP. Device family is parsed from user_agent.
+  // platform stays Web: mobile and desktop are not a separate platform.
+  // os_name stays unset so the parsed browser remains the OS. Setting it
+  // without the other device fields clears device family.
+  function payload(identity, eventId, type, time, properties, userProperties) {
+    var event = {
+      device_id: identity.deviceId,
+      session_id: identity.sessionId,
+      event_id: eventId,
+      insert_id: uuid(),
+      event_type: type,
+      time: time,
+      platform: 'Web',
+      language: navigator.language,
+      ip: '$remote',
+      user_agent: navigator.userAgent,
+    }
+
+    if (userProperties) event.user_properties = userProperties
+    else event.event_properties = properties || {}
+
+    return event
+  }
+
+  function readCampaign() {
+    var params = new URLSearchParams(window.location.search)
+    var campaign = {}
+
+    for (var index = 0; index < CAMPAIGN_KEYS.length; index += 1) {
+      var key = CAMPAIGN_KEYS[index]
+      if (key === 'referrer' || key === 'referring_domain') continue
+      var value = params.get(key)
+      if (value) campaign[key] = value
+    }
+
+    var referrer = document.referrer || ''
+    if (!referrer) return campaign
+
+    campaign.referrer = referrer
+    var host = referrer.split('/')[2]
+    if (host) campaign.referring_domain = host
+    return campaign
+  }
+
+  // The first visit is a new origem, and so is a change in UTM, click id, or
+  // referrer domain. The site's own domain is navigation, not a new source.
+  // Direct traffic mid-session does not wipe the source already stored.
+  function isNewCampaign(current, previous, newSession) {
+    if (isOwnReferrer(current.referring_domain)) return false
+    if (!newSession && isDirectCampaign(current) && previous) return false
+    if (!previous) return true
+
+    for (var index = 0; index < CAMPAIGN_KEYS.length; index += 1) {
+      var key = CAMPAIGN_KEYS[index]
+      if (key === 'referrer' || key === 'referring_domain') continue
+      if (campaignValue(current, key) !== campaignValue(previous, key)) {
+        return true
+      }
+    }
+
+    return (
+      baseDomain(current.referring_domain) !==
+      baseDomain(previous.referring_domain)
+    )
+  }
+
+  function isDirectCampaign(campaign) {
+    for (var index = 0; index < CAMPAIGN_KEYS.length; index += 1) {
+      if (campaignValue(campaign, CAMPAIGN_KEYS[index])) return false
+    }
+    return true
+  }
+
+  function isOwnReferrer(domain) {
+    if (!domain) return false
+    var base = baseDomain(window.location.hostname)
+    if (!base) return false
+    return domain === base || domain.slice(-(base.length + 1)) === '.' + base
+  }
+
+  function baseDomain(domain) {
+    if (!domain) return ''
+    var parts = String(domain).split('.')
+    if (parts.length <= 2) return domain
+    return parts.slice(parts.length - 2).join('.')
+  }
+
+  function campaignValue(campaign, key) {
+    var value = campaign && campaign[key]
+    if (value === undefined || value === null || value === '') return ''
+    return String(value)
+  }
+
+  function identifyOps(campaign) {
+    var setOnce = {}
+    var set = {}
+    var unset = {}
+    var hasSet = false
+
+    for (var index = 0; index < CAMPAIGN_KEYS.length; index += 1) {
+      var key = CAMPAIGN_KEYS[index]
+      var value = campaignValue(campaign, key)
+      setOnce['initial_' + key] = value || EMPTY_CAMPAIGN
+      if (value) {
+        set[key] = value
+        hasSet = true
+      } else {
+        unset[key] = '-'
+      }
+    }
+
+    var ops = { $setOnce: setOnce, $unset: unset }
+    if (hasSet) ops.$set = set
+    return ops
+  }
+
+  function readStoredCampaign() {
+    var stored = readJson(CAMPAIGN_KEY)
+    if (stored) return stored
+    if (!site.key) return null
+
+    var legacy = readAmplitudeCookie('AMP_MKTG_' + site.key.slice(0, 10))
+    if (!legacy) return null
+
+    writeStoredCampaign(legacy)
+    return legacy
+  }
+
+  function writeStoredCampaign(campaign) {
+    try {
+      localStorage.setItem(CAMPAIGN_KEY, JSON.stringify(campaign || {}))
+    } catch (error) {
+      return
+    }
+  }
+
+  function readJson(key) {
+    try {
+      var data = JSON.parse(localStorage.getItem(key) || 'null')
+      if (!data || typeof data !== 'object' || Array.isArray(data)) return null
+      return data
+    } catch (error) {
+      return null
+    }
+  }
+
+  function merge(base, extra) {
+    var out = {}
+    copyKeys(out, base)
+    copyKeys(out, extra)
+    return out
+  }
+
+  function copyKeys(target, source) {
+    if (!source) return
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key]
+      }
+    }
   }
 })()

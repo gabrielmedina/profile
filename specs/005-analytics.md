@@ -64,6 +64,16 @@ A fila junta os eventos e manda um POST por segundo de silêncio. `pagehide` e a
 
 Opt-out do cookie antigo do Amplitude segue valendo: sem `device_id`, nada é enviado.
 
+### Dispositivo e origem
+
+Cada evento leva `platform: "Web"`, `language`, `ip: "$remote"` e `user_agent`. O país sai do IP do request. A device family sai do user agent. Desktop sem modelo no user agent continua `(none)`; celular passa a ter família. `platform` fica `Web`: celular e desktop não são outra plataforma.
+
+Não mandar `os_name`. O Amplitude preenche o OS com o navegador lido do user agent. Um `os_name` explícito, sem os outros campos de device, zera a device family.
+
+A origem usa os mesmos nomes do Browser SDK. No evento, entram só os campos presentes nesta carga: `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`, `utm_id`, `referrer`, `referring_domain` e os click ids (`gclid`, `fbclid`, `dclid`, `gbraid`, `wbraid`, `msclkid`, `ttclid`, `twclid`, `ko_click_id`, `li_fat_id`, `rdt_cid`). Propriedade declarada no evento ganha do campo de campanha. Navegação interna leva o referrer do próprio site no evento.
+
+Quando a campanha é nova, o mesmo POST começa com `$identify`, no mesmo `time` do primeiro evento do lote e com `event_id` menor. `$setOnce` grava `initial_*`; sem valor, a string é `EMPTY`. `$set` grava o toque atual e `$unset` tira o que essa carga não trouxe. Campanha nova é sessão nova com origem diferente, ou mudança de UTM, click id ou domínio do referrer. O próprio domínio não é origem nova e não apaga o toque anterior. Tráfego direto no meio da sessão também não. A última campanha fica em `site-analytics-campaign`; se esse registro não existe, vale o cookie `AMP_MKTG_` que o SDK deixou.
+
 ## Como salvar no Amplitude
 
 O gráfico salvo pede a secret key do projeto. A chave do browser, a que vai no HTML, não cria gráfico nem taxonomia. Com a secret key, em Create → Chart:
@@ -81,3 +91,5 @@ Os tipos de evento passam a existir no projeto quando o primeiro evento real che
 - Não criar evento paralelo para a mesma pergunta (`post_opened`, `read_complete`). O histórico já usa os nomes desta tabela.
 - Não voltar a disparar `prefers-color-theme` por page view.
 - Não reintroduzir o SDK do Amplitude para esses gráficos.
+- Não mandar `os_name` manual, nem trocar `platform` de `Web` para o sistema do celular.
+- Não tratar o domínio do próprio site como origem nova. A origem que permanece no usuário é a do `$identify`.
