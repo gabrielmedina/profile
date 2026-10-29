@@ -79,6 +79,15 @@ Ainda não implementadas. A onda 3 só fixa a árvore; estas decisões ficam par
 | --------------------------------------------------------------------- | -------- | ------ |
 | Guia “Neste artigo” no post, com seção corrente e subseções que abrem | 002, 003 | feito  |
 
+## Onda 8
+
+| Item                                                                                  | Spec | Status |
+| ------------------------------------------------------------------------------------- | ---- | ------ |
+| Catálogo de eventos e funil de leitura (`opened-post-page` → `finished-reading-post`) | 005  | feito  |
+| Clique em post com `surface` (`list` e `continue-reading`) e `slug`                   | 005  | feito  |
+| Compartilhamento permanece `shared-post` por `channel`; envio ao Amplitude em lote    | 005  | feito  |
+| `prefers-color-theme` só quando o valor muda                                          | 005  | feito  |
+
 ## Próximas ondas
 
 | Item                                                                 | Spec     | Status  | Notas                                         |

@@ -41,5 +41,5 @@ Componentes de UI acumulam regras (clipboard, speech synthesis, progresso de lei
 - A barra de progresso acompanha o scroll no compositor (`view-timeline` no trecho do artigo, `animation-range: contain`, `scaleX`). Medir o layout e animar `width` a cada frame força reflow e faz a barra travar. `public/site.js` só relê a geometria fora do scroll; sem scroll-driven animations, escreve `scaleX`.
 - Testes unitários miram utils/hooks, não o JSX.
 - Novos componentes client devem justificar a fronteira na review ou na spec relacionada.
-- Não reintroduzir wrappers React (`TrackedLink`, `lib/analytics` client) para o que `site.js` já cobre.
+- Não reintroduzir wrappers React (`TrackedLink`, `lib/analytics` client) para o que `site.js` já cobre. Eventos, funil de leitura e as métricas de clique e compartilhamento estão em `specs/005-analytics.md`.
 - O filtro de assuntos marca a lista com `data-tag-list`. `public/site.js` rola só essa faixa até o assunto com `aria-current="page"`, encostado no canto direito quando a lista alcança, sem mover a página. A barra no desktop fica fina e usa a cor de texto do tema.

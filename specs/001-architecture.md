@@ -88,4 +88,4 @@ O que saiu de `lib` porque o nome da pasta antiga não dizia o dono:
 
 - Novas telas começam na rota (`app`) e empurram lógica para `features`, `config` ou `lib`.
 - Renomeações devem preservar o vocabulário do domínio (`Post`, `PostSummary`, `PostArticle`, `PostList`, `PostItem`).
-- Analytics e clipboard no browser: `src/components/analytics/track-attrs.ts` + `public/site.js` (sem SDK React). Page views via `src/components/analytics/page-view.tsx`.
+- Analytics e clipboard no browser: `src/components/analytics/track-attrs.ts` + `public/site.js` (sem SDK React). Page views via `src/components/analytics/page-view.tsx`. O catálogo de eventos e os funis estão em `specs/005-analytics.md`.
