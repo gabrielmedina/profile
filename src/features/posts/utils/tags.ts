@@ -108,6 +108,13 @@ const catalog: readonly CatalogTag[] = [
       'Hábitos, colaboração e o ambiente em que o time escreve e evolui o software.',
     aliases: ['cultura de engenharia', 'engineering culture'],
   },
+  {
+    slug: 'testes',
+    name: 'Testes',
+    description:
+      'Suíte, contrato de aceite e o que realmente protege a feature — inclusive quando a IA escreve os asserts.',
+    aliases: ['testes', 'teste', 'testing', 'testings', 'tests', 'test'],
+  },
 ]
 
 const byAlias = new Map<string, CatalogTag>()
