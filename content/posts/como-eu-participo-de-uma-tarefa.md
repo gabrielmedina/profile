@@ -1,131 +1,165 @@
 ---
-title: 'Como eu participo de uma tarefa antes do código'
-description: 'Do refinamento ao registro: o caminho que eu percorro numa tarefa, sem chegar com a solução pronta. O cupom só dá lugar às perguntas.'
+title: 'Como participo de uma tarefa antes da primeira linha de código'
+description: 'Do refinamento à produção: um exemplo prático de como participo das decisões de produto, arquitetura e engenharia.'
 keys: 'Front-end, Software Engineering, Cultura de Engenharia, IA'
 image: /imgs/posts/como-eu-participo-de-uma-tarefa.jpg
 slug: como-eu-participo-de-uma-tarefa
 lang: pt-BR
-date: '2026-10-29'
+date: '2026-10-30'
 ---
 
 ![Capa: quatro cartões com recorte de cupom sobem em arco; o da esquerda é fosco, o da direita acende em mint.](/imgs/posts/como-eu-participo-de-uma-tarefa.webp)
 
-O próximo ciclo já tem tema. A gente sabe o que vai trabalhar. Eu não chego com a tela desenhada.
+Quando uma tarefa chega para desenvolvimento, é natural começarmos a pensar na implementação: componentes, APIs, estados e arquitetura.
 
-O que eu levo é um caminho. As perguntas com que eu participo, na ordem em que elas aparecem: o que a tarefa resolve, como vamos saber se deu certo, qual é o contrato, como a tela chega nele, como desenvolvemos, como lançamos, e onde a decisão fica escrita para a próxima pessoa.
+Eu também penso nisso. Mas, ao longo da minha experiência, passei a valorizar cada vez mais as decisões que acontecem antes da primeira linha de código.
 
-Para as perguntas terem onde cair, vou usar um card que todo mundo já viu: aplicar um cupom de desconto na página do produto. Ele não é a solução deste post. As respostas são do time daquela tarefa. O que eu quero deixar é o jeito de planejar.
+**Hoje, procuro participar de uma tarefa olhando para toda a sua trajetória: do problema que queremos resolver até o comportamento da solução em produção.**
 
-**Minha parte é abrir o caminho. A solução é o que a conversa produz.**
+Para mostrar como isso acontece na prática, vou utilizar um exemplo hipotético: permitir que um cliente aplique um cupom de desconto diretamente na página de um produto.
 
-## O que queremos resolver
+A ideia não é apresentar a solução ideal, mas compartilhar como costumo participar das conversas e decisões ao longo de uma entrega.
 
-O card muitas vezes já nomeia uma forma. "Campo de cupom na página." Eu trato isso como hipótese. O problema pode ser outro, e eu ainda não sei qual.
+## 1. Antes do código: entendendo o problema
 
-No cupom, as perguntas que eu coloco na mesa:
+### O refinamento começa com perguntas
 
-- Onde a pessoa falha hoje? Descobre o código tarde, não sabe se aquele produto aceita, ou vê o preço mudar e desiste?
-- O campo na página é o lugar certo, ou já é um desenho que alguém adiantou?
-- O que fica de fora desta tarefa, para o problema não crescer no meio da sprint?
+Imagine que uma tarefa chegue com a descrição: **"Adicionar um campo para aplicação de cupom na página do produto."**
 
-Eu saio desta conversa quando o time reconhece o problema numa frase. Se a frase continua sendo "colocar o campo", o refinamento ainda não aconteceu. A forma da solução espera essa frase existir.
+Parece simples: um campo, um botão, uma validação e a atualização do preço.
 
-## O que vai indicar sucesso ou fracasso
+Mas antes de discutir a interface, gosto de entender a necessidade por trás dela.
 
-A tela no ar não me diz se a tarefa funcionou. Antes da sprint, eu peço um sinal de sucesso, um sinal de fracasso e o lugar onde alguém vai ler os dois.
+- Qual dificuldade queremos resolver na jornada de compra?
+- Queremos antecipar a visualização do desconto ou facilitar sua aplicação?
+- Existem regras comerciais ou restrições que precisamos considerar?
 
-No cupom, os caminhos que eu abro para o time escolher:
+Talvez o campo seja realmente a melhor solução. Talvez a dificuldade esteja em outro momento da jornada.
 
-- aplicação de um código válido
-- quem segue adiante depois de aplicar, comparado com quem viu e não usou
-- erro que interrompe a sessão: código inválido, expirado, produto de fora
-- o preço desta página e o preço do passo seguinte contando a mesma história
+O objetivo não é questionar por questionar, mas contribuir para que o time compreenda o problema antes de decidir como resolvê-lo.
 
-Eu não escolho o gráfico no lugar do time. Também não deixo a conversa fechar em "a gente vê os números depois". O número precisa de um dono antes de a tarefa entrar.
+### Como vamos avaliar o resultado?
 
-## O contrato com o backend
+Além de entender a necessidade, procuro participar da definição do que esperamos alcançar.
 
-Aqui eu não desenho o payload. Eu descubro se ele existe.
+No exemplo do cupom, poderíamos acompanhar a quantidade de aplicações bem-sucedidas, os erros mais frequentes e a continuidade da jornada após a aplicação do desconto.
 
-- A API já existe, ou ainda é uma conversa?
-- O que ela precisa receber para esta tela?
-- O que ela devolve? Um sim ou não basta, ou a página precisa de preço e de um motivo quando não aplica?
-- Onde isso está escrito, fora de uma thread?
+Essa conversa acontece em conjunto com produto. Minha contribuição está em ajudar a transformar essas expectativas em comportamentos observáveis: eventos de analytics, estados de interface e pontos de monitoramento.
 
-Se a resposta for "o front consome o que já tem" e ninguém abre o contrato, para mim a tarefa ainda não está pronta. O buraco entra no refinamento, com alguém de backend. O componente não completa o que o contrato não disse.
+**Uma funcionalidade publicada representa uma entrega. Entender seu impacto ajuda a orientar as próximas decisões.**
 
-## Como a tela vai chegar nesse contrato
+## 2. Da necessidade à solução técnica
 
-Esta é a parte em que é mais fácil eu chegar com a arquitetura pronta. Eu chego com os caminhos.
+### Integrações e contratos
 
-- A página é pública? O fluxo inteiro também, ou algum caso pede sessão?
-- Dá para chamar um endpoint só, feito para esta tela?
-- A tela precisa reunir várias chamadas? Preço, elegibilidade e carrinho vivem no mesmo lugar?
-- Se forem vários serviços, já existe um [BFF](/posts/bff-vantagens-e-desvantagens), ou algo no lugar dele, ou o browser é quem vai orquestrar?
+Com o comportamento esperado mais claro, começo a olhar para as dependências técnicas.
 
-Cada resposta muda o tamanho do trabalho. Eu quero essa escolha na planning, com o time, e o que ficar de fora com nome. Decidir na implementação é a solução entrando sem ter passado pela conversa.
+Existe uma API para validar o cupom? Ela considera as regras de elegibilidade? Retorna o preço atualizado ou precisamos consultar outro serviço?
 
-## O que o time passa a perguntar sempre
+Essas perguntas ajudam a alinhar as decisões com backend e identificar comportamentos que nem sempre aparecem no desenho inicial.
 
-Essas quatro conversas são o que eu proponho como **DoR** (Definition of Ready), definido com o time, para não depender de eu estar na sala. A tarefa entra na sprint quando dá para responder:
+Um cupom pode estar expirado, ser incompatível com o produto ou não permitir combinação com outra promoção.
 
-- O que queremos resolver, separado da forma que o card sugeriu?
-- O que indica sucesso, o que indica fracasso, e onde isso será lido?
-- A API existe? O que recebe, o que devolve, e onde está escrito?
-- A superfície é pública? Precisa de sessão? Uma chamada ou várias?
+Cada situação precisa ser interpretada e comunicada pela interface.
 
-Sem resposta, eu peço para a tarefa ficar de fora. Ela pode entrar com a lacuna escrita e um dono, quando o time aceita o risco de propósito.
+**A experiência do usuário não termina na interface, assim como o contrato de uma API não termina na resposta de sucesso.**
 
-O **DoD** (Definition of Done) eu escrevo com o que essas respostas produzirem. A tarefa fica pronta quando a tela cumpre o combinado, produto reconhece os estados que listamos, o lançamento segue o plano e o sinal está sendo coletado. O done não é uma lista genérica. É o espelho do refinamento.
+### Escolhas de arquitetura
 
-**O DoR é o hábito de perguntar. O DoD é o que a resposta virou.**
+Depois, procuro entender como a funcionalidade se encaixa na arquitetura existente.
 
-## Dentro da sprint
+A página é pública, mas alguma operação exige autenticação? Preço, cupom e carrinho dependem de serviços diferentes? Podemos consumir uma API preparada para a jornada ou faz sentido utilizar um [BFF](/posts/bff-vantagens-e-desvantagens)?
 
-O formato do trabalho também é uma pergunta, não um costume.
+São escolhas que envolvem responsabilidades, autenticação, cache, consistência de dados e tratamento de falhas.
 
-One-shot cabe quando a mudança não abre estado novo: um texto, um token, um ajuste pequeno. Se a tarefa mexe em vazio, carregamento, erro, preço ou no que vamos medir, eu abro uma branch de feature. No cupom, eu olho quantos estados a planning listou. Essa lista escolhe o formato. Eu não presumo a branch porque o card parece grande.
+Meu papel nessa etapa é ajudar a avaliar as alternativas, considerando o contexto técnico e as necessidades do produto.
 
-Com produto, eu combino olhar no meio, não na demo do fim. Os estados saem do refinamento. Podem ser campo vazio, código aceito, recusa, chamada que não responde. Podem ser outros. O que eu seguro é o ritmo: um estado visível, produto compara com o que foi descrito, e a fatia seguinte espera essa ainda ser a tarefa combinada.
+**Uma boa decisão arquitetural não precisa ser a mais sofisticada. Precisa fazer sentido para o problema e para o momento do time.**
 
-## Como vamos lançar
+### Alinhando os critérios da entrega
 
-Implementar não encerra a minha parte. Na conversa de ship, eu levo três caminhos.
+Gosto de utilizar os conceitos de *Definition of Ready* (DoR) e *Definition of Done* (DoD) como apoio ao alinhamento.
 
-O primeiro é o modo. Teste A/B quando a hipótese precisa de tempo para aparecer no sinal, e o time pode esperar. Subida direta quando uma data é o requisito, e não ter a feature naquele dia já é o fracasso. Eu pergunto qual dos dois o refinamento descreveu. O costume não escolhe.
+O DoR nos ajuda a entender se temos contexto suficiente para começar. Já o DoD estabelece o que significa concluir a tarefa, considerando implementação, testes, integrações e validações necessárias.
 
-O segundo é o sinal. Os indicadores que nomeamos antes da sprint estão no evento antes de abrir a feature? Se o gráfico nasce depois, a primeira semana não ensina. Eu peço para a coleta fazer parte da entrega.
+Nem todas as respostas precisam existir desde o início. Algumas descobertas fazem parte do desenvolvimento.
 
-O terceiro é o caminho que ninguém desenhou. Qual erro vamos enxergar? Qual resposta de sucesso pode vir com o preço igual ao de antes? Qual aceite na tela pode ser recusa no passo seguinte? Quem está logado e quem não está podem divergir? Um alerta nesse tipo de caminho mostra o plano incompleto enquanto ainda dá para corrigir.
+O importante é que as dúvidas e os riscos estejam claros para que o time consiga decidir como avançar.
 
-## Em produção, acompanhar
+## 3. Durante a implementação
 
-Publicou. O plano está feito. A minha parte passa a ser olhar o que a gente disse que olharia.
+### Desenvolver e validar em pequenas etapas
 
-O sinal anda no sentido combinado, e o erro cabe no que aceitamos: isso é sucesso. A feature está no ar e o gráfico parado, ou o erro come a sessão: isso é fracasso. Os dois autorizam outra volta, na mesma trilha, com uma pergunta mais estreita. Eu não abro um título novo para recomeçar o planejamento do zero.
+Com a tarefa iniciada, procuro organizar a implementação de uma forma que facilite a evolução e as validações.
 
-## Onde a decisão de front fica
+Uma mudança simples pode seguir um fluxo mais direto. Já uma funcionalidade com novas integrações e diferentes estados pode se beneficiar de uma branch de feature e entregas incrementais.
 
-O caminho até aqui produziu escolhas. Se elas ficam na cabeça de quem implementou, a próxima pessoa refaz o refinamento. Uma IA, na sessão seguinte, também. Os dois preenchem o buraco com uma regra que ninguém combinou.
+No exemplo do cupom, poderíamos começar pela interface, evoluir para a integração, tratar os estados de erro e finalizar com os eventos necessários para acompanhamento.
 
-No fim da trajetória eu registro a decisão de frontend. Curta, com data, num endereço só:
+Também gosto de aproximar produto e design durante o desenvolvimento, especialmente quando surgem dúvidas sobre comportamentos específicos.
 
-- o problema, numa frase
-- os caminhos que estiveram na mesa
-- a escolha e a consequência
-- o que ficou de fora
-- o contrato de que a tela depende
-- como vamos saber se funcionou
-- o que faria a gente reabrir
+Um estado de carregamento, uma mensagem de erro ou uma regra de desconto podem ser mais fáceis de avaliar quando conseguimos visualizar a funcionalidade funcionando.
 
-Tem time que chama isso de ADR. O nome importa menos do que o lugar. Dois lugares costumam competir, e eu não uso os dois como arquivo da mesma coisa.
+**Prefiro construir e validar ao longo do caminho, em vez de concentrar todas as descobertas na demonstração final.**
 
-**No projeto.** Ao lado da feature, ou num registro que o repositório já abre antes do código. Quem pega a próxima tarefa encontra o texto junto dela. O pull request atualiza a decisão na mesma mudança do comportamento. Para uma IA, isso é o que torna a decisão utilizável: a sessão lê o repositório primeiro. Fora desse caminho, o texto [não chega na sessão](/posts/a-ia-fica-perto-quando-a-decisao-esta-escrita), a menos que alguém cole na hora. O limite é o resto do squad. Produto e backend nem sempre vivem nesse repo.
+## 4. Da publicação ao acompanhamento
 
-**No Confluence**, ou na ferramenta em que a empresa já decide. O squad lê sem clonar o front. Cabe no acordo que atravessa papéis: problema, sinal de sucesso, como vamos lançar. O limite é o inverso. A página envelhece longe do código. A sessão de uma IA não abre o wiki sozinha. Duas cópias inteiras viram duas verdades.
+### Como vamos disponibilizar?
 
-O caminho que eu deixo é separar os dois públicos sem duplicar o texto. A decisão que ensina a próxima mudança de front mora no projeto, no endereço que a pessoa e o modelo leem primeiro. O acordo do squad mora onde o squad já se encontra. Um dos dois é a fonte. O outro é um link.
+Antes da publicação, procuro participar da conversa sobre como a funcionalidade chegará aos usuários.
 
-Se só um lugar for ficar de pé, eu fico com o projeto para a decisão de frontend. A página no Confluence aponta para o arquivo. A próxima pessoa acha. A próxima sessão também, sem depender de alguém lembrar de colar.
+Dependendo do objetivo, podemos optar por uma liberação direta, gradual, por feature flag ou até um teste A/B.
 
-**Decisão sem endereço não entra na tarefa seguinte. Nem na sessão seguinte.**
+Se quisermos medir o impacto de antecipar a aplicação de cupons, por exemplo, um experimento pode fazer sentido. Em outros cenários, uma liberação controlada é suficiente.
+
+Também considero importante antecipar falhas: o que acontece se a API ficar indisponível? E se o cupom for aceito na página, mas recusado no checkout?
+
+Pensar nesses cenários ajuda a definir testes, tratamentos de erro e o monitoramento necessário.
+
+### O que aprendemos em produção?
+
+Depois da publicação, gosto de acompanhar o comportamento real da funcionalidade.
+
+Analytics, monitoramento de erros e ferramentas de observabilidade ajudam a entender se os fluxos estão funcionando e quais situações merecem atenção.
+
+Nem todo resultado inesperado significa um problema técnico. Às vezes, ele revela uma hipótese de produto que não se confirmou ou uma experiência que pode ser melhorada.
+
+Essas observações alimentam novas conversas e ajudam a orientar a evolução da solução.
+
+**A publicação encerra uma etapa do desenvolvimento, mas também inicia uma oportunidade de aprendizado.**
+
+## 5. Documentação: preservando as decisões
+
+Ao longo de uma tarefa, fazemos escolhas que nem sempre ficam evidentes para quem encontra o código meses depois.
+
+Por que utilizamos determinada API? Por que uma regra ficou no backend? Quais alternativas foram consideradas?
+
+O código mostra o que foi implementado, mas nem sempre explica o contexto da decisão.
+
+Por isso, valorizo registros técnicos curtos, como um *Architecture Decision Record* (ADR), principalmente quando a escolha influencia a evolução da aplicação.
+
+Decisões específicas de front-end podem ficar próximas do código, enquanto acordos entre áreas podem estar em ferramentas compartilhadas, como o Confluence. O importante é facilitar o acesso e evitar informações duplicadas.
+
+### E onde a IA entra nisso?
+
+Com a inteligência artificial cada vez mais presente no desenvolvimento, manter esse contexto acessível ganhou ainda mais relevância.
+
+Ferramentas de IA podem ajudar na implementação, nos testes e nas revisões de código. Mas a qualidade dessa contribuição depende também das informações disponíveis.
+
+Se uma decisão importante existe apenas na memória de quem participou da tarefa, tanto uma nova pessoa quanto uma ferramenta de IA podem desconhecê-la.
+
+Registrar o contexto no projeto ajuda a reutilizar essas decisões em novos desenvolvimentos, inclusive nos fluxos assistidos por IA.
+
+**Documentar não é apenas preservar o passado. É facilitar as próximas decisões.**
+
+## No fim, desenvolver também é construir entendimento
+
+O exemplo do cupom mostra como uma tarefa aparentemente simples pode envolver produto, experiência do usuário, arquitetura, integrações e acompanhamento em produção.
+
+Naturalmente, nem toda tarefa exige a mesma profundidade. Algumas mudanças pedem soluções diretas; outras precisam de mais investigação e alinhamento.
+
+O que procuro manter é a disposição de compreender o contexto, colaborar com diferentes perspectivas e contribuir para decisões que façam sentido para o produto e para o time.
+
+Com o tempo, percebi que minha contribuição como engenheiro front-end vai além da qualidade do código que escrevo. Ela também está na forma como participo das decisões que ajudam a transformar necessidades em soluções sustentáveis.
+
+**A implementação é uma parte importante do trabalho. O entendimento que construímos juntos é o que ajuda a dar direção a ela.**
