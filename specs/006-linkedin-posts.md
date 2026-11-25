@@ -18,9 +18,10 @@ Introduziremos uma distinção no frontmatter para identificar posts que seguem 
    - `linkedin_link: string` (link para o post original no LinkedIn, se houver)
 
 2. **Layout**:
-   - Posts do tipo `linkedin` terão um container de conteúdo mais estreito (ex: `max-width: 600px` em vez de `740px`) para simular a densidade de leitura do feed.
-   - A `linkedin_image` será exibida com prioridade no topo.
-   - O tempo de leitura pode ser omitido se o post for extremamente curto (< 1 min).
+   - Posts do tipo `linkedin` mantêm o layout padrão do site para consistência (header, largura do texto e guia lateral).
+   - A `linkedin_image` é exibida com prioridade no topo, centralizada e com foco visual (max-width: 600px).
+   - O guia "Neste artigo" (TOC) é mantido para facilitar a navegação em conteúdos focados.
+   - O tempo de leitura pode ser omitido se o post for extremamente curto (< 100 palavras).
 
 ### Imagens Interativas
 

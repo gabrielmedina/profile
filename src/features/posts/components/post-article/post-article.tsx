@@ -23,7 +23,7 @@ type PostArticleProps = {
 
 export function PostArticle({ post, related }: PostArticleProps) {
   const isLinkedIn = post.type === 'linkedin'
-  const outline = isLinkedIn ? null : articleOutline(post.content)
+  const outline = articleOutline(post.content)
   const cover = splitLeadingCover(post.content)
   const body = cover?.body ?? post.content
 

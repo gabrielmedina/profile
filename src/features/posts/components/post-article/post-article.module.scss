@@ -11,26 +11,7 @@
 }
 
 .linkedin {
-  .content {
-    max-width: 600px;
-    font-size: 1.1rem;
-
-    @media screen and (min-width: 768px) {
-      font-size: 1.2rem;
-    }
-  }
-
-  .header {
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-
-  .infos {
-    justify-content: center;
-    margin-bottom: 2rem;
-  }
+  // LinkedIn-specific overrides removed to keep layout consistent
 }
 
 .linkedinExternal {
