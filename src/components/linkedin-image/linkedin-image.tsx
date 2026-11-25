@@ -1,4 +1,4 @@
-import type { ImageSize } from '../../types'
+import type { ImageSize } from '@/features/posts/types'
 import styles from './linkedin-image.module.scss'
 
 type LinkedInImageProps = {

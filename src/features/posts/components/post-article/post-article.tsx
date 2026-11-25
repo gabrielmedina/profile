@@ -14,7 +14,6 @@ import { PostShare } from '../post-share/post-share'
 import { PostSpeech } from '../post-speech/post-speech'
 import { ReadingProgress } from '../reading-progress/reading-progress'
 import { RelatedPosts } from '../related-posts/related-posts'
-import { LinkedInImage } from '../linkedin-image/linkedin-image'
 
 type PostArticleProps = {
   post: Post
@@ -69,14 +68,6 @@ export function PostArticle({ post, related }: PostArticleProps) {
               {formatLongDate(post.date)}
             </time>
           </div>
-
-          {post.linkedin_image ? (
-            <LinkedInImage
-              src={post.linkedin_image}
-              alt={post.title}
-              size={post.images[post.linkedin_image]}
-            />
-          ) : null}
 
           {cover ? (
             <div className={styles.content} data-article-cover="">

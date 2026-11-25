@@ -6,10 +6,11 @@ slug: "conteudos-para-linkedin"
 lang: "pt-BR"
 date: "2026-11-25"
 type: "linkedin"
-linkedin_image: "/imgs/posts/exemplo-linkedin.gif"
 ---
 
 O LinkedIn mudou a forma como consumimos conteúdo técnico. Menos 'textão', mais clareza e impacto visual.
+
+<linkedin-image src="/imgs/posts/exemplo-linkedin.gif" alt="Animação de exemplo"></linkedin-image>
 
 ## O novo formato
 

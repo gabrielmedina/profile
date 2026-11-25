@@ -14,8 +14,9 @@ Introduziremos uma distinção no frontmatter para identificar posts que seguem 
 
 1. **Frontmatter**:
    - `type: "linkedin"` (opcional, padrão é "article")
-   - `linkedin_image: string` (caminho para a imagem/asset interativo)
-   - `linkedin_link: string` (link para o post original no LinkedIn, se houver)
+   - `linkedin_link: string` (opcional, link para o post original no LinkedIn)
+
+O campo `linkedin_image` foi descontinuado em favor da inclusão direta no conteúdo. Para a imagem social (Open Graph), deve-se continuar usando o campo padrão `image`.
 
 2. **Layout**:
    - Posts do tipo `linkedin` mantêm o layout padrão do site para consistência (header, largura do texto e guia lateral).
@@ -25,19 +26,13 @@ Introduziremos uma distinção no frontmatter para identificar posts que seguem 
 
 ### Imagens Interativas
 
-Imagens "interativas" no site podem ser:
-- **GIFs/MP4s**: Para animações simples (como o exemplo enviado).
-- **Componentes React**: Para interatividade real (hover effects, pequenos estados).
-
-#### Implementação de Imagem Interativa no Markdown
-
-Usaremos uma sintaxe customizada ou um componente mapeado no `rehype-raw`:
+As imagens interativas ou animadas (GIFs, vídeos) são inseridas diretamente no corpo do post (Markdown) usando a tag customizada `<linkedin-image>`:
 
 ```html
 <linkedin-image src="/imgs/posts/my-anim.gif" alt="Descrição"></linkedin-image>
 ```
 
-Ou via frontmatter `linkedin_image`.
+Isso permite flexibilidade total sobre a posição da imagem no fluxo do texto, em vez de forçá-la no topo do artigo.
 
 ### Proporções LinkedIn
 

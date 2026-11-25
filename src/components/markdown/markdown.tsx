@@ -4,6 +4,7 @@ import { cacheLife } from 'next/cache'
 import { MarkdownAsync } from 'react-markdown'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeRaw from 'rehype-raw'
+import { LinkedInImage } from '../linkedin-image/linkedin-image'
 import { CodeBlock } from './code-block'
 import styles from './code-block.module.scss'
 import { textContent, uniqueHeadingId } from './heading-id'
@@ -52,6 +53,13 @@ export async function Markdown({
         h4: ({ children }) => heading('h4', children, usedIds),
         h5: ({ children }) => heading('h5', children, usedIds),
         h6: ({ children }) => heading('h6', children, usedIds),
+        // @ts-expect-error - linkedin-image is a custom element handled by rehype-raw
+        'linkedin-image': ({ src, alt }: { src?: string; alt?: string }) => {
+          if (!src) return null
+          return (
+            <LinkedInImage src={src} alt={alt ?? ''} size={images?.[src]} />
+          )
+        },
         figure: ({ children, ...props }: FigureProps) => {
           if ('data-rehype-pretty-code-figure' in props) {
             return children

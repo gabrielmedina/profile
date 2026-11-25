@@ -58,11 +58,14 @@ function countWords(content: string) {
 
 function contentImagePaths(content: string) {
   return [
-    ...new Set(
-      [...content.matchAll(/!\[[^\]]*]\((\/[^)\s]+)\)/g)]
-        .map((match) => match[1])
-        .filter((src): src is string => Boolean(src)),
-    ),
+    ...new Set([
+      ...[
+        ...content.matchAll(/!\[[^\]]*]\((\/[^)\s]+)\)/g),
+      ].map((match) => match[1]),
+      ...[
+        ...content.matchAll(/<linkedin-image[^>]*src="([^"]+)"/g),
+      ].map((match) => match[1]),
+    ].filter((src): src is string => Boolean(src))),
   ]
 }
 
