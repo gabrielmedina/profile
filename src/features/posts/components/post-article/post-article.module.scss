@@ -128,10 +128,8 @@
 
 .withOutline {
   margin-top: 2rem;
-}
-
-.withOutline .content {
-  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .outline {
@@ -323,11 +321,16 @@
 
 @media screen and (min-width: 1400px) {
   .withOutline {
-    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 740px) 15rem;
+    gap: 4rem;
+    justify-content: center;
+    align-items: start;
+    margin-top: 4rem;
   }
 
   .withOutline .content {
-    margin-top: 0;
+    margin: 0;
 
     iframe {
       width: 100%;
@@ -337,13 +340,9 @@
     }
   }
 
-  // The guide starts with the text, after the cover, in the right gutter.
   .withOutline .outline {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: calc(50% + 370px + 2.5rem);
-    width: 15rem;
+    position: sticky;
+    top: 2rem;
     margin-top: 0;
   }
 }

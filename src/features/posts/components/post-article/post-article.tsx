@@ -71,9 +71,9 @@ export function PostArticle({ post, related }: PostArticleProps) {
             data-article-frame=""
           >
             {outline ? (
-              <div className={styles.outline}>
+              <aside className={styles.outline}>
                 <PostOutline sections={outline} slug={post.slug} />
-              </div>
+              </aside>
             ) : null}
             <div className={styles.content} data-article-content="">
               <Markdown
