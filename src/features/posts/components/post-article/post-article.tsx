@@ -67,14 +67,9 @@ export function PostArticle({ post, related }: PostArticleProps) {
           </div>
 
           <div
-            className={outline ? styles.withOutline : undefined}
+            className={outline ? styles.withOutline : styles.frame}
             data-article-frame=""
           >
-            {outline ? (
-              <aside className={styles.outline}>
-                <PostOutline sections={outline} slug={post.slug} />
-              </aside>
-            ) : null}
             <div className={styles.content} data-article-content="">
               <Markdown
                 source={post.content}
@@ -82,6 +77,11 @@ export function PostArticle({ post, related }: PostArticleProps) {
                 priority={true}
               />
             </div>
+            {outline ? (
+              <aside className={styles.outline}>
+                <PostOutline sections={outline} slug={post.slug} />
+              </aside>
+            ) : null}
           </div>
 
           {post.linkedin_link ? (
