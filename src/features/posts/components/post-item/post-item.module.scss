@@ -14,6 +14,28 @@
   }
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.badge {
+  padding: 0.2rem 0.5rem;
+  background-color: #0077b5;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  @media screen and (min-width: 768px) {
+    font-size: 0.75rem;
+  }
+}
+
 .title {
   margin: 0;
   color: var(--color-primary);

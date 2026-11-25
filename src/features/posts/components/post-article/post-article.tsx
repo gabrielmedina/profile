@@ -14,6 +14,7 @@ import { PostShare } from '../post-share/post-share'
 import { PostSpeech } from '../post-speech/post-speech'
 import { ReadingProgress } from '../reading-progress/reading-progress'
 import { RelatedPosts } from '../related-posts/related-posts'
+import { LinkedInImage } from '../linkedin-image/linkedin-image'
 
 type PostArticleProps = {
   post: Post
@@ -21,12 +22,16 @@ type PostArticleProps = {
 }
 
 export function PostArticle({ post, related }: PostArticleProps) {
-  const outline = articleOutline(post.content)
+  const isLinkedIn = post.type === 'linkedin'
+  const outline = isLinkedIn ? null : articleOutline(post.content)
   const cover = splitLeadingCover(post.content)
   const body = cover?.body ?? post.content
 
   return (
-    <article lang={post.lang} className={styles.wrapper}>
+    <article
+      lang={post.lang}
+      className={`${styles.wrapper} ${isLinkedIn ? styles.linkedin : ''}`}
+    >
       <div className={styles.container}>
         <div className={styles.readingRange} data-reading-progress-range="">
           <Breadcrumbs
@@ -49,7 +54,9 @@ export function PostArticle({ post, related }: PostArticleProps) {
                   {site.name}
                 </a>
               </p>
-              <p className={styles.timeToRead}>{post.readingTime}</p>
+              {!isLinkedIn || post.wordCount > 100 ? (
+                <p className={styles.timeToRead}>{post.readingTime}</p>
+              ) : null}
               <PostSpeech
                 title={post.title}
                 description={post.description}
@@ -62,6 +69,14 @@ export function PostArticle({ post, related }: PostArticleProps) {
               {formatLongDate(post.date)}
             </time>
           </div>
+
+          {post.linkedin_image ? (
+            <LinkedInImage
+              src={post.linkedin_image}
+              alt={post.title}
+              size={post.images[post.linkedin_image]}
+            />
+          ) : null}
 
           {cover ? (
             <div className={styles.content} data-article-cover="">
@@ -81,6 +96,18 @@ export function PostArticle({ post, related }: PostArticleProps) {
               <Markdown source={body} images={post.images} priority={!cover} />
             </div>
           </div>
+
+          {post.linkedin_link ? (
+            <div className={styles.linkedinExternal}>
+              <a
+                href={post.linkedin_link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver discussão no LinkedIn
+              </a>
+            </div>
+          ) : null}
         </div>
 
         <PostShare

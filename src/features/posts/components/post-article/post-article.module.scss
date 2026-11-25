@@ -10,6 +10,49 @@
   }
 }
 
+.linkedin {
+  .content {
+    max-width: 600px;
+    font-size: 1.1rem;
+
+    @media screen and (min-width: 768px) {
+      font-size: 1.2rem;
+    }
+  }
+
+  .header {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .infos {
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+}
+
+.linkedinExternal {
+  margin-top: 4rem;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    background-color: #0077b5; // LinkedIn Blue
+    color: white;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #006097;
+    }
+  }
+}
+
 .wrapper {
   display: flex;
   justify-content: center;

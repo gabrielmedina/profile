@@ -25,6 +25,9 @@ const postFrontmatterSchema = z
     lang: z.string().min(1),
     date: dateString,
     updated: dateString.optional(),
+    type: z.enum(['article', 'linkedin']).default('article'),
+    linkedin_image: z.string().min(1).optional(),
+    linkedin_link: z.string().url().optional(),
   })
   .transform(({ keys, ...rest }) => {
     const tags = canonicalizeTags(splitKeywords(keys))

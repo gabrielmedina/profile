@@ -18,6 +18,9 @@ export type PostFrontmatter = {
   lang: string
   date: string
   updated?: string
+  type?: 'article' | 'linkedin'
+  linkedin_image?: string
+  linkedin_link?: string
 }
 
 export type Post = PostFrontmatter & {

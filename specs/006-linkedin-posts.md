@@ -1,0 +1,54 @@
+# 006 — Posts curtos (LinkedIn-style) e Imagens Interativas
+
+**Status:** em proposta
+
+## Contexto
+
+O foco da comunicação do site está mudando para o LinkedIn. Isso exige um formato de postagem mais direto, curto e com forte apelo visual, utilizando imagens que respeitem as proporções do LinkedIn e que possam ser animadas ou interativas.
+
+## Decisão
+
+### Novo tipo de post: `linkedin`
+
+Introduziremos uma distinção no frontmatter para identificar posts que seguem o formato LinkedIn.
+
+1. **Frontmatter**:
+   - `type: "linkedin"` (opcional, padrão é "article")
+   - `linkedin_image: string` (caminho para a imagem/asset interativo)
+   - `linkedin_link: string` (link para o post original no LinkedIn, se houver)
+
+2. **Layout**:
+   - Posts do tipo `linkedin` terão um container de conteúdo mais estreito (ex: `max-width: 600px` em vez de `740px`) para simular a densidade de leitura do feed.
+   - A `linkedin_image` será exibida com prioridade no topo.
+   - O tempo de leitura pode ser omitido se o post for extremamente curto (< 1 min).
+
+### Imagens Interativas
+
+Imagens "interativas" no site podem ser:
+- **GIFs/MP4s**: Para animações simples (como o exemplo enviado).
+- **Componentes React**: Para interatividade real (hover effects, pequenos estados).
+
+#### Implementação de Imagem Interativa no Markdown
+
+Usaremos uma sintaxe customizada ou um componente mapeado no `rehype-raw`:
+
+```html
+<linkedin-image src="/imgs/posts/my-anim.gif" alt="Descrição"></linkedin-image>
+```
+
+Ou via frontmatter `linkedin_image`.
+
+### Proporções LinkedIn
+
+As imagens devem seguir uma das proporções padrão do LinkedIn:
+- **Square (1:1)**: 1200x1200px.
+- **Portrait (4:5)**: 1080x1350px.
+- **Landscape (1.91:1)**: 1200x627px.
+
+O foco deve ser **Portrait** ou **Square**, que ocupam mais espaço vertical no feed mobile.
+
+## Consequências
+
+- O parser de posts em `src/features/posts/services/posts.ts` deve validar o novo campo `type`.
+- O componente `PostArticle` deve alternar o layout baseado no `type`.
+- Precisamos de um novo componente `LinkedInImage` que lide com o aspecto interativo/animado.
