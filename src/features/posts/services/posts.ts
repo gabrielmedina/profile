@@ -26,7 +26,6 @@ const postFrontmatterSchema = z
     date: dateString,
     updated: dateString.optional(),
     type: z.enum(['article', 'linkedin']).default('article'),
-    linkedin_image: z.string().min(1).optional(),
     linkedin_link: z.string().url().optional(),
   })
   .transform(({ keys, ...rest }) => {
@@ -59,12 +58,15 @@ function countWords(content: string) {
 function contentImagePaths(content: string) {
   return [
     ...new Set([
-      ...[
-        ...content.matchAll(/!\[[^\]]*]\((\/[^)\s]+)\)/g),
-      ].map((match) => match[1]),
-      ...[
-        ...content.matchAll(/<linkedin-image[^>]*src="([^"]+)"/g),
-      ].map((match) => match[1]),
+      ...[...content.matchAll(/!\[[^\]]*]\((\/[^)\s]+)\)/g)].map(
+        (match) => match[1],
+      ),
+      ...[...content.matchAll(/<post-media[^>]*src="([^"]+)"/g)].map(
+        (match) => match[1],
+      ),
+      ...[...content.matchAll(/<linkedin-image[^>]*src="([^"]+)"/g)].map(
+        (match) => match[1],
+      ),
     ].filter((src): src is string => Boolean(src))),
   ]
 }

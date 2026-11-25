@@ -4,7 +4,7 @@ import { cacheLife } from 'next/cache'
 import { MarkdownAsync } from 'react-markdown'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeRaw from 'rehype-raw'
-import { LinkedInImage } from '../linkedin-image/linkedin-image'
+import { PostMedia } from '../post-media/post-media'
 import { CodeBlock } from './code-block'
 import styles from './code-block.module.scss'
 import { textContent, uniqueHeadingId } from './heading-id'
@@ -53,11 +53,43 @@ export async function Markdown({
         h4: ({ children }) => heading('h4', children, usedIds),
         h5: ({ children }) => heading('h5', children, usedIds),
         h6: ({ children }) => heading('h6', children, usedIds),
-        // @ts-expect-error - linkedin-image is a custom element handled by rehype-raw
-        'linkedin-image': ({ src, alt }: { src?: string; alt?: string }) => {
+        // @ts-expect-error - post-media is a custom element handled by rehype-raw
+        'post-media': ({
+          src,
+          alt,
+          priority,
+        }: {
+          src?: string
+          alt?: string
+          priority?: boolean
+        }) => {
           if (!src) return null
           return (
-            <LinkedInImage src={src} alt={alt ?? ''} size={images?.[src]} />
+            <PostMedia
+              src={src}
+              alt={alt ?? ''}
+              size={images?.[src]}
+              priority={priority}
+            />
+          )
+        },
+        'linkedin-image': ({
+          src,
+          alt,
+          priority,
+        }: {
+          src?: string
+          alt?: string
+          priority?: boolean
+        }) => {
+          if (!src) return null
+          return (
+            <PostMedia
+              src={src}
+              alt={alt ?? ''}
+              size={images?.[src]}
+              priority={priority}
+            />
           )
         },
         figure: ({ children, ...props }: FigureProps) => {
@@ -90,27 +122,36 @@ export async function Markdown({
 
           const priority = imageSrc === firstImage
 
-          return (
-            <>
-              {priority ? (
-                <link
-                  rel="preload"
-                  as="image"
-                  href={imageSrc}
-                  fetchPriority="high"
+          if (size) {
+            return (
+              <>
+                {priority ? (
+                  <link
+                    rel="preload"
+                    as="image"
+                    href={imageSrc}
+                    fetchPriority="high"
+                  />
+                ) : null}
+                <PostMedia
+                  src={imageSrc}
+                  alt={alt ?? ''}
+                  size={size}
+                  priority={priority}
                 />
-              ) : null}
-              <img
-                src={imageSrc}
-                alt={alt ?? ''}
-                width={size?.width}
-                height={size?.height}
-                decoding="async"
-                loading={priority ? 'eager' : 'lazy'}
-                fetchPriority={priority ? 'high' : 'auto'}
-                className={size ? markdownStyles.media : undefined}
-              />
-            </>
+              </>
+            )
+          }
+
+          return (
+            <img
+              src={imageSrc}
+              alt={alt ?? ''}
+              decoding="async"
+              loading={priority ? 'eager' : 'lazy'}
+              fetchPriority={priority ? 'high' : 'auto'}
+              className={markdownStyles.media}
+            />
           )
         },
       }}

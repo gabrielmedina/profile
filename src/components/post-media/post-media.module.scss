@@ -2,14 +2,35 @@
   margin: 2rem 0;
   display: flex;
   justify-content: center;
+  width: calc(100% + 3.2rem);
+  margin: 0 -1.6rem 2.6rem;
+
+  @media screen and (min-width: 768px) {
+    border-radius: 4px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: calc(100% + 460px);
+    margin-left: -230px;
+    margin-right: -230px;
+  }
+
+  @media screen and (min-width: 1400px) {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .container {
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 1200px;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: var(--color-code-background);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;

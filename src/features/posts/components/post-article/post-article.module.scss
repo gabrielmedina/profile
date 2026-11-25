@@ -130,10 +130,6 @@
   margin-top: 2rem;
 }
 
-[data-article-cover] + .withOutline {
-  margin-top: 0;
-}
-
 .withOutline .content {
   margin-top: 1.75rem;
 }
@@ -203,9 +199,8 @@
   img,
   iframe {
     display: block;
-    width: calc(100% + 3.2rem);
-    max-width: unset;
-    margin: 0 -1.6rem 2rem;
+    width: 100%;
+    max-width: 100%;
   }
 
   img {
@@ -318,7 +313,6 @@
 
 @media screen and (min-width: 1200px) {
   .content {
-    img,
     iframe {
       width: calc(100% + 460px);
       margin: 3.6rem -230px;
@@ -335,7 +329,6 @@
   .withOutline .content {
     margin-top: 0;
 
-    img,
     iframe {
       width: 100%;
       max-width: 100%;

@@ -24,15 +24,18 @@ O campo `linkedin_image` foi descontinuado em favor da inclusão direta no conte
    - O guia "Neste artigo" (TOC) é mantido para facilitar a navegação em conteúdos focados.
    - O tempo de leitura pode ser omitido se o post for extremamente curto (< 100 palavras).
 
-### Imagens Interativas
+### Imagens no Conteúdo
 
-As imagens interativas ou animadas (GIFs, vídeos) são inseridas diretamente no corpo do post (Markdown) usando a tag customizada `<linkedin-image>`:
+As imagens (estáticas, GIFs ou vídeos) agora são inseridas diretamente no corpo do post (Markdown). Não há mais o conceito de "capa" separada do conteúdo. 
+
+- **Imagens Padrão**: Use a sintaxe Markdown `![Alt](/caminho)`. O site aplicará automaticamente o estilo visual (bordas arredondadas, sombra e comportamento de largura) para todas as imagens locais.
+- **Mídia Avançada (Vídeos/GIFs)**: Use a tag `<post-media>` para maior controle ou para arquivos que precisam de comportamento de vídeo (autoplay, loop):
 
 ```html
-<linkedin-image src="/imgs/posts/my-anim.gif" alt="Descrição"></linkedin-image>
+<post-media src="/imgs/posts/my-anim.mp4" alt="Descrição"></post-media>
 ```
 
-Isso permite flexibilidade total sobre a posição da imagem no fluxo do texto, em vez de forçá-la no topo do artigo.
+Esta abordagem remove o "hardcode" de LinkedIn do código, permitindo que qualquer post utilize esse estilo visual moderno e focado.
 
 ### Proporções LinkedIn
 

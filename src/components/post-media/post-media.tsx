@@ -1,13 +1,14 @@
 import type { ImageSize } from '@/features/posts/types'
-import styles from './linkedin-image.module.scss'
+import styles from './post-media.module.scss'
 
-type LinkedInImageProps = {
+type PostMediaProps = {
   src: string
   alt: string
   size?: ImageSize
+  priority?: boolean
 }
 
-export function LinkedInImage({ src, alt, size }: LinkedInImageProps) {
+export function PostMedia({ src, alt, size, priority }: PostMediaProps) {
   const isVideo = src.endsWith('.mp4') || src.endsWith('.webm')
 
   return (
@@ -37,7 +38,8 @@ export function LinkedInImage({ src, alt, size }: LinkedInImageProps) {
             width={size?.width}
             height={size?.height}
             className={styles.media}
-            loading="eager"
+            loading={priority ? 'eager' : 'lazy'}
+            fetchPriority={priority ? 'high' : 'auto'}
             decoding="async"
           />
         )}

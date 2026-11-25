@@ -12,10 +12,10 @@ Imagens de capa e OG pesadas degradam LCP e o preview social. O Next já está c
 
 1. **Corpo do post (Markdown):** preferir **WebP** (ou AVIF) local em `/imgs/posts/…`.
 2. **Frontmatter `image` (OG / Twitter / JSON-LD):** JPEG ou WebP leve, tipicamente o par `.jpg` da capa. Alvo: **≤ ~100 KB** por asset social.
-3. **Render no app:** sempre `next/image` quando width/height são conhecidos (medidos em `services/image-size.ts` no load do post).
-4. **Fallback `<img>`:** só para remoto ou arquivo sem dimensão mensurável — nunca como padrão para assets locais versionados.
-5. **Primeira imagem do markdown:** `priority` para LCP.
-6. **`sizes`:** conteúdo de artigo usa `(min-width: 1200px) 1200px, 100vw` (ou valor equivalente se o layout mudar).
+3. **Render no app**: sempre `next/image` ou o componente `PostMedia` quando width/height são conhecidos.
+4. **Local Assets**: Imagens locais e vídeos ganham automaticamente o container com estilo visual focado (bordas arredondadas e sombra).
+5. **Primeira imagem do markdown**: `priority` para LCP.
+6. **`sizes`**: conteúdo de artigo usa `(min-width: 1200px) 1200px, 100vw`.
 
 ### Configuração Next
 
@@ -86,5 +86,6 @@ Capas compartilham uma **família** minimalista — não um template único. Fun
 
 - Novos posts entram no repo já com par jpg + webp (ou só webp leve se o jpg for desnecessário).
 - CI / checklist humano: rejeitar PNG de capa > ~100 KB no frontmatter.
-- Cover figure opcional no chrome do artigo (fora do markdown) continua no backlog; quando existir, usa o mesmo `post.image` + `next/image`.
+- Fim do Leading Cover: O site não extrai mais a primeira imagem do Markdown para renderizá-la como "capa" separada. Todas as imagens permanecem no fluxo do conteúdo, permitindo controle total do autor sobre o posicionamento.
+- Estilo Visual: Imagens locais ganham bordas arredondadas e sombra suave automaticamente para um aspecto mais moderno e focado.
 - Capas da série compartilham atmosfera (`#1a1d24` + minimalismo); a composição é escolhida pelo tema. Tecnologia/lib existente leva marca oficial composta (escrita ou filtrada quando o container é nosso).

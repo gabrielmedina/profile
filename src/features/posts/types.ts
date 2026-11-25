@@ -19,7 +19,6 @@ export type PostFrontmatter = {
   date: string
   updated?: string
   type?: 'article' | 'linkedin'
-  linkedin_image?: string
   linkedin_link?: string
 }
 

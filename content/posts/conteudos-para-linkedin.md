@@ -10,7 +10,7 @@ type: "linkedin"
 
 O LinkedIn mudou a forma como consumimos conteúdo técnico. Menos 'textão', mais clareza e impacto visual.
 
-<linkedin-image src="/imgs/posts/exemplo-linkedin.gif" alt="Animação de exemplo"></linkedin-image>
+![Animação de exemplo](/imgs/posts/exemplo-linkedin.gif)
 
 ## O novo formato
 
